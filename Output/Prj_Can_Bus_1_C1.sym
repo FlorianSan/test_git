@@ -1,0 +1,287 @@
+FormatVersion=5.0
+Title=Can_Bus_1_C1
+
+// @DESCRIPTION  CAN Bus 1 C1
+// @CREATED      2019-02-12 18:24:13 HYDAC/PdtCodeBuilder
+// @CODEBUILDER  1.2.5 (Build: 034)
+// @PDT          2.9.39.196
+// @PROJECTVER   0.0.0
+// @VERSION      1.1
+
+
+{ENUMS} //------------------------------------------------------
+
+enum ETBIT2(0="Off", 1="On", 2="Error", 3="Undef")
+enum ETBIT3(0="Neutral", 1="Positive", 2="Negative", 5="CtlError", 6="Error", 7="Undef")
+enum ETBIT4(14="Error", 15="Not")
+enum ETBIT5(30="Error", 31="Not")
+enum ETBIT6(62="Error", 63="Not")
+enum ETBIT7(126="Error", 127="Not")
+enum ETINT8(121="Limit", 126="Error", 127="Undef")
+enum ETUINT8(249="Limit", 254="Error", 255="Undef")
+enum ETINT16(32761="Limit", 32766="Error", 32767="Undef")
+enum ETUINT16(65529="Limit", 65534="Error", 65535="Undef")
+enum ETINT32(2147483641="Limit", 2147483646="Error", 2147483647="Undef")
+enum ETUINT32(4294967289="Limit", 4294967294="Error", 4294967295="Undef")
+enum EDIGSTATUS(0="GE_DIG_OFF",1="GE_DIG_ON",2="GE_DIG_ERROR",3="GE_DIG_UNDEF")
+enum EPROSTATUS(0="GE_PRO_OFF",1="GE_PRO_ON",2="GE_PRO_ERROR",3="GE_PRO_NOT_INSTALLED",4="GE_PRO_NO_DUTY_CYCLE",5="GE_PRO_MIN_DUTY_CYCLE")
+enum EDISTATE(0="GE_DI_OFF",1="GE_DI_ON",2="GE_DI_ERROR",3="GE_DI_UNDEF")
+enum EWDSTATE(6="GE_RUNNING",9="GE_TRIGGERED")
+enum EMOVENACELLEMODE(0="GE_NO_MODE",1="GE_OFFRAIL_RADIOCONTOL_MODE",2="GE_RAIL_NACELLE_MODE",3="GE_TURRET_MODE")
+enum EOFFRAILMODE(0="GE_NO_OFFRAIL_MODE",1="GE_TRANSPORT_OFFRAIL_MODE",2="GE_WORK_OFFRAIL_MODE",3="GE_WORSHOP_OFFRAIL_MODE")
+enum ERAILSPEEDMODE(0="GE_NO_SPEED_MAX_RAIL_MODE",1="GE_ACCESS_SITE_MODE",2="GE_HIGH_SPEED",3="GE_LOW_SPEED")
+enum EWORKMODE(0="GE_NO_WORK_MODE",1="GE_BILATERAL_MODE",2="GE_ALO_WORK_MODE",3="GE_MULTILANE_MODE")
+enum EMANIPULATORPOSITION(0="GE_NEUTRAL",1="GE_AV",2="GE_AR",3="GE_ERROR")
+enum ESTATEHEARTBEAT(0="GE_BOOT_UP",4="GE_STOPPED",5="GE_OPERATIONAL",127="GE_PRE_OPERATIONAL")
+enum ESTATESERVICEBRAKERAIL(0="GE_DEFINE_BRAKE",1="GE_AV_SERVICE_BRAKE",2="GE_AR_SERVICE_BRAKE")
+enum ERAILTRANSLATIONDIRECTION(0="GE_AV_RAIL_DIR",1="GE_AR_RAIL_DIR",2="GE_STOP_RAIL_DIR")
+enum ECOUNTRY(0="GE_FRANCE",1="GE_SWITZERLAND",2="GE_UNITED_KINGDOM",3="GE_AUSTRALIA")
+
+
+{SEND} //-------------------------------------------------------
+
+
+
+{RECEIVE} //----------------------------------------------------
+
+
+
+{SENDRECEIVE} //------------------------------------------------
+
+[eVision4Msg3Debug]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=404h
+Type=Standard
+CycleTime=200
+DLC=8
+VAR=i16DebugDeltaArmAngle signed 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=i16DebugArrowArmAngle signed 16,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=i16DebugTelescopePosition signed 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=i16DebugVehicleSlope signed 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+
+[eVision4Msg1]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=403h
+Type=Standard
+CycleTime=200
+DLC=8
+VAR=bogBattery_On_Off unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Battery Status    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogPreheat_On_Off unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Preheat Status    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogSTOP_On_Off unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:STOP Status    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogEngine_Faillure_On_Off unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Engine Faillure Status    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogMaintenance_On_Off unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Maintenance Status    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogOil_On_OFF unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Oil Status    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogDeltaSectorDown unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Delta Arm Sector Down    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogArrowSectorDown unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Arrow Sector Down    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogPendularSectorDown unsigned 8,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Pendular Sector Down    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogDeltaArmInCenter unsigned 9,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Delta Arm in Center    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogArrowArmInCenter unsigned 10,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Arrow Arm in Center    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogPendularInCenter unsigned 11,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:gPendularInCenter    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBasketRotationInCenter unsigned 12,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Basket Rotation in Center    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTelescopeInCenter unsigned 13,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Telescope in Center    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBasketInclinaisonInCenter unsigned 14,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Basket Inclinaison in Center    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogDeltaArmMoveUpAllow unsigned 15,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Delta Arm Move Up Allow    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogDeltaArmMoveDownAllow unsigned 16,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Delta Arm Move Down Allow    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogArrowArmMoveUpAllow unsigned 17,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Arrow Arm Move Up Allow    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogArrowArmMoveDownAllow unsigned 18,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Arrow Arm Move Down Allow    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogPendularMoveUpAllow unsigned 19,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Pendular Move Up Allow    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogPendularMoveDownAllow unsigned 20,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Pendular Move Down Allow    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTelescopeMoveUpAllow unsigned 21,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Telescope Move Up Allow    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTelescopeMoveDownAllow unsigned 22,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Telescope Move Down Allow    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTurretCntrClockWiseMoveAllow unsigned 23,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Turret Counter Clockwise Move Allow    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTurretClockWiseMoveAllow unsigned 24,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Turret Clockwise Move Allow    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBasketRotCtClockWiseMoveAllow unsigned 25,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Basket Rotation Counter Clockwise Move Allow    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBasketRotClockWiseMoveAllow unsigned 26,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Basket Rotation Clockwise Move Allow    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBasketInclinaisonMoveUpAllow unsigned 27,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Basket Inclinaison Move Up Allow    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBasketIncliMoveDownAllow unsigned 28,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Basket Inclinaison Move Down Allow    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[eVision4Msg2]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=503h
+Type=Standard
+CycleTime=200
+DLC=8
+VAR=u8gFuel unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:Fuel in Litter    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u16gBattery_Voltage unsigned 8,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:Battery Voltage mV    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16gEngineRpm unsigned 24,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+
+[Hearbeat_Telescope]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=729h // Hearbeat receive by retrator tel
+Type=Standard
+CycleTime=200
+DLC=8
+VAR=u8State unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[PDO7_48XS]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=20Ah // PDO 7 48XS master to slave
+Type=Standard
+CycleTime=10
+DLC=8
+VAR=boMotorDefaultLight unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boOverloadLight unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boBuzzer unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boSupplyDeadManPedalAndJoysticks unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boWarmingLight unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDeversDefaultLight unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boGasOilLight unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boWhiteLights unsigned 8,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boRedLights unsigned 9,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[PDO8_48XS]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=6A8h // PDO 8 48XS slave to master
+Type=Standard
+CycleTime=10
+DLC=2
+VAR=u16BatterieVoltage48Xs unsigned 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+
+[Hearbeat_48XS]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=70Ah // Hearbeat receive by slave module
+Type=Standard
+CycleTime=200
+DLC=1
+VAR=u8State unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[PDO6_48XS]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=6A2h // PDO 6 48XS slave to master
+Type=Standard
+CycleTime=10
+DLC=8
+VAR=boDeltaArmJystckCenteredTelesc unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boArrowJoystickCenteredTurret unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boCenteredAdvanceJoystick unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDeadManPedal unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPressenceInNacelleSensor1 unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPressenceInNacelleSensor2 unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boGachette unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boKlaxon unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boStopMotorButton unsigned 8,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boAuthorizationWorkKey unsigned 9,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boEtallonnageJoystickButton unsigned 10,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[Start_48XS]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=0h // Message Can to start slave modul
+Type=Standard
+CycleTime=50
+DLC=2
+VAR=u8Command unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8NodeId unsigned 8,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[PDO4_48XS]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=6A0h // PDO 4 48XS slave to master
+Type=Standard
+CycleTime=10
+DLC=8
+VAR=u16DeltaArmAxisJoystick unsigned 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16ArrowArmAxisJoystick unsigned 16,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16TelescopeArmAxisJoysitck unsigned 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16RotationTurretAxisJoystick unsigned 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+
+[PDO3_48XS]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=48Ah // PDO 3 48XS slave to master
+Type=Standard
+CycleTime=10
+DLC=8
+VAR=u16LowSectorPendularSensor unsigned 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16HighSectorPlateSensor unsigned 16,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16FoldedLadderSensor unsigned 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16SafetyManSystem unsigned 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+
+[PDO2_48XS]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=38Ah // PDO 2 48XS slave to master
+Type=Standard
+CycleTime=10
+DLC=8
+VAR=u16NacelleBasketRightSideSensor1 unsigned 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16NacelleBasketRightSideSensor2 unsigned 16,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16NacelleBasketLeftSideSensor1 unsigned 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16NacelleBasketLeftSideSensor2 unsigned 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+
+[PDO1_48XS]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=28Ah // PDO 1 48XS slave to master
+Type=Standard
+CycleTime=10
+DLC=8
+VAR=u16RotationClockwiseBasket unsigned 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16RotationCtClockwiseBasket unsigned 16,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16Overload1 unsigned 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16Overload2 unsigned 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+
+[Sync_48XS]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=80h // Sync message send to slave modul
+Type=Standard
+CycleTime=10
+DLC=1
+VAR=boSignal unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:unsigned
+
+[PDO5_48XS]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=6A1h // PDO 5 48XS slave to master
+Type=Standard
+CycleTime=10
+DLC=8
+VAR=u16AdvanceAxisJoystick unsigned 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16RearmementSafetyManSystem unsigned 16,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16AbutementNacelleTrackSide unsigned 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16AbutementNacelleCenteredSide unsigned 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+
+[PDO0_48XS]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=18Ah // PDO 0 48XS slave to master
+Type=Standard
+CycleTime=10
+DLC=8
+VAR=u16UpInclinaisonBasket unsigned 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16DownInclinaisonBasket unsigned 16,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16UpPendular unsigned 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16DownPendular unsigned 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+
+[Msg1C1RcvFromOpus]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=183h
+Type=Standard
+CycleTime=40
+DLC=8
+VAR=u8gLifeByte unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=bogDelta_Arm_Move_Up unsigned 8,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogDelta_Arm_Move_Down unsigned 9,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogArrow_Arm_Move_Up unsigned 10,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogArrow_Arm_Move_Down unsigned 11,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogPendular_Arm_Move_Up unsigned 12,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogPendular_Arm_Move_Down unsigned 13,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTelescope_Move_Out unsigned 14,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTelescope_Move_In unsigned 15,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBasket_Inclinaison_Move_Up unsigned 16,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBasket_Inclinaison_Move_Down unsigned 17,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTurret_Rotate_ClockWise unsigned 18,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTurret_Rotate_Cntr_ClockWise unsigned 19,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBasket_Rotation_Move_Up unsigned 20,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBasket_Rotation_Move_Down unsigned 21,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+

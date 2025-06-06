@@ -1,0 +1,1298 @@
+FormatVersion=5.0
+Title=C0_C1_CAN_0
+
+// @DESCRIPTION  Diagnostic CAN Bus 0
+// @CREATED      2025-04-18 16:40:50 HYDAC/PdtCodeBuilder
+// @CODEBUILDER  1.2.7 (Build: 080)
+// @PDT          2.11.72.172
+// @PROJECTVER   0.0.0
+// @VERSION      1.3
+
+
+{ENUMS} //------------------------------------------------------
+
+enum ETBIT2(0="Off", 1="On", 2="Error", 3="Undef")
+enum ETBIT3(0="Neutral", 1="Positive", 2="Negative", 5="CtlError", 6="Error", 7="Undef")
+enum ETBIT4(14="Error", 15="Not")
+enum ETBIT5(30="Error", 31="Not")
+enum ETBIT6(62="Error", 63="Not")
+enum ETBIT7(126="Error", 127="Not")
+enum ETINT8(121="Limit", 126="Error", 127="Undef")
+enum ETUINT8(249="Limit", 254="Error", 255="Undef")
+enum ETINT16(32761="Limit", 32766="Error", 32767="Undef")
+enum ETUINT16(65529="Limit", 65534="Error", 65535="Undef")
+enum ETINT32(2147483641="Limit", 2147483646="Error", 2147483647="Undef")
+enum EBRAKETESTSELECTED_TYPE(0="GE_OSCI_SERVICE_BRAKE",1="GE_FIXE_SERVICE_BRAKE",2="GE_OSCI_PARKING_BRAKE",3="GE_FIXE_PARKING_BRAKE",4="GE_SERVICE_BRAKES",5="GE_PARKING_BRAKES",6="GE_NO_BRAKE",7="GE_FIXE_2ND_PARKING_BRAKE",8="GE_OSCI_2ND_PARKING_BRAKE")
+enum ECONTROLPOST_TYPE(0="GE_POST_NO_POST",1="GE_POST_RADIO",2="GE_POST_NACELLE",3="GE_POST_TURRET")
+enum ECOUNTRY_TYPE(0="GE_FRANCE",1="GE_SWITZERLAND",2="GE_UNITED_KINGDOM",3="GE_AUSTRALIA")
+enum EDIGSTATUS_TYPE(0="GE_DIG_OFF",1="GE_DIG_ON",2="GE_DIG_ERROR",3="GE_DIG_UNDEF")
+enum EDISTATE_TYPE(0="GE_DI_OFF",1="GE_DI_ON",2="GE_DI_ERROR",3="GE_DI_UNDEF")
+enum EERRORSTATUS48XS_TYPE(0="GE_IO_E_OK",2="GE_IO_E_BUSY",3="GE_IO_E_UNKNOWN",32="GE_IO_E_CHANNEL_BUSY",33="GE_IO_E_CHANNEL_NOT_CONFIGURED",35="GE_IO_E_FET_PROTECTION",90="GE_IO_E_ADC_NOT_FINISH",100="GE_IO_E_PWD_CAPTURE_ERROR",101="GE_IO_E_PWD_NOT_FINISHED",102="GE_IO_E_PWD_OPEN_LOAD",103="GE_IO_E_PWD_SHORT_CIRCUIT",104="GE_IO_E_PWD_TIMER_OVERFLOW",105="GE_IO_E_PWD_HIGH_LEVEL",106="GE_IO_E_PWD_LOW_LEVEL",107="GE_IO_E_PWD_CURRENT_THRESHOLD_HIGH",108="GE_IO_E_PWD_CURRENT_THRESHOLD_LOW",110="GE_IO_E_DO_OPEN_LOAD",111="GE_IO_E_DO_SHORT_CIRCUIT",112="GE_IO_E_DO_DIAG_NOT_FINISHED")
+enum EMANIPULATORPOSITION_TYPE(0="GE_NEUTRAL",1="GE_AV",2="GE_AR",3="GE_ERROR")
+enum EMOTORSTATE_TYPE(0="GE_Stopped",1="GE_PreStart",2="GE_Starting",3="GE_WarmUp",4="GE_Running",5="GE_CoolDown",6="GE_Stopping",7="GE_PostRun")
+enum EMOVENACELLEMODE_TYPE(0="GE_NO_MODE",1="GE_OFFRAIL_RADIOCONTOL_MODE",2="GE_RAIL_NACELLE_MODE",3="GE_TURRET_MODE")
+enum EOFFRAILMODE_TYPE(0="GE_NO_OFFRAIL_MODE",1="GE_TRANSPORT_OFFRAIL_MODE",2="GE_WORK_OFFRAIL_MODE",3="GE_WORSHOP_OFFRAIL_MODE")
+enum EPOSJOY_TYPE(0="GE_AV_JOY",1="GE_NEU_JOY",2="GE_AR_JOY")
+enum EPROSTATUS_TYPE(0="GE_PRO_OFF",1="GE_PRO_ON",2="GE_PRO_ERROR",3="GE_PRO_NOT_INSTALLED",4="GE_PRO_NO_DUTY_CYCLE",5="GE_PRO_MIN_DUTY_CYCLE")
+enum ERAILSPEEDMODE_TYPE(0="GE_NO_SPEED_MAX_RAIL_MODE",1="GE_ACCESS_SITE_MODE",2="GE_HIGH_SPEED",3="GE_LOW_SPEED",4="GE_LOW_SPEED_BRAKE_TEST_NEEDED",5="GE_BRAKE_TEST_SPEED_RUNNING",6="GE_BREAK_IN_BRAKE_SPEED_RUNNING")
+enum ERAILTRANSLATIONDIRECTION_TYPE(0="GE_AV_RAIL_DIR",1="GE_AR_RAIL_DIR",2="GE_STOP_RAIL_DIR")
+enum ERAILWORKMODE_TYPE(0="GE_NO_RAIL_WORK_MODE",1="GE_BILATERAL_MODE",2="GE_ALO_MODE",3="GE_MULTILANE_MODE")
+enum ESTATEBOOL2BITS_TYPE(0="GE_OFF",1="GE_ON",2="GE_ERR",3="GE_NA")
+enum ESTATEHEARTBEAT_TYPE(0="GE_BOOT_UP",4="GE_STOPPED",5="GE_OPERATIONAL",127="GE_PRE_OPERATIONAL")
+enum ESTATESERVICEBRAKERAIL_TYPE(0="GE_DEFINE_BRAKE",1="GE_AV_SERVICE_BRAKE",2="GE_AR_SERVICE_BRAKE")
+enum ETRANSPORTPOSITION_TYPE(0="GE_NO_TRANSPORT_POSITION",1="GE_OFFRAIL_TRANSPORT_POSITION",2="GE_RAIL_TRANSPORT_POSITION")
+enum EWDSTATE_TYPE(6="GE_RUNNING",9="GE_TRIGGERED")
+
+
+{SEND} //-------------------------------------------------------
+
+
+
+{RECEIVE} //----------------------------------------------------
+
+
+
+{SENDRECEIVE} //------------------------------------------------
+
+[SendToC1RadioCmd]
+// @boSafeInvMsg=TRUE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=18FF0001h // Radio command send to C1
+Type=Extended
+CycleTime=40
+DLC=8
+VAR=boRotFrameClkwiseButton unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boRotFrameCtClkwiseButton unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boUpPendularOrRotTurretCtClock unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDownPendularOrRotTurretClock unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boSelectorRotTurret unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boSelectorPendular unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boUpAxleOscillant unsigned 8,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDownAxleOscillant unsigned 9,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boUpAxleFixe unsigned 10,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDownAxleFixe unsigned 11,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boForcingAdvanceTrack unsigned 12,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[Msg1C0SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C0D701h // Data send to eVision 7
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=bogBreak_Parking_On_Off unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Break Parking Status     @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBreak_Faillure_On_Off unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Break Faillure Status    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogMovement_Allow_Nacelle unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Movement Allow Status    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTurretSectorInCenter unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Turret Sector in Center    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTurretInCenter unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Turret in Center    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogVehiculeTrainMode unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Vehicule in Train Mode (Speed in MPH)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogIncoherenceLateralStopAndKey unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Incoherence between Lateral Stop and Key selector (A47)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogWorkMode unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:0=Work Mode activate 1=Site Acces Mode  (A4)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogSafetyElectricPump unsigned 8,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Safety Electric Pump Activate (A44)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogDownhill150mm unsigned 9,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Downhill between 150mm and 200mm (A13)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTrainModeAllow unsigned 10,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Train Mode Allow (A10)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBrakeTestService unsigned 11,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Brake test need to be launch (A22)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBrakePressureFault unsigned 12,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Brake Pressure Fault (A14)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogActivateMeasuringMast unsigned 13,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Activate Measuring Mast (A21)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogAutoMovementDirectionLight unsigned 14,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Auto Movement Direction Light (A23)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBackRailwayAxleLowPosition unsigned 15,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Back Railway Axle in Low Position (A7)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogFrontRailwayAxleLowPosition unsigned 16,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Front Railway Axle in Low Position (A7)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBackRailwayAxleServiceBrake unsigned 17,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Back Railway Axle Service Brake (A25)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogFrontRailwayAxleServiceBrake unsigned 18,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Front Railway Axle Service Brake (A25)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBackRailwayAxleParkBrake unsigned 19,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Back Railway Axle Park Brake (A26)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogFrontRailwayAxleParkBrake unsigned 20,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Front Railway Axle Park Brake (A26)     @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogStatusFrontLeftTrainBrakeTest unsigned 21,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Status of Front Left Train Brake Test (A27)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogStatFrontRightTrainBrakeTest unsigned 22,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Status of Front Right Train Brake Test (A27)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogStatusBackLeftTrainBrakeTest unsigned 23,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Status of Back Left Train Brake Test (A27)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogStatusBackRightTrainBrakeTest unsigned 24,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Status of Back Left Train Brake Test (A27)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogAlarmAru unsigned 25,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Status of the ARU alarm    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogLitmitSpeedExceeded unsigned 26,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Flag when limit speed is exceeded    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogShowCamera unsigned 27,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Display camera on screen when translation is solicited    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogFixeAxleFrequencyFault unsigned 28,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Fixed axle Speed sensor 2 fault    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogOscillantAxleFrequencyFault unsigned 29,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Fixed axle Speed sensor 1 fault    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTemperatureTransmAlarm unsigned 30,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Oil temperature alarm    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogUserCodeOption unsigned 31,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Option user code active    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogRequestForwardTransRail unsigned 32,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Request joystick forward trans rail    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogRequestBackwardTransRail unsigned 33,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Request joystick forward trans rail    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogEvForwardFault unsigned 34,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Ev Forward Fault CC CO    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogEvBackwardFault unsigned 35,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Ev Backward Fault CC CO    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogIncoherenceModeTravail unsigned 36,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Incoherence between Lateral/Basket Stop and Key selector     @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogIncoherenceBasketStopAndKey unsigned 37,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Incoherence between Basket Stop and Key selector    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogCenteredAdvanceJoystick unsigned 38,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Advance joystick centered    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogKlaxon unsigned 39,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Klaxon    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogGachette unsigned 40,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Gachette    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogStopMoteur unsigned 41,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:BP STOP    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogEStop unsigned 42,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Emergency stop    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogDeadMan unsigned 43,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Dead man pedal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogSignalDangerMode unsigned 44,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Signal Danger Lights mode    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogLimitSpeedLowSpeedBrakeTest unsigned 45,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Limit/low Speed because of none Brake test    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogSlopeSensorFault unsigned 46,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Fuel low    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogMastMeasureFault unsigned 47,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Mast Measure Fault    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=i16gEncodeurTurretAngle signed 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:RPM Solenoid value    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+
+[DataSendToC1]
+// @boSafeInvMsg=TRUE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=18FF0005h // Data send to C1
+Type=Extended
+CycleTime=40
+DLC=8
+VAR=boRestrictedModeAruRadio unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boTranslationIsSolicited unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bi2SelectedControlPost unsigned 2,2 /f:1 /o:0 /u:"[-]" /d:3 /min:0 /max:3 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBIT2    @ST: /o:0 /f:1 /u:[-] /type:TBIT2 @CAN: /u:[-] /type:TBIT2
+VAR=boAxleMovementIsSolicited unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDownAxleFixeSensor unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDownAxleOscillantSensor unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boReduceSpeedRotTurretClockwise unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Reduce the speed of the turret clockwise movement    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=u16SlopeAngle unsigned 8,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=boNacelleBasketRightSideSensor1 unsigned 24,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boNacelleBasketRightSideSensor2 unsigned 25,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boNacelleBasketLeftSideSensor1 unsigned 26,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boNacelleBasketLeftSideSensor2 unsigned 27,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boReduceSpeedRotTurretCtClock unsigned 40,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boReduceSpeedArrowArmDown unsigned 41,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boStopRotTurretClockwise unsigned 42,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boStopRotTurretCounterClockwise unsigned 43,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boStopRotBasketClockwise unsigned 44,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boStopRotBasketCounterClockwise unsigned 45,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boStopArrowArmDown unsigned 46,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boStopTelescopeOut unsigned 47,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=i16EncodeurTurret1Angle signed 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+
+[Msg2C0SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C0D702h // Data send to eVision 7
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=u16gEngine_Use_Time unsigned 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:Engine use time in hour    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16gEngine_RPM unsigned 16,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:Engine RPM    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16gVehiculeSpeed unsigned 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:Vehicule Speed in Km/h * 100    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u8gLateralizationStop unsigned 48,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:Lateralization Stop 1=bi lateralization 2=ALO Work 3=Multiple track (A3)    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8gKeySelector unsigned 56,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:Key Selector 1=bi lateralization 2=ALO Work 3=Multiple track(A6)    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[Msg3C0SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C0D703h // Data send to evision 7
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=u16gFrontSpeedRailWayAxle unsigned 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:Front Speed Railway Axle in Km/h (A24)    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16gBackSpeedRailWayAxle unsigned 16,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:Back Speed Railway Axle in Km/h    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16gAvdvancePeriod unsigned 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16gPressureEfficiencyRate unsigned 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+
+[MsgDebugC0SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C0D711h // debug) message
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=u16FaultyValue unsigned 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u8DeviceNum unsigned 16,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8ErrorCode unsigned 24,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[Data2SendToC1]
+// @boSafeInvMsg=TRUE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=18FF0007h // Data send to C1 2nd frame
+Type=Extended
+CycleTime=40
+DLC=8
+VAR=boRedLightARGBasketCmd unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boWhiteLightARGBasketCmd unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boWrongAbutments unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boStopMovementByBrakeTest unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boStopMovementByBreakInBrake unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boEnableBuzzerSelectPost unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boUpOsciAxlePos unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boUpFixeAxlePos unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=u32EncodeurMastMeasureRaw unsigned 8,32 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:4294967295 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT32    @ST: /o:0 /f:1 /u:[-] /type:TUINT32 @CAN: /u:[-] /type:TUINT32
+VAR=boCenteredTurretState unsigned 40,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boAuthorizeWork unsigned 41,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=eRailWorkMode unsigned 48,8 /f:1 /o:0 /u:"[-]" /e:ERAILWORKMODE_TYPE /d:0 /min:0 /max:3 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:ERAILWORKMODE_TYPE    @ST: /o:0 /f:1 /u:[-] /type:ERAILWORKMODE_TYPE @CAN: /u:[-] /type:ERAILWORKMODE_TYPE
+VAR=boRedLightARDBasketCmd unsigned 56,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boWhiteLightARDBasketCmd unsigned 57,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boSecondParkBrakeActive unsigned 58,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[Data3SendToC1]
+// @boSafeInvMsg=TRUE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=18FF000Bh
+Type=Extended
+CycleTime=40
+DLC=8
+VAR=i32SpeedVehicleKmhx100 signed 0,32 /f:1 /o:0 /u:"[-]" /d:0 /min:-2147483648 /max:2147483647 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT32    @ST: /o:0 /f:1 /u:[-] /type:TINT32 @CAN: /u:[-] /type:TINT32
+VAR=u16EvForwardCommand unsigned 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16EvBackwardCommand unsigned 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+
+[Msg4C0SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C0D704h
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=u16gForwardPumpCurrent unsigned 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:Pressure transmission 1    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16gBackwardPumpCurrent unsigned 16,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:Pressure transmission 2    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=i16gTrans1PressureSensorValue signed 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=i16gTrans2PressureSensorValue signed 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+
+[FailuresC0SendToC1]
+// @boSafeInvMsg=TRUE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=18FF0013h
+Type=Extended
+CycleTime=40
+DLC=8
+VAR=boDm_Swi_Dbl_NcNo_Inc_FrameRot unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDm_Turret_Sensor_Fault unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boEvParkBrakeAxleOscillantFault unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boEvParkBrakeAxleFixeFault unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boEvServiceBrakeAxleOsciFault unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boEvServiceBrakeAxleFixeFault unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boEvServiceBrakeTrackFault unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boRm_Com_Can_Radio_Loss unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boEv2ndParkBrakeAxleFixeFault unsigned 8,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Variable d_alarme de l_état de la pin, pour l_envoie au C1    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boEv2ndParkBrakeAxleOsciFault unsigned 9,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Variable d_alarme de l_état de la pin, pour l_envoie au C1.    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[Msg5C0SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C0D705h // Neotec diag pages
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=boAbutementNacelleTrackSide unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boAbutementNacelleCenteredSide unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boBasketTurretLimitation unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin217Fault unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin230Fault unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin243Fault unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin244Fault unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin245Fault unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin256Fault unsigned 8,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin257Fault unsigned 9,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin258Fault unsigned 10,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin103Fault unsigned 11,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin127Fault unsigned 12,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin104Fault unsigned 13,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin128Fault unsigned 14,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin105Fault unsigned 15,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin129Fault unsigned 16,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin106Fault unsigned 17,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin130Fault unsigned 18,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin107Fault unsigned 19,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin131Fault unsigned 20,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin108Fault unsigned 21,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin132Fault unsigned 22,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin109Fault unsigned 23,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin133Fault unsigned 24,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin110Fault unsigned 25,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin134Fault unsigned 26,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin111Fault unsigned 27,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin135Fault unsigned 28,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin112Fault unsigned 29,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin136Fault unsigned 30,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin113Fault unsigned 31,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin137Fault unsigned 32,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin114Fault unsigned 33,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin138Fault unsigned 34,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin115Fault unsigned 35,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin139Fault unsigned 36,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin116Fault unsigned 37,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin140Fault unsigned 38,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin117Fault unsigned 39,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin141Fault unsigned 40,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin122Fault unsigned 41,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin146Fault unsigned 42,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin123Fault unsigned 43,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin147Fault unsigned 44,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin124Fault unsigned 45,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin148Fault unsigned 46,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin153Fault unsigned 47,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin177Fault unsigned 48,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin156Fault unsigned 49,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin180Fault unsigned 50,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin159Fault unsigned 51,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin183Fault unsigned 52,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin186Fault unsigned 53,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin162Fault unsigned 54,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin189Fault unsigned 55,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin165Fault unsigned 56,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin192Fault unsigned 57,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin168Fault unsigned 58,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin195Fault unsigned 59,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin171Fault unsigned 60,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin154Fault unsigned 61,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin178Fault unsigned 62,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin157Fault unsigned 63,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[Msg6C0SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C0D706h // Neotec diag pages
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=boPin181Fault unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin160Fault unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin184Fault unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin187Fault unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin163Fault unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin190Fault unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin166Fault unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin193Fault unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin169Fault unsigned 8,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin196Fault unsigned 9,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin172Fault unsigned 10,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin101Fault unsigned 11,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin125Fault unsigned 12,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin150Fault unsigned 13,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin174Fault unsigned 14,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin102Fault unsigned 15,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin126Fault unsigned 16,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin151Fault unsigned 17,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin175Fault unsigned 18,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin149Fault unsigned 19,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin173Fault unsigned 20,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin152Fault unsigned 21,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin176Fault unsigned 22,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin155Fault unsigned 23,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin179Fault unsigned 24,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin158Fault unsigned 25,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin182Fault unsigned 26,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin251Fault unsigned 27,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin238Fault unsigned 28,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin252Fault unsigned 29,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin239Fault unsigned 30,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin253Fault unsigned 31,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin240Fault unsigned 32,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin254Fault unsigned 33,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin241Fault unsigned 34,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin161Fault unsigned 35,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin185Fault unsigned 36,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin188Fault unsigned 37,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin164Fault unsigned 38,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin191Fault unsigned 39,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin167Fault unsigned 40,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin194Fault unsigned 41,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin170Fault unsigned 42,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[Msg7C0SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C0D707h // Neotec diag pages
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=boPin107 unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin131 unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin108 unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin132 unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin109 unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin133 unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin110 unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin134 unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin111 unsigned 8,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin135 unsigned 9,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin112 unsigned 10,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin136 unsigned 11,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin113 unsigned 12,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin137 unsigned 13,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin114 unsigned 14,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin138 unsigned 15,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin140 unsigned 16,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin117 unsigned 17,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin141 unsigned 18,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin122 unsigned 19,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin146 unsigned 20,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin123 unsigned 21,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin187 unsigned 22,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin124 unsigned 23,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin148 unsigned 24,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin153 unsigned 25,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin177 unsigned 26,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin156 unsigned 27,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin159 unsigned 28,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin186 unsigned 29,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin162 unsigned 30,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin189 unsigned 31,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin165 unsigned 32,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin195 unsigned 33,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin171 unsigned 34,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin154 unsigned 35,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin160 unsigned 36,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin184 unsigned 37,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin163 unsigned 38,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin190 unsigned 39,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin166 unsigned 40,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin193 unsigned 41,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin169 unsigned 42,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin196 unsigned 43,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin172 unsigned 44,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin149 unsigned 45,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin173 unsigned 46,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin152 unsigned 47,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin176 unsigned 48,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin155 unsigned 49,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin179 unsigned 50,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin158 unsigned 51,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin182 unsigned 52,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin252 unsigned 53,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin239 unsigned 54,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin188 unsigned 55,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin164 unsigned 56,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin191 unsigned 57,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin167 unsigned 58,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin194 unsigned 59,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin170 unsigned 60,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin192 unsigned 61,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin168 unsigned 62,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[Msg8C0SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C0D708h // Neotec diag pages
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=boPin136_48XSFault unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin148_48XSFault unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin135_48XSFault unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin147_48XSFault unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin269_48XSFault unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin118_48XSFault unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin106_48XSFault unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin117_48XSFault unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin105_48XSFault unsigned 8,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin116_48XSFault unsigned 9,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin104_48XSFault unsigned 10,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin115_48XSFault unsigned 11,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin103_48XSFault unsigned 12,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin120_48XSFault unsigned 13,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin108_48XSFault unsigned 14,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin119_48XSFault unsigned 15,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin107_48XSFault unsigned 16,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin144_48XSFault unsigned 17,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin132_48XSFault unsigned 18,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin143_48XSFault unsigned 19,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin131_48XSFault unsigned 20,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin142_48XSFault unsigned 21,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin130_48XSFault unsigned 22,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin141_48XSFault unsigned 23,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin129_48XSFault unsigned 24,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin152_48XSFault unsigned 25,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin140_48XSFault unsigned 26,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin151_48XSFault unsigned 27,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin139_48XSFault unsigned 28,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin150_48XSFault unsigned 29,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin138_48XSFault unsigned 30,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin149_48XSFault unsigned 31,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin137_48XSFault unsigned 32,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin126_48XSFault unsigned 33,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin114_48XSFault unsigned 34,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin125_48XSFault unsigned 35,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin113_48XSFault unsigned 36,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin124_48XSFault unsigned 37,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin112_48XSFault unsigned 38,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin123_48XSFault unsigned 39,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin111_48XSFault unsigned 40,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin133_48XSFault unsigned 41,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin134_48XSFault unsigned 42,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin145_48XSFault unsigned 43,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin146_48XSFault unsigned 44,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin263_48XSFault unsigned 45,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin256_48XSFault unsigned 46,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin262_48XSFault unsigned 47,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin255_48XSFault unsigned 48,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin261_48XSFault unsigned 49,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin254_48XSFault unsigned 50,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin260_48XSFault unsigned 51,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin253_48XSFault unsigned 52,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin270_48XSFault unsigned 53,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin276_48XSFault unsigned 54,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin277_48XSFault unsigned 55,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin275_48XSFault unsigned 56,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin268_48XSFault unsigned 57,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin274_48XSFault unsigned 58,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin267_48XSFault unsigned 59,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[Msg9C0SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C0D709h // Neotec diag pages
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=boPin144_48XS unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin132_48XS unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin143_48XS unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin131_48XS unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin142_48XS unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin130_48XS unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin141_48XS unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin129_48XS unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin152_48XS unsigned 8,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin140_48XS unsigned 9,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin151_48XS unsigned 10,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin139_48XS unsigned 11,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin150_48XS unsigned 12,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin138_48XS unsigned 13,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin149_48XS unsigned 14,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin263_48XS unsigned 15,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin256_48XS unsigned 16,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin262_48XS unsigned 17,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin255_48XS unsigned 18,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin261_48XS unsigned 19,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin254_48XS unsigned 20,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin260_48XS unsigned 21,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin253_48XS unsigned 22,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin275_48XS unsigned 23,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin268_48XS unsigned 24,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin274_48XS unsigned 25,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin267_48XS unsigned 26,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=i16gPressureBrakeSensorValue signed 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=u8gLightsMode unsigned 48,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=bogOsciServiceBrakinBrakeOn unsigned 56,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Activation rodage frein essieu oscillant    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogFixeServiceBrakinBrakeOn unsigned 57,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Activation rodage frein essieu fixe    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBothServiceBrakinBrakeOn unsigned 58,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Activation rodage deux freins    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogActiveWhiteLights15746 unsigned 59,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[Msg10C0SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C0D70Ah
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=i16gPressureBlockOscillation signed 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:Oscillation block pressure    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=u8gTTC580Version_Major unsigned 16,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:Program Version Major C0 TTC580    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8gTTC580Version_Minor unsigned 24,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:Program Version Minor C0 TTC580    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8gTTC580Version_Patch unsigned 32,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:Program Version Path C0 TTC580    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8gTTC580Version_Custom unsigned 40,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:Program Version Custom C0 TTC580    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=i16gJoystAdvanceScaling signed 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:Joystick Advance Scaling Value    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+
+[Data4C0SendToC1]
+// @boSafeInvMsg=TRUE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=18FF0015h
+Type=Extended
+CycleTime=40
+DLC=8
+VAR=boStopAggravantMovements unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boTurretPostorRadoPostOn unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boMotorAccelerated unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boRadioPostSelectorOn unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boSlopeHighWithWorkOnCrawler unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boErrorActiveOnC0 unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boRailWorkMultiLaneMode unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPresenceSensorPlate unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boWhiteLightAV15746Command unsigned 8,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boWhiteLightAR15746Command unsigned 9,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=i16Signal_9 signed 16,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=i16Signal_10 signed 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=u8RecoveryReductionRatio unsigned 48,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[Msg11C0SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C0D70Bh
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=i16gSlopeLongAngle signed 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:Slope Longitudinal Angle    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=i16gSlopeTransAngle signed 16,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:Slope Transversal Angle    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=i16gSlopeResultAngle signed 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:Slope Result Angle    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=i16gTemperatureTransmissionValue signed 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:Temp. Transmission value    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+
+[Msg12C0SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C0D70Ch
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=i32gDistanceTraveledMeasureMast signed 0,32 /f:1 /o:0 /u:"[-]" /d:0 /min:-2147483648 /max:2147483647 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT32    @ST: /o:0 /f:1 /u:[-] /type:TINT32 @CAN: /u:[-] /type:TINT32
+VAR=u32gTotalDistance unsigned 32,32 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:4294967295 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT32    @ST: /o:0 /f:1 /u:[-] /type:TUINT32 @CAN: /u:[-] /type:TUINT32
+
+[Msg13C0SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C0D70Dh
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=u8gReductionPumpRail unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8gPourcentCycleBrake unsigned 8,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8gPourcentCycle2ndParkBrake unsigned 16,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:Envoie du pourcentage du nombre de cycle de freins    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=bogSecondParkBrakeActive unsigned 24,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Option active    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boStatFront2eParkTrainBrakeTest unsigned 25,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Validation du test frein sur le 2nd frein de oscillant    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boStatBack2eParkTrainBrakeTest unsigned 26,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Validation du test frein sur le 2nd frein du fixe    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boAutorizeRazController unsigned 27,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boVoltageDcConverterFault unsigned 28,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boBatteryLowLevel unsigned 29,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boBattErrorCode1 unsigned 30,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boActiveFaultRazDmc unsigned 31,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=i16Motor_Rpm signed 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=i8Controller_Temp signed 48,8 /f:1 /o:0 /u:"[-]" /d:0 /min:-128 /max:127 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT8    @ST: /o:0 /f:1 /u:[-] /type:TINT8 @CAN: /u:[-] /type:TINT8
+VAR=i8Motor_Temp signed 56,8 /f:1 /o:0 /u:"[-]" /d:0 /min:-128 /max:127 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT8    @ST: /o:0 /f:1 /u:[-] /type:TINT8 @CAN: /u:[-] /type:TINT8
+
+[Data5C0SendToC1]
+// @boSafeInvMsg=TRUE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=18FF0019h
+Type=Extended
+CycleTime=40
+DLC=8
+VAR=boAutorisationHighSpeedKeyState unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boTransRailElectricRampOngoing unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boSendAuthorizeReloadBattery unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPreventLimitSpeedExceeding unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boUpMastSensorNC unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boValveInDownPositionSensor unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boMeasuringMastSensorFolded unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=i16RpmPvgTransRail signed 8,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=u8Batt_Soc unsigned 24,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=i16Ibatt_ist signed 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=u8SelectedControlPost unsigned 48,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=boAddPerformanceFunc unsigned 56,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boSlopeCaseLess2Deg unsigned 57,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boSlopeCaseLess4Deg unsigned 58,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boSlopeCaseLess6Deg unsigned 59,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boSlopeCaseHigher6Deg unsigned 60,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boTurretInSpeedZone2Deg unsigned 61,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boTurretInSpeedZone4Deg unsigned 62,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boTurretInSpeedZone2DegForBasket unsigned 63,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[Msg14C0SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C0D70Eh
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=i16Ibatt_ist signed 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=u16Vbatt_ist unsigned 16,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u8Batt_Soc unsigned 32,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=boAddParkBrakeActive unsigned 56,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPreventLimitSpeedExceeding unsigned 57,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[Msg15C0SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C0D70Fh
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=i16ElectricPumpPressureValue signed 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=u16PvgTransRailElectricVoltage unsigned 16,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=boRelayCutOffVariatorElectricCmd unsigned 32,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boRelayEnableBatteryCmd unsigned 33,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPictoAskResartController unsigned 34,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPictoReloadBatteryImpossible unsigned 35,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=u8Controller_FaultCode unsigned 40,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u16Controller_FaultSubCode unsigned 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+
+[Msg1RcvFromEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=D7CF01h // Receive message CAN by eVision7
+Type=Extended
+CycleTime=20
+DLC=8
+VAR=bogLoginStatus unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:User Log in Status (1=log in)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogButtonCalibTurretEncoder unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Button for the calibration of the turret encoder is pressed    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogButtonCalibMinMastMeasure unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Button for the calibration of min position mast measure encodeur  is pressed    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogButtonCalibMaxMastMeasure unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Button for the calibration of max position mast measure encodeur  is pressed    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boSavePosEncodeurMastButton unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Button for save min and max value of encodeur mast measure    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogActivateMeasuringMast unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Activate mast measure function    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boRazDistanceTraveledMastMeasure unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Raz distance translation traveled with mast measure unfolded    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogOffTrackTestBrakeActivated unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Status of off track variable on test brake page    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogOffTrackRunInBrakeActivated unsigned 8,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Status of off track variable on run in process page    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogOsciServiceBrakeSelect unsigned 9,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Request status of osci service test brake    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogFixedServiceBrakeSelect unsigned 10,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Request status of fixed service test brake    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBothServiceBrakeSelect unsigned 11,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Request status of both service test brake    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogOsciParkBrakeSelect unsigned 12,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Request status of osci park test brake    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogFixedParkBrakeSelect unsigned 13,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Request status of fixed park test brake    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBothParkBrakeSelect unsigned 14,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Request status of both park test brake    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogOsciServiceRunInBrakeSelect unsigned 15,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Request status of osci service run in brake    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogFixedServiceRunInBrakeSelect unsigned 16,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Request status of fixed service run in test brake    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBothServiceRunInBrakeSelect unsigned 17,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Request status of both service run in test brake    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTestBrakePageActive unsigned 18,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Flag when user is on test brake page    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBreakInBrakePageActive unsigned 19,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Flag when user is on break in brake page    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogSerialNumber unsigned 20,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Machine Serial Number    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBPBasketValidate unsigned 21,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Basket Panel Validate    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogKeyFilterOverload unsigned 22,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Overload Filter Key    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogKeyNextMode unsigned 23,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Select next mode    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogKeyPrevMode unsigned 24,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Select Previous Mode    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogKeySignalDanger unsigned 25,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Select Signal Danger Mode    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogKeyFlashLightON unsigned 26,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Force Flash Light ON    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogKeyCalibMastMin unsigned 27,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Key Calibration Min    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogKeyCalibMastMax unsigned 28,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Key Calibration Max    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogKeyCalibMastValid unsigned 29,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Key Calibration Validation    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogKeyGeneratorActivate unsigned 30,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Key Generator Activation    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogKeyWhiteLights15746 unsigned 31,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Key whiite lights 15746    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogFixe2ndParkBrakeSelect unsigned 32,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Fixe 2nd Park Brake Select    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogOsci2ndParkBrakeSelect unsigned 33,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Osci 2nd Park Brake Select    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogKeyRazController unsigned 34,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[DataRcvFromC1]
+// @boSafeInvMsg=TRUE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=18FF0003h // Data receive from C1
+Type=Extended
+CycleTime=40
+DLC=8
+VAR=bi2C1TurretPostSelector unsigned 0,2 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:3 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBIT2    @ST: /o:0 /f:1 /u:[-] /type:TBIT2 @CAN: /u:[-] /type:TBIT2
+VAR=bi2C1RadioPostSelector unsigned 2,2 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:3 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBIT2    @ST: /o:0 /f:1 /u:[-] /type:TBIT2 @CAN: /u:[-] /type:TBIT2
+VAR=bi2C1NacellePostSelector unsigned 4,2 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:3 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBIT2    @ST: /o:0 /f:1 /u:[-] /type:TBIT2 @CAN: /u:[-] /type:TBIT2
+VAR=boUpAxleOscillantCommand unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDownAxleOscillantCommand unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boUpAxleFixeCommand unsigned 8,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDownAxleFixeCommand unsigned 9,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boEntryTelescopeFdcSensor unsigned 10,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDeltaArmFoldedSensor unsigned 11,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boBoomArmFoldedSensor unsigned 12,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDeltaArmInLowerZone unsigned 13,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boTurretInRearCenterPos unsigned 14,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boTurretInFrontCenterPos unsigned 15,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=i32RegimeMotorAlternatorRpm signed 16,32 /f:1 /o:0 /u:"[-]" /d:0 /min:-2147483648 /max:2147483647 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT32    @ST: /o:0 /f:1 /u:[-] /type:TINT32 @CAN: /u:[-] /type:TINT32
+VAR=i16ArrowArmAngularSensor signed 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+
+[Data2RdvFromC1]
+// @boSafeInvMsg=TRUE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=18FF0009h
+Type=Extended
+CycleTime=40
+DLC=8
+VAR=boEvUpMeasuringMastCmd unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boEvDownMeasuringMastCmd unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boFoldedDeltaArmZone unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boFoldedArrowArmZone unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boFoldedMastMeasure unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boBasketInCentrerPos unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=i16DeltaArmAngularSensorValue signed 8,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=i16Transmission1Pressure signed 24,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=i16Transmission2Pressure signed 40,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=bi2ActiveHelpState unsigned 56,2 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:3 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBIT2    @ST: /o:0 /f:1 /u:[-] /type:TBIT2 @CAN: /u:[-] /type:TBIT2
+VAR=boStopAllMovementsNacellePost unsigned 58,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boSlopeModeFromC1 unsigned 59,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[Data3RcvFromC1]
+// @boSafeInvMsg=TRUE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=18FF000Dh
+Type=Extended
+CycleTime=40
+DLC=8
+VAR=u16EncodeurMastMeasureCentimeter unsigned 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=boReserve unsigned 16,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boMastMeasureFonctionActive unsigned 17,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boBeacon unsigned 18,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Commande du gyrophare    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boMotorOn unsigned 19,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Moteur allumé    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boFaultLenghtSensor unsigned 20,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Alarme du capteur téléscope    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boTurretSensorsFailures unsigned 21,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Alarme sur le capteur tourelle    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boOptionWhiteLight15746 unsigned 22,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:option feux blanc 15746    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogSafeManSystem unsigned 23,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[FailuresC1SendToC0]
+// @boSafeInvMsg=TRUE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=18FF0011h
+Type=Extended
+CycleTime=40
+DLC=8
+VAR=boDm_Inc_Pos_Folded_Delta_Arrow unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDm_Active_Help unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDm_Ev_Bypass_Fault unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boOutOfRangeTransmissionPressure unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDm_Overload_Detected_By_C1 unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[Data4C1SendToC0]
+// @boSafeInvMsg=TRUE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=18FF0017h
+Type=Extended
+CycleTime=40
+DLC=8
+VAR=boNoMovementRunning unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boStopMoveLimitEnvelop unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boTransmissionPressureFault unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boLynxOnAllMvts unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boMotorOn_Dtlg unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boSignal_4 unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boSignal_5 unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boSignal_6 unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=u8Signal_7 unsigned 8,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=i16BypassPressureSensorValue signed 16,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=i16Signal_9 signed 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=i16Signal_10 signed 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+
+[Data5C1SendToC0]
+// @boSafeInvMsg=TRUE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=18FF001Bh
+Type=Extended
+CycleTime=40
+DLC=8
+VAR=boColdOilTankTemperature unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boElectricMotorForbidden unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boSocStopRegen unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boAutoModeActivate unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boSilenceModeActivate unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boForcingRegenlow unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boForcingRegenHigh unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boInterdictOfNacelTurretPost unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=i16RpmMotorElectric signed 8,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=i16OilTankTemperatureValue signed 24,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=boGeneratorOn unsigned 40,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boEvDevMvtsCmd unsigned 41,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPerformAutoriseTransArrow unsigned 42,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boValidTelescopeSector unsigned 43,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boValidFirstSectorTelescope unsigned 44,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPostInterdictionMastSNCF unsigned 45,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boEvBypassCommand unsigned 46,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boMastPanthoFoldedSNCF unsigned 47,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=i16MotorspeedCmdJ1939 signed 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+
+[Msg1C1SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C1D701h // Data send to evision 7
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=bogBattery_On_Off unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Battery Status    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogPreheat_On_Off unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Preheat Status    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogEngine_Faillure_On_Off unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Engine Faillure Status    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogMaintenance_On_Off unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Maintenance Status    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogOil_On_OFF unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Oil Status    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogDeltaArmSectorDown unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Delta Arm Sector Down    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogArrowArmSectorDown unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Arrow Arm Sector Down    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogPendularSectorDown unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Pendular Sector Down    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogDeltaArmInCenter unsigned 8,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Delta Arm in Center    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogArrowArmInCenter unsigned 9,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Arrow Arm in Center    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogPendularInCenter unsigned 10,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Pendular in Center    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBasketRotationInCenter unsigned 11,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Basket Rotation in Center    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTelescopeInCenter unsigned 12,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Telescope in Center    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBasketInclinaisonInCenter unsigned 13,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Basket Inclinaison in Center    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogDeltaArmMoveUpAllow unsigned 14,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Delta Arm Move Up Allowed    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogDeltaArmMoveDownAllow unsigned 15,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Delta Arm Move Down Allowed    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogArrowArmMoveUpAllow unsigned 16,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Arrow Arm Move Up Allowed    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogArrowArmMoveDownAllow unsigned 17,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Arrow Arm Move Down Allowed    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogPendularMoveUpAllow unsigned 18,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Pendular Move Up Allowed    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogPendularMoveDownAllow unsigned 19,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Pendular Move Down Allowed    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTelescopeMoveOutAllow unsigned 20,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Telescope Move Out Allowed    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTelescopeMoveInAllow unsigned 21,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Telescope Move In Allowed    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTurretCtClockWiseMoveAllow unsigned 22,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Turret Counter Clockwise Move Allowed    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTurretClockWiseMoveAllow unsigned 23,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Turret Clockwise Move Allowed    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBasketRotCtClockWiseMoveAllow unsigned 24,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Basket Rotation Counter Clockwise Move Allowed    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBasketRotClockWiseMoveAllow unsigned 25,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Basket Rotation Clockwise Move Allowed    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBasketInclinMoveUpAllow unsigned 26,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Basket Inclinaison Move Up Allowed    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBasketInclinMoveDownAllow unsigned 27,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Basket Inclinaison Move Down Allowed    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogVehiculeDefault unsigned 28,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Vehicule in Default (A12)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTelescopeOutputPossible unsigned 29,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Telescope output possible (A48)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTelescopeWinderFault unsigned 30,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Telescope Winder Fault (A17)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogNacellePostSelector unsigned 31,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Nacelle post selector    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogSTOP_On_Off unsigned 32,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:STOP Status    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogSafeManSystem unsigned 33,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:SafeManSystem (A5)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogHighSpeedAllow unsigned 34,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:High Speed Allow (A19)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogAutomatiqueStop unsigned 35,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Automatique Stop or function mismatch (A20)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogLowSpeedByFault unsigned 36,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Low Speed by fault (A46)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogMeasuringMastFault unsigned 37,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Measuring Mast in Fault (A8)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogMeasuringMatOption unsigned 38,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Measuring mast option    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBasketAccessLocked unsigned 39,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Basket access locked    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogFilterOverloadNoActive unsigned 40,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogAnticlockwiseBasketSlew unsigned 41,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:EV113 Anticlockwise Basket Slew    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogClockwiseBasketSlew unsigned 42,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:EV112 Anticlockwise Basket Slew    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogFlashLightForced unsigned 43,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Flash Light Forced    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBasketAccessLockOption unsigned 44,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Basket Lock Option    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBasketLateralStopOption unsigned 45,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Basket lateral stop option    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBasketStepClosed unsigned 46,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Basket step closed    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogSystemFault unsigned 47,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:System Fault    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTrans1PressureSensorFault unsigned 48,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Fault pressure transmission 1    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTrans2PressureSensorFault unsigned 49,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Fault pressure transmission 2    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogOverloadSecurity unsigned 50,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Basket overload    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogDeltaArmJoysCenteredTeles unsigned 51,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Delta and Telescope Joystick centered    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogArrowJoystickCenteredTurret unsigned 52,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Arrow and Turret Joystick centered    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogDeltaArmMoveUp unsigned 53,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Delta Arm Move Up    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogDeltaArmMoveDown unsigned 54,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Delta Arm Move Down    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogArrowArmMoveUp unsigned 55,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Arrow Arm Move Up    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogArrowArmMoveDown unsigned 56,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Arrow Arm Move Down    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTelescopeMoveOut unsigned 57,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Telescope Move Out    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTelescopeMoveIn unsigned 58,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Telescope Move In    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTurretCounterClockWiseMove unsigned 59,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Turret Counter Clockwise Move    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTurretClockWiseMove unsigned 60,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Turret Clockwise Move    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTurretEncoderFault unsigned 61,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Turret Encoder Fault    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogGeneratorOption unsigned 62,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Generator Option    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogGeneratorActive unsigned 63,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Generator Active    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[Msg2C1SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C1D702h // Data send to evsion 7
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=u8gFuel unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u16gBattery_Voltage unsigned 8,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u8gTrainTransmissionPressure unsigned 24,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=i16gBypassPressureSensorValue signed 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+
+[MsgDebugC1SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C1D712h
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=u16FaultyValue unsigned 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u8DeviceNum unsigned 16,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8ErrorCode unsigned 24,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=i16DebugVehicleSlope signed 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+
+[Msg3C1SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C1D703h
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=u32MinValueEncodeurMast unsigned 0,32 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:4294967295 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT32    @ST: /o:0 /f:1 /u:[-] /type:TUINT32 @CAN: /u:[-] /type:TUINT32
+VAR=u32MaxValueEncodeurMast unsigned 32,32 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:4294967295 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT32    @ST: /o:0 /f:1 /u:[-] /type:TUINT32 @CAN: /u:[-] /type:TUINT32
+
+[Msg4C1SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C1D704h
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=u32EncodeurMastMeasureRaw unsigned 0,32 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:4294967295 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT32    @ST: /o:0 /f:1 /u:[-] /type:TUINT32 @CAN: /u:[-] /type:TUINT32
+VAR=u16EncodeurMastMeasureCentimeter unsigned 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+
+[Msg5C1SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C1D705h // Neotec diag pages
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=boReserve0 unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boReserve1 unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boReserve2 unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boReserve3 unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boReserve4 unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boReserve5 unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boReserve6 unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boReserve7 unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin107 unsigned 8,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin131 unsigned 9,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin108 unsigned 10,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin132 unsigned 11,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin109 unsigned 12,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin133 unsigned 13,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin110 unsigned 14,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin134 unsigned 15,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin111 unsigned 16,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin135 unsigned 17,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin112 unsigned 18,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin136 unsigned 19,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin113 unsigned 20,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin137 unsigned 21,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin114 unsigned 22,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin138 unsigned 23,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin140 unsigned 24,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin117 unsigned 25,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin141 unsigned 26,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin124 unsigned 27,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin148 unsigned 28,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin153 unsigned 29,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin177 unsigned 30,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin159 unsigned 31,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin183 unsigned 32,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin154 unsigned 33,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin178 unsigned 34,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin157 unsigned 35,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin181 unsigned 36,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin160 unsigned 37,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin184 unsigned 38,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin187 unsigned 39,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin163 unsigned 40,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin149 unsigned 41,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin173 unsigned 42,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin152 unsigned 43,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin176 unsigned 44,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin155 unsigned 45,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin179 unsigned 46,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin158 unsigned 47,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin182 unsigned 48,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin251 unsigned 49,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin186 unsigned 50,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin239 unsigned 51,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[Msg6C1SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C1D706h // Neotec diag pages
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=boPin230Fault unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin243Fault unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin244Fault unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin245Fault unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin256Fault unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin257Fault unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin258Fault unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin103Fault unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin127Fault unsigned 8,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin104Fault unsigned 9,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin128Fault unsigned 10,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin105Fault unsigned 11,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin129Fault unsigned 12,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin106Fault unsigned 13,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin130Fault unsigned 14,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin107Fault unsigned 15,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin131Fault unsigned 16,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin108Fault unsigned 17,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin132Fault unsigned 18,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin109Fault unsigned 19,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin133Fault unsigned 20,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin110Fault unsigned 21,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin134Fault unsigned 22,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin111Fault unsigned 23,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin135Fault unsigned 24,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin112Fault unsigned 25,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin136Fault unsigned 26,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin113Fault unsigned 27,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin137Fault unsigned 28,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin114Fault unsigned 29,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin138Fault unsigned 30,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin115Fault unsigned 31,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin139Fault unsigned 32,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin116Fault unsigned 33,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin140Fault unsigned 34,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin117Fault unsigned 35,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin141Fault unsigned 36,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin122Fault unsigned 37,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin146Fault unsigned 38,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin123Fault unsigned 39,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin147Fault unsigned 40,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin124Fault unsigned 41,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin148Fault unsigned 42,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin153Fault unsigned 43,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin177Fault unsigned 44,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin156Fault unsigned 45,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin180Fault unsigned 46,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin159Fault unsigned 47,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin183Fault unsigned 48,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin186Fault unsigned 49,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin162Fault unsigned 50,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin189Fault unsigned 51,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin165Fault unsigned 52,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin192Fault unsigned 53,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin168Fault unsigned 54,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin195Fault unsigned 55,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin171Fault unsigned 56,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin154Fault unsigned 57,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin178Fault unsigned 58,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin157Fault unsigned 59,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin181Fault unsigned 60,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin160Fault unsigned 61,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin184Fault unsigned 62,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin187Fault unsigned 63,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[Msg7C1SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C1D707h // Neotec diag pages
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=boPin163Fault unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin190Fault unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin166Fault unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin193Fault unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin169Fault unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin196Fault unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin172Fault unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin101Fault unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin125Fault unsigned 8,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin150Fault unsigned 9,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin174Fault unsigned 10,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin102Fault unsigned 11,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin126Fault unsigned 12,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin151Fault unsigned 13,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin175Fault unsigned 14,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin149Fault unsigned 15,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin173Fault unsigned 16,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin152Fault unsigned 17,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin176Fault unsigned 18,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin155Fault unsigned 19,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin179Fault unsigned 20,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin158Fault unsigned 21,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin182Fault unsigned 22,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin251Fault unsigned 23,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin238Fault unsigned 24,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin252Fault unsigned 25,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin239Fault unsigned 26,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin253Fault unsigned 27,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin240Fault unsigned 28,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin254Fault unsigned 29,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin241Fault unsigned 30,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin161Fault unsigned 31,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin185Fault unsigned 32,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin188Fault unsigned 33,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin164Fault unsigned 34,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin191Fault unsigned 35,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin167Fault unsigned 36,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin194Fault unsigned 37,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPin170Fault unsigned 38,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:for the Neotec diag pages    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[Msg8C1SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C1D708h // Neotec diag pages
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=u16gPvgDeltaArmVoltage unsigned 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16gPvgArrowArmVoltage unsigned 16,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16gPvgTelescopeArmVoltage unsigned 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16gPvgEvTorVoltage unsigned 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+
+[Msg9C1SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C1D709h
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=bogPendularMoveUp unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogPendularMoveDown unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBasketRotCtClockWiseMove unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBasketRtClockWiseMove unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBasketInclinaisonMoveUp unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBasketInclinaisonMoveDown unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogFuelLow unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=i16gDeltaArmAngleValue signed 16,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=i16gArrowArmAngleValue signed 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=i16gTelescopePositionValue signed 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+
+[Msg10C1SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C1D70Ah
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=u8gTTC510Version_Major unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:Program Version Major C1 TTC510    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8gTTC510Version_Minor unsigned 8,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:Program Version Minor C1 TTC510    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8gTTC510Version_Patch unsigned 16,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:Program Version Patch C1 TTC510    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8gTTC510Version_Custom unsigned 24,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:Program Version Custom C1 TTC510    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8gTTC48XSVersion_Major unsigned 32,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:Program Version Major TTC48XS    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8gTTC48XSVersion_Minor unsigned 40,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:Program Version MinorTTC48XS    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8gTTC48XSVersion_Patch unsigned 48,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:Program Version Patch TTC48XS    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8gTTC48XSVersion_Custom unsigned 56,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:Program Version Custom TTC48XS    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[Msg11C1SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C1D70Bh
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=i16gScalingJoysTurret signed 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=i16gScalingJoysDeltaArm signed 16,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=i16gScalingJoysArrowArm signed 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=i16gScalingJoysTelescopeArm signed 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+
+[Msg12C1SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C1D70Ch
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=u16gTelescopePVGValue unsigned 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16gTelescopeLengthPercentile unsigned 16,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=i16gGeneratorSolenoidValue signed 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=i16gRPMSolenoidValue signed 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+
+[Msg13C1SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C1D70Dh
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=i16gBypassPressureSensorValue signed 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=u16gBatteryVoltageMv unsigned 16,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16RemainingRegenTimeAverage unsigned 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=boElectricMotorForbidden unsigned 48,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boReloadWithGeneratorOn unsigned 49,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPictoColdOilTankTemperature unsigned 50,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boPictoWarningValidCycleMast unsigned 51,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[Msg14C1SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=C1D70Eh
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=i16OilTankTemperatureValue signed 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=u16TotalRegenHours unsigned 16,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16TotalElectricHours unsigned 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+

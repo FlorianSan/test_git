@@ -1,0 +1,113 @@
+FormatVersion=5.0
+Title=RadioReceiver_bus
+
+// @DESCRIPTION  Radio receiver CAN Bus 2 C0
+// @CREATED      2019-02-13 16:56:00 HYDAC/PdtCodeBuilder
+// @CODEBUILDER  1.2.5 (Build: 034)
+// @PDT          2.9.39.196
+// @PROJECTVER   0.0.0
+// @VERSION      1.1
+
+
+{ENUMS} //------------------------------------------------------
+
+enum ETBIT2(0="Off", 1="On", 2="Error", 3="Undef")
+enum ETBIT3(0="Neutral", 1="Positive", 2="Negative", 5="CtlError", 6="Error", 7="Undef")
+enum ETBIT4(14="Error", 15="Not")
+enum ETBIT5(30="Error", 31="Not")
+enum ETBIT6(62="Error", 63="Not")
+enum ETBIT7(126="Error", 127="Not")
+enum ETINT8(121="Limit", 126="Error", 127="Undef")
+enum ETUINT8(249="Limit", 254="Error", 255="Undef")
+enum ETINT16(32761="Limit", 32766="Error", 32767="Undef")
+enum ETUINT16(65529="Limit", 65534="Error", 65535="Undef")
+enum ETINT32(2147483641="Limit", 2147483646="Error", 2147483647="Undef")
+enum ETUINT32(4294967289="Limit", 4294967294="Error", 4294967295="Undef")
+enum EDIGSTATUS(0="GE_DIG_OFF",1="GE_DIG_ON",2="GE_DIG_ERROR",3="GE_DIG_UNDEF")
+enum EPROSTATUS(0="GE_PRO_OFF",1="GE_PRO_ON",2="GE_PRO_ERROR",3="GE_PRO_NOT_INSTALLED",4="GE_PRO_NO_DUTY_CYCLE",5="GE_PRO_MIN_DUTY_CYCLE")
+enum EDISTATE(0="GE_DI_OFF",1="GE_DI_ON",2="GE_DI_ERROR",3="GE_DI_UNDEF")
+enum EWDSTATE(6="GE_RUNNING",9="GE_TRIGGERED")
+enum EMOVENACELLEMODE(0="GE_NO_MODE",1="GE_OFFRAIL_RADIOCONTOL_MODE",2="GE_RAIL_NACELLE_MODE",3="GE_TURRET_MODE")
+enum EOFFRAILMODE(0="GE_NO_OFFRAIL_MODE",1="GE_TRANSPORT_OFFRAIL_MODE",2="GE_WORK_OFFRAIL_MODE",3="GE_WORSHOP_OFFRAIL_MODE")
+enum ERAILSPEEDMODE(0="GE_NO_SPEED_MAX_RAIL_MODE",1="GE_ACCESS_SITE_MODE",2="GE_HIGH_SPEED",3="GE_LOW_SPEED")
+enum ERAILWORKMODE(0="GE_NO_RAIL_WORK_MODE",1="GE_BILATERAL_MODE",2="GE_ALO_MODE",3="GE_MULTILANE_MODE")
+enum EMANIPULATORPOSITION(0="GE_NEUTRAL",1="GE_AV",2="GE_AR",3="GE_ERROR")
+enum ESTATEHEARTBEAT(0="GE_BOOT_UP",4="GE_STOPPED",5="GE_OPERATIONAL",127="GE_PRE_OPERATIONAL")
+enum ESTATESERVICEBRAKERAIL(0="GE_DEFINE_BRAKE",1="GE_AV_SERVICE_BRAKE",2="GE_AR_SERVICE_BRAKE")
+enum ERAILTRANSLATIONDIRECTION(0="GE_AV_RAIL_DIR",1="GE_AR_RAIL_DIR",2="GE_STOP_RAIL_DIR")
+enum ECOUNTRY(0="GE_FRANCE",1="GE_SWITZERLAND",2="GE_UNITED_KINGDOM",3="GE_AUSTRALIA")
+
+
+{SEND} //-------------------------------------------------------
+
+
+
+{RECEIVE} //----------------------------------------------------
+
+
+
+{SENDRECEIVE} //------------------------------------------------
+
+[WriteLed]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=364h // write led packet
+Type=Standard
+CycleTime=50
+DLC=8
+VAR=boLed_1_8 unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:unsigned
+VAR=boLed_9_11 unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:unsigned
+
+[Start]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=0h // Start message
+Type=Standard
+CycleTime=50
+DLC=2
+VAR=u8Command unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:Start command    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8NodeId unsigned 8,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:Node Id    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[ReadOnOfffInput]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=2BCh // read on off input packet
+Type=Standard
+CycleTime=80
+DLC=8
+VAR=bi2LeftManipulatorPosition unsigned 0,2 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:3 	// @DESCR:Left Manipulator position    @APPL: /o:0 /f:1 /u:[-] /type:TBIT2    @ST: /o:0 /f:1 /u:[-] /type:TBIT2 @CAN: /u:[-] /type:TBIT2
+VAR=bi2RightManipulatorPosition unsigned 2,2 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:3 	// @DESCR:Right Manipulator position    @APPL: /o:0 /f:1 /u:[-] /type:TBIT2    @ST: /o:0 /f:1 /u:[-] /type:TBIT2 @CAN: /u:[-] /type:TBIT2
+VAR=boUpPendularOrRotClockTurret unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boUpAxleArFixe unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Up Axle Ar Fixe    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDownAxleArFixe unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Down Axle Ar Fixe    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boForcingAdvanceTrack unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boUpAxleAvOscillant unsigned 8,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Up Axle Av oscillant    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDownAxleAvOscillant unsigned 9,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Down Axle Av oscillant    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boRotFrameCtClockwise unsigned 10,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Antihoraire Rotation Chassis    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boRotFrameClockwise unsigned 11,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Horaire Rotation Chassis    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boSelectorPendular unsigned 12,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Selector Pendular    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boSelectorRotTurret unsigned 14,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Selector rotation turret    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDownPendularOrRotCtClockTurret unsigned 15,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boStopRadioCommand unsigned 61,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Stop radio command    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boStartRadioCommand unsigned 62,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Start radio command    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boKlaxonCommand unsigned 63,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[ReadAnalogInput]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=1BCh // read analog input packet
+Type=Standard
+CycleTime=80
+DLC=8
+VAR=u8LeftManipulator unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:Left manipulator    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8RightManipulator unsigned 8,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:Right manipulator    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[HeartBeat]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=73Ch // Heart Beat
+Type=Standard
+CycleTime=500
+DLC=1
+VAR=u8State unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:State of Heart Beat    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+

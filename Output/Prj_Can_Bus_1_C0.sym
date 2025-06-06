@@ -1,0 +1,122 @@
+FormatVersion=5.0
+Title=Can_Bus_1_C0
+
+// @DESCRIPTION  Can Bus 1 C0
+// @CREATED      2019-02-12 18:24:13 HYDAC/PdtCodeBuilder
+// @CODEBUILDER  1.2.5 (Build: 034)
+// @PDT          2.9.39.196
+// @PROJECTVER   0.0.0
+// @VERSION      1.1
+
+
+{ENUMS} //------------------------------------------------------
+
+enum ETBIT2(0="Off", 1="On", 2="Error", 3="Undef")
+enum ETBIT3(0="Neutral", 1="Positive", 2="Negative", 5="CtlError", 6="Error", 7="Undef")
+enum ETBIT4(14="Error", 15="Not")
+enum ETBIT5(30="Error", 31="Not")
+enum ETBIT6(62="Error", 63="Not")
+enum ETBIT7(126="Error", 127="Not")
+enum ETINT8(121="Limit", 126="Error", 127="Undef")
+enum ETUINT8(249="Limit", 254="Error", 255="Undef")
+enum ETINT16(32761="Limit", 32766="Error", 32767="Undef")
+enum ETUINT16(65529="Limit", 65534="Error", 65535="Undef")
+enum ETINT32(2147483641="Limit", 2147483646="Error", 2147483647="Undef")
+enum ETUINT32(4294967289="Limit", 4294967294="Error", 4294967295="Undef")
+enum EDIGSTATUS(0="GE_DIG_OFF",1="GE_DIG_ON",2="GE_DIG_ERROR",3="GE_DIG_UNDEF")
+enum EPROSTATUS(0="GE_PRO_OFF",1="GE_PRO_ON",2="GE_PRO_ERROR",3="GE_PRO_NOT_INSTALLED",4="GE_PRO_NO_DUTY_CYCLE",5="GE_PRO_MIN_DUTY_CYCLE")
+enum EDISTATE(0="GE_DI_OFF",1="GE_DI_ON",2="GE_DI_ERROR",3="GE_DI_UNDEF")
+enum EWDSTATE(6="GE_RUNNING",9="GE_TRIGGERED")
+enum EMOVENACELLEMODE(0="GE_NO_MODE",1="GE_OFFRAIL_RADIOCONTOL_MODE",2="GE_RAIL_NACELLE_MODE",3="GE_TURRET_MODE")
+enum EOFFRAILMODE(0="GE_NO_OFFRAIL_MODE",1="GE_TRANSPORT_OFFRAIL_MODE",2="GE_WORK_OFFRAIL_MODE",3="GE_WORSHOP_OFFRAIL_MODE")
+enum ERAILSPEEDMODE(0="GE_NO_SPEED_MAX_RAIL_MODE",1="GE_ACCESS_SITE_MODE",2="GE_HIGH_SPEED",3="GE_LOW_SPEED")
+enum EWORKMODE(0="GE_NO_WORK_MODE",1="GE_BILATERAL_MODE",2="GE_ALO_WORK_MODE",3="GE_MULTILANE_MODE")
+enum EMANIPULATORPOSITION(0="GE_NEUTRAL",1="GE_AV",2="GE_AR",3="GE_ERROR")
+enum ESTATEHEARTBEAT(0="GE_BOOT_UP",4="GE_STOPPED",5="GE_OPERATIONAL",127="GE_PRE_OPERATIONAL")
+enum ESTATESERVICEBRAKERAIL(0="GE_DEFINE_BRAKE",1="GE_AV_SERVICE_BRAKE",2="GE_AR_SERVICE_BRAKE")
+enum ERAILTRANSLATIONDIRECTION(0="GE_AV_RAIL_DIR",1="GE_AR_RAIL_DIR",2="GE_STOP_RAIL_DIR")
+enum ECOUNTRY(0="GE_FRANCE",1="GE_SWITZERLAND",2="GE_UNITED_KINGDOM",3="GE_AUSTRALIA")
+
+
+{SEND} //-------------------------------------------------------
+
+
+
+{RECEIVE} //----------------------------------------------------
+
+
+
+{SENDRECEIVE} //------------------------------------------------
+
+[Msg2C0SendToOpus]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=303h
+Type=Standard
+CycleTime=200
+DLC=8
+VAR=u16gEngine_Use_Time unsigned 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+
+[Msg1C0SendToOpus]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=203h // Message 1 send by C0 to Opus
+Type=Standard
+CycleTime=200
+DLC=8
+VAR=bogBreak_Parking_On_Off unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBreak_Faillure_On_Off unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTurretSectorInCenter unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTurretInCenter unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[PDO3_48Xs]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=48Ah
+Type=Standard
+CycleTime=50
+DLC=8
+VAR=u16LowSectorPendularSensor unsigned 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16HighSectorPlateSensor unsigned 16,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+
+[PDO2_48Xs]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=38Ah
+Type=Standard
+CycleTime=10
+DLC=8
+VAR=u16NacelleBasketRightSideSensor1 unsigned 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16NacelleBasketRightSideSensor2 unsigned 16,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16NacelleBasketLeftSideSensor1 unsigned 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16NacelleBasketLeftSideSensor2 unsigned 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+
+[PDO8_48Xs]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=6A8h // PDO 8 48XS slave to master
+Type=Standard
+CycleTime=10
+DLC=8
+VAR=u16BatterieVoltage48Xs unsigned 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+
+[PDO6_48Xs]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=6A2h // PDO 6 48XS slave to master
+Type=Standard
+CycleTime=10
+DLC=8
+VAR=boDeadManPedal unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boGachette unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boKlaxon unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[PDO5_48Xs]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=6A1h // PDO 5 48XS slave to master
+Type=Standard
+CycleTime=10
+DLC=8
+VAR=u16AdvanceAxisJoystick unsigned 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+

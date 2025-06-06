@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Project_Green_Eff_C14_PH2</name>
+	<comment></comment>
+	<projects>
+		<project>Project_Green_Eff_C14_PH2_C0</project>
+		<project>Project_Green_Eff_C14_PH2_C1</project>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+	</natures>
+</projectDescription>

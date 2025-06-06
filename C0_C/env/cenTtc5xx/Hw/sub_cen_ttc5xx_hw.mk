@@ -1,0 +1,213 @@
+### Build with HyRebuilder Version: 05.17.00 ####
+
+SUB_CC_INCLUDES = \
+-I$(ROOT_PATH)/include \
+-I$(ROOT_PATH)/include/basic \
+-I$(ROOT_PATH)/include/core \
+-I$(ROOT_PATH)/include/core/board \
+-I$(ROOT_PATH)/include/core/pin \
+-I$(ROOT_PATH)/include/library \
+-I$(ROOT_PATH)/include/library/component \
+-I$(ROOT_PATH)/include/library/logical_inp \
+-I$(ROOT_PATH)/include/library/sensor \
+-I$(ROOT_PATH)/include/library/signal \
+-I$(ROOT_PATH)/include/library/standard \
+-I$(ROOT_PATH)/include/library/testsuite \
+-I$(ROOT_PATH)/include/library/testsuite/cvtest \
+-I$(ROOT_PATH)/include/protocol \
+-I$(ROOT_PATH)/src \
+-I$(ROOT_PATH)/src/_app \
+-I$(ROOT_PATH)/src/_app/Alarms \
+-I$(ROOT_PATH)/src/_app/AUTO_CEN_TTC5XX \
+-I$(ROOT_PATH)/src/_app/CAN \
+-I$(ROOT_PATH)/src/_app/Control \
+-I$(ROOT_PATH)/src/_app/ControllerElectricMotor \
+-I$(ROOT_PATH)/src/_app/CustomLibrary \
+-I$(ROOT_PATH)/src/_app/Datalogger \
+-I$(ROOT_PATH)/src/_app/DiagSystem \
+-I$(ROOT_PATH)/src/_app/IO \
+-I$(ROOT_PATH)/src/_app/Safety \
+-I$(ROOT_PATH)/src/_app/SavedParameters
+
+
+SUB_LIB_EXT = \
+$(ROOT_PATH)/include/_lib/TTC580/hw/component/CEN_TTC580_HW_BloDig.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/component/CEN_TTC580_HW_BloOutVoltPro.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/component/CEN_TTC580_HW_BloPro.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/core/CEN_TTC580_HW_CoreBasStd.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/logical_inp/CEN_TTC580_HW_BloSwiDblNcNo.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/logical_inp/CEN_TTC580_HW_BloSwiDblNoNc.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/logical_inp/CEN_TTC580_HW_BloSwiNc.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/logical_inp/CEN_TTC580_HW_BloSwiNo.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/protocol/CEN_TTC580_HW_PtcDmx.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/protocol/CEN_TTC580_HW_PtcMst.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/sensor/CEN_TTC580_HW_BloInCur.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/sensor/CEN_TTC580_HW_BloInFreq.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/signal/CEN_TTC580_HW_SigDbo.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/signal/CEN_TTC580_HW_SigLut.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/signal/CEN_TTC580_HW_SigLutd.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/signal/CEN_TTC580_HW_SigPid.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/signal/CEN_TTC580_HW_SigRamp.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/signal/CEN_TTC580_HW_SigSwiDbl.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/signal/CEN_TTC580_HW_SigTrigger.lib
+
+
+SUB_OBJECTS = \
+$(OUT_PATH)/src/main_cen.obj \
+$(OUT_PATH)/src/_app/Alarms/AlarmManagement.obj \
+$(OUT_PATH)/src/_app/Alarms/AlarmRelease.obj \
+$(OUT_PATH)/src/_app/AppBspMem.obj \
+$(OUT_PATH)/src/_app/AppCode.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/App_CanSigRec.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/App_Db.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/App_LibTab.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/App_Pin.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_CBuf.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_CBus.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_CRcv.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_CSnd.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_Dig.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_Ecu.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_Err.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_InCur.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_InFreq.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_LibRegistry.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_OutVoltPro.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_Pro.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_PtcDmx.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_PtcMst.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_Sil.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_SwiDblNcNo.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_SwiDblNoNc.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_SwiNc.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_SwiNo.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_Ver.obj \
+$(OUT_PATH)/src/_app/CAN/StartSensor.obj \
+$(OUT_PATH)/src/_app/Control/BrakeTest.obj \
+$(OUT_PATH)/src/_app/Control/BreakInBrake.obj \
+$(OUT_PATH)/src/_app/Control/ControlBrakes.obj \
+$(OUT_PATH)/src/_app/Control/ControlFunc.obj \
+$(OUT_PATH)/src/_app/Control/ControlKlaxon.obj \
+$(OUT_PATH)/src/_app/Control/ControlLight.obj \
+$(OUT_PATH)/src/_app/Control/ControlMastDigitalDisplay.obj \
+$(OUT_PATH)/src/_app/Control/ControlMotor.obj \
+$(OUT_PATH)/src/_app/Control/ControlRadioCommand.obj \
+$(OUT_PATH)/src/_app/Control/ControlRailTranslationElectric.obj \
+$(OUT_PATH)/src/_app/Control/ControlRailTranslationFunc.obj \
+$(OUT_PATH)/src/_app/Control/ControlTrackTranslationFunc.obj \
+$(OUT_PATH)/src/_app/Control/ControlUnBlockOscillationAxle.obj \
+$(OUT_PATH)/src/_app/Control/RailWorkSafety.obj \
+$(OUT_PATH)/src/_app/Control/SelectControlPost.obj \
+$(OUT_PATH)/src/_app/Control/SpeedMaxTranslationRail.obj \
+$(OUT_PATH)/src/_app/ControllerElectricMotor/DmcControllerSigma2N.obj \
+$(OUT_PATH)/src/_app/CustomLibrary/CustomLibrary.obj \
+$(OUT_PATH)/src/_app/Datalogger/Datalog.obj \
+$(OUT_PATH)/src/_app/DiagSystem/DiagSystem.obj \
+$(OUT_PATH)/src/_app/IO/ReadInputsFunc.obj \
+$(OUT_PATH)/src/_app/IO/WriteOuputsFunc.obj \
+$(OUT_PATH)/src/_app/Safety/SafetyAuthorizeTransRail.obj \
+$(OUT_PATH)/src/_app/Safety/SafetyAuthorizeTransTrack.obj \
+$(OUT_PATH)/src/_app/Safety/SafetyCheckEmergencyStop.obj \
+$(OUT_PATH)/src/_app/Safety/SafetyParkBrake.obj \
+$(OUT_PATH)/src/_app/Safety/SafetyRailWorkSafety.obj \
+$(OUT_PATH)/src/_app/Safety/SafetyReadInputsFunc.obj \
+$(OUT_PATH)/src/_app/Safety/SafetySelectControlPost.obj \
+$(OUT_PATH)/src/_app/Safety/SafetyServiceBrake.obj \
+$(OUT_PATH)/src/_app/Safety/SafetySpeedMaxTranslationRail.obj \
+$(OUT_PATH)/src/_app/Safety/SafetyWriteOutput.obj \
+$(OUT_PATH)/src/_app/SavedParameters/UpdateParameterTimerBlock.obj \
+$(OUT_PATH)/src/_app/SavedParameters/WriteSavedParameters.obj
+
+
+SUB_LINT = \
+-I$(LINT_PATH)\include \
+-I$(LINT_PATH)\include\basic \
+-I$(LINT_PATH)\include\core \
+-I$(LINT_PATH)\include\core\board \
+-I$(LINT_PATH)\include\core\pin \
+-I$(LINT_PATH)\include\library \
+-I$(LINT_PATH)\include\library\component \
+-I$(LINT_PATH)\include\library\logical_inp \
+-I$(LINT_PATH)\include\library\sensor \
+-I$(LINT_PATH)\include\library\signal \
+-I$(LINT_PATH)\include\library\standard \
+-I$(LINT_PATH)\include\library\testsuite \
+-I$(LINT_PATH)\include\library\testsuite\cvtest \
+-I$(LINT_PATH)\include\protocol \
+-I$(LINT_PATH)\src \
+-I$(LINT_PATH)\src\_app \
+-I$(LINT_PATH)\src\_app\Alarms \
+-I$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX \
+-I$(LINT_PATH)\src\_app\CAN \
+-I$(LINT_PATH)\src\_app\Control \
+-I$(LINT_PATH)\src\_app\ControllerElectricMotor \
+-I$(LINT_PATH)\src\_app\CustomLibrary \
+-I$(LINT_PATH)\src\_app\Datalogger \
+-I$(LINT_PATH)\src\_app\DiagSystem \
+-I$(LINT_PATH)\src\_app\IO \
+-I$(LINT_PATH)\src\_app\Safety \
+-I$(LINT_PATH)\src\_app\SavedParameters \
+	$(LINT_PATH)\src\main_cen.c \
+	$(LINT_PATH)\src\_app\Alarms\AlarmManagement.c \
+	$(LINT_PATH)\src\_app\Alarms\AlarmRelease.c \
+	$(LINT_PATH)\src\_app\AppBspMem.c \
+	$(LINT_PATH)\src\_app\AppCode.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\App_CanSigRec.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\App_Db.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\App_LibTab.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\App_Pin.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_CBuf.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_CBus.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_CRcv.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_CSnd.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_Dig.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_Ecu.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_Err.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_InCur.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_InFreq.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_LibRegistry.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_OutVoltPro.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_Pro.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_PtcDmx.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_PtcMst.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_Sil.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_SwiDblNcNo.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_SwiDblNoNc.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_SwiNc.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_SwiNo.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_Ver.c \
+	$(LINT_PATH)\src\_app\CAN\StartSensor.c \
+	$(LINT_PATH)\src\_app\Control\BrakeTest.c \
+	$(LINT_PATH)\src\_app\Control\BreakInBrake.c \
+	$(LINT_PATH)\src\_app\Control\ControlBrakes.c \
+	$(LINT_PATH)\src\_app\Control\ControlFunc.c \
+	$(LINT_PATH)\src\_app\Control\ControlKlaxon.c \
+	$(LINT_PATH)\src\_app\Control\ControlLight.c \
+	$(LINT_PATH)\src\_app\Control\ControlMastDigitalDisplay.c \
+	$(LINT_PATH)\src\_app\Control\ControlMotor.c \
+	$(LINT_PATH)\src\_app\Control\ControlRadioCommand.c \
+	$(LINT_PATH)\src\_app\Control\ControlRailTranslationElectric.c \
+	$(LINT_PATH)\src\_app\Control\ControlRailTranslationFunc.c \
+	$(LINT_PATH)\src\_app\Control\ControlTrackTranslationFunc.c \
+	$(LINT_PATH)\src\_app\Control\ControlUnBlockOscillationAxle.c \
+	$(LINT_PATH)\src\_app\Control\RailWorkSafety.c \
+	$(LINT_PATH)\src\_app\Control\SelectControlPost.c \
+	$(LINT_PATH)\src\_app\Control\SpeedMaxTranslationRail.c \
+	$(LINT_PATH)\src\_app\ControllerElectricMotor\DmcControllerSigma2N.c \
+	$(LINT_PATH)\src\_app\CustomLibrary\CustomLibrary.c \
+	$(LINT_PATH)\src\_app\Datalogger\Datalog.c \
+	$(LINT_PATH)\src\_app\DiagSystem\DiagSystem.c \
+	$(LINT_PATH)\src\_app\IO\ReadInputsFunc.c \
+	$(LINT_PATH)\src\_app\IO\WriteOuputsFunc.c \
+	$(LINT_PATH)\src\_app\Safety\SafetyAuthorizeTransRail.c \
+	$(LINT_PATH)\src\_app\Safety\SafetyAuthorizeTransTrack.c \
+	$(LINT_PATH)\src\_app\Safety\SafetyCheckEmergencyStop.c \
+	$(LINT_PATH)\src\_app\Safety\SafetyParkBrake.c \
+	$(LINT_PATH)\src\_app\Safety\SafetyRailWorkSafety.c \
+	$(LINT_PATH)\src\_app\Safety\SafetyReadInputsFunc.c \
+	$(LINT_PATH)\src\_app\Safety\SafetySelectControlPost.c \
+	$(LINT_PATH)\src\_app\Safety\SafetyServiceBrake.c \
+	$(LINT_PATH)\src\_app\Safety\SafetySpeedMaxTranslationRail.c \
+	$(LINT_PATH)\src\_app\Safety\SafetyWriteOutput.c \
+	$(LINT_PATH)\src\_app\SavedParameters\UpdateParameterTimerBlock.c \
+	$(LINT_PATH)\src\_app\SavedParameters\WriteSavedParameters.c

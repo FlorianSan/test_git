@@ -1,0 +1,196 @@
+FormatVersion=5.0
+Title=Diagnostic_Can_Bus_0_C0
+
+// @DESCRIPTION  Diagnostic CAN Bus 0 C0
+// @CREATED      2019-02-12 18:24:13 HYDAC/PdtCodeBuilder
+// @CODEBUILDER  1.2.5 (Build: 034)
+// @PDT          2.9.39.196
+// @PROJECTVER   0.0.0
+// @VERSION      1.1
+
+
+{ENUMS} //------------------------------------------------------
+
+enum ETBIT2(0="Off", 1="On", 2="Error", 3="Undef")
+enum ETBIT3(0="Neutral", 1="Positive", 2="Negative", 5="CtlError", 6="Error", 7="Undef")
+enum ETBIT4(14="Error", 15="Not")
+enum ETBIT5(30="Error", 31="Not")
+enum ETBIT6(62="Error", 63="Not")
+enum ETBIT7(126="Error", 127="Not")
+enum ETINT8(121="Limit", 126="Error", 127="Undef")
+enum ETUINT8(249="Limit", 254="Error", 255="Undef")
+enum ETINT16(32761="Limit", 32766="Error", 32767="Undef")
+enum ETUINT16(65529="Limit", 65534="Error", 65535="Undef")
+enum ETINT32(2147483641="Limit", 2147483646="Error", 2147483647="Undef")
+enum ETUINT32(4294967289="Limit", 4294967294="Error", 4294967295="Undef")
+enum EDIGSTATUS(0="GE_DIG_OFF",1="GE_DIG_ON",2="GE_DIG_ERROR",3="GE_DIG_UNDEF")
+enum EPROSTATUS(0="GE_PRO_OFF",1="GE_PRO_ON",2="GE_PRO_ERROR",3="GE_PRO_NOT_INSTALLED",4="GE_PRO_NO_DUTY_CYCLE",5="GE_PRO_MIN_DUTY_CYCLE")
+enum EDISTATE(0="GE_DI_OFF",1="GE_DI_ON",2="GE_DI_ERROR",3="GE_DI_UNDEF")
+enum EWDSTATE(6="GE_RUNNING",9="GE_TRIGGERED")
+enum EMOVENACELLEMODE(0="GE_NO_MODE",1="GE_OFFRAIL_RADIOCONTOL_MODE",2="GE_RAIL_NACELLE_MODE",3="GE_TURRET_MODE")
+enum EOFFRAILMODE(0="GE_NO_OFFRAIL_MODE",1="GE_TRANSPORT_OFFRAIL_MODE",2="GE_WORK_OFFRAIL_MODE",3="GE_WORSHOP_OFFRAIL_MODE")
+enum ERAILSPEEDMODE(0="GE_NO_SPEED_MAX_RAIL_MODE",1="GE_ACCESS_SITE_MODE",2="GE_HIGH_SPEED",3="GE_LOW_SPEED")
+enum EWORKMODE(0="GE_NO_WORK_MODE",1="GE_BILATERAL_MODE",2="GE_ALO_WORK_MODE",3="GE_MULTILANE_MODE")
+enum EMANIPULATORPOSITION(0="GE_NEUTRAL",1="GE_AV",2="GE_AR",3="GE_ERROR")
+enum ESTATEHEARTBEAT(0="GE_BOOT_UP",4="GE_STOPPED",5="GE_OPERATIONAL",127="GE_PRE_OPERATIONAL")
+enum ESTATESERVICEBRAKERAIL(0="GE_DEFINE_BRAKE",1="GE_AV_SERVICE_BRAKE",2="GE_AR_SERVICE_BRAKE")
+enum ERAILTRANSLATIONDIRECTION(0="GE_AV_RAIL_DIR",1="GE_AR_RAIL_DIR",2="GE_STOP_RAIL_DIR")
+enum ECOUNTRY(0="GE_FRANCE",1="GE_SWITZERLAND",2="GE_UNITED_KINGDOM",3="GE_AUSTRALIA")
+
+
+{SEND} //-------------------------------------------------------
+
+
+
+{RECEIVE} //----------------------------------------------------
+
+
+
+{SENDRECEIVE} //------------------------------------------------
+
+[MsgDebugC0SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=C0D711h // debug) message
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=i16gC0Debug3 signed 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:turret encoder before offset (int)    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=i16gC0Debug4 signed 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:turret encoder after offset (int)    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+
+[Message_01]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=18FF0000h
+Type=Extended
+CycleTime=50
+DLC=8
+VAR=boSignal unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TUINT8
+VAR=boSignal_0 unsigned 8,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TUINT8
+VAR=boSignal_1 unsigned 16,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TUINT8
+VAR=boSignal_2 unsigned 24,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TUINT8
+VAR=boSignal_3 unsigned 32,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TUINT8
+VAR=boSignal_4 unsigned 40,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TUINT8
+VAR=i16Signal_5 signed 48,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+
+[Msg3C0SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=C0D703h // Data send to evision 7
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=u8gFrontSpeedRailWayAxle unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:Front Speed Railway Axle in Km/h (A24)    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8gBackSpeedRailWayAxle unsigned 8,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:Back Speed Railway Axle in Km/h    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[Msg2C0SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=C0D702h // Data send to eVision 7
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=u16gEngine_Use_Time unsigned 0,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:Engine use time in hour    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16gEngine_RPM unsigned 16,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:Engine RPM    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16gVehiculeSpeed unsigned 32,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:Vehicule Speed in Km/h * 100    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u8gLateralizationStop unsigned 48,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:Lateralization Stop 1=bi lateralization 2=ALO Work 3=Multiple track (A3)    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8gKeySelector unsigned 56,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:Key Selector 1=bi lateralization 2=ALO Work 3=Multiple track(A6)    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[DataSendToC1]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=18FF0003h // Data send to C1
+Type=Extended
+CycleTime=10
+DLC=8
+VAR=boRestrictedModeAruRadio unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boTranslationIsSolicited unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bi2MoveNacelleMode unsigned 2,2 /f:1 /o:0 /u:"[-]" /d:3 /min:0 /max:3 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBIT2    @ST: /o:0 /f:1 /u:[-] /type:TBIT2 @CAN: /u:[-] /type:TBIT2
+VAR=boAxleMovementIsSolicited unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDownAxleFixeSensor unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDownAxleOscillantSensor unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=i16SlopeAngleLong signed 8,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+VAR=i16SlopeAngleTrans signed 24,16 /f:1 /o:0 /u:"[-]" /d:0 /min:-32768 /max:32767 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT16    @ST: /o:0 /f:1 /u:[-] /type:TINT16 @CAN: /u:[-] /type:TINT16
+
+[Msg1C0SendToEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=C0D701h // Data send to eVision 7
+Type=Extended
+CycleTime=200
+DLC=8
+VAR=bogBreak_Parking_On_Off unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Break Parking Status     @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBreak_Faillure_On_Off unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Break Faillure Status    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogMovement_Allow_Nacelle unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Movement Allow Status    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTurretSectorInCenter unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Turret Sector in Center    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTurretInCenter unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Turret in Center    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogVehiculeTrainMode unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Vehicule in Train Mode (Speed in MPH)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogIncoherenceLateralStopAndKey unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Incoherence between Lateral Stop and Key selector (A47)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogWorkMode unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:0=Work Mode activate 1=Site Acces Mode  (A4)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogSafetyElectricPump unsigned 8,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Safety Electric Pump Activate (A44)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogDownhill150mm unsigned 9,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Downhill between 150mm and 200mm (A13)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogTrainModeAllow unsigned 10,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Train Mode Allow (A10)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBrakeTestService unsigned 11,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Brake test need to be launch (A22)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBrakePressureFault unsigned 12,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Brake Pressure Fault (A14)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogActivateMeasuringMast unsigned 13,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Activate Measuring Mast (A21)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogAutoMovementDirectionLight unsigned 14,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Auto Movement Direction Light (A23)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBackRailwayAxleLowPosition unsigned 15,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Back Railway Axle in Low Position (A7)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogFrontRailwayAxleLowPosition unsigned 16,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Front Railway Axle in Low Position (A7)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBackRailwayAxleServiceBrake unsigned 17,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Back Railway Axle Service Brake (A25)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogFrontRailwayAxleServiceBrake unsigned 18,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Front Railway Axle Service Brake (A25)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogBackRailwayAxleParkBrake unsigned 19,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Back Railway Axle Park Brake (A26)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogFrontRailwayAxleParkBrake unsigned 20,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Front Railway Axle Park Brake (A26)     @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogStatusFrontLeftTrainBrakeTest unsigned 21,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Status of Front Left Train Brake Test (A27)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogStatFrontRightTrainBrakeTest unsigned 22,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Status of Front Right Train Brake Test (A27)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogStatusBackLeftTrainBrakeTest unsigned 23,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Status of Back Left Train Brake Test (A27)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogStatusBackRightTrainBrakeTest unsigned 24,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Status of Back Left Train Brake Test (A27)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogAlarmAru unsigned 25,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Status of the ARU alarm    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[DataRcvFromC1]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=18FF0002h // Data receive from C1
+Type=Extended
+CycleTime=10
+DLC=8
+VAR=bi2C1TurretPostSelector unsigned 0,2 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:3 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBIT2    @ST: /o:0 /f:1 /u:[-] /type:TBIT2 @CAN: /u:[-] /type:TBIT2
+VAR=bi2C1RadioPostSelector unsigned 2,2 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:3 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBIT2    @ST: /o:0 /f:1 /u:[-] /type:TBIT2 @CAN: /u:[-] /type:TBIT2
+VAR=bi2C1NacellePostSelector unsigned 4,2 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:3 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBIT2    @ST: /o:0 /f:1 /u:[-] /type:TBIT2 @CAN: /u:[-] /type:TBIT2
+VAR=boUpAxleOscillantCommand unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDownAxleOscillantCommand unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boUpAxleFixeCommand unsigned 8,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDownAxleFixeCommand unsigned 9,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boEntryTelescopeFdcSensor unsigned 10,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDeltaArmFoldedSensor unsigned 11,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boBoomArmFoldedSensor unsigned 12,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDeltaArmInLowerZone unsigned 13,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=i32RegimeMotorAlternatorRpm signed 16,32 /f:1 /o:0 /u:"[-]" /d:0 /min:-2147483648 /max:2147483647 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TINT32    @ST: /o:0 /f:1 /u:[-] /type:TINT32 @CAN: /u:[-] /type:TINT32
+
+[SendToC1RadioCmd]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=18FF0001h // Radio command send to C1
+Type=Extended
+CycleTime=10
+DLC=8
+VAR=boRotFrameClkwiseButton unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boRotFrameCtClkwiseButton unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boUpPendularOrRotTurretCtClock unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDownPendularOrRotTurretClock unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boSelectorRotTurret unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boSelectorPendular unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boUpAxleOscillant unsigned 8,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDownAxleOscillant unsigned 9,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boUpAxleFixe unsigned 10,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boDownAxleFixe unsigned 11,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[Msg1C0RcvFromEvision7]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+ID=D7CF01h // Receive message CAN by eVision7
+Type=Extended
+CycleTime=20
+DLC=8
+VAR=bogLoginStatus unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:User Log in Status (1=log in)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=bogButtonCalibTurretEncoder unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Button for the calibration of the turret encoder is pressed    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+

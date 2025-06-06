@@ -1,0 +1,91 @@
+_debug/cen_hw/TTC580/src/main_cen.obj
+_debug/cen_hw/TTC580/src/_app/Alarms/AlarmManagement.obj
+_debug/cen_hw/TTC580/src/_app/Alarms/AlarmRelease.obj
+_debug/cen_hw/TTC580/src/_app/AppBspMem.obj
+_debug/cen_hw/TTC580/src/_app/AppCode.obj
+_debug/cen_hw/TTC580/src/_app/AUTO_CEN_TTC5XX/App_CanSigRec.obj
+_debug/cen_hw/TTC580/src/_app/AUTO_CEN_TTC5XX/App_Db.obj
+_debug/cen_hw/TTC580/src/_app/AUTO_CEN_TTC5XX/App_LibTab.obj
+_debug/cen_hw/TTC580/src/_app/AUTO_CEN_TTC5XX/App_Pin.obj
+_debug/cen_hw/TTC580/src/_app/AUTO_CEN_TTC5XX/Cfg_CBuf.obj
+_debug/cen_hw/TTC580/src/_app/AUTO_CEN_TTC5XX/Cfg_CBus.obj
+_debug/cen_hw/TTC580/src/_app/AUTO_CEN_TTC5XX/Cfg_CRcv.obj
+_debug/cen_hw/TTC580/src/_app/AUTO_CEN_TTC5XX/Cfg_CSnd.obj
+_debug/cen_hw/TTC580/src/_app/AUTO_CEN_TTC5XX/Cfg_Dig.obj
+_debug/cen_hw/TTC580/src/_app/AUTO_CEN_TTC5XX/Cfg_Ecu.obj
+_debug/cen_hw/TTC580/src/_app/AUTO_CEN_TTC5XX/Cfg_Err.obj
+_debug/cen_hw/TTC580/src/_app/AUTO_CEN_TTC5XX/Cfg_InCur.obj
+_debug/cen_hw/TTC580/src/_app/AUTO_CEN_TTC5XX/Cfg_InFreq.obj
+_debug/cen_hw/TTC580/src/_app/AUTO_CEN_TTC5XX/Cfg_LibRegistry.obj
+_debug/cen_hw/TTC580/src/_app/AUTO_CEN_TTC5XX/Cfg_OutVoltPro.obj
+_debug/cen_hw/TTC580/src/_app/AUTO_CEN_TTC5XX/Cfg_Pro.obj
+_debug/cen_hw/TTC580/src/_app/AUTO_CEN_TTC5XX/Cfg_PtcDmx.obj
+_debug/cen_hw/TTC580/src/_app/AUTO_CEN_TTC5XX/Cfg_PtcMst.obj
+_debug/cen_hw/TTC580/src/_app/AUTO_CEN_TTC5XX/Cfg_Sil.obj
+_debug/cen_hw/TTC580/src/_app/AUTO_CEN_TTC5XX/Cfg_SwiDblNcNo.obj
+_debug/cen_hw/TTC580/src/_app/AUTO_CEN_TTC5XX/Cfg_SwiDblNoNc.obj
+_debug/cen_hw/TTC580/src/_app/AUTO_CEN_TTC5XX/Cfg_SwiNc.obj
+_debug/cen_hw/TTC580/src/_app/AUTO_CEN_TTC5XX/Cfg_SwiNo.obj
+_debug/cen_hw/TTC580/src/_app/AUTO_CEN_TTC5XX/Cfg_Ver.obj
+_debug/cen_hw/TTC580/src/_app/CAN/StartSensor.obj
+_debug/cen_hw/TTC580/src/_app/Control/BrakeTest.obj
+_debug/cen_hw/TTC580/src/_app/Control/BreakInBrake.obj
+_debug/cen_hw/TTC580/src/_app/Control/ControlBrakes.obj
+_debug/cen_hw/TTC580/src/_app/Control/ControlFunc.obj
+_debug/cen_hw/TTC580/src/_app/Control/ControlKlaxon.obj
+_debug/cen_hw/TTC580/src/_app/Control/ControlLight.obj
+_debug/cen_hw/TTC580/src/_app/Control/ControlMastDigitalDisplay.obj
+_debug/cen_hw/TTC580/src/_app/Control/ControlMotor.obj
+_debug/cen_hw/TTC580/src/_app/Control/ControlRadioCommand.obj
+_debug/cen_hw/TTC580/src/_app/Control/ControlRailTranslationElectric.obj
+_debug/cen_hw/TTC580/src/_app/Control/ControlRailTranslationFunc.obj
+_debug/cen_hw/TTC580/src/_app/Control/ControlTrackTranslationFunc.obj
+_debug/cen_hw/TTC580/src/_app/Control/ControlUnBlockOscillationAxle.obj
+_debug/cen_hw/TTC580/src/_app/Control/RailWorkSafety.obj
+_debug/cen_hw/TTC580/src/_app/Control/SelectControlPost.obj
+_debug/cen_hw/TTC580/src/_app/Control/SpeedMaxTranslationRail.obj
+_debug/cen_hw/TTC580/src/_app/ControllerElectricMotor/DmcControllerSigma2N.obj
+_debug/cen_hw/TTC580/src/_app/CustomLibrary/CustomLibrary.obj
+_debug/cen_hw/TTC580/src/_app/Datalogger/Datalog.obj
+_debug/cen_hw/TTC580/src/_app/DiagSystem/DiagSystem.obj
+_debug/cen_hw/TTC580/src/_app/IO/ReadInputsFunc.obj
+_debug/cen_hw/TTC580/src/_app/IO/WriteOuputsFunc.obj
+_debug/cen_hw/TTC580/src/_app/Safety/SafetyAuthorizeTransRail.obj
+_debug/cen_hw/TTC580/src/_app/Safety/SafetyAuthorizeTransTrack.obj
+_debug/cen_hw/TTC580/src/_app/Safety/SafetyCheckEmergencyStop.obj
+_debug/cen_hw/TTC580/src/_app/Safety/SafetyParkBrake.obj
+_debug/cen_hw/TTC580/src/_app/Safety/SafetyRailWorkSafety.obj
+_debug/cen_hw/TTC580/src/_app/Safety/SafetyReadInputsFunc.obj
+_debug/cen_hw/TTC580/src/_app/Safety/SafetySelectControlPost.obj
+_debug/cen_hw/TTC580/src/_app/Safety/SafetyServiceBrake.obj
+_debug/cen_hw/TTC580/src/_app/Safety/SafetySpeedMaxTranslationRail.obj
+_debug/cen_hw/TTC580/src/_app/Safety/SafetyWriteOutput.obj
+_debug/cen_hw/TTC580/src/_app/SavedParameters/UpdateParameterTimerBlock.obj
+_debug/cen_hw/TTC580/src/_app/SavedParameters/WriteSavedParameters.obj
+-l ./include/_lib/TTC580/hw/component/CEN_TTC580_HW_BloDig.lib \
+-l ./include/_lib/TTC580/hw/component/CEN_TTC580_HW_BloOutVoltPro.lib \
+-l ./include/_lib/TTC580/hw/component/CEN_TTC580_HW_BloPro.lib \
+-l ./include/_lib/TTC580/hw/core/CEN_TTC580_HW_CoreBasStd.lib \
+-l ./include/_lib/TTC580/hw/logical_inp/CEN_TTC580_HW_BloSwiDblNcNo.lib \
+-l ./include/_lib/TTC580/hw/logical_inp/CEN_TTC580_HW_BloSwiDblNoNc.lib \
+-l ./include/_lib/TTC580/hw/logical_inp/CEN_TTC580_HW_BloSwiNc.lib \
+-l ./include/_lib/TTC580/hw/logical_inp/CEN_TTC580_HW_BloSwiNo.lib \
+-l ./include/_lib/TTC580/hw/protocol/CEN_TTC580_HW_PtcDmx.lib \
+-l ./include/_lib/TTC580/hw/protocol/CEN_TTC580_HW_PtcMst.lib \
+-l ./include/_lib/TTC580/hw/sensor/CEN_TTC580_HW_BloInCur.lib \
+-l ./include/_lib/TTC580/hw/sensor/CEN_TTC580_HW_BloInFreq.lib \
+-l ./include/_lib/TTC580/hw/signal/CEN_TTC580_HW_SigDbo.lib \
+-l ./include/_lib/TTC580/hw/signal/CEN_TTC580_HW_SigLut.lib \
+-l ./include/_lib/TTC580/hw/signal/CEN_TTC580_HW_SigLutd.lib \
+-l ./include/_lib/TTC580/hw/signal/CEN_TTC580_HW_SigPid.lib \
+-l ./include/_lib/TTC580/hw/signal/CEN_TTC580_HW_SigRamp.lib \
+-l ./include/_lib/TTC580/hw/signal/CEN_TTC580_HW_SigSwiDbl.lib \
+-l ./include/_lib/TTC580/hw/signal/CEN_TTC580_HW_SigTrigger.lib \
+-l ./env/cenTtc5xx/Hw/V3_04_01/lib/bsp.lib \
+-l ./env/cenTtc5xx/Hw/V3_04_01/lib/ttc500.lib \
+-l ./env/cenTtc5xx/Hw/V3_04_01/lib/rtsv7R4_T_be_v3D16_eabi.lib \
+-l env/cenTtc5xx/Hw/mpulib_1/CEN_TTC580_HW_MPUDUMMY.lib \
+env/cenTtc5xx/Hw/V3_04_01/bsp/mem_ttc500_bl.lsf 
+-m _debug/cen_hw/TTC580/main.map 
+-x --rom_model --be32 --issue_remarks --warn_sections --display_error_number --diag_suppress=10068 --mapfile_contents=all 
+-o _debug/cen_hw/TTC580/src/main.out

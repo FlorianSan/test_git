@@ -1,0 +1,219 @@
+### Build with HyRebuilder Version: 05.17.00 ####
+
+SUB_CC_INCLUDES = \
+-I$(ROOT_PATH)/include \
+-I$(ROOT_PATH)/include/basic \
+-I$(ROOT_PATH)/include/core \
+-I$(ROOT_PATH)/include/core/board \
+-I$(ROOT_PATH)/include/core/pin \
+-I$(ROOT_PATH)/include/library \
+-I$(ROOT_PATH)/include/library/component \
+-I$(ROOT_PATH)/include/library/logical_inp \
+-I$(ROOT_PATH)/include/library/sensor \
+-I$(ROOT_PATH)/include/library/signal \
+-I$(ROOT_PATH)/include/library/standard \
+-I$(ROOT_PATH)/include/library/testsuite \
+-I$(ROOT_PATH)/include/library/testsuite/cvtest \
+-I$(ROOT_PATH)/include/protocol \
+-I$(ROOT_PATH)/src \
+-I$(ROOT_PATH)/src/_app \
+-I$(ROOT_PATH)/src/_app/Alarms \
+-I$(ROOT_PATH)/src/_app/AUTO_CEN_TTC5XX \
+-I$(ROOT_PATH)/src/_app/CAN \
+-I$(ROOT_PATH)/src/_app/Control \
+-I$(ROOT_PATH)/src/_app/Control/Limitations \
+-I$(ROOT_PATH)/src/_app/CustomLibrary \
+-I$(ROOT_PATH)/src/_app/DiagSystem \
+-I$(ROOT_PATH)/src/_app/IO \
+-I$(ROOT_PATH)/src/_app/Safety \
+-I$(ROOT_PATH)/src/_app/SavedParameters
+
+
+SUB_LIB_EXT = \
+$(ROOT_PATH)/include/_lib/TTC580/hw/component/CEN_TTC580_HW_BloDig.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/component/CEN_TTC580_HW_BloOutVoltPro.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/component/CEN_TTC580_HW_BloPro.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/core/CEN_TTC580_HW_CoreBasStd.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/logical_inp/CEN_TTC580_HW_BloSwiNo.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/protocol/CEN_TTC580_HW_PtcDmx.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/protocol/CEN_TTC580_HW_PtcMst.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/sensor/CEN_TTC580_HW_BloInCur.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/sensor/CEN_TTC580_HW_BloInCurDbl.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/sensor/CEN_TTC580_HW_BloInResist.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/signal/CEN_TTC580_HW_SigDbo.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/signal/CEN_TTC580_HW_SigInAnaDbl.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/signal/CEN_TTC580_HW_SigLut.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/signal/CEN_TTC580_HW_SigPid.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/signal/CEN_TTC580_HW_SigRamp.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/signal/CEN_TTC580_HW_SigSwiDbl.lib \
+$(ROOT_PATH)/include/_lib/TTC580/hw/signal/CEN_TTC580_HW_SigTrigger.lib
+
+
+SUB_OBJECTS = \
+$(OUT_PATH)/src/main_cen.obj \
+$(OUT_PATH)/src/_app/Alarms/AlarmManagement.obj \
+$(OUT_PATH)/src/_app/Alarms/AlarmRelease.obj \
+$(OUT_PATH)/src/_app/AppBspMem.obj \
+$(OUT_PATH)/src/_app/AppCode.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/App_CanSigRec.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/App_Db.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/App_LibTab.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/App_Pin.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_CBuf.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_CBus.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_CRcv.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_CSnd.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_Dig.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_Ecu.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_Err.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_InCur.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_InCurDbl.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_InResist.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_LibRegistry.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_OutVoltPro.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_Pro.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_PtcDmx.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_PtcMst.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_Sil.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_SwiNo.obj \
+$(OUT_PATH)/src/_app/AUTO_CEN_TTC5XX/Cfg_Ver.obj \
+$(OUT_PATH)/src/_app/CAN/ControlCan48Xs.obj \
+$(OUT_PATH)/src/_app/Control/ArrowArmFunc.obj \
+$(OUT_PATH)/src/_app/Control/AutoStopFunc.obj \
+$(OUT_PATH)/src/_app/Control/AxleFunc.obj \
+$(OUT_PATH)/src/_app/Control/BuzzerFunc.obj \
+$(OUT_PATH)/src/_app/Control/BypassFunc.obj \
+$(OUT_PATH)/src/_app/Control/ControlFunc.obj \
+$(OUT_PATH)/src/_app/Control/ControlMast.obj \
+$(OUT_PATH)/src/_app/Control/DeltaArmFunc.obj \
+$(OUT_PATH)/src/_app/Control/EndStopManagement.obj \
+$(OUT_PATH)/src/_app/Control/InclinaisonBasketFunc.obj \
+$(OUT_PATH)/src/_app/Control/Limitations/ArrowArmLimitation.obj \
+$(OUT_PATH)/src/_app/Control/Limitations/DeltaArmLimitation.obj \
+$(OUT_PATH)/src/_app/Control/Limitations/InclinaisonBasketLimitation.obj \
+$(OUT_PATH)/src/_app/Control/Limitations/LimitationControl.obj \
+$(OUT_PATH)/src/_app/Control/Limitations/PendularLimitation.obj \
+$(OUT_PATH)/src/_app/Control/Limitations/RotationBasketLimitation.obj \
+$(OUT_PATH)/src/_app/Control/Limitations/RotationTurretLimitation.obj \
+$(OUT_PATH)/src/_app/Control/Limitations/TelescopeArmLimitation.obj \
+$(OUT_PATH)/src/_app/Control/LimitWorkEnvelope.obj \
+$(OUT_PATH)/src/_app/Control/MotorElectricRpm.obj \
+$(OUT_PATH)/src/_app/Control/MotorFunc.obj \
+$(OUT_PATH)/src/_app/Control/OrangeFlashingLightFunc.obj \
+$(OUT_PATH)/src/_app/Control/OverloadSecurity.obj \
+$(OUT_PATH)/src/_app/Control/PendularFunc.obj \
+$(OUT_PATH)/src/_app/Control/PvgEvTorFunc.obj \
+$(OUT_PATH)/src/_app/Control/RotationBasketFunc.obj \
+$(OUT_PATH)/src/_app/Control/RotationTurretFunc.obj \
+$(OUT_PATH)/src/_app/Control/TelescopeArmFunc.obj \
+$(OUT_PATH)/src/_app/CustomLibrary/CustomLibrary.obj \
+$(OUT_PATH)/src/_app/DiagSystem/DiagSystem.obj \
+$(OUT_PATH)/src/_app/IO/ReadInputsFunc.obj \
+$(OUT_PATH)/src/_app/IO/WriteOuputsFunc.obj \
+$(OUT_PATH)/src/_app/Safety/SafetyArrowArmLimitation.obj \
+$(OUT_PATH)/src/_app/Safety/SafetyDeltaArmLimitation.obj \
+$(OUT_PATH)/src/_app/Safety/SafetyMotor.obj \
+$(OUT_PATH)/src/_app/Safety/SafetyOverloadSecurity.obj \
+$(OUT_PATH)/src/_app/Safety/SafetyReadInputsFunc.obj \
+$(OUT_PATH)/src/_app/Safety/SafetyRotationTurretLimitation.obj \
+$(OUT_PATH)/src/_app/Safety/SafetyTelescopeLimitation.obj \
+$(OUT_PATH)/src/_app/Safety/SafetyWriteOutput.obj \
+$(OUT_PATH)/src/_app/SavedParameters/WriteSavedParameters.obj
+
+
+SUB_LINT = \
+-I$(LINT_PATH)\include \
+-I$(LINT_PATH)\include\basic \
+-I$(LINT_PATH)\include\core \
+-I$(LINT_PATH)\include\core\board \
+-I$(LINT_PATH)\include\core\pin \
+-I$(LINT_PATH)\include\library \
+-I$(LINT_PATH)\include\library\component \
+-I$(LINT_PATH)\include\library\logical_inp \
+-I$(LINT_PATH)\include\library\sensor \
+-I$(LINT_PATH)\include\library\signal \
+-I$(LINT_PATH)\include\library\standard \
+-I$(LINT_PATH)\include\library\testsuite \
+-I$(LINT_PATH)\include\library\testsuite\cvtest \
+-I$(LINT_PATH)\include\protocol \
+-I$(LINT_PATH)\src \
+-I$(LINT_PATH)\src\_app \
+-I$(LINT_PATH)\src\_app\Alarms \
+-I$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX \
+-I$(LINT_PATH)\src\_app\CAN \
+-I$(LINT_PATH)\src\_app\Control \
+-I$(LINT_PATH)\src\_app\Control\Limitations \
+-I$(LINT_PATH)\src\_app\CustomLibrary \
+-I$(LINT_PATH)\src\_app\DiagSystem \
+-I$(LINT_PATH)\src\_app\IO \
+-I$(LINT_PATH)\src\_app\Safety \
+-I$(LINT_PATH)\src\_app\SavedParameters \
+	$(LINT_PATH)\src\main_cen.c \
+	$(LINT_PATH)\src\_app\Alarms\AlarmManagement.c \
+	$(LINT_PATH)\src\_app\Alarms\AlarmRelease.c \
+	$(LINT_PATH)\src\_app\AppBspMem.c \
+	$(LINT_PATH)\src\_app\AppCode.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\App_CanSigRec.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\App_Db.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\App_LibTab.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\App_Pin.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_CBuf.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_CBus.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_CRcv.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_CSnd.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_Dig.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_Ecu.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_Err.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_InCur.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_InCurDbl.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_InResist.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_LibRegistry.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_OutVoltPro.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_Pro.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_PtcDmx.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_PtcMst.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_Sil.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_SwiNo.c \
+	$(LINT_PATH)\src\_app\AUTO_CEN_TTC5XX\Cfg_Ver.c \
+	$(LINT_PATH)\src\_app\CAN\ControlCan48Xs.c \
+	$(LINT_PATH)\src\_app\Control\ArrowArmFunc.c \
+	$(LINT_PATH)\src\_app\Control\AutoStopFunc.c \
+	$(LINT_PATH)\src\_app\Control\AxleFunc.c \
+	$(LINT_PATH)\src\_app\Control\BuzzerFunc.c \
+	$(LINT_PATH)\src\_app\Control\BypassFunc.c \
+	$(LINT_PATH)\src\_app\Control\ControlFunc.c \
+	$(LINT_PATH)\src\_app\Control\ControlMast.c \
+	$(LINT_PATH)\src\_app\Control\DeltaArmFunc.c \
+	$(LINT_PATH)\src\_app\Control\EndStopManagement.c \
+	$(LINT_PATH)\src\_app\Control\InclinaisonBasketFunc.c \
+	$(LINT_PATH)\src\_app\Control\Limitations\ArrowArmLimitation.c \
+	$(LINT_PATH)\src\_app\Control\Limitations\DeltaArmLimitation.c \
+	$(LINT_PATH)\src\_app\Control\Limitations\InclinaisonBasketLimitation.c \
+	$(LINT_PATH)\src\_app\Control\Limitations\LimitationControl.c \
+	$(LINT_PATH)\src\_app\Control\Limitations\PendularLimitation.c \
+	$(LINT_PATH)\src\_app\Control\Limitations\RotationBasketLimitation.c \
+	$(LINT_PATH)\src\_app\Control\Limitations\RotationTurretLimitation.c \
+	$(LINT_PATH)\src\_app\Control\Limitations\TelescopeArmLimitation.c \
+	$(LINT_PATH)\src\_app\Control\LimitWorkEnvelope.c \
+	$(LINT_PATH)\src\_app\Control\MotorElectricRpm.c \
+	$(LINT_PATH)\src\_app\Control\MotorFunc.c \
+	$(LINT_PATH)\src\_app\Control\OrangeFlashingLightFunc.c \
+	$(LINT_PATH)\src\_app\Control\OverloadSecurity.c \
+	$(LINT_PATH)\src\_app\Control\PendularFunc.c \
+	$(LINT_PATH)\src\_app\Control\PvgEvTorFunc.c \
+	$(LINT_PATH)\src\_app\Control\RotationBasketFunc.c \
+	$(LINT_PATH)\src\_app\Control\RotationTurretFunc.c \
+	$(LINT_PATH)\src\_app\Control\TelescopeArmFunc.c \
+	$(LINT_PATH)\src\_app\CustomLibrary\CustomLibrary.c \
+	$(LINT_PATH)\src\_app\DiagSystem\DiagSystem.c \
+	$(LINT_PATH)\src\_app\IO\ReadInputsFunc.c \
+	$(LINT_PATH)\src\_app\IO\WriteOuputsFunc.c \
+	$(LINT_PATH)\src\_app\Safety\SafetyArrowArmLimitation.c \
+	$(LINT_PATH)\src\_app\Safety\SafetyDeltaArmLimitation.c \
+	$(LINT_PATH)\src\_app\Safety\SafetyMotor.c \
+	$(LINT_PATH)\src\_app\Safety\SafetyOverloadSecurity.c \
+	$(LINT_PATH)\src\_app\Safety\SafetyReadInputsFunc.c \
+	$(LINT_PATH)\src\_app\Safety\SafetyRotationTurretLimitation.c \
+	$(LINT_PATH)\src\_app\Safety\SafetyTelescopeLimitation.c \
+	$(LINT_PATH)\src\_app\Safety\SafetyWriteOutput.c \
+	$(LINT_PATH)\src\_app\SavedParameters\WriteSavedParameters.c

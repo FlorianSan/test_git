@@ -1,0 +1,31 @@
+﻿<?xml version="1.0"?>
+<ArrayOfResourceDataItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ResourceDataItem Version="1.0.1.0">
+    <Id>014eceac-27e3-4bdc-893e-283ee72d5554</Id>
+    <ParentId>00000000-0000-0000-0000-000000000000</ParentId>
+    <Type>TypePictures</Type>
+    <Description>Pictures</Description>
+    <Leaf>false</Leaf>
+  </ResourceDataItem>
+  <ResourceDataItem Version="1.0.1.0">
+    <Id>99bbe227-7e00-4a89-ad4b-4e9d29194557</Id>
+    <ParentId>00000000-0000-0000-0000-000000000000</ParentId>
+    <Type>TypeEcus</Type>
+    <Description>ECUs</Description>
+    <Leaf>false</Leaf>
+  </ResourceDataItem>
+  <ResourceDataItem Version="1.0.1.0">
+    <Id>1af4919d-7c66-4a5e-afd4-b8cd30cc6fad</Id>
+    <ParentId>00000000-0000-0000-0000-000000000000</ParentId>
+    <Type>TypeControls</Type>
+    <Description>Control</Description>
+    <Leaf>false</Leaf>
+  </ResourceDataItem>
+  <ResourceDataItem Version="1.0.1.0">
+    <Id>272eda7a-e575-4471-bffe-fbad0c797cac</Id>
+    <ParentId>00000000-0000-0000-0000-000000000000</ParentId>
+    <Type>TypeConditions</Type>
+    <Description>Conditions</Description>
+    <Leaf>false</Leaf>
+  </ResourceDataItem>
+</ArrayOfResourceDataItem>

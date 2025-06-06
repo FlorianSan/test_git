@@ -1,0 +1,375 @@
+FormatVersion=5.0
+Title=C0_CAN_4
+
+// @DESCRIPTION  CAN BUS 4 C0
+// @CREATED      2025-04-18 16:40:50 HYDAC/PdtCodeBuilder
+// @CODEBUILDER  1.2.7 (Build: 080)
+// @PDT          2.11.72.172
+// @PROJECTVER   0.0.0
+// @VERSION      1.3
+
+
+{ENUMS} //------------------------------------------------------
+
+enum ETBIT2(0="Off", 1="On", 2="Error", 3="Undef")
+enum ETBIT3(0="Neutral", 1="Positive", 2="Negative", 5="CtlError", 6="Error", 7="Undef")
+enum ETBIT4(14="Error", 15="Not")
+enum ETBIT5(30="Error", 31="Not")
+enum ETBIT6(62="Error", 63="Not")
+enum ETBIT7(126="Error", 127="Not")
+enum ETINT8(121="Limit", 126="Error", 127="Undef")
+enum ETUINT8(249="Limit", 254="Error", 255="Undef")
+enum ETINT16(32761="Limit", 32766="Error", 32767="Undef")
+enum ETUINT16(65529="Limit", 65534="Error", 65535="Undef")
+enum ETINT32(2147483641="Limit", 2147483646="Error", 2147483647="Undef")
+enum EBRAKETESTSELECTED_TYPE(0="GE_OSCI_SERVICE_BRAKE",1="GE_FIXE_SERVICE_BRAKE",2="GE_OSCI_PARKING_BRAKE",3="GE_FIXE_PARKING_BRAKE",4="GE_SERVICE_BRAKES",5="GE_PARKING_BRAKES",6="GE_NO_BRAKE",7="GE_FIXE_2ND_PARKING_BRAKE",8="GE_OSCI_2ND_PARKING_BRAKE")
+enum ECONTROLPOST_TYPE(0="GE_POST_NO_POST",1="GE_POST_RADIO",2="GE_POST_NACELLE",3="GE_POST_TURRET")
+enum ECOUNTRY_TYPE(0="GE_FRANCE",1="GE_SWITZERLAND",2="GE_UNITED_KINGDOM",3="GE_AUSTRALIA")
+enum EDIGSTATUS_TYPE(0="GE_DIG_OFF",1="GE_DIG_ON",2="GE_DIG_ERROR",3="GE_DIG_UNDEF")
+enum EDISTATE_TYPE(0="GE_DI_OFF",1="GE_DI_ON",2="GE_DI_ERROR",3="GE_DI_UNDEF")
+enum EERRORSTATUS48XS_TYPE(0="GE_IO_E_OK",2="GE_IO_E_BUSY",3="GE_IO_E_UNKNOWN",32="GE_IO_E_CHANNEL_BUSY",33="GE_IO_E_CHANNEL_NOT_CONFIGURED",35="GE_IO_E_FET_PROTECTION",90="GE_IO_E_ADC_NOT_FINISH",100="GE_IO_E_PWD_CAPTURE_ERROR",101="GE_IO_E_PWD_NOT_FINISHED",102="GE_IO_E_PWD_OPEN_LOAD",103="GE_IO_E_PWD_SHORT_CIRCUIT",104="GE_IO_E_PWD_TIMER_OVERFLOW",105="GE_IO_E_PWD_HIGH_LEVEL",106="GE_IO_E_PWD_LOW_LEVEL",107="GE_IO_E_PWD_CURRENT_THRESHOLD_HIGH",108="GE_IO_E_PWD_CURRENT_THRESHOLD_LOW",110="GE_IO_E_DO_OPEN_LOAD",111="GE_IO_E_DO_SHORT_CIRCUIT",112="GE_IO_E_DO_DIAG_NOT_FINISHED")
+enum EMANIPULATORPOSITION_TYPE(0="GE_NEUTRAL",1="GE_AV",2="GE_AR",3="GE_ERROR")
+enum EMOTORSTATE_TYPE(0="GE_Stopped",1="GE_PreStart",2="GE_Starting",3="GE_WarmUp",4="GE_Running",5="GE_CoolDown",6="GE_Stopping",7="GE_PostRun")
+enum EMOVENACELLEMODE_TYPE(0="GE_NO_MODE",1="GE_OFFRAIL_RADIOCONTOL_MODE",2="GE_RAIL_NACELLE_MODE",3="GE_TURRET_MODE")
+enum EOFFRAILMODE_TYPE(0="GE_NO_OFFRAIL_MODE",1="GE_TRANSPORT_OFFRAIL_MODE",2="GE_WORK_OFFRAIL_MODE",3="GE_WORSHOP_OFFRAIL_MODE")
+enum EPOSJOY_TYPE(0="GE_AV_JOY",1="GE_NEU_JOY",2="GE_AR_JOY")
+enum EPROSTATUS_TYPE(0="GE_PRO_OFF",1="GE_PRO_ON",2="GE_PRO_ERROR",3="GE_PRO_NOT_INSTALLED",4="GE_PRO_NO_DUTY_CYCLE",5="GE_PRO_MIN_DUTY_CYCLE")
+enum ERAILSPEEDMODE_TYPE(0="GE_NO_SPEED_MAX_RAIL_MODE",1="GE_ACCESS_SITE_MODE",2="GE_HIGH_SPEED",3="GE_LOW_SPEED",4="GE_LOW_SPEED_BRAKE_TEST_NEEDED",5="GE_BRAKE_TEST_SPEED_RUNNING",6="GE_BREAK_IN_BRAKE_SPEED_RUNNING")
+enum ERAILTRANSLATIONDIRECTION_TYPE(0="GE_AV_RAIL_DIR",1="GE_AR_RAIL_DIR",2="GE_STOP_RAIL_DIR")
+enum ERAILWORKMODE_TYPE(0="GE_NO_RAIL_WORK_MODE",1="GE_BILATERAL_MODE",2="GE_ALO_MODE",3="GE_MULTILANE_MODE")
+enum ESTATEBOOL2BITS_TYPE(0="GE_OFF",1="GE_ON",2="GE_ERR",3="GE_NA")
+enum ESTATEHEARTBEAT_TYPE(0="GE_BOOT_UP",4="GE_STOPPED",5="GE_OPERATIONAL",127="GE_PRE_OPERATIONAL")
+enum ESTATESERVICEBRAKERAIL_TYPE(0="GE_DEFINE_BRAKE",1="GE_AV_SERVICE_BRAKE",2="GE_AR_SERVICE_BRAKE")
+enum ETRANSPORTPOSITION_TYPE(0="GE_NO_TRANSPORT_POSITION",1="GE_OFFRAIL_TRANSPORT_POSITION",2="GE_RAIL_TRANSPORT_POSITION")
+enum EWDSTATE_TYPE(6="GE_RUNNING",9="GE_TRIGGERED")
+
+
+{SEND} //-------------------------------------------------------
+
+
+
+{RECEIVE} //----------------------------------------------------
+
+
+
+{SENDRECEIVE} //------------------------------------------------
+
+[Datalogger]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=51h
+Type=Standard
+CycleTime=1000
+DLC=8
+VAR=boServiceBrake unsigned 0,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Frein de service     @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boParkBrake unsigned 1,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Frein de park    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boHorm unsigned 2,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Commande du klaxon    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boBeacon unsigned 3,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Commande du gyrophare    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boFowardMvt unsigned 4,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Direction de la machine sur rail(avant)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boReverseMvt unsigned 5,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Direction de la machine sur rail(arrière)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boVigilanceSystem unsigned 6,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Activation de la gachette    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boEmergencyMode unsigned 7,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Mode secour actif    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=u16Distance_Km unsigned 8,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:Distance totale    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=u16Speed10th_Kmh unsigned 24,16 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:65535 	// @DESCR:Vitesse actuelle    @APPL: /o:0 /f:1 /u:[-] /type:TUINT16    @ST: /o:0 /f:1 /u:[-] /type:TUINT16 @CAN: /u:[-] /type:TUINT16
+VAR=boFrontAxleDown unsigned 40,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Essieux en bas    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boRearAxleDown unsigned 41,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Essieux en haut    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boOverload unsigned 42,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Capteur de surcharge 1 actif    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boHeadLight unsigned 43,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Projecteur En15746 actif    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boMotorOn unsigned 44,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Moteur allumé    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boTestParkBrakeOK unsigned 45,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Test frein validé pour frein de park    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boTestServiceBrakeOK unsigned 46,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Test frein validé pour frein de service    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boOverSpeedRailLowMode unsigned 47,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Survitesse en petite vitesse    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boOverSpeedRailHighMode unsigned 48,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Survitesse en grande vitesse    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boAskBrakeTest unsigned 49,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Test frein demandé    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boTempOilRail unsigned 50,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Alarme température huile rail active    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boTempOilRoad unsigned 51,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Alarme température huile rail active    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boSafetyManSystem unsigned 52,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Sécurité safe man system    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boFaultLenghtSensor unsigned 53,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Alarme du capteur téléscope    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boFaultCantSensor unsigned 54,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Alarme du capteur de dévers    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boFaultDeadManPedal unsigned 55,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Pédale de l'homme mort    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boFaultSafetySolenoid unsigned 56,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Alarme du bypass(Ev de sécurité)    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boBasketPostValid unsigned 57,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Poste nacelle actif    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boTurretPostValid unsigned 58,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Poste tourelle actif    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boSetupCodeOk unsigned 59,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Code dévérouiller    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boTurretSensorsFailures unsigned 60,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Alarme sur le capteur tourelle    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boOneSpeedSensorFault unsigned 61,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Alarme sur un seul capteur de vitesse    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boTwoSpeedSensorFault unsigned 62,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Alarme sur deux capteur de vitesse    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+VAR=boUnused unsigned 63,1 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:1 	// @DESCR:Message de réserve    @APPL: /o:0 /f:1 /u:[-] /type:TBOOLEAN    @ST: /o:0 /f:1 /u:[-] /type:TBOOLEAN @CAN: /u:[-] /type:TBOOLEAN
+
+[HMG_1]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=11h
+Type=Standard
+CycleTime=40
+DLC=8
+VAR=u8Byte0 unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte1 unsigned 8,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte2 unsigned 16,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte3 unsigned 24,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte4 unsigned 32,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte5 unsigned 40,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte6 unsigned 48,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte7 unsigned 56,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[HMG_2]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=12h
+Type=Standard
+CycleTime=40
+DLC=8
+VAR=u8Byte0 unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte1 unsigned 8,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte2 unsigned 16,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte3 unsigned 24,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte4 unsigned 32,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte5 unsigned 40,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte6 unsigned 48,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte7 unsigned 56,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[HMG_3]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=13h
+Type=Standard
+CycleTime=40
+DLC=8
+VAR=u8Byte0 unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte1 unsigned 8,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte2 unsigned 16,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte3 unsigned 24,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte4 unsigned 32,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte5 unsigned 40,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte6 unsigned 48,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte7 unsigned 56,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[DMC_TxSdo]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=610h
+Type=Standard
+CycleTime=50
+DLC=8
+VAR=u8ControlField unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8TargetIndexLSB unsigned 8,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8TargetIndexMSB unsigned 16,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8TargetSubIndex unsigned 24,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Data0 unsigned 32,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Data1 unsigned 40,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Data2 unsigned 48,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Data3 unsigned 56,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[NMT]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=0h
+Type=Standard
+CycleTime=50
+DLC=2
+VAR=u8Command unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8TargetNode unsigned 8,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[DMC_TxPdo1_DC]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=210h
+Type=Standard
+CycleTime=50
+DLC=8
+VAR=u8Byte0 unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte1 unsigned 8,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte2 unsigned 16,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte3 unsigned 24,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte4 unsigned 32,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte5 unsigned 40,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte6 unsigned 48,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte7 unsigned 56,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[DMC_TxPdo2_BCL]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=310h
+Type=Standard
+CycleTime=50
+DLC=8
+VAR=u8Byte0 unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte1 unsigned 8,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte2 unsigned 16,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte3 unsigned 24,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte4 unsigned 32,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte5 unsigned 40,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte6 unsigned 48,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte7 unsigned 56,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[FlashBatteryRpdo1_0]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=180h
+Type=Standard
+CycleTime=50
+DLC=8
+VAR=u8Byte0 unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte1 unsigned 8,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte2 unsigned 16,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte3 unsigned 24,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte4 unsigned 32,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte5 unsigned 40,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte6 unsigned 48,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte7 unsigned 56,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[FlashBatteryRpdo1_2]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=182h
+Type=Standard
+CycleTime=50
+DLC=8
+VAR=u8Byte0 unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte1 unsigned 8,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte2 unsigned 16,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte3 unsigned 24,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte4 unsigned 32,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte5 unsigned 40,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte6 unsigned 48,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte7 unsigned 56,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[FlashBatteryRpdo2_0]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=280h
+Type=Standard
+CycleTime=50
+DLC=8
+VAR=u8Byte0 unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte1 unsigned 8,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte2 unsigned 16,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte3 unsigned 24,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte4 unsigned 32,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte5 unsigned 40,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte6 unsigned 48,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte7 unsigned 56,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[FlashBatteryRpdo3_0]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=380h
+Type=Standard
+CycleTime=50
+DLC=8
+VAR=u8Byte0 unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte1 unsigned 8,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte2 unsigned 16,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte3 unsigned 24,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte4 unsigned 32,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte5 unsigned 40,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte6 unsigned 48,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte7 unsigned 56,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[FlashBatteryRpdo3_3]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=383h
+Type=Standard
+CycleTime=50
+DLC=8
+VAR=u8Byte0 unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte1 unsigned 8,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte2 unsigned 16,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte3 unsigned 24,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte4 unsigned 32,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte5 unsigned 40,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte6 unsigned 48,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte7 unsigned 56,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[DMC_Heartbeat_HB]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=710h
+Type=Standard
+CycleTime=50
+DLC=1
+VAR=u8NodeState unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[DMC_RxSdo]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=590h
+Type=Standard
+CycleTime=50
+DLC=8
+VAR=u8ControlField unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8TargetIndexLSB unsigned 8,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8TargetIndexMSB unsigned 16,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8TargetSubIndex unsigned 24,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Data0 unsigned 32,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Data1 unsigned 40,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Data2 unsigned 48,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Data3 unsigned 56,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[DMC_RxPdo1_MS]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=190h
+Type=Standard
+CycleTime=50
+DLC=8
+VAR=u8Byte0 unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte1 unsigned 8,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte2 unsigned 16,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte3 unsigned 24,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte4 unsigned 32,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte5 unsigned 40,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte6 unsigned 48,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte7 unsigned 56,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[DMC_RxPdo2_DS]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=290h
+Type=Standard
+CycleTime=50
+DLC=8
+VAR=u8Byte0 unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte1 unsigned 8,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte2 unsigned 16,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte3 unsigned 24,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte4 unsigned 32,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte5 unsigned 40,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte6 unsigned 48,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte7 unsigned 56,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+
+[DMC_RxPdo3_CS]
+// @boSafeInvMsg=FALSE
+// @boSafeCnt=FALSE
+// @AppState=1
+ID=390h
+Type=Standard
+CycleTime=50
+DLC=8
+VAR=u8Byte0 unsigned 0,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte1 unsigned 8,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte2 unsigned 16,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte3 unsigned 24,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte4 unsigned 32,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte5 unsigned 40,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte6 unsigned 48,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+VAR=u8Byte7 unsigned 56,8 /f:1 /o:0 /u:"[-]" /d:0 /min:0 /max:255 	// @DESCR:new signal    @APPL: /o:0 /f:1 /u:[-] /type:TUINT8    @ST: /o:0 /f:1 /u:[-] /type:TUINT8 @CAN: /u:[-] /type:TUINT8
+

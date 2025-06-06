@@ -1,0 +1,29 @@
+##############################################################
+#
+# rebuilder_constraints.txt
+# Created on: 28.01.2020
+# Author: Nico Lehmann
+#
+##############################################################
+# Constraints for parsing, dep structure and compiler switches
+############################################################## just type in the file names or directory names - NO BLANK SPACES!!!
+
+#blockScanningDeps# enter the name of the directory that should not be scanned for files
+env
+_debug
+_doc
+_tools
+include
+_lib
+testsuite
+_draft
+
+#blockScanningSwitch# enter the name of the directory that should not be scanned for files
+inc
+env
+_debug
+_tools
+testsuite
+_draft
+
+##############################################################
