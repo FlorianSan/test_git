@@ -1,5 +1,5 @@
 //**************************************************************************************************
-//! @crc        1722711416
+//! @crc        1100546338
 //! @file       App_Pin.c
 //! @brief      Generate by: HYDAC Controller Project - Code Builder Tool Chain
 //! @ecu        TTC580
@@ -9,7 +9,7 @@
 //! @Match      07-04-01-04
 //! @PDT        2.11.72.172
 //! @PdtProjVer 0.0.0
-//! @created    2025-06-04 11:35:59   HYDAC/HCP-CC
+//! @created    2025-04-18 16:40:50   HYDAC/HCP-CC
 //**************************************************************************************************
 
 #include <ItfCoreBoard.h>
@@ -57,9 +57,9 @@ const TAppPin gPin_catApp[PIN_MAX] =
     {  37,  153,  PIN_FIX,     PINTYP_DOU,      CIO_NA,    PINRES_PULLUP,           CFG_NA,           CFG_NA,           CFG_NA,      PINPWM_DFLT },
     {  38,  177,  PIN_FIX,     PINTYP_DOU,      CIO_NA,    PINRES_PULLUP,           CFG_NA,           CFG_NA,           CFG_NA,      PINPWM_DFLT },
     {  39,  156,  PIN_FIX,     PINTYP_DOU,      CIO_NA,    PINRES_PULLUP,           CFG_NA,           CFG_NA,           CFG_NA,      PINPWM_DFLT },
-    {  40,  180,  PIN_FIX,     PINTYP_DIN,      CIO_NA,    PINRES_PULLUP,           CFG_NA,           CFG_NA,           CFG_NA,      PINPWM_DFLT },
+    {  40,  180,  PIN_CHA,      PINTYP_NA,      CIO_NA,    PINRES_PULLUP,           CFG_NA,           CFG_NA,           CFG_NA,      PINPWM_DFLT },
     {  41,  159,  PIN_FIX,     PINTYP_DOU,      CIO_NA,    PINRES_PULLUP,           CFG_NA,           CFG_NA,           CFG_NA,      PINPWM_DFLT },
-    {  42,  183,  PIN_FIX,     PINTYP_DIN,      CIO_NA,    PINRES_PULLUP,           CFG_NA,           CFG_NA,           CFG_NA,      PINPWM_DFLT },
+    {  42,  183,  PIN_CHA,      PINTYP_NA,      CIO_NA,    PINRES_PULLUP,           CFG_NA,           CFG_NA,           CFG_NA,      PINPWM_DFLT },
     {  43,  186,  PIN_FIX,     PINTYP_DOU,      CIO_NA,    PINRES_PULLUP,           CFG_NA,           CFG_NA,           CFG_NA,      PINPWM_DFLT },
     {  44,  162,  PIN_FIX,     PINTYP_DOU,      CIO_NA,    PINRES_PULLUP,           CFG_NA,           CFG_NA,           CFG_NA,      PINPWM_DFLT },
     {  45,  189,  PIN_FIX,     PINTYP_DOU,      CIO_NA,    PINRES_PULLUP,           CFG_NA,           CFG_NA,           CFG_NA,      PINPWM_DFLT },
@@ -104,8 +104,8 @@ const TAppPin gPin_catApp[PIN_MAX] =
     {  84,  239,  PIN_FIX,     PINTYP_DOU,      CIO_NA,    PINRES_PULLUP,      PINTHR_DFLT,      PINTHR_DFLT,     PINSUPPLY_NA,           CFG_NA },
     {  85,  253,  PIN_CHA,      PINTYP_NA,      CIO_NA,    PINRES_PULLUP,      PINTHR_DFLT,      PINTHR_DFLT,     PINSUPPLY_NA,           CFG_NA },
     {  86,  240,  PIN_CHA,      PINTYP_NA,      CIO_NA,    PINRES_PULLUP,      PINTHR_DFLT,      PINTHR_DFLT,     PINSUPPLY_NA,           CFG_NA },
-    {  87,  254,  PIN_FIX,     PINTYP_DIN,      CIO_NA,    PINRES_PULLUP,      PINTHR_DFLT,      PINTHR_DFLT,     PINSUPPLY_NA,           CFG_NA },
-    {  88,  241,  PIN_FIX,     PINTYP_DIN,      CIO_NA,    PINRES_PULLUP,      PINTHR_DFLT,      PINTHR_DFLT,     PINSUPPLY_NA,           CFG_NA },
+    {  87,  254,  PIN_CHA,      PINTYP_NA,      CIO_NA,    PINRES_PULLUP,      PINTHR_DFLT,      PINTHR_DFLT,     PINSUPPLY_NA,           CFG_NA },
+    {  88,  241,  PIN_CHA,      PINTYP_NA,      CIO_NA,    PINRES_PULLUP,      PINTHR_DFLT,      PINTHR_DFLT,     PINSUPPLY_NA,           CFG_NA },
     {  89,  161,  PIN_FIX,     PINTYP_VOU,      CIO_NA,        PINRES_NA,      PINTHR_DFLT,      PINTHR_DFLT,     PINSUPPLY_NA,             1000 },
     {  90,  185,  PIN_FIX,     PINTYP_VOU,      CIO_NA,        PINRES_NA,      PINTHR_DFLT,      PINTHR_DFLT,     PINSUPPLY_NA,             1000 },
     {  91,  188,  PIN_FIX,     PINTYP_DOU,      CIO_NA,        PINRES_NA,      PINTHR_DFLT,      PINTHR_DFLT,     PINSUPPLY_NA,             1000 },

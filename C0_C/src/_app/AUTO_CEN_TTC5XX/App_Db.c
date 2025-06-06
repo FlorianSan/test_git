@@ -1,5 +1,5 @@
 //**************************************************************************************************
-//! @crc        3191321061
+//! @crc        2852915406
 //! @file       App_Db.c
 //! @brief      Generate by: HYDAC Controller Project - Code Builder Tool Chain
 //! @ecu        TTC580
@@ -9,7 +9,7 @@
 //! @Match      07-04-01-04
 //! @PDT        2.11.72.172
 //! @PdtProjVer 0.0.0
-//! @created    2025-06-04 11:35:59   HYDAC/HCP-CC
+//! @created    2025-04-18 16:40:50   HYDAC/HCP-CC
 //**************************************************************************************************
 
 #include <ItfCoreDb.h>
@@ -93,13 +93,7 @@ TDbRamEcuInputsC0 gDb_tRamEcuInputsC0 =
     GE_DI_OFF,                                              //!< eUpMastSensorNCState
     U16_UNDEF,                                              //!< u16UpMastSensorNCRawValue
     GE_DI_OFF,                                              //!< eValveInDownPositionSensorState
-    U16_UNDEF,                                              //!< u16ValveInDownPositionSensorValue
-    GE_DI_OFF,                                              //!< eAxleInMGMode
-    U16_UNDEF,                                              //!< u16AxleInMGModeRawValuePin0
-    U16_UNDEF,                                              //!< u16AxleInMGModeRawValuePin1
-    GE_DI_OFF,                                              //!< eAxleInSDMode
-    U16_UNDEF,                                              //!< u16AxleInSDModeRawValuePin0
-    U16_UNDEF                                               //!< u16AxleInSDModeRawValuePin1
+    U16_UNDEF                                               //!< u16ValveInDownPositionSensorValue
 };
 
 TDbRamEcuOutputsC0 gDb_tRamEcuOutputsC0 =
@@ -327,12 +321,7 @@ TDbRamGeneralC0 gDb_tRamGeneralC0 =
     0,                                                      //!< u16FaultyValue
     0,                                                      //!< u8DeviceNum
     0,                                                      //!< u8ErrorCode
-    FALSE,                                                  //!< boEngineRunningStable
-    FALSE,                                                  //!< boAxlePositionSensorFault
-    FALSE,                                                  //!< boAxlePositionInMGMode
-    FALSE,                                                  //!< boEvLoadBrakeAccuCmd
-    U8_MIN,                                                 //!< u8ErrListCntMax
-    FALSE                                                   //!< boGlobalAuthorizeTrans
+    FALSE                                                   //!< boEngineRunningStable
 };
 
 TDbNvOptionsC0 gDb_tNvOptionsC0 =
@@ -349,8 +338,7 @@ TDbNvOptionsC0 gDb_tNvOptionsC0 =
     FALSE,                                                  //!< boSecondParkBrakeActive
     TRUE,                                                   //!< boAddPerformanceFunc
     FALSE,                                                  //!< boBasketTurretLimitation
-    FALSE,                                                  //!< boPresenceSensorPlate
-    FALSE                                                   //!< boMachineMountedAxlesMG
+    FALSE                                                   //!< boPresenceSensorPlate
 };
 
 TDbNvMemoryC0 gDb_tNvMemoryC0 =
@@ -481,9 +469,7 @@ TDbNvParametersC0 gDb_tNvParametersC0 =
     0,                                                      //!< u8VersionCustom
     4000,                                                   //!< i16OutCharPosElectricPumpPressure
     0,                                                      //!< i16OutCharNeuElectricPumpPressure
-    0,                                                      //!< i16OutCharNegElectricPumpPressure
-    150,                                                    //!< u16ThresBrakeAccuPressureMin
-    200                                                     //!< u16ThresBrakeAccuPressureMax
+    0                                                       //!< i16OutCharNegElectricPumpPressure
 };
 
 TDbNvCalibrationC0 gDb_tNvCalibrationC0 =
@@ -717,7 +703,7 @@ TDbRamEvision7C0 gDb_tRamEvision7C0 =
     FALSE,                                                  //!< bogBothServiceRunInBrakeSelect
     FALSE,                                                  //!< bogTestBrakePageActive
     FALSE,                                                  //!< bogBreakInBrakePageActive
-    FALSE,                                                  //!< bogRollingCode
+    FALSE,                                                  //!< bogSerialNumber
     FALSE,                                                  //!< bogBPBasketValidate
     FALSE,                                                  //!< bogKeyFilterOverload
     FALSE,                                                  //!< bogKeyNextMode
@@ -846,16 +832,7 @@ TDbNvParamSpeedMaxRail gDb_tNvParamSpeedMaxRail =
     0,                                                      //!< u16PreventLimitSpeedAccesSiteSpeed
     0,                                                      //!< u16PreventLimitSpeedHighSpeed
     0,                                                      //!< u16PreventLimitSpeedLowSpeed
-    0,                                                      //!< u16PreventSpeedLowSpeedBrakeTest
-    20,                                                     //!< u16Performance2DegSlopeThresMG
-    40,                                                     //!< u16Performance4DegSlopeThresMG
-    60,                                                     //!< u16Performance6DegSlopeThresMG
-    700,                                                    //!< i16TurretPerformLowSpeed2DegMG
-    700,                                                    //!< i16TurretPerformLowSpeedBasket2MG
-    150,                                                    //!< i16TurretPerformLowSpeed4DegMG
-    300,                                                    //!< i16TurretPerformLowSpeedBasket4MG
-    0,                                                      //!< i16TurretPerformLowSpeed6DegMG
-    150                                                     //!< i16TurretPerformLowSpeedBasket6MG
+    0                                                       //!< u16PreventSpeedLowSpeedBrakeTest
 };
 
 TDbRamSpeedMaxRail gDb_tRamSpeedMaxRail =
@@ -908,16 +885,7 @@ TDbRamSpeedMaxRail gDb_tRamSpeedMaxRail =
     FALSE,                                                  //!< boPreventLimitSpeedLowSpeed
     FALSE,                                                  //!< boPreventLimitLowSpeedBrakeTest
     FALSE,                                                  //!< boPreventLimitSpeedExceeding
-    FALSE,                                                  //!< boAuthoriseGlobalLowSpeed
-    0,                                                      //!< u16SelectSlopeCase2Deg
-    0,                                                      //!< u16SelectSlopeCase4Deg
-    0,                                                      //!< u16SelectSlopeCase6Deg
-    0,                                                      //!< i16SelectTurretSectorCase2Deg
-    0,                                                      //!< i16SelectTurretSectorCase4Deg
-    0,                                                      //!< i16SelectTurretSectorCase6Deg
-    0,                                                      //!< i16SelectedTurretCase2DegForBasket
-    0,                                                      //!< i16SelectedTurretCase4DegForBasket
-    0                                                       //!< i16SelectedTurretCase6DegForBasket
+    FALSE                                                   //!< boAuthoriseGlobalLowSpeed
 };
 
 TDbNvParamBrakeTest gDb_tNvParamBrakeTest =
@@ -1020,9 +988,7 @@ TDbNvParamRailWorkSafetyC0 gDb_tNvParamRailWorkSafetyC0 =
     -20,                                                    //!< i16ALOTurretFrontZoneStopThres
     -10,                                                    //!< i16ALOTurretFrontZoneStopHyst
     200,                                                    //!< i16ALOArrowLowerZoneStopThres
-    100,                                                    //!< i16ALOArrowLowerZoneStopHyst
-    40,                                                     //!< i16ThresHighSlopeForArrowUp
-    5                                                       //!< i16HystHighSlopeForArrowUp
+    100                                                     //!< i16ALOArrowLowerZoneStopHyst
 };
 
 TDbRamRailWorkSafetyC0 gDb_tRamRailWorkSafetyC0 =
@@ -1060,8 +1026,7 @@ TDbRamRailWorkSafetyC0 gDb_tRamRailWorkSafetyC0 =
     FALSE,                                                  //!< boTestTelescopInSensor
     0,                                                      //!< i16TestTurretAngularPosition
     0,                                                      //!< i16TestArrowArmAngularPosition
-    GE_NO_RAIL_WORK_MODE,                                   //!< eAbutmentWorkMode
-    FALSE                                                   //!< boHighSlopeForArrowUp
+    GE_NO_RAIL_WORK_MODE                                    //!< eAbutmentWorkMode
 };
 
 TDbRamTransportPosC0 gDb_tRamTransportPosC0 =
@@ -1260,8 +1225,7 @@ TDbRamData4C0RcvFromC1 gDb_tRamData4C0RcvFromC1 =
     FALSE,                                                  //!< boValidTelescopeFirstSectorSlope
     FALSE,                                                  //!< boPostInterdictionMastSNCF
     FALSE,                                                  //!< boInterdictOfNacelTurretPost
-    FALSE,                                                  //!< boMastPanthoFoldedSNCF
-    I16_UNDEF                                               //!< i16AccuBrakeSensorPressureValue
+    FALSE                                                   //!< boMastPanthoFoldedSNCF
 };
 
 TDbNvParamGreenEffC0 gDb_tNvParamGreenEffC0 =
@@ -1606,25 +1570,7 @@ const TDbSetRamEcuInputsC0 gDb_ctSetRamEcuInputsC0=
     GE_DI_OFF,                                              //!< eDef_ValveInDownPositionSensorState
     {0xffff, 2122, TUINT16, DB_VAR},                        //!< tInf_ValveInDownPositionSensorValue
     {U16_MIN, U16_MAX},                                     //!< au16Rng_ValveInDownPositionSensorValue[2]
-    U16_UNDEF,                                              //!< u16Def_ValveInDownPositionSensorValue
-    {0xffff, 2181, EDISTATE_TYPE, DB_VAR},                  //!< tInf_AxleInMGMode
-    {GE_DI_OFF, GE_DI_UNDEF},                               //!< aeRng_AxleInMGMode[2]
-    GE_DI_OFF,                                              //!< eDef_AxleInMGMode
-    {0xffff, 2182, TUINT16, DB_VAR},                        //!< tInf_AxleInMGModeRawValuePin0
-    {U16_MIN, U16_MAX},                                     //!< au16Rng_AxleInMGModeRawValuePin0[2]
-    U16_UNDEF,                                              //!< u16Def_AxleInMGModeRawValuePin0
-    {0xffff, 2183, TUINT16, DB_VAR},                        //!< tInf_AxleInMGModeRawValuePin1
-    {U16_MIN, U16_MAX},                                     //!< au16Rng_AxleInMGModeRawValuePin1[2]
-    U16_UNDEF,                                              //!< u16Def_AxleInMGModeRawValuePin1
-    {0xffff, 2184, EDISTATE_TYPE, DB_VAR},                  //!< tInf_AxleInSDMode
-    {GE_DI_OFF, GE_DI_UNDEF},                               //!< aeRng_AxleInSDMode[2]
-    GE_DI_OFF,                                              //!< eDef_AxleInSDMode
-    {0xffff, 2185, TUINT16, DB_VAR},                        //!< tInf_AxleInSDModeRawValuePin0
-    {U16_MIN, U16_MAX},                                     //!< au16Rng_AxleInSDModeRawValuePin0[2]
-    U16_UNDEF,                                              //!< u16Def_AxleInSDModeRawValuePin0
-    {0xffff, 2186, TUINT16, DB_VAR},                        //!< tInf_AxleInSDModeRawValuePin1
-    {U16_MIN, U16_MAX},                                     //!< au16Rng_AxleInSDModeRawValuePin1[2]
-    U16_UNDEF                                               //!< u16Def_AxleInSDModeRawValuePin1
+    U16_UNDEF                                               //!< u16Def_ValveInDownPositionSensorValue
 };
 
 const TDbSetRamEcuOutputsC0 gDb_ctSetRamEcuOutputsC0=
@@ -2286,22 +2232,7 @@ const TDbSetRamGeneralC0 gDb_ctSetRamGeneralC0=
     0,                                                      //!< u8Def_ErrorCode
     {0xffff, 2151, TBOOLEAN, DB_VAR},                       //!< tInf_EngineRunningStable
     {FALSE, TRUE},                                          //!< aboRng_EngineRunningStable[2]
-    FALSE,                                                  //!< boDef_EngineRunningStable
-    {0xffff, 2155, TBOOLEAN, DB_VAR},                       //!< tInf_AxlePositionSensorFault
-    {FALSE, TRUE},                                          //!< aboRng_AxlePositionSensorFault[2]
-    FALSE,                                                  //!< boDef_AxlePositionSensorFault
-    {0xffff, 2156, TBOOLEAN, DB_VAR},                       //!< tInf_AxlePositionInMGMode
-    {FALSE, TRUE},                                          //!< aboRng_AxlePositionInMGMode[2]
-    FALSE,                                                  //!< boDef_AxlePositionInMGMode
-    {0xffff, 2191, TBOOLEAN, DB_VAR},                       //!< tInf_EvLoadBrakeAccuCmd
-    {FALSE, TRUE},                                          //!< aboRng_EvLoadBrakeAccuCmd[2]
-    FALSE,                                                  //!< boDef_EvLoadBrakeAccuCmd
-    {0xffff, 2257, TUINT8, DB_VAR},                         //!< tInf_ErrListCntMax
-    {U8_MIN, U8_MAX},                                       //!< au8Rng_ErrListCntMax[2]
-    U8_MIN,                                                 //!< u8Def_ErrListCntMax
-    {0xffff, 2258, TBOOLEAN, DB_VAR},                       //!< tInf_GlobalAuthorizeTrans
-    {FALSE, TRUE},                                          //!< aboRng_GlobalAuthorizeTrans[2]
-    FALSE                                                   //!< boDef_GlobalAuthorizeTrans
+    FALSE                                                   //!< boDef_EngineRunningStable
 };
 
 const TDbSetNvOptionsC0 gDb_ctSetNvOptionsC0=
@@ -2341,10 +2272,7 @@ const TDbSetNvOptionsC0 gDb_ctSetNvOptionsC0=
     FALSE,                                                  //!< boDef_BasketTurretLimitation
     {0xffff, 2128, TBOOLEAN, DB_VAR},                       //!< tInf_PresenceSensorPlate
     {FALSE, TRUE},                                          //!< aboRng_PresenceSensorPlate[2]
-    FALSE,                                                  //!< boDef_PresenceSensorPlate
-    {0xffff, 2157, TBOOLEAN, DB_VAR},                       //!< tInf_MachineMountedAxlesMG
-    {FALSE, TRUE},                                          //!< aboRng_MachineMountedAxlesMG[2]
-    FALSE                                                   //!< boDef_MachineMountedAxlesMG
+    FALSE                                                   //!< boDef_PresenceSensorPlate
 };
 
 const TDbSetNvMemoryC0 gDb_ctSetNvMemoryC0=
@@ -2733,13 +2661,7 @@ const TDbSetNvParametersC0 gDb_ctSetNvParametersC0=
     0,                                                      //!< i16Def_OutCharNeuElectricPumpPressure
     {0xfff4, 1881, TINT16, DB_VAR},                         //!< tInf_OutCharNegElectricPumpPressure
     {I16_MIN, I16_MAX},                                     //!< ai16Rng_OutCharNegElectricPumpPressure[2]
-    0,                                                      //!< i16Def_OutCharNegElectricPumpPressure
-    {0xffff, 2179, TUINT16, DB_VAR},                        //!< tInf_ThresBrakeAccuPressureMin
-    {U16_MIN, U16_MAX},                                     //!< au16Rng_ThresBrakeAccuPressureMin[2]
-    150,                                                    //!< u16Def_ThresBrakeAccuPressureMin
-    {0xffff, 2180, TUINT16, DB_VAR},                        //!< tInf_ThresBrakeAccuPressureMax
-    {U16_MIN, U16_MAX},                                     //!< au16Rng_ThresBrakeAccuPressureMax[2]
-    200                                                     //!< u16Def_ThresBrakeAccuPressureMax
+    0                                                       //!< i16Def_OutCharNegElectricPumpPressure
 };
 
 const TDbSetNvCalibrationC0 gDb_ctSetNvCalibrationC0=
@@ -3425,9 +3347,9 @@ const TDbSetRamEvision7C0 gDb_ctSetRamEvision7C0=
     {0xffff, 1371, TBOOLEAN, DB_VAR},                       //!< tInf_gBreakInBrakePageActive
     {FALSE, TRUE},                                          //!< aboRng_gBreakInBrakePageActive[2]
     FALSE,                                                  //!< boDef_gBreakInBrakePageActive
-    {0xffff, 1409, TBOOLEAN, DB_VAR},                       //!< tInf_gRollingCode
-    {FALSE, TRUE},                                          //!< aboRng_gRollingCode[2]
-    FALSE,                                                  //!< boDef_gRollingCode
+    {0xffff, 1409, TBOOLEAN, DB_VAR},                       //!< tInf_gSerialNumber
+    {FALSE, TRUE},                                          //!< aboRng_gSerialNumber[2]
+    FALSE,                                                  //!< boDef_gSerialNumber
     {0xffff, 1411, TBOOLEAN, DB_VAR},                       //!< tInf_gBPBasketValidate
     {FALSE, TRUE},                                          //!< aboRng_gBPBasketValidate[2]
     FALSE,                                                  //!< boDef_gBPBasketValidate
@@ -3781,34 +3703,7 @@ const TDbSetNvParamSpeedMaxRail gDb_ctSetNvParamSpeedMaxRail=
     0,                                                      //!< u16Def_PreventLimitSpeedLowSpeed
     {0xffff, 2037, TUINT16, DB_VAR},                        //!< tInf_PreventSpeedLowSpeedBrakeTest
     {U16_MIN, U16_MAX},                                     //!< au16Rng_PreventSpeedLowSpeedBrakeTest[2]
-    0,                                                      //!< u16Def_PreventSpeedLowSpeedBrakeTest
-    {0xffff, 2167, TUINT16, DB_VAR},                        //!< tInf_Performance2DegSlopeThresMG
-    {U16_MIN, U16_MAX},                                     //!< au16Rng_Performance2DegSlopeThresMG[2]
-    20,                                                     //!< u16Def_Performance2DegSlopeThresMG
-    {0xffff, 2168, TUINT16, DB_VAR},                        //!< tInf_Performance4DegSlopeThresMG
-    {U16_MIN, U16_MAX},                                     //!< au16Rng_Performance4DegSlopeThresMG[2]
-    40,                                                     //!< u16Def_Performance4DegSlopeThresMG
-    {0xffff, 2169, TUINT16, DB_VAR},                        //!< tInf_Performance6DegSlopeThresMG
-    {U16_MIN, U16_MAX},                                     //!< au16Rng_Performance6DegSlopeThresMG[2]
-    60,                                                     //!< u16Def_Performance6DegSlopeThresMG
-    {0xffff, 2170, TINT16, DB_VAR},                         //!< tInf_TurretPerformLowSpeed2DegMG
-    {I16_MIN, I16_MAX},                                     //!< ai16Rng_TurretPerformLowSpeed2DegMG[2]
-    700,                                                    //!< i16Def_TurretPerformLowSpeed2DegMG
-    {0xffff, 2171, TINT16, DB_VAR},                         //!< tInf_TurretPerformLowSpeedBasket2MG
-    {I16_MIN, I16_MAX},                                     //!< ai16Rng_TurretPerformLowSpeedBasket2MG[2]
-    700,                                                    //!< i16Def_TurretPerformLowSpeedBasket2MG
-    {0xffff, 2172, TINT16, DB_VAR},                         //!< tInf_TurretPerformLowSpeed4DegMG
-    {I16_MIN, I16_MAX},                                     //!< ai16Rng_TurretPerformLowSpeed4DegMG[2]
-    150,                                                    //!< i16Def_TurretPerformLowSpeed4DegMG
-    {0xffff, 2173, TINT16, DB_VAR},                         //!< tInf_TurretPerformLowSpeedBasket4MG
-    {I16_MIN, I16_MAX},                                     //!< ai16Rng_TurretPerformLowSpeedBasket4MG[2]
-    300,                                                    //!< i16Def_TurretPerformLowSpeedBasket4MG
-    {0xffff, 2174, TINT16, DB_VAR},                         //!< tInf_TurretPerformLowSpeed6DegMG
-    {I16_MIN, I16_MAX},                                     //!< ai16Rng_TurretPerformLowSpeed6DegMG[2]
-    0,                                                      //!< i16Def_TurretPerformLowSpeed6DegMG
-    {0xffff, 2175, TINT16, DB_VAR},                         //!< tInf_TurretPerformLowSpeedBasket6MG
-    {I16_MIN, I16_MAX},                                     //!< ai16Rng_TurretPerformLowSpeedBasket6MG[2]
-    150                                                     //!< i16Def_TurretPerformLowSpeedBasket6MG
+    0                                                       //!< u16Def_PreventSpeedLowSpeedBrakeTest
 };
 
 const TDbSetRamSpeedMaxRail gDb_ctSetRamSpeedMaxRail=
@@ -3956,34 +3851,7 @@ const TDbSetRamSpeedMaxRail gDb_ctSetRamSpeedMaxRail=
     FALSE,                                                  //!< boDef_PreventLimitSpeedExceeding
     {0xffff, 2053, TBOOLEAN, DB_VAR},                       //!< tInf_AuthoriseGlobalLowSpeed
     {FALSE, TRUE},                                          //!< aboRng_AuthoriseGlobalLowSpeed[2]
-    FALSE,                                                  //!< boDef_AuthoriseGlobalLowSpeed
-    {0xffff, 2158, TUINT16, DB_VAR},                        //!< tInf_SelectSlopeCase2Deg
-    {U16_MIN, U16_MAX},                                     //!< au16Rng_SelectSlopeCase2Deg[2]
-    0,                                                      //!< u16Def_SelectSlopeCase2Deg
-    {0xffff, 2159, TUINT16, DB_VAR},                        //!< tInf_SelectSlopeCase4Deg
-    {U16_MIN, U16_MAX},                                     //!< au16Rng_SelectSlopeCase4Deg[2]
-    0,                                                      //!< u16Def_SelectSlopeCase4Deg
-    {0xffff, 2160, TUINT16, DB_VAR},                        //!< tInf_SelectSlopeCase6Deg
-    {U16_MIN, U16_MAX},                                     //!< au16Rng_SelectSlopeCase6Deg[2]
-    0,                                                      //!< u16Def_SelectSlopeCase6Deg
-    {0xffff, 2161, TINT16, DB_VAR},                         //!< tInf_SelectTurretSectorCase2Deg
-    {I16_MIN, I16_MAX},                                     //!< ai16Rng_SelectTurretSectorCase2Deg[2]
-    0,                                                      //!< i16Def_SelectTurretSectorCase2Deg
-    {0xffff, 2162, TINT16, DB_VAR},                         //!< tInf_SelectTurretSectorCase4Deg
-    {I16_MIN, I16_MAX},                                     //!< ai16Rng_SelectTurretSectorCase4Deg[2]
-    0,                                                      //!< i16Def_SelectTurretSectorCase4Deg
-    {0xffff, 2163, TINT16, DB_VAR},                         //!< tInf_SelectTurretSectorCase6Deg
-    {I16_MIN, I16_MAX},                                     //!< ai16Rng_SelectTurretSectorCase6Deg[2]
-    0,                                                      //!< i16Def_SelectTurretSectorCase6Deg
-    {0xffff, 2164, TINT16, DB_VAR},                         //!< tInf_SelectedTurretCase2DegForBasket
-    {I16_MIN, I16_MAX},                                     //!< ai16Rng_SelectedTurretCase2DegForBasket[2]
-    0,                                                      //!< i16Def_SelectedTurretCase2DegForBasket
-    {0xffff, 2165, TINT16, DB_VAR},                         //!< tInf_SelectedTurretCase4DegForBasket
-    {I16_MIN, I16_MAX},                                     //!< ai16Rng_SelectedTurretCase4DegForBasket[2]
-    0,                                                      //!< i16Def_SelectedTurretCase4DegForBasket
-    {0xffff, 2166, TINT16, DB_VAR},                         //!< tInf_SelectedTurretCase6DegForBasket
-    {I16_MIN, I16_MAX},                                     //!< ai16Rng_SelectedTurretCase6DegForBasket[2]
-    0                                                       //!< i16Def_SelectedTurretCase6DegForBasket
+    FALSE                                                   //!< boDef_AuthoriseGlobalLowSpeed
 };
 
 const TDbSetNvParamBrakeTest gDb_ctSetNvParamBrakeTest=
@@ -4259,13 +4127,7 @@ const TDbSetNvParamRailWorkSafetyC0 gDb_ctSetNvParamRailWorkSafetyC0=
     200,                                                    //!< i16Def_ALOArrowLowerZoneStopThres
     {0xfff4, 1091, TINT16, DB_VAR},                         //!< tInf_ALOArrowLowerZoneStopHyst
     {0, 18000},                                             //!< ai16Rng_ALOArrowLowerZoneStopHyst[2]
-    100,                                                    //!< i16Def_ALOArrowLowerZoneStopHyst
-    {0xffff, 2192, TINT16, DB_VAR},                         //!< tInf_ThresHighSlopeForArrowUp
-    {I16_MIN, I16_MAX},                                     //!< ai16Rng_ThresHighSlopeForArrowUp[2]
-    40,                                                     //!< i16Def_ThresHighSlopeForArrowUp
-    {0xffff, 2193, TINT16, DB_VAR},                         //!< tInf_HystHighSlopeForArrowUp
-    {I16_MIN, I16_MAX},                                     //!< ai16Rng_HystHighSlopeForArrowUp[2]
-    5                                                       //!< i16Def_HystHighSlopeForArrowUp
+    100                                                     //!< i16Def_ALOArrowLowerZoneStopHyst
 };
 
 const TDbSetRamRailWorkSafetyC0 gDb_ctSetRamRailWorkSafetyC0=
@@ -4368,10 +4230,7 @@ const TDbSetRamRailWorkSafetyC0 gDb_ctSetRamRailWorkSafetyC0=
     0,                                                      //!< i16Def_TestArrowArmAngularPosition
     {0xffff, 1056, ERAILWORKMODE_TYPE, DB_VAR},             //!< tInf_AbutmentWorkMode
     {GE_NO_RAIL_WORK_MODE, GE_MULTILANE_MODE},              //!< aeRng_AbutmentWorkMode[2]
-    GE_NO_RAIL_WORK_MODE,                                   //!< eDef_AbutmentWorkMode
-    {0xffff, 2194, TBOOLEAN, DB_VAR},                       //!< tInf_HighSlopeForArrowUp
-    {FALSE, TRUE},                                          //!< aboRng_HighSlopeForArrowUp[2]
-    FALSE                                                   //!< boDef_HighSlopeForArrowUp
+    GE_NO_RAIL_WORK_MODE                                    //!< eDef_AbutmentWorkMode
 };
 
 const TDbSetRamTransportPosC0 gDb_ctSetRamTransportPosC0=
@@ -4845,10 +4704,7 @@ const TDbSetRamData4C0RcvFromC1 gDb_ctSetRamData4C0RcvFromC1=
     FALSE,                                                  //!< boDef_InterdictOfNacelTurretPost
     {0xffff, 2137, TBOOLEAN, DB_VAR},                       //!< tInf_MastPanthoFoldedSNCF
     {FALSE, TRUE},                                          //!< aboRng_MastPanthoFoldedSNCF[2]
-    FALSE,                                                  //!< boDef_MastPanthoFoldedSNCF
-    {0xffff, 2189, TINT16, DB_VAR},                         //!< tInf_AccuBrakeSensorPressureValue
-    {I16_MIN, I16_MAX},                                     //!< ai16Rng_AccuBrakeSensorPressureValue[2]
-    I16_UNDEF                                               //!< i16Def_AccuBrakeSensorPressureValue
+    FALSE                                                   //!< boDef_MastPanthoFoldedSNCF
 };
 
 const TDbSetNvParamGreenEffC0 gDb_ctSetNvParamGreenEffC0=
@@ -5161,7 +5017,7 @@ const TDbSetRamDMC_C0 gDb_ctSetRamDMC_C0=
 // LIST-TABEL ------------------------------------------------------------------------------------
 
 
-const TDbVarTabRam gDb_catVarTabRamEcuInputsC0[80] =
+const TDbVarTabRam gDb_catVarTabRamEcuInputsC0[74] =
 {    //!< *cptInf *vpVal *cvpDataDef 
     { &gDb_ctSetRamEcuInputsC0.tInf_PressureBlockOscillationState, (TVoid*)&gDb_tRamEcuInputsC0.bi3PressureBlockOscillationState, (TVoid*)&gDb_ctSetRamEcuInputsC0.bi3Def_PressureBlockOscillationState, (TVoid*)&gDb_ctSetRamEcuInputsC0.abi3Rng_PressureBlockOscillationState[0]},
     { &gDb_ctSetRamEcuInputsC0.tInf_PressureBlockOscillationValue, (TVoid*)&gDb_tRamEcuInputsC0.i16PressureBlockOscillationValue, (TVoid*)&gDb_ctSetRamEcuInputsC0.i16Def_PressureBlockOscillationValue, (TVoid*)&gDb_ctSetRamEcuInputsC0.ai16Rng_PressureBlockOscillationValue[0]},
@@ -5236,13 +5092,7 @@ const TDbVarTabRam gDb_catVarTabRamEcuInputsC0[80] =
     { &gDb_ctSetRamEcuInputsC0.tInf_UpMastSensorNCState, (TVoid*)&gDb_tRamEcuInputsC0.eUpMastSensorNCState, (TVoid*)&gDb_ctSetRamEcuInputsC0.eDef_UpMastSensorNCState, (TVoid*)&gDb_ctSetRamEcuInputsC0.aeRng_UpMastSensorNCState[0]},
     { &gDb_ctSetRamEcuInputsC0.tInf_UpMastSensorNCRawValue, (TVoid*)&gDb_tRamEcuInputsC0.u16UpMastSensorNCRawValue, (TVoid*)&gDb_ctSetRamEcuInputsC0.u16Def_UpMastSensorNCRawValue, (TVoid*)&gDb_ctSetRamEcuInputsC0.au16Rng_UpMastSensorNCRawValue[0]},
     { &gDb_ctSetRamEcuInputsC0.tInf_ValveInDownPositionSensorState, (TVoid*)&gDb_tRamEcuInputsC0.eValveInDownPositionSensorState, (TVoid*)&gDb_ctSetRamEcuInputsC0.eDef_ValveInDownPositionSensorState, (TVoid*)&gDb_ctSetRamEcuInputsC0.aeRng_ValveInDownPositionSensorState[0]},
-    { &gDb_ctSetRamEcuInputsC0.tInf_ValveInDownPositionSensorValue, (TVoid*)&gDb_tRamEcuInputsC0.u16ValveInDownPositionSensorValue, (TVoid*)&gDb_ctSetRamEcuInputsC0.u16Def_ValveInDownPositionSensorValue, (TVoid*)&gDb_ctSetRamEcuInputsC0.au16Rng_ValveInDownPositionSensorValue[0]},
-    { &gDb_ctSetRamEcuInputsC0.tInf_AxleInMGMode, (TVoid*)&gDb_tRamEcuInputsC0.eAxleInMGMode, (TVoid*)&gDb_ctSetRamEcuInputsC0.eDef_AxleInMGMode, (TVoid*)&gDb_ctSetRamEcuInputsC0.aeRng_AxleInMGMode[0]},
-    { &gDb_ctSetRamEcuInputsC0.tInf_AxleInMGModeRawValuePin0, (TVoid*)&gDb_tRamEcuInputsC0.u16AxleInMGModeRawValuePin0, (TVoid*)&gDb_ctSetRamEcuInputsC0.u16Def_AxleInMGModeRawValuePin0, (TVoid*)&gDb_ctSetRamEcuInputsC0.au16Rng_AxleInMGModeRawValuePin0[0]},
-    { &gDb_ctSetRamEcuInputsC0.tInf_AxleInMGModeRawValuePin1, (TVoid*)&gDb_tRamEcuInputsC0.u16AxleInMGModeRawValuePin1, (TVoid*)&gDb_ctSetRamEcuInputsC0.u16Def_AxleInMGModeRawValuePin1, (TVoid*)&gDb_ctSetRamEcuInputsC0.au16Rng_AxleInMGModeRawValuePin1[0]},
-    { &gDb_ctSetRamEcuInputsC0.tInf_AxleInSDMode, (TVoid*)&gDb_tRamEcuInputsC0.eAxleInSDMode, (TVoid*)&gDb_ctSetRamEcuInputsC0.eDef_AxleInSDMode, (TVoid*)&gDb_ctSetRamEcuInputsC0.aeRng_AxleInSDMode[0]},
-    { &gDb_ctSetRamEcuInputsC0.tInf_AxleInSDModeRawValuePin0, (TVoid*)&gDb_tRamEcuInputsC0.u16AxleInSDModeRawValuePin0, (TVoid*)&gDb_ctSetRamEcuInputsC0.u16Def_AxleInSDModeRawValuePin0, (TVoid*)&gDb_ctSetRamEcuInputsC0.au16Rng_AxleInSDModeRawValuePin0[0]},
-    { &gDb_ctSetRamEcuInputsC0.tInf_AxleInSDModeRawValuePin1, (TVoid*)&gDb_tRamEcuInputsC0.u16AxleInSDModeRawValuePin1, (TVoid*)&gDb_ctSetRamEcuInputsC0.u16Def_AxleInSDModeRawValuePin1, (TVoid*)&gDb_ctSetRamEcuInputsC0.au16Rng_AxleInSDModeRawValuePin1[0]}
+    { &gDb_ctSetRamEcuInputsC0.tInf_ValveInDownPositionSensorValue, (TVoid*)&gDb_tRamEcuInputsC0.u16ValveInDownPositionSensorValue, (TVoid*)&gDb_ctSetRamEcuInputsC0.u16Def_ValveInDownPositionSensorValue, (TVoid*)&gDb_ctSetRamEcuInputsC0.au16Rng_ValveInDownPositionSensorValue[0]}
 };
 
 const TDbVarTabRam gDb_catVarTabRamEcuOutputsC0[101] =
@@ -5350,7 +5200,7 @@ const TDbVarTabRam gDb_catVarTabRamEcuOutputsC0[101] =
     { &gDb_ctSetRamEcuOutputsC0.tInf_RelayEnableBatteryState, (TVoid*)&gDb_tRamEcuOutputsC0.eRelayEnableBatteryState, (TVoid*)&gDb_ctSetRamEcuOutputsC0.eDef_RelayEnableBatteryState, (TVoid*)&gDb_ctSetRamEcuOutputsC0.aeRng_RelayEnableBatteryState[0]}
 };
 
-const TDbVarTabRam gDb_catVarTabRamGeneralC0[122] =
+const TDbVarTabRam gDb_catVarTabRamGeneralC0[117] =
 {    //!< *cptInf *vpVal *cvpDataDef 
     { &gDb_ctSetRamGeneralC0.tInf_LifeByte, (TVoid*)&gDb_tRamGeneralC0.u8LifeByte, (TVoid*)&gDb_ctSetRamGeneralC0.u8Def_LifeByte, (TVoid*)&gDb_ctSetRamGeneralC0.au8Rng_LifeByte[0]},
     { &gDb_ctSetRamGeneralC0.tInf_WatchdogState, (TVoid*)&gDb_tRamGeneralC0.eWatchdogState, (TVoid*)&gDb_ctSetRamGeneralC0.eDef_WatchdogState, (TVoid*)&gDb_ctSetRamGeneralC0.aeRng_WatchdogState[0]},
@@ -5468,15 +5318,10 @@ const TDbVarTabRam gDb_catVarTabRamGeneralC0[122] =
     { &gDb_ctSetRamGeneralC0.tInf_FaultyValue, (TVoid*)&gDb_tRamGeneralC0.u16FaultyValue, (TVoid*)&gDb_ctSetRamGeneralC0.u16Def_FaultyValue, (TVoid*)&gDb_ctSetRamGeneralC0.au16Rng_FaultyValue[0]},
     { &gDb_ctSetRamGeneralC0.tInf_DeviceNum, (TVoid*)&gDb_tRamGeneralC0.u8DeviceNum, (TVoid*)&gDb_ctSetRamGeneralC0.u8Def_DeviceNum, (TVoid*)&gDb_ctSetRamGeneralC0.au8Rng_DeviceNum[0]},
     { &gDb_ctSetRamGeneralC0.tInf_ErrorCode, (TVoid*)&gDb_tRamGeneralC0.u8ErrorCode, (TVoid*)&gDb_ctSetRamGeneralC0.u8Def_ErrorCode, (TVoid*)&gDb_ctSetRamGeneralC0.au8Rng_ErrorCode[0]},
-    { &gDb_ctSetRamGeneralC0.tInf_EngineRunningStable, (TVoid*)&gDb_tRamGeneralC0.boEngineRunningStable, (TVoid*)&gDb_ctSetRamGeneralC0.boDef_EngineRunningStable, (TVoid*)&gDb_ctSetRamGeneralC0.aboRng_EngineRunningStable[0]},
-    { &gDb_ctSetRamGeneralC0.tInf_AxlePositionSensorFault, (TVoid*)&gDb_tRamGeneralC0.boAxlePositionSensorFault, (TVoid*)&gDb_ctSetRamGeneralC0.boDef_AxlePositionSensorFault, (TVoid*)&gDb_ctSetRamGeneralC0.aboRng_AxlePositionSensorFault[0]},
-    { &gDb_ctSetRamGeneralC0.tInf_AxlePositionInMGMode, (TVoid*)&gDb_tRamGeneralC0.boAxlePositionInMGMode, (TVoid*)&gDb_ctSetRamGeneralC0.boDef_AxlePositionInMGMode, (TVoid*)&gDb_ctSetRamGeneralC0.aboRng_AxlePositionInMGMode[0]},
-    { &gDb_ctSetRamGeneralC0.tInf_EvLoadBrakeAccuCmd, (TVoid*)&gDb_tRamGeneralC0.boEvLoadBrakeAccuCmd, (TVoid*)&gDb_ctSetRamGeneralC0.boDef_EvLoadBrakeAccuCmd, (TVoid*)&gDb_ctSetRamGeneralC0.aboRng_EvLoadBrakeAccuCmd[0]},
-    { &gDb_ctSetRamGeneralC0.tInf_ErrListCntMax, (TVoid*)&gDb_tRamGeneralC0.u8ErrListCntMax, (TVoid*)&gDb_ctSetRamGeneralC0.u8Def_ErrListCntMax, (TVoid*)&gDb_ctSetRamGeneralC0.au8Rng_ErrListCntMax[0]},
-    { &gDb_ctSetRamGeneralC0.tInf_GlobalAuthorizeTrans, (TVoid*)&gDb_tRamGeneralC0.boGlobalAuthorizeTrans, (TVoid*)&gDb_ctSetRamGeneralC0.boDef_GlobalAuthorizeTrans, (TVoid*)&gDb_ctSetRamGeneralC0.aboRng_GlobalAuthorizeTrans[0]}
+    { &gDb_ctSetRamGeneralC0.tInf_EngineRunningStable, (TVoid*)&gDb_tRamGeneralC0.boEngineRunningStable, (TVoid*)&gDb_ctSetRamGeneralC0.boDef_EngineRunningStable, (TVoid*)&gDb_ctSetRamGeneralC0.aboRng_EngineRunningStable[0]}
 };
 
-const TDbVarTabNvm gDb_catVarTabNvOptionsC0[13] =
+const TDbVarTabNvm gDb_catVarTabNvOptionsC0[12] =
 {    //!< *cptInf *vpVal *cvpDataRang *cvpDataDef cu16Adr cu16ValuePos
     { &gDb_ctSetNvOptionsC0.tInf_ConfigHollandaise, (TVoid*)&gDb_tNvOptionsC0.boConfigHollandaise, (TVoid*)&gDb_ctSetNvOptionsC0.boDef_ConfigHollandaise, (TVoid*)&gDb_ctSetNvOptionsC0.aboRng_ConfigHollandaise[0], 12, 0},
     { &gDb_ctSetNvOptionsC0.tInf_Portillon, (TVoid*)&gDb_tNvOptionsC0.boPortillon, (TVoid*)&gDb_ctSetNvOptionsC0.boDef_Portillon, (TVoid*)&gDb_ctSetNvOptionsC0.aboRng_Portillon[0], 13, 1},
@@ -5489,8 +5334,7 @@ const TDbVarTabNvm gDb_catVarTabNvOptionsC0[13] =
     { &gDb_ctSetNvOptionsC0.tInf_SecondParkBrakeActive, (TVoid*)&gDb_tNvOptionsC0.boSecondParkBrakeActive, (TVoid*)&gDb_ctSetNvOptionsC0.boDef_SecondParkBrakeActive, (TVoid*)&gDb_ctSetNvOptionsC0.aboRng_SecondParkBrakeActive[0], 20, 8},
     { &gDb_ctSetNvOptionsC0.tInf_AddPerformanceFunc, (TVoid*)&gDb_tNvOptionsC0.boAddPerformanceFunc, (TVoid*)&gDb_ctSetNvOptionsC0.boDef_AddPerformanceFunc, (TVoid*)&gDb_ctSetNvOptionsC0.aboRng_AddPerformanceFunc[0], 21, 9},
     { &gDb_ctSetNvOptionsC0.tInf_BasketTurretLimitation, (TVoid*)&gDb_tNvOptionsC0.boBasketTurretLimitation, (TVoid*)&gDb_ctSetNvOptionsC0.boDef_BasketTurretLimitation, (TVoid*)&gDb_ctSetNvOptionsC0.aboRng_BasketTurretLimitation[0], 22, 10},
-    { &gDb_ctSetNvOptionsC0.tInf_PresenceSensorPlate, (TVoid*)&gDb_tNvOptionsC0.boPresenceSensorPlate, (TVoid*)&gDb_ctSetNvOptionsC0.boDef_PresenceSensorPlate, (TVoid*)&gDb_ctSetNvOptionsC0.aboRng_PresenceSensorPlate[0], 23, 11},
-    { &gDb_ctSetNvOptionsC0.tInf_MachineMountedAxlesMG, (TVoid*)&gDb_tNvOptionsC0.boMachineMountedAxlesMG, (TVoid*)&gDb_ctSetNvOptionsC0.boDef_MachineMountedAxlesMG, (TVoid*)&gDb_ctSetNvOptionsC0.aboRng_MachineMountedAxlesMG[0], 24, 12}
+    { &gDb_ctSetNvOptionsC0.tInf_PresenceSensorPlate, (TVoid*)&gDb_tNvOptionsC0.boPresenceSensorPlate, (TVoid*)&gDb_ctSetNvOptionsC0.boDef_PresenceSensorPlate, (TVoid*)&gDb_ctSetNvOptionsC0.aboRng_PresenceSensorPlate[0], 23, 11}
 };
 
 const TDbVarTabNvm gDb_catVarTabNvMemoryC0[20] =
@@ -5517,7 +5361,7 @@ const TDbVarTabNvm gDb_catVarTabNvMemoryC0[20] =
     { &gDb_ctSetNvMemoryC0.tInf_gTotalDistanceLsb, (TVoid*)&gDb_tNvMemoryC0.u16gTotalDistanceLsb, (TVoid*)&gDb_ctSetNvMemoryC0.u16Def_gTotalDistanceLsb, (TVoid*)&gDb_ctSetNvMemoryC0.au16Rng_gTotalDistanceLsb[0], 243, 19}
 };
 
-const TDbVarTabNvm gDb_catVarTabNvParametersC0[103] =
+const TDbVarTabNvm gDb_catVarTabNvParametersC0[101] =
 {    //!< *cptInf *vpVal *cvpDataRang *cvpDataDef cu16Adr cu16ValuePos
     { &gDb_ctSetNvParametersC0.tInf_LimitTresholdAngleRadioControl, (TVoid*)&gDb_tNvParametersC0.u16LimitTresholdAngleRadioControl, (TVoid*)&gDb_ctSetNvParametersC0.u16Def_LimitTresholdAngleRadioControl, (TVoid*)&gDb_ctSetNvParametersC0.au16Rng_LimitTresholdAngleRadioControl[0], 412, 0},
     { &gDb_ctSetNvParametersC0.tInf_TresholdMinimalSpeedParkBrake, (TVoid*)&gDb_tNvParametersC0.u16TresholdMinimalSpeedParkBrake, (TVoid*)&gDb_ctSetNvParametersC0.u16Def_TresholdMinimalSpeedParkBrake, (TVoid*)&gDb_ctSetNvParametersC0.au16Rng_TresholdMinimalSpeedParkBrake[0], 414, 1},
@@ -5619,9 +5463,7 @@ const TDbVarTabNvm gDb_catVarTabNvParametersC0[103] =
     { &gDb_ctSetNvParametersC0.tInf_VersionCustom, (TVoid*)&gDb_tNvParametersC0.u8VersionCustom, (TVoid*)&gDb_ctSetNvParametersC0.u8Def_VersionCustom, (TVoid*)&gDb_ctSetNvParametersC0.au8Rng_VersionCustom[0], 612, 107},
     { &gDb_ctSetNvParametersC0.tInf_OutCharPosElectricPumpPressure, (TVoid*)&gDb_tNvParametersC0.i16OutCharPosElectricPumpPressure, (TVoid*)&gDb_ctSetNvParametersC0.i16Def_OutCharPosElectricPumpPressure, (TVoid*)&gDb_ctSetNvParametersC0.ai16Rng_OutCharPosElectricPumpPressure[0], 613, 108},
     { &gDb_ctSetNvParametersC0.tInf_OutCharNeuElectricPumpPressure, (TVoid*)&gDb_tNvParametersC0.i16OutCharNeuElectricPumpPressure, (TVoid*)&gDb_ctSetNvParametersC0.i16Def_OutCharNeuElectricPumpPressure, (TVoid*)&gDb_ctSetNvParametersC0.ai16Rng_OutCharNeuElectricPumpPressure[0], 615, 109},
-    { &gDb_ctSetNvParametersC0.tInf_OutCharNegElectricPumpPressure, (TVoid*)&gDb_tNvParametersC0.i16OutCharNegElectricPumpPressure, (TVoid*)&gDb_ctSetNvParametersC0.i16Def_OutCharNegElectricPumpPressure, (TVoid*)&gDb_ctSetNvParametersC0.ai16Rng_OutCharNegElectricPumpPressure[0], 617, 110},
-    { &gDb_ctSetNvParametersC0.tInf_ThresBrakeAccuPressureMin, (TVoid*)&gDb_tNvParametersC0.u16ThresBrakeAccuPressureMin, (TVoid*)&gDb_ctSetNvParametersC0.u16Def_ThresBrakeAccuPressureMin, (TVoid*)&gDb_ctSetNvParametersC0.au16Rng_ThresBrakeAccuPressureMin[0], 619, 111},
-    { &gDb_ctSetNvParametersC0.tInf_ThresBrakeAccuPressureMax, (TVoid*)&gDb_tNvParametersC0.u16ThresBrakeAccuPressureMax, (TVoid*)&gDb_ctSetNvParametersC0.u16Def_ThresBrakeAccuPressureMax, (TVoid*)&gDb_ctSetNvParametersC0.au16Rng_ThresBrakeAccuPressureMax[0], 621, 112}
+    { &gDb_ctSetNvParametersC0.tInf_OutCharNegElectricPumpPressure, (TVoid*)&gDb_tNvParametersC0.i16OutCharNegElectricPumpPressure, (TVoid*)&gDb_ctSetNvParametersC0.i16Def_OutCharNegElectricPumpPressure, (TVoid*)&gDb_ctSetNvParametersC0.ai16Rng_OutCharNegElectricPumpPressure[0], 617, 110}
 };
 
 const TDbVarTabNvm gDb_catVarTabNvCalibrationC0[31] =
@@ -5849,7 +5691,7 @@ const TDbVarTabRam gDb_catVarTabRamEvision7C0[64] =
     { &gDb_ctSetRamEvision7C0.tInf_gBothServiceRunInBrakeSelect, (TVoid*)&gDb_tRamEvision7C0.bogBothServiceRunInBrakeSelect, (TVoid*)&gDb_ctSetRamEvision7C0.boDef_gBothServiceRunInBrakeSelect, (TVoid*)&gDb_ctSetRamEvision7C0.aboRng_gBothServiceRunInBrakeSelect[0]},
     { &gDb_ctSetRamEvision7C0.tInf_gTestBrakePageActive, (TVoid*)&gDb_tRamEvision7C0.bogTestBrakePageActive, (TVoid*)&gDb_ctSetRamEvision7C0.boDef_gTestBrakePageActive, (TVoid*)&gDb_ctSetRamEvision7C0.aboRng_gTestBrakePageActive[0]},
     { &gDb_ctSetRamEvision7C0.tInf_gBreakInBrakePageActive, (TVoid*)&gDb_tRamEvision7C0.bogBreakInBrakePageActive, (TVoid*)&gDb_ctSetRamEvision7C0.boDef_gBreakInBrakePageActive, (TVoid*)&gDb_ctSetRamEvision7C0.aboRng_gBreakInBrakePageActive[0]},
-    { &gDb_ctSetRamEvision7C0.tInf_gRollingCode, (TVoid*)&gDb_tRamEvision7C0.bogRollingCode, (TVoid*)&gDb_ctSetRamEvision7C0.boDef_gRollingCode, (TVoid*)&gDb_ctSetRamEvision7C0.aboRng_gRollingCode[0]},
+    { &gDb_ctSetRamEvision7C0.tInf_gSerialNumber, (TVoid*)&gDb_tRamEvision7C0.bogSerialNumber, (TVoid*)&gDb_ctSetRamEvision7C0.boDef_gSerialNumber, (TVoid*)&gDb_ctSetRamEvision7C0.aboRng_gSerialNumber[0]},
     { &gDb_ctSetRamEvision7C0.tInf_gBPBasketValidate, (TVoid*)&gDb_tRamEvision7C0.bogBPBasketValidate, (TVoid*)&gDb_ctSetRamEvision7C0.boDef_gBPBasketValidate, (TVoid*)&gDb_ctSetRamEvision7C0.aboRng_gBPBasketValidate[0]},
     { &gDb_ctSetRamEvision7C0.tInf_gKeyFilterOverload, (TVoid*)&gDb_tRamEvision7C0.bogKeyFilterOverload, (TVoid*)&gDb_ctSetRamEvision7C0.boDef_gKeyFilterOverload, (TVoid*)&gDb_ctSetRamEvision7C0.aboRng_gKeyFilterOverload[0]},
     { &gDb_ctSetRamEvision7C0.tInf_gKeyNextMode, (TVoid*)&gDb_tRamEvision7C0.bogKeyNextMode, (TVoid*)&gDb_ctSetRamEvision7C0.boDef_gKeyNextMode, (TVoid*)&gDb_ctSetRamEvision7C0.aboRng_gKeyNextMode[0]},
@@ -5929,7 +5771,7 @@ const TDbVarTabRam gDb_catVarTabRamEcuCaliCmdC0[5] =
     { &gDb_ctSetRamEcuCaliCmdC0.tInf_SavedCalibrationListC0, (TVoid*)&gDb_tRamEcuCaliCmdC0.boSavedCalibrationListC0, (TVoid*)&gDb_ctSetRamEcuCaliCmdC0.boDef_SavedCalibrationListC0, (TVoid*)&gDb_ctSetRamEcuCaliCmdC0.aboRng_SavedCalibrationListC0[0]}
 };
 
-const TDbVarTabNvm gDb_catVarTabNvParamSpeedMaxRail[54] =
+const TDbVarTabNvm gDb_catVarTabNvParamSpeedMaxRail[45] =
 {    //!< *cptInf *vpVal *cvpDataRang *cvpDataDef cu16Adr cu16ValuePos
     { &gDb_ctSetNvParamSpeedMaxRail.tInf_AccesSiteSpeedForward, (TVoid*)&gDb_tNvParamSpeedMaxRail.i16AccesSiteSpeedForward, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.i16Def_AccesSiteSpeedForward, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.ai16Rng_AccesSiteSpeedForward[0], 912, 0},
     { &gDb_ctSetNvParamSpeedMaxRail.tInf_HighSpeedForward, (TVoid*)&gDb_tNvParamSpeedMaxRail.i16HighSpeedForward, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.i16Def_HighSpeedForward, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.ai16Rng_HighSpeedForward[0], 914, 1},
@@ -5975,19 +5817,10 @@ const TDbVarTabNvm gDb_catVarTabNvParamSpeedMaxRail[54] =
     { &gDb_ctSetNvParamSpeedMaxRail.tInf_PreventLimitSpeedAccesSiteSpeed, (TVoid*)&gDb_tNvParamSpeedMaxRail.u16PreventLimitSpeedAccesSiteSpeed, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.u16Def_PreventLimitSpeedAccesSiteSpeed, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.au16Rng_PreventLimitSpeedAccesSiteSpeed[0], 994, 41},
     { &gDb_ctSetNvParamSpeedMaxRail.tInf_PreventLimitSpeedHighSpeed, (TVoid*)&gDb_tNvParamSpeedMaxRail.u16PreventLimitSpeedHighSpeed, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.u16Def_PreventLimitSpeedHighSpeed, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.au16Rng_PreventLimitSpeedHighSpeed[0], 996, 42},
     { &gDb_ctSetNvParamSpeedMaxRail.tInf_PreventLimitSpeedLowSpeed, (TVoid*)&gDb_tNvParamSpeedMaxRail.u16PreventLimitSpeedLowSpeed, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.u16Def_PreventLimitSpeedLowSpeed, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.au16Rng_PreventLimitSpeedLowSpeed[0], 998, 43},
-    { &gDb_ctSetNvParamSpeedMaxRail.tInf_PreventSpeedLowSpeedBrakeTest, (TVoid*)&gDb_tNvParamSpeedMaxRail.u16PreventSpeedLowSpeedBrakeTest, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.u16Def_PreventSpeedLowSpeedBrakeTest, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.au16Rng_PreventSpeedLowSpeedBrakeTest[0], 1000, 44},
-    { &gDb_ctSetNvParamSpeedMaxRail.tInf_Performance2DegSlopeThresMG, (TVoid*)&gDb_tNvParamSpeedMaxRail.u16Performance2DegSlopeThresMG, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.u16Def_Performance2DegSlopeThresMG, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.au16Rng_Performance2DegSlopeThresMG[0], 1002, 45},
-    { &gDb_ctSetNvParamSpeedMaxRail.tInf_Performance4DegSlopeThresMG, (TVoid*)&gDb_tNvParamSpeedMaxRail.u16Performance4DegSlopeThresMG, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.u16Def_Performance4DegSlopeThresMG, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.au16Rng_Performance4DegSlopeThresMG[0], 1004, 46},
-    { &gDb_ctSetNvParamSpeedMaxRail.tInf_Performance6DegSlopeThresMG, (TVoid*)&gDb_tNvParamSpeedMaxRail.u16Performance6DegSlopeThresMG, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.u16Def_Performance6DegSlopeThresMG, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.au16Rng_Performance6DegSlopeThresMG[0], 1006, 47},
-    { &gDb_ctSetNvParamSpeedMaxRail.tInf_TurretPerformLowSpeed2DegMG, (TVoid*)&gDb_tNvParamSpeedMaxRail.i16TurretPerformLowSpeed2DegMG, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.i16Def_TurretPerformLowSpeed2DegMG, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.ai16Rng_TurretPerformLowSpeed2DegMG[0], 1008, 48},
-    { &gDb_ctSetNvParamSpeedMaxRail.tInf_TurretPerformLowSpeedBasket2MG, (TVoid*)&gDb_tNvParamSpeedMaxRail.i16TurretPerformLowSpeedBasket2MG, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.i16Def_TurretPerformLowSpeedBasket2MG, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.ai16Rng_TurretPerformLowSpeedBasket2MG[0], 1010, 49},
-    { &gDb_ctSetNvParamSpeedMaxRail.tInf_TurretPerformLowSpeed4DegMG, (TVoid*)&gDb_tNvParamSpeedMaxRail.i16TurretPerformLowSpeed4DegMG, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.i16Def_TurretPerformLowSpeed4DegMG, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.ai16Rng_TurretPerformLowSpeed4DegMG[0], 1012, 50},
-    { &gDb_ctSetNvParamSpeedMaxRail.tInf_TurretPerformLowSpeedBasket4MG, (TVoid*)&gDb_tNvParamSpeedMaxRail.i16TurretPerformLowSpeedBasket4MG, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.i16Def_TurretPerformLowSpeedBasket4MG, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.ai16Rng_TurretPerformLowSpeedBasket4MG[0], 1014, 51},
-    { &gDb_ctSetNvParamSpeedMaxRail.tInf_TurretPerformLowSpeed6DegMG, (TVoid*)&gDb_tNvParamSpeedMaxRail.i16TurretPerformLowSpeed6DegMG, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.i16Def_TurretPerformLowSpeed6DegMG, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.ai16Rng_TurretPerformLowSpeed6DegMG[0], 1016, 52},
-    { &gDb_ctSetNvParamSpeedMaxRail.tInf_TurretPerformLowSpeedBasket6MG, (TVoid*)&gDb_tNvParamSpeedMaxRail.i16TurretPerformLowSpeedBasket6MG, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.i16Def_TurretPerformLowSpeedBasket6MG, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.ai16Rng_TurretPerformLowSpeedBasket6MG[0], 1018, 53}
+    { &gDb_ctSetNvParamSpeedMaxRail.tInf_PreventSpeedLowSpeedBrakeTest, (TVoid*)&gDb_tNvParamSpeedMaxRail.u16PreventSpeedLowSpeedBrakeTest, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.u16Def_PreventSpeedLowSpeedBrakeTest, (TVoid*)&gDb_ctSetNvParamSpeedMaxRail.au16Rng_PreventSpeedLowSpeedBrakeTest[0], 1000, 44}
 };
 
-const TDbVarTabRam gDb_catVarTabRamSpeedMaxRail[57] =
+const TDbVarTabRam gDb_catVarTabRamSpeedMaxRail[48] =
 {    //!< *cptInf *vpVal *cvpDataDef 
     { &gDb_ctSetRamSpeedMaxRail.tInf_SlopeOverHighSpeedTresh, (TVoid*)&gDb_tRamSpeedMaxRail.boSlopeOverHighSpeedTresh, (TVoid*)&gDb_ctSetRamSpeedMaxRail.boDef_SlopeOverHighSpeedTresh, (TVoid*)&gDb_ctSetRamSpeedMaxRail.aboRng_SlopeOverHighSpeedTresh[0]},
     { &gDb_ctSetRamSpeedMaxRail.tInf_SlopeLowerLowSpeedTresh, (TVoid*)&gDb_tRamSpeedMaxRail.boSlopeLowerLowSpeedTresh, (TVoid*)&gDb_ctSetRamSpeedMaxRail.boDef_SlopeLowerLowSpeedTresh, (TVoid*)&gDb_ctSetRamSpeedMaxRail.aboRng_SlopeLowerLowSpeedTresh[0]},
@@ -6036,16 +5869,7 @@ const TDbVarTabRam gDb_catVarTabRamSpeedMaxRail[57] =
     { &gDb_ctSetRamSpeedMaxRail.tInf_PreventLimitSpeedLowSpeed, (TVoid*)&gDb_tRamSpeedMaxRail.boPreventLimitSpeedLowSpeed, (TVoid*)&gDb_ctSetRamSpeedMaxRail.boDef_PreventLimitSpeedLowSpeed, (TVoid*)&gDb_ctSetRamSpeedMaxRail.aboRng_PreventLimitSpeedLowSpeed[0]},
     { &gDb_ctSetRamSpeedMaxRail.tInf_PreventLimitLowSpeedBrakeTest, (TVoid*)&gDb_tRamSpeedMaxRail.boPreventLimitLowSpeedBrakeTest, (TVoid*)&gDb_ctSetRamSpeedMaxRail.boDef_PreventLimitLowSpeedBrakeTest, (TVoid*)&gDb_ctSetRamSpeedMaxRail.aboRng_PreventLimitLowSpeedBrakeTest[0]},
     { &gDb_ctSetRamSpeedMaxRail.tInf_PreventLimitSpeedExceeding, (TVoid*)&gDb_tRamSpeedMaxRail.boPreventLimitSpeedExceeding, (TVoid*)&gDb_ctSetRamSpeedMaxRail.boDef_PreventLimitSpeedExceeding, (TVoid*)&gDb_ctSetRamSpeedMaxRail.aboRng_PreventLimitSpeedExceeding[0]},
-    { &gDb_ctSetRamSpeedMaxRail.tInf_AuthoriseGlobalLowSpeed, (TVoid*)&gDb_tRamSpeedMaxRail.boAuthoriseGlobalLowSpeed, (TVoid*)&gDb_ctSetRamSpeedMaxRail.boDef_AuthoriseGlobalLowSpeed, (TVoid*)&gDb_ctSetRamSpeedMaxRail.aboRng_AuthoriseGlobalLowSpeed[0]},
-    { &gDb_ctSetRamSpeedMaxRail.tInf_SelectSlopeCase2Deg, (TVoid*)&gDb_tRamSpeedMaxRail.u16SelectSlopeCase2Deg, (TVoid*)&gDb_ctSetRamSpeedMaxRail.u16Def_SelectSlopeCase2Deg, (TVoid*)&gDb_ctSetRamSpeedMaxRail.au16Rng_SelectSlopeCase2Deg[0]},
-    { &gDb_ctSetRamSpeedMaxRail.tInf_SelectSlopeCase4Deg, (TVoid*)&gDb_tRamSpeedMaxRail.u16SelectSlopeCase4Deg, (TVoid*)&gDb_ctSetRamSpeedMaxRail.u16Def_SelectSlopeCase4Deg, (TVoid*)&gDb_ctSetRamSpeedMaxRail.au16Rng_SelectSlopeCase4Deg[0]},
-    { &gDb_ctSetRamSpeedMaxRail.tInf_SelectSlopeCase6Deg, (TVoid*)&gDb_tRamSpeedMaxRail.u16SelectSlopeCase6Deg, (TVoid*)&gDb_ctSetRamSpeedMaxRail.u16Def_SelectSlopeCase6Deg, (TVoid*)&gDb_ctSetRamSpeedMaxRail.au16Rng_SelectSlopeCase6Deg[0]},
-    { &gDb_ctSetRamSpeedMaxRail.tInf_SelectTurretSectorCase2Deg, (TVoid*)&gDb_tRamSpeedMaxRail.i16SelectTurretSectorCase2Deg, (TVoid*)&gDb_ctSetRamSpeedMaxRail.i16Def_SelectTurretSectorCase2Deg, (TVoid*)&gDb_ctSetRamSpeedMaxRail.ai16Rng_SelectTurretSectorCase2Deg[0]},
-    { &gDb_ctSetRamSpeedMaxRail.tInf_SelectTurretSectorCase4Deg, (TVoid*)&gDb_tRamSpeedMaxRail.i16SelectTurretSectorCase4Deg, (TVoid*)&gDb_ctSetRamSpeedMaxRail.i16Def_SelectTurretSectorCase4Deg, (TVoid*)&gDb_ctSetRamSpeedMaxRail.ai16Rng_SelectTurretSectorCase4Deg[0]},
-    { &gDb_ctSetRamSpeedMaxRail.tInf_SelectTurretSectorCase6Deg, (TVoid*)&gDb_tRamSpeedMaxRail.i16SelectTurretSectorCase6Deg, (TVoid*)&gDb_ctSetRamSpeedMaxRail.i16Def_SelectTurretSectorCase6Deg, (TVoid*)&gDb_ctSetRamSpeedMaxRail.ai16Rng_SelectTurretSectorCase6Deg[0]},
-    { &gDb_ctSetRamSpeedMaxRail.tInf_SelectedTurretCase2DegForBasket, (TVoid*)&gDb_tRamSpeedMaxRail.i16SelectedTurretCase2DegForBasket, (TVoid*)&gDb_ctSetRamSpeedMaxRail.i16Def_SelectedTurretCase2DegForBasket, (TVoid*)&gDb_ctSetRamSpeedMaxRail.ai16Rng_SelectedTurretCase2DegForBasket[0]},
-    { &gDb_ctSetRamSpeedMaxRail.tInf_SelectedTurretCase4DegForBasket, (TVoid*)&gDb_tRamSpeedMaxRail.i16SelectedTurretCase4DegForBasket, (TVoid*)&gDb_ctSetRamSpeedMaxRail.i16Def_SelectedTurretCase4DegForBasket, (TVoid*)&gDb_ctSetRamSpeedMaxRail.ai16Rng_SelectedTurretCase4DegForBasket[0]},
-    { &gDb_ctSetRamSpeedMaxRail.tInf_SelectedTurretCase6DegForBasket, (TVoid*)&gDb_tRamSpeedMaxRail.i16SelectedTurretCase6DegForBasket, (TVoid*)&gDb_ctSetRamSpeedMaxRail.i16Def_SelectedTurretCase6DegForBasket, (TVoid*)&gDb_ctSetRamSpeedMaxRail.ai16Rng_SelectedTurretCase6DegForBasket[0]}
+    { &gDb_ctSetRamSpeedMaxRail.tInf_AuthoriseGlobalLowSpeed, (TVoid*)&gDb_tRamSpeedMaxRail.boAuthoriseGlobalLowSpeed, (TVoid*)&gDb_ctSetRamSpeedMaxRail.boDef_AuthoriseGlobalLowSpeed, (TVoid*)&gDb_ctSetRamSpeedMaxRail.aboRng_AuthoriseGlobalLowSpeed[0]}
 };
 
 const TDbVarTabNvm gDb_catVarTabNvParamBrakeTest[20] =
@@ -6119,7 +5943,7 @@ const TDbVarTabRam gDb_catVarTabRamBrakeTest[43] =
     { &gDb_ctSetRamBrakeTest.tInf_ParkBrake2ndPressureActive, (TVoid*)&gDb_tRamBrakeTest.boParkBrake2ndPressureActive, (TVoid*)&gDb_ctSetRamBrakeTest.boDef_ParkBrake2ndPressureActive, (TVoid*)&gDb_ctSetRamBrakeTest.aboRng_ParkBrake2ndPressureActive[0]}
 };
 
-const TDbVarTabNvm gDb_catVarTabNvParamRailWorkSafetyC0[27] =
+const TDbVarTabNvm gDb_catVarTabNvParamRailWorkSafetyC0[25] =
 {    //!< *cptInf *vpVal *cvpDataRang *cvpDataDef cu16Adr cu16ValuePos
     { &gDb_ctSetNvParamRailWorkSafetyC0.tInf_MinTurretAngleConsistALO, (TVoid*)&gDb_tNvParamRailWorkSafetyC0.i16MinTurretAngleConsistALO, (TVoid*)&gDb_ctSetNvParamRailWorkSafetyC0.i16Def_MinTurretAngleConsistALO, (TVoid*)&gDb_ctSetNvParamRailWorkSafetyC0.ai16Rng_MinTurretAngleConsistALO[0], 1212, 0},
     { &gDb_ctSetNvParamRailWorkSafetyC0.tInf_MaxTurretAngleConsistALO, (TVoid*)&gDb_tNvParamRailWorkSafetyC0.i16MaxTurretAngleConsistALO, (TVoid*)&gDb_ctSetNvParamRailWorkSafetyC0.i16Def_MaxTurretAngleConsistALO, (TVoid*)&gDb_ctSetNvParamRailWorkSafetyC0.ai16Rng_MaxTurretAngleConsistALO[0], 1214, 1},
@@ -6145,12 +5969,10 @@ const TDbVarTabNvm gDb_catVarTabNvParamRailWorkSafetyC0[27] =
     { &gDb_ctSetNvParamRailWorkSafetyC0.tInf_ALOTurretFrontZoneStopThres, (TVoid*)&gDb_tNvParamRailWorkSafetyC0.i16ALOTurretFrontZoneStopThres, (TVoid*)&gDb_ctSetNvParamRailWorkSafetyC0.i16Def_ALOTurretFrontZoneStopThres, (TVoid*)&gDb_ctSetNvParamRailWorkSafetyC0.ai16Rng_ALOTurretFrontZoneStopThres[0], 1254, 21},
     { &gDb_ctSetNvParamRailWorkSafetyC0.tInf_ALOTurretFrontZoneStopHyst, (TVoid*)&gDb_tNvParamRailWorkSafetyC0.i16ALOTurretFrontZoneStopHyst, (TVoid*)&gDb_ctSetNvParamRailWorkSafetyC0.i16Def_ALOTurretFrontZoneStopHyst, (TVoid*)&gDb_ctSetNvParamRailWorkSafetyC0.ai16Rng_ALOTurretFrontZoneStopHyst[0], 1256, 22},
     { &gDb_ctSetNvParamRailWorkSafetyC0.tInf_ALOArrowLowerZoneStopThres, (TVoid*)&gDb_tNvParamRailWorkSafetyC0.i16ALOArrowLowerZoneStopThres, (TVoid*)&gDb_ctSetNvParamRailWorkSafetyC0.i16Def_ALOArrowLowerZoneStopThres, (TVoid*)&gDb_ctSetNvParamRailWorkSafetyC0.ai16Rng_ALOArrowLowerZoneStopThres[0], 1258, 23},
-    { &gDb_ctSetNvParamRailWorkSafetyC0.tInf_ALOArrowLowerZoneStopHyst, (TVoid*)&gDb_tNvParamRailWorkSafetyC0.i16ALOArrowLowerZoneStopHyst, (TVoid*)&gDb_ctSetNvParamRailWorkSafetyC0.i16Def_ALOArrowLowerZoneStopHyst, (TVoid*)&gDb_ctSetNvParamRailWorkSafetyC0.ai16Rng_ALOArrowLowerZoneStopHyst[0], 1260, 24},
-    { &gDb_ctSetNvParamRailWorkSafetyC0.tInf_ThresHighSlopeForArrowUp, (TVoid*)&gDb_tNvParamRailWorkSafetyC0.i16ThresHighSlopeForArrowUp, (TVoid*)&gDb_ctSetNvParamRailWorkSafetyC0.i16Def_ThresHighSlopeForArrowUp, (TVoid*)&gDb_ctSetNvParamRailWorkSafetyC0.ai16Rng_ThresHighSlopeForArrowUp[0], 1262, 25},
-    { &gDb_ctSetNvParamRailWorkSafetyC0.tInf_HystHighSlopeForArrowUp, (TVoid*)&gDb_tNvParamRailWorkSafetyC0.i16HystHighSlopeForArrowUp, (TVoid*)&gDb_ctSetNvParamRailWorkSafetyC0.i16Def_HystHighSlopeForArrowUp, (TVoid*)&gDb_ctSetNvParamRailWorkSafetyC0.ai16Rng_HystHighSlopeForArrowUp[0], 1264, 26}
+    { &gDb_ctSetNvParamRailWorkSafetyC0.tInf_ALOArrowLowerZoneStopHyst, (TVoid*)&gDb_tNvParamRailWorkSafetyC0.i16ALOArrowLowerZoneStopHyst, (TVoid*)&gDb_ctSetNvParamRailWorkSafetyC0.i16Def_ALOArrowLowerZoneStopHyst, (TVoid*)&gDb_ctSetNvParamRailWorkSafetyC0.ai16Rng_ALOArrowLowerZoneStopHyst[0], 1260, 24}
 };
 
-const TDbVarTabRam gDb_catVarTabRamRailWorkSafetyC0[34] =
+const TDbVarTabRam gDb_catVarTabRamRailWorkSafetyC0[33] =
 {    //!< *cptInf *vpVal *cvpDataDef 
     { &gDb_ctSetRamRailWorkSafetyC0.tInf_RailWorkMode, (TVoid*)&gDb_tRamRailWorkSafetyC0.eRailWorkMode, (TVoid*)&gDb_ctSetRamRailWorkSafetyC0.eDef_RailWorkMode, (TVoid*)&gDb_ctSetRamRailWorkSafetyC0.aeRng_RailWorkMode[0]},
     { &gDb_ctSetRamRailWorkSafetyC0.tInf_WrongTurretAbutBilateralMode, (TVoid*)&gDb_tRamRailWorkSafetyC0.boWrongTurretAbutBilateralMode, (TVoid*)&gDb_ctSetRamRailWorkSafetyC0.boDef_WrongTurretAbutBilateralMode, (TVoid*)&gDb_ctSetRamRailWorkSafetyC0.aboRng_WrongTurretAbutBilateralMode[0]},
@@ -6184,8 +6006,7 @@ const TDbVarTabRam gDb_catVarTabRamRailWorkSafetyC0[34] =
     { &gDb_ctSetRamRailWorkSafetyC0.tInf_TestTelescopInSensor, (TVoid*)&gDb_tRamRailWorkSafetyC0.boTestTelescopInSensor, (TVoid*)&gDb_ctSetRamRailWorkSafetyC0.boDef_TestTelescopInSensor, (TVoid*)&gDb_ctSetRamRailWorkSafetyC0.aboRng_TestTelescopInSensor[0]},
     { &gDb_ctSetRamRailWorkSafetyC0.tInf_TestTurretAngularPosition, (TVoid*)&gDb_tRamRailWorkSafetyC0.i16TestTurretAngularPosition, (TVoid*)&gDb_ctSetRamRailWorkSafetyC0.i16Def_TestTurretAngularPosition, (TVoid*)&gDb_ctSetRamRailWorkSafetyC0.ai16Rng_TestTurretAngularPosition[0]},
     { &gDb_ctSetRamRailWorkSafetyC0.tInf_TestArrowArmAngularPosition, (TVoid*)&gDb_tRamRailWorkSafetyC0.i16TestArrowArmAngularPosition, (TVoid*)&gDb_ctSetRamRailWorkSafetyC0.i16Def_TestArrowArmAngularPosition, (TVoid*)&gDb_ctSetRamRailWorkSafetyC0.ai16Rng_TestArrowArmAngularPosition[0]},
-    { &gDb_ctSetRamRailWorkSafetyC0.tInf_AbutmentWorkMode, (TVoid*)&gDb_tRamRailWorkSafetyC0.eAbutmentWorkMode, (TVoid*)&gDb_ctSetRamRailWorkSafetyC0.eDef_AbutmentWorkMode, (TVoid*)&gDb_ctSetRamRailWorkSafetyC0.aeRng_AbutmentWorkMode[0]},
-    { &gDb_ctSetRamRailWorkSafetyC0.tInf_HighSlopeForArrowUp, (TVoid*)&gDb_tRamRailWorkSafetyC0.boHighSlopeForArrowUp, (TVoid*)&gDb_ctSetRamRailWorkSafetyC0.boDef_HighSlopeForArrowUp, (TVoid*)&gDb_ctSetRamRailWorkSafetyC0.aboRng_HighSlopeForArrowUp[0]}
+    { &gDb_ctSetRamRailWorkSafetyC0.tInf_AbutmentWorkMode, (TVoid*)&gDb_tRamRailWorkSafetyC0.eAbutmentWorkMode, (TVoid*)&gDb_ctSetRamRailWorkSafetyC0.eDef_AbutmentWorkMode, (TVoid*)&gDb_ctSetRamRailWorkSafetyC0.aeRng_AbutmentWorkMode[0]}
 };
 
 const TDbVarTabRam gDb_catVarTabRamTransportPosC0[3] =
@@ -6353,7 +6174,7 @@ const TDbVarTabNvm gDb_catVarTabNvParamMastDisplayC0[1] =
     { &gDb_ctSetNvParamMastDisplayC0.tInf_MastDisplayRefreshCycleTime, (TVoid*)&gDb_tNvParamMastDisplayC0.u32MastDisplayRefreshCycleTime, (TVoid*)&gDb_ctSetNvParamMastDisplayC0.u32Def_MastDisplayRefreshCycleTime, (TVoid*)&gDb_ctSetNvParamMastDisplayC0.au32Rng_MastDisplayRefreshCycleTime[0], 2012, 0}
 };
 
-const TDbVarTabRam gDb_catVarTabRamData4C0RcvFromC1[19] =
+const TDbVarTabRam gDb_catVarTabRamData4C0RcvFromC1[18] =
 {    //!< *cptInf *vpVal *cvpDataDef 
     { &gDb_ctSetRamData4C0RcvFromC1.tInf_NoMovementRunning, (TVoid*)&gDb_tRamData4C0RcvFromC1.boNoMovementRunning, (TVoid*)&gDb_ctSetRamData4C0RcvFromC1.boDef_NoMovementRunning, (TVoid*)&gDb_ctSetRamData4C0RcvFromC1.aboRng_NoMovementRunning[0]},
     { &gDb_ctSetRamData4C0RcvFromC1.tInf_StopMoveLimitEnvelop, (TVoid*)&gDb_tRamData4C0RcvFromC1.boStopMoveLimitEnvelop, (TVoid*)&gDb_ctSetRamData4C0RcvFromC1.boDef_StopMoveLimitEnvelop, (TVoid*)&gDb_ctSetRamData4C0RcvFromC1.aboRng_StopMoveLimitEnvelop[0]},
@@ -6372,8 +6193,7 @@ const TDbVarTabRam gDb_catVarTabRamData4C0RcvFromC1[19] =
     { &gDb_ctSetRamData4C0RcvFromC1.tInf_ValidTelescopeFirstSectorSlope, (TVoid*)&gDb_tRamData4C0RcvFromC1.boValidTelescopeFirstSectorSlope, (TVoid*)&gDb_ctSetRamData4C0RcvFromC1.boDef_ValidTelescopeFirstSectorSlope, (TVoid*)&gDb_ctSetRamData4C0RcvFromC1.aboRng_ValidTelescopeFirstSectorSlope[0]},
     { &gDb_ctSetRamData4C0RcvFromC1.tInf_PostInterdictionMastSNCF, (TVoid*)&gDb_tRamData4C0RcvFromC1.boPostInterdictionMastSNCF, (TVoid*)&gDb_ctSetRamData4C0RcvFromC1.boDef_PostInterdictionMastSNCF, (TVoid*)&gDb_ctSetRamData4C0RcvFromC1.aboRng_PostInterdictionMastSNCF[0]},
     { &gDb_ctSetRamData4C0RcvFromC1.tInf_InterdictOfNacelTurretPost, (TVoid*)&gDb_tRamData4C0RcvFromC1.boInterdictOfNacelTurretPost, (TVoid*)&gDb_ctSetRamData4C0RcvFromC1.boDef_InterdictOfNacelTurretPost, (TVoid*)&gDb_ctSetRamData4C0RcvFromC1.aboRng_InterdictOfNacelTurretPost[0]},
-    { &gDb_ctSetRamData4C0RcvFromC1.tInf_MastPanthoFoldedSNCF, (TVoid*)&gDb_tRamData4C0RcvFromC1.boMastPanthoFoldedSNCF, (TVoid*)&gDb_ctSetRamData4C0RcvFromC1.boDef_MastPanthoFoldedSNCF, (TVoid*)&gDb_ctSetRamData4C0RcvFromC1.aboRng_MastPanthoFoldedSNCF[0]},
-    { &gDb_ctSetRamData4C0RcvFromC1.tInf_AccuBrakeSensorPressureValue, (TVoid*)&gDb_tRamData4C0RcvFromC1.i16AccuBrakeSensorPressureValue, (TVoid*)&gDb_ctSetRamData4C0RcvFromC1.i16Def_AccuBrakeSensorPressureValue, (TVoid*)&gDb_ctSetRamData4C0RcvFromC1.ai16Rng_AccuBrakeSensorPressureValue[0]}
+    { &gDb_ctSetRamData4C0RcvFromC1.tInf_MastPanthoFoldedSNCF, (TVoid*)&gDb_tRamData4C0RcvFromC1.boMastPanthoFoldedSNCF, (TVoid*)&gDb_ctSetRamData4C0RcvFromC1.boDef_MastPanthoFoldedSNCF, (TVoid*)&gDb_ctSetRamData4C0RcvFromC1.aboRng_MastPanthoFoldedSNCF[0]}
 };
 
 const TDbVarTabNvm gDb_catVarTabNvParamGreenEffC0[31] =
@@ -6495,7 +6315,7 @@ const TDbRoot gDb_ctRoot =
 {
     2,                                                      //u8VersMajor - [NUM] Database Versionnumber Major
     1,                                                      //u8VerMinor - [NUM] Database Versionnumber Minor
-    4058902548U,                                            //u32DbmCheckNo - [NUM] Database Check-Number
+    1988377983U,                                            //u32DbmCheckNo - [NUM] Database Check-Number
     36,                                                     //u8ListMax - [NUM] Count of Lists
     &gDb_catList[0]                                         //pctListTab - [STC] Pointer to the first list entry
 };
@@ -6510,10 +6330,10 @@ const TDbList gDb_catList[36] =
         DB_RAM_ECU,                                         //!< u8ListClass - [DEF] RAM/NVMEM
         DB_RAM,                                             //!< u8ListType  - [DEF] RAM/NVMEM
         0,                                                  //!< u8ListIdx - List Index
-        80,                                                 //!< u16VarMax - [NUM] Max Variable
-        80,                                                 //!< u16NumValues - [NUM] Number of addressable values in list(counting each array value)
-        160,                                                //!< u16ShadowBytes - [NUM] need Shadow RAM in Byte
-        1798U,                                              //!< u32Password - [NUM] DbList unique key
+        74,                                                 //!< u16VarMax - [NUM] Max Variable
+        74,                                                 //!< u16NumValues - [NUM] Number of addressable values in list(counting each array value)
+        148,                                                //!< u16ShadowBytes - [NUM] need Shadow RAM in Byte
+        1660U,                                              //!< u32Password - [NUM] DbList unique key
         &gDb_tRamEcuInputsC0.tListRoot,                     //!< cptListRoot - [NUM] ListRoot
     //!< ** RAM General Setting
         &gDb_catVarTabRamEcuInputsC0[0],                    //!< cptRamVarTab - [STC] Pointer of RAM
@@ -6650,10 +6470,10 @@ const TDbList gDb_catList[36] =
         DB_RAM_ECU,                                         //!< u8ListClass - [DEF] RAM/NVMEM
         DB_RAM,                                             //!< u8ListType  - [DEF] RAM/NVMEM
         2,                                                  //!< u8ListIdx - List Index
-        122,                                                //!< u16VarMax - [NUM] Max Variable
-        122,                                                //!< u16NumValues - [NUM] Number of addressable values in list(counting each array value)
-        184,                                                //!< u16ShadowBytes - [NUM] need Shadow RAM in Byte
-        1553U,                                              //!< u32Password - [NUM] DbList unique key
+        117,                                                //!< u16VarMax - [NUM] Max Variable
+        117,                                                //!< u16NumValues - [NUM] Number of addressable values in list(counting each array value)
+        179,                                                //!< u16ShadowBytes - [NUM] need Shadow RAM in Byte
+        1539U,                                              //!< u32Password - [NUM] DbList unique key
         &gDb_tRamGeneralC0.tListRoot,                       //!< cptListRoot - [NUM] ListRoot
     //!< ** RAM General Setting
         &gDb_catVarTabRamGeneralC0[0],                      //!< cptRamVarTab - [STC] Pointer of RAM
@@ -6720,10 +6540,10 @@ const TDbList gDb_catList[36] =
         DB_NVM_OPT,                                         //!< u8ListClass - [DEF] RAM/NVMEM
         DB_NVMEM,                                           //!< u8ListType  - [DEF] RAM/NVMEM
         3,                                                  //!< u8ListIdx - List Index
-        13,                                                 //!< u16VarMax - [NUM] Max Variable
-        13,                                                 //!< u16NumValues - [NUM] Number of addressable values in list(counting each array value)
-        13,                                                 //!< u16ShadowBytes - [NUM] need Shadow RAM in Byte
-        13U,                                                //!< u32Password - [NUM] DbList unique key
+        12,                                                 //!< u16VarMax - [NUM] Max Variable
+        12,                                                 //!< u16NumValues - [NUM] Number of addressable values in list(counting each array value)
+        12,                                                 //!< u16ShadowBytes - [NUM] need Shadow RAM in Byte
+        12U,                                                //!< u32Password - [NUM] DbList unique key
         &gDb_tNvOptionsC0.tListRoot,                        //!< cptListRoot - [NUM] ListRoot
     //!< ** RAM General Setting
         NULL,                                               //!< cptRamVarTab - [STC] Pointer of RAM
@@ -6860,10 +6680,10 @@ const TDbList gDb_catList[36] =
         DB_NVM_PAR,                                         //!< u8ListClass - [DEF] RAM/NVMEM
         DB_NVMEM,                                           //!< u8ListType  - [DEF] RAM/NVMEM
         5,                                                  //!< u8ListIdx - List Index
-        103,                                                //!< u16VarMax - [NUM] Max Variable
-        113,                                                //!< u16NumValues - [NUM] Number of addressable values in list(counting each array value)
-        211,                                                //!< u16ShadowBytes - [NUM] need Shadow RAM in Byte
-        2234U,                                              //!< u32Password - [NUM] DbList unique key
+        101,                                                //!< u16VarMax - [NUM] Max Variable
+        111,                                                //!< u16NumValues - [NUM] Number of addressable values in list(counting each array value)
+        207,                                                //!< u16ShadowBytes - [NUM] need Shadow RAM in Byte
+        2186U,                                              //!< u32Password - [NUM] DbList unique key
         &gDb_tNvParametersC0.tListRoot,                     //!< cptListRoot - [NUM] ListRoot
     //!< ** RAM General Setting
         NULL,                                               //!< cptRamVarTab - [STC] Pointer of RAM
@@ -7490,10 +7310,10 @@ const TDbList gDb_catList[36] =
         DB_NVM_PAR,                                         //!< u8ListClass - [DEF] RAM/NVMEM
         DB_NVMEM,                                           //!< u8ListType  - [DEF] RAM/NVMEM
         14,                                                 //!< u8ListIdx - List Index
-        54,                                                 //!< u16VarMax - [NUM] Max Variable
-        54,                                                 //!< u16NumValues - [NUM] Number of addressable values in list(counting each array value)
-        108,                                                //!< u16ShadowBytes - [NUM] need Shadow RAM in Byte
-        1218U,                                              //!< u32Password - [NUM] DbList unique key
+        45,                                                 //!< u16VarMax - [NUM] Max Variable
+        45,                                                 //!< u16NumValues - [NUM] Number of addressable values in list(counting each array value)
+        90,                                                 //!< u16ShadowBytes - [NUM] need Shadow RAM in Byte
+        1014U,                                              //!< u32Password - [NUM] DbList unique key
         &gDb_tNvParamSpeedMaxRail.tListRoot,                //!< cptListRoot - [NUM] ListRoot
     //!< ** RAM General Setting
         NULL,                                               //!< cptRamVarTab - [STC] Pointer of RAM
@@ -7560,10 +7380,10 @@ const TDbList gDb_catList[36] =
         DB_RAM_ECU,                                         //!< u8ListClass - [DEF] RAM/NVMEM
         DB_RAM,                                             //!< u8ListType  - [DEF] RAM/NVMEM
         15,                                                 //!< u8ListIdx - List Index
-        57,                                                 //!< u16VarMax - [NUM] Max Variable
-        57,                                                 //!< u16NumValues - [NUM] Number of addressable values in list(counting each array value)
-        71,                                                 //!< u16ShadowBytes - [NUM] need Shadow RAM in Byte
-        379U,                                               //!< u32Password - [NUM] DbList unique key
+        48,                                                 //!< u16VarMax - [NUM] Max Variable
+        48,                                                 //!< u16NumValues - [NUM] Number of addressable values in list(counting each array value)
+        53,                                                 //!< u16ShadowBytes - [NUM] need Shadow RAM in Byte
+        175U,                                               //!< u32Password - [NUM] DbList unique key
         &gDb_tRamSpeedMaxRail.tListRoot,                    //!< cptListRoot - [NUM] ListRoot
     //!< ** RAM General Setting
         &gDb_catVarTabRamSpeedMaxRail[0],                   //!< cptRamVarTab - [STC] Pointer of RAM
@@ -7770,10 +7590,10 @@ const TDbList gDb_catList[36] =
         DB_NVM_PAR,                                         //!< u8ListClass - [DEF] RAM/NVMEM
         DB_NVMEM,                                           //!< u8ListType  - [DEF] RAM/NVMEM
         18,                                                 //!< u8ListIdx - List Index
-        27,                                                 //!< u16VarMax - [NUM] Max Variable
-        27,                                                 //!< u16NumValues - [NUM] Number of addressable values in list(counting each array value)
-        54,                                                 //!< u16ShadowBytes - [NUM] need Shadow RAM in Byte
-        594U,                                               //!< u32Password - [NUM] DbList unique key
+        25,                                                 //!< u16VarMax - [NUM] Max Variable
+        25,                                                 //!< u16NumValues - [NUM] Number of addressable values in list(counting each array value)
+        50,                                                 //!< u16ShadowBytes - [NUM] need Shadow RAM in Byte
+        540U,                                               //!< u32Password - [NUM] DbList unique key
         &gDb_tNvParamRailWorkSafetyC0.tListRoot,            //!< cptListRoot - [NUM] ListRoot
     //!< ** RAM General Setting
         NULL,                                               //!< cptRamVarTab - [STC] Pointer of RAM
@@ -7840,10 +7660,10 @@ const TDbList gDb_catList[36] =
         DB_RAM_ECU,                                         //!< u8ListClass - [DEF] RAM/NVMEM
         DB_RAM,                                             //!< u8ListType  - [DEF] RAM/NVMEM
         19,                                                 //!< u8ListIdx - List Index
-        34,                                                 //!< u16VarMax - [NUM] Max Variable
-        34,                                                 //!< u16NumValues - [NUM] Number of addressable values in list(counting each array value)
-        38,                                                 //!< u16ShadowBytes - [NUM] need Shadow RAM in Byte
-        108U,                                               //!< u32Password - [NUM] DbList unique key
+        33,                                                 //!< u16VarMax - [NUM] Max Variable
+        33,                                                 //!< u16NumValues - [NUM] Number of addressable values in list(counting each array value)
+        37,                                                 //!< u16ShadowBytes - [NUM] need Shadow RAM in Byte
+        107U,                                               //!< u32Password - [NUM] DbList unique key
         &gDb_tRamRailWorkSafetyC0.tListRoot,                //!< cptListRoot - [NUM] ListRoot
     //!< ** RAM General Setting
         &gDb_catVarTabRamRailWorkSafetyC0[0],               //!< cptRamVarTab - [STC] Pointer of RAM
@@ -8680,10 +8500,10 @@ const TDbList gDb_catList[36] =
         DB_RAM_ECU,                                         //!< u8ListClass - [DEF] RAM/NVMEM
         DB_RAM,                                             //!< u8ListType  - [DEF] RAM/NVMEM
         31,                                                 //!< u8ListIdx - List Index
-        19,                                                 //!< u16VarMax - [NUM] Max Variable
-        19,                                                 //!< u16NumValues - [NUM] Number of addressable values in list(counting each array value)
-        23,                                                 //!< u16ShadowBytes - [NUM] need Shadow RAM in Byte
-        120U,                                               //!< u32Password - [NUM] DbList unique key
+        18,                                                 //!< u16VarMax - [NUM] Max Variable
+        18,                                                 //!< u16NumValues - [NUM] Number of addressable values in list(counting each array value)
+        21,                                                 //!< u16ShadowBytes - [NUM] need Shadow RAM in Byte
+        108U,                                               //!< u32Password - [NUM] DbList unique key
         &gDb_tRamData4C0RcvFromC1.tListRoot,                //!< cptListRoot - [NUM] ListRoot
     //!< ** RAM General Setting
         &gDb_catVarTabRamData4C0RcvFromC1[0],               //!< cptRamVarTab - [STC] Pointer of RAM

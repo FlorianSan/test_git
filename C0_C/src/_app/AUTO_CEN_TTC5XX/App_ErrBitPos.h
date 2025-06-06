@@ -1,5 +1,5 @@
 //**************************************************************************************************
-//! @crc        1330962012
+//! @crc        2669218267
 //! @file       App_ErrBitPos.h
 //! @brief      Generate by: HYDAC Controller Project - Code Builder Tool Chain
 //! @ecu        TTC580
@@ -9,7 +9,7 @@
 //! @Match      07-04-01-04
 //! @PDT        2.11.72.172
 //! @PdtProjVer 0.0.0
-//! @created    2025-06-04 11:35:59   HYDAC/HCP-CC
+//! @created    2025-04-18 16:40:50   HYDAC/HCP-CC
 //**************************************************************************************************
 
 #ifndef __APP_ERRBITPOS_H__
@@ -72,8 +72,8 @@
     //!< ErrBlockName: SpecificErrorC0_7 - Descr: Openload detected on devers default light output of 48xs - SPN: 16540 - FMI: FMI_31_CONDITION_EXISTS - FMIExt: FMIEX_NONE
 #define DM_C0_OUT_OF_RANGE_JOY_TELESCOPE_ARM_48XS 2
     //!< ErrBlockName: SpecificErrorC0_8 - Descr: Out of range joystick telescope arm of 48XS - SPN: 16558 - FMI: FMI_31_CONDITION_EXISTS - FMIExt: FMIEX_NONE
-#define DM_MG_SENSOR_FAULT 2
-    //!< ErrBlockName: SpecificErrorC0_9 - Descr: DM_MG_SENSOR_FAULT - SPN: 9193 - FMI: FMI_31_CONDITION_EXISTS - FMIExt: FMIEX_NONE
+#define DM_ERR_02 2
+    //!< ErrBlockName: SpecificErrorC0_9 - Descr: Error bit 2 - SPN: 9193 - FMI: FMI_31_CONDITION_EXISTS - FMIExt: FMIEX_NONE
 
 
 #define DM_INC_ABUTMENT_TURRET 3

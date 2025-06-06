@@ -1,5 +1,5 @@
 //**************************************************************************************************
-//! @crc        3535878442
+//! @crc        4145685529
 //! @file       App_LibTab.c
 //! @brief      Generate by: HYDAC Controller Project - Code Builder Tool Chain
 //! @ecu        TTC580
@@ -9,7 +9,7 @@
 //! @Match      07-04-01-04
 //! @PDT        2.11.72.172
 //! @PdtProjVer 0.0.0
-//! @created    2025-06-04 11:35:59   HYDAC/HCP-CC
+//! @created    2025-04-18 16:40:50   HYDAC/HCP-CC
 //**************************************************************************************************
 
 // INCLUDES ========================================================================================
@@ -149,7 +149,6 @@ TBloCSnd gCSnd_tDMC_TxSdo;
 TBloCSnd gCSnd_tNMT;
 TBloCSnd gCSnd_tDMC_TxPdo1_DC;
 TBloCSnd gCSnd_tDMC_TxPdo2_BCL;
-TBloCSnd gCSnd_tData6C0SendToC1;
 TBloCRcv gCRcv_tHeartBeat;
 TBloCRcv gCRcv_tReadAnalogInput;
 TBloCRcv gCRcv_tReadOnOfffInput;
@@ -194,7 +193,6 @@ TBloCRcv gCRcv_tDMC_RxSdo;
 TBloCRcv gCRcv_tDMC_RxPdo1_MS;
 TBloCRcv gCRcv_tDMC_RxPdo2_DS;
 TBloCRcv gCRcv_tDMC_RxPdo3_CS;
-TBloCRcv gCRcv_tSRDO5_48XS;
 TBloPro gPro_tEvForwardPump;
 TBloPro gPro_tEvBackwardPump;
 TBloSwiNc gSwiNc_tUpOscillantAxle;
@@ -213,15 +211,13 @@ TBloErr gErr_tSpecificErrorC0_8;
 TBloErr gErr_tSpecificErrorC0_9;
 TBloSwiDblNcNo gSwiDblNcNo_tDownOscillantAxle;
 TBloSwiDblNcNo gSwiDblNcNo_tDownFixeAxle;
-TBloSwiDblNcNo gSwiDblNcNo_tAxleInMGMode;
-TBloSwiDblNcNo gSwiDblNcNo_tAxleInSDMode;
 TBloSil gSil_tEcu0_Safety;
 TBloSil gSil_tEcu1_Safety;
 TBloSil gSil_tEcuSil;
 TBloSil gSil_tSensorSupply;
 TBloSil gSil_tErrList;
 
-#define OBJ_TAB_MAX 206
+#define OBJ_TAB_MAX 202
 
 TObjTab g_atObjTab[OBJ_TAB_MAX];
 TUint16 g_u16ObjTabMax = OBJ_TAB_MAX;
@@ -586,466 +582,450 @@ TVoid vAppAutoLibTable( TVoid )
     g_atObjTab[88].u16Type = (TUint16)BLO_SWIDBLNCNO;
     g_atObjTab[88].pvBloAdr = &gSwiDblNcNo_tDownFixeAxle;
 
-    gSwiDblNcNo_tAxleInMGMode.tXAdr.cptCfg = &gSwiDblNcNo_ctCfg_AxleInMGMode;
-    g_atObjTab[89].u16Type = (TUint16)BLO_SWIDBLNCNO;
-    g_atObjTab[89].pvBloAdr = &gSwiDblNcNo_tAxleInMGMode;
-
-    gSwiDblNcNo_tAxleInSDMode.tXAdr.cptCfg = &gSwiDblNcNo_ctCfg_AxleInSDMode;
-    g_atObjTab[90].u16Type = (TUint16)BLO_SWIDBLNCNO;
-    g_atObjTab[90].pvBloAdr = &gSwiDblNcNo_tAxleInSDMode;
-
     gCRcv_tHeartBeat.tXAdr.cptCfg = &gCRcv_ctCfg_HeartBeat;
-    g_atObjTab[91].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[91].pvBloAdr = &gCRcv_tHeartBeat;
+    g_atObjTab[89].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[89].pvBloAdr = &gCRcv_tHeartBeat;
 
     gCRcv_tReadAnalogInput.tXAdr.cptCfg = &gCRcv_ctCfg_ReadAnalogInput;
-    g_atObjTab[92].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[92].pvBloAdr = &gCRcv_tReadAnalogInput;
+    g_atObjTab[90].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[90].pvBloAdr = &gCRcv_tReadAnalogInput;
 
     gCRcv_tReadOnOfffInput.tXAdr.cptCfg = &gCRcv_ctCfg_ReadOnOfffInput;
-    g_atObjTab[93].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[93].pvBloAdr = &gCRcv_tReadOnOfffInput;
+    g_atObjTab[91].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[91].pvBloAdr = &gCRcv_tReadOnOfffInput;
 
     gCRcv_tHeartBeatDeversFrame.tXAdr.cptCfg = &gCRcv_ctCfg_HeartBeatDeversFrame;
-    g_atObjTab[94].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[94].pvBloAdr = &gCRcv_tHeartBeatDeversFrame;
+    g_atObjTab[92].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[92].pvBloAdr = &gCRcv_tHeartBeatDeversFrame;
 
     gCRcv_tDeversFrame1.tXAdr.cptCfg = &gCRcv_ctCfg_DeversFrame1;
-    g_atObjTab[95].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[95].pvBloAdr = &gCRcv_tDeversFrame1;
+    g_atObjTab[93].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[93].pvBloAdr = &gCRcv_tDeversFrame1;
 
     gCRcv_tEncodeurTurret1.tXAdr.cptCfg = &gCRcv_ctCfg_EncodeurTurret1;
-    g_atObjTab[96].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[96].pvBloAdr = &gCRcv_tEncodeurTurret1;
+    g_atObjTab[94].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[94].pvBloAdr = &gCRcv_tEncodeurTurret1;
 
     gCRcv_tEncodeurTurret2.tXAdr.cptCfg = &gCRcv_ctCfg_EncodeurTurret2;
-    g_atObjTab[97].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[97].pvBloAdr = &gCRcv_tEncodeurTurret2;
+    g_atObjTab[95].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[95].pvBloAdr = &gCRcv_tEncodeurTurret2;
 
     gCRcv_tMsg1C0RcvFromEvision7.tXAdr.cptCfg = &gCRcv_ctCfg_Msg1C0RcvFromEvision7;
-    g_atObjTab[98].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[98].pvBloAdr = &gCRcv_tMsg1C0RcvFromEvision7;
+    g_atObjTab[96].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[96].pvBloAdr = &gCRcv_tMsg1C0RcvFromEvision7;
 
     gCRcv_tDataRcvFromC1.tXAdr.cptCfg = &gCRcv_ctCfg_DataRcvFromC1;
-    g_atObjTab[99].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[99].pvBloAdr = &gCRcv_tDataRcvFromC1;
+    g_atObjTab[97].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[97].pvBloAdr = &gCRcv_tDataRcvFromC1;
 
     gCRcv_tHeartBeatEncodeurTurret1.tXAdr.cptCfg = &gCRcv_ctCfg_HeartBeatEncodeurTurret1;
-    g_atObjTab[100].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[100].pvBloAdr = &gCRcv_tHeartBeatEncodeurTurret1;
+    g_atObjTab[98].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[98].pvBloAdr = &gCRcv_tHeartBeatEncodeurTurret1;
 
     gCRcv_tPDO3_48XS.tXAdr.cptCfg = &gCRcv_ctCfg_PDO3_48XS;
-    g_atObjTab[101].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[101].pvBloAdr = &gCRcv_tPDO3_48XS;
+    g_atObjTab[99].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[99].pvBloAdr = &gCRcv_tPDO3_48XS;
 
     gCRcv_tPDO4_48XS.tXAdr.cptCfg = &gCRcv_ctCfg_PDO4_48XS;
-    g_atObjTab[102].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[102].pvBloAdr = &gCRcv_tPDO4_48XS;
+    g_atObjTab[100].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[100].pvBloAdr = &gCRcv_tPDO4_48XS;
 
     gCRcv_tSRDO2_48XS.tXAdr.cptCfg = &gCRcv_ctCfg_SRDO2_48XS;
-    g_atObjTab[103].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[103].pvBloAdr = &gCRcv_tSRDO2_48XS;
+    g_atObjTab[101].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[101].pvBloAdr = &gCRcv_tSRDO2_48XS;
 
     gCRcv_tSRDO3_48XS.tXAdr.cptCfg = &gCRcv_ctCfg_SRDO3_48XS;
-    g_atObjTab[104].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[104].pvBloAdr = &gCRcv_tSRDO3_48XS;
+    g_atObjTab[102].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[102].pvBloAdr = &gCRcv_tSRDO3_48XS;
 
     gCRcv_tMastMeasure.tXAdr.cptCfg = &gCRcv_ctCfg_MastMeasure;
-    g_atObjTab[105].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[105].pvBloAdr = &gCRcv_tMastMeasure;
+    g_atObjTab[103].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[103].pvBloAdr = &gCRcv_tMastMeasure;
 
     gCRcv_tData2RdvFromC1.tXAdr.cptCfg = &gCRcv_ctCfg_Data2RdvFromC1;
-    g_atObjTab[106].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[106].pvBloAdr = &gCRcv_tData2RdvFromC1;
+    g_atObjTab[104].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[104].pvBloAdr = &gCRcv_tData2RdvFromC1;
 
     gCRcv_tHearbeat_48XS.tXAdr.cptCfg = &gCRcv_ctCfg_Hearbeat_48XS;
-    g_atObjTab[107].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[107].pvBloAdr = &gCRcv_tHearbeat_48XS;
+    g_atObjTab[105].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[105].pvBloAdr = &gCRcv_tHearbeat_48XS;
 
     gCRcv_tPDO1_48XS.tXAdr.cptCfg = &gCRcv_ctCfg_PDO1_48XS;
-    g_atObjTab[108].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[108].pvBloAdr = &gCRcv_tPDO1_48XS;
+    g_atObjTab[106].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[106].pvBloAdr = &gCRcv_tPDO1_48XS;
 
     gCRcv_tPDO2_48XS.tXAdr.cptCfg = &gCRcv_ctCfg_PDO2_48XS;
-    g_atObjTab[109].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[109].pvBloAdr = &gCRcv_tPDO2_48XS;
+    g_atObjTab[107].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[107].pvBloAdr = &gCRcv_tPDO2_48XS;
 
     gCRcv_tSRDO1_48XS.tXAdr.cptCfg = &gCRcv_ctCfg_SRDO1_48XS;
-    g_atObjTab[110].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[110].pvBloAdr = &gCRcv_tSRDO1_48XS;
+    g_atObjTab[108].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[108].pvBloAdr = &gCRcv_tSRDO1_48XS;
 
     gCRcv_tData3RcvFromC1.tXAdr.cptCfg = &gCRcv_ctCfg_Data3RcvFromC1;
-    g_atObjTab[111].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[111].pvBloAdr = &gCRcv_tData3RcvFromC1;
+    g_atObjTab[109].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[109].pvBloAdr = &gCRcv_tData3RcvFromC1;
 
     gCRcv_tDeversFrame2.tXAdr.cptCfg = &gCRcv_ctCfg_DeversFrame2;
-    g_atObjTab[112].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[112].pvBloAdr = &gCRcv_tDeversFrame2;
+    g_atObjTab[110].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[110].pvBloAdr = &gCRcv_tDeversFrame2;
 
     gCRcv_tFAiluresC1SendToC0.tXAdr.cptCfg = &gCRcv_ctCfg_FAiluresC1SendToC0;
-    g_atObjTab[113].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[113].pvBloAdr = &gCRcv_tFAiluresC1SendToC0;
+    g_atObjTab[111].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[111].pvBloAdr = &gCRcv_tFAiluresC1SendToC0;
 
     gCRcv_tMsg1RcvFromOpus.tXAdr.cptCfg = &gCRcv_ctCfg_Msg1RcvFromOpus;
-    g_atObjTab[114].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[114].pvBloAdr = &gCRcv_tMsg1RcvFromOpus;
+    g_atObjTab[112].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[112].pvBloAdr = &gCRcv_tMsg1RcvFromOpus;
 
     gCRcv_tData4C1SendToC0.tXAdr.cptCfg = &gCRcv_ctCfg_Data4C1SendToC0;
-    g_atObjTab[115].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[115].pvBloAdr = &gCRcv_tData4C1SendToC0;
+    g_atObjTab[113].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[113].pvBloAdr = &gCRcv_tData4C1SendToC0;
 
     gCRcv_tEmergencyEncodeurTurret1.tXAdr.cptCfg = &gCRcv_ctCfg_EmergencyEncodeurTurret1;
-    g_atObjTab[116].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[116].pvBloAdr = &gCRcv_tEmergencyEncodeurTurret1;
+    g_atObjTab[114].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[114].pvBloAdr = &gCRcv_tEmergencyEncodeurTurret1;
 
     gCRcv_tEmergencyEncodeurTurret2.tXAdr.cptCfg = &gCRcv_ctCfg_EmergencyEncodeurTurret2;
-    g_atObjTab[117].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[117].pvBloAdr = &gCRcv_tEmergencyEncodeurTurret2;
+    g_atObjTab[115].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[115].pvBloAdr = &gCRcv_tEmergencyEncodeurTurret2;
 
     gCRcv_tEmergencyMastMeasure.tXAdr.cptCfg = &gCRcv_ctCfg_EmergencyMastMeasure;
-    g_atObjTab[118].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[118].pvBloAdr = &gCRcv_tEmergencyMastMeasure;
+    g_atObjTab[116].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[116].pvBloAdr = &gCRcv_tEmergencyMastMeasure;
 
     gCRcv_tPDO5_48XS.tXAdr.cptCfg = &gCRcv_ctCfg_PDO5_48XS;
-    g_atObjTab[119].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[119].pvBloAdr = &gCRcv_tPDO5_48XS;
+    g_atObjTab[117].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[117].pvBloAdr = &gCRcv_tPDO5_48XS;
 
     gCRcv_tHeartBeatEncodeurTurret2.tXAdr.cptCfg = &gCRcv_ctCfg_HeartBeatEncodeurTurret2;
-    g_atObjTab[120].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[120].pvBloAdr = &gCRcv_tHeartBeatEncodeurTurret2;
+    g_atObjTab[118].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[118].pvBloAdr = &gCRcv_tHeartBeatEncodeurTurret2;
 
     gCRcv_tPDO6_48XS.tXAdr.cptCfg = &gCRcv_ctCfg_PDO6_48XS;
-    g_atObjTab[121].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[121].pvBloAdr = &gCRcv_tPDO6_48XS;
+    g_atObjTab[119].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[119].pvBloAdr = &gCRcv_tPDO6_48XS;
 
     gCRcv_tSdo_Answer_Encodeur_Turret1.tXAdr.cptCfg = &gCRcv_ctCfg_Sdo_Answer_Encodeur_Turret1;
-    g_atObjTab[122].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[122].pvBloAdr = &gCRcv_tSdo_Answer_Encodeur_Turret1;
+    g_atObjTab[120].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[120].pvBloAdr = &gCRcv_tSdo_Answer_Encodeur_Turret1;
 
     gCRcv_tSdo_Answer_Encodeur_Turret2.tXAdr.cptCfg = &gCRcv_ctCfg_Sdo_Answer_Encodeur_Turret2;
-    g_atObjTab[123].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[123].pvBloAdr = &gCRcv_tSdo_Answer_Encodeur_Turret2;
+    g_atObjTab[121].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[121].pvBloAdr = &gCRcv_tSdo_Answer_Encodeur_Turret2;
 
     gCRcv_tData5C1SendToC0.tXAdr.cptCfg = &gCRcv_ctCfg_Data5C1SendToC0;
-    g_atObjTab[124].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[124].pvBloAdr = &gCRcv_tData5C1SendToC0;
+    g_atObjTab[122].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[122].pvBloAdr = &gCRcv_tData5C1SendToC0;
 
     gCRcv_tFlashBatteryRpdo1_0.tXAdr.cptCfg = &gCRcv_ctCfg_FlashBatteryRpdo1_0;
-    g_atObjTab[125].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[125].pvBloAdr = &gCRcv_tFlashBatteryRpdo1_0;
+    g_atObjTab[123].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[123].pvBloAdr = &gCRcv_tFlashBatteryRpdo1_0;
 
     gCRcv_tFlashBatteryRpdo1_2.tXAdr.cptCfg = &gCRcv_ctCfg_FlashBatteryRpdo1_2;
-    g_atObjTab[126].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[126].pvBloAdr = &gCRcv_tFlashBatteryRpdo1_2;
+    g_atObjTab[124].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[124].pvBloAdr = &gCRcv_tFlashBatteryRpdo1_2;
 
     gCRcv_tFlashBatteryRpdo2_0.tXAdr.cptCfg = &gCRcv_ctCfg_FlashBatteryRpdo2_0;
-    g_atObjTab[127].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[127].pvBloAdr = &gCRcv_tFlashBatteryRpdo2_0;
+    g_atObjTab[125].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[125].pvBloAdr = &gCRcv_tFlashBatteryRpdo2_0;
 
     gCRcv_tFlashBatteryRpdo3_0.tXAdr.cptCfg = &gCRcv_ctCfg_FlashBatteryRpdo3_0;
-    g_atObjTab[128].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[128].pvBloAdr = &gCRcv_tFlashBatteryRpdo3_0;
+    g_atObjTab[126].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[126].pvBloAdr = &gCRcv_tFlashBatteryRpdo3_0;
 
     gCRcv_tFlashBatteryRpdo3_3.tXAdr.cptCfg = &gCRcv_ctCfg_FlashBatteryRpdo3_3;
-    g_atObjTab[129].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[129].pvBloAdr = &gCRcv_tFlashBatteryRpdo3_3;
+    g_atObjTab[127].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[127].pvBloAdr = &gCRcv_tFlashBatteryRpdo3_3;
 
     gCRcv_tDMC_Heartbeat_HB.tXAdr.cptCfg = &gCRcv_ctCfg_DMC_Heartbeat_HB;
-    g_atObjTab[130].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[130].pvBloAdr = &gCRcv_tDMC_Heartbeat_HB;
+    g_atObjTab[128].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[128].pvBloAdr = &gCRcv_tDMC_Heartbeat_HB;
 
     gCRcv_tDMC_RxSdo.tXAdr.cptCfg = &gCRcv_ctCfg_DMC_RxSdo;
-    g_atObjTab[131].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[131].pvBloAdr = &gCRcv_tDMC_RxSdo;
+    g_atObjTab[129].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[129].pvBloAdr = &gCRcv_tDMC_RxSdo;
 
     gCRcv_tDMC_RxPdo1_MS.tXAdr.cptCfg = &gCRcv_ctCfg_DMC_RxPdo1_MS;
-    g_atObjTab[132].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[132].pvBloAdr = &gCRcv_tDMC_RxPdo1_MS;
+    g_atObjTab[130].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[130].pvBloAdr = &gCRcv_tDMC_RxPdo1_MS;
 
     gCRcv_tDMC_RxPdo2_DS.tXAdr.cptCfg = &gCRcv_ctCfg_DMC_RxPdo2_DS;
-    g_atObjTab[133].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[133].pvBloAdr = &gCRcv_tDMC_RxPdo2_DS;
+    g_atObjTab[131].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[131].pvBloAdr = &gCRcv_tDMC_RxPdo2_DS;
 
     gCRcv_tDMC_RxPdo3_CS.tXAdr.cptCfg = &gCRcv_ctCfg_DMC_RxPdo3_CS;
-    g_atObjTab[134].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[134].pvBloAdr = &gCRcv_tDMC_RxPdo3_CS;
-
-    gCRcv_tSRDO5_48XS.tXAdr.cptCfg = &gCRcv_ctCfg_SRDO5_48XS;
-    g_atObjTab[135].u16Type = (TUint16)STD_BLO_CRCV;
-    g_atObjTab[135].pvBloAdr = &gCRcv_tSRDO5_48XS;
+    g_atObjTab[132].u16Type = (TUint16)STD_BLO_CRCV;
+    g_atObjTab[132].pvBloAdr = &gCRcv_tDMC_RxPdo3_CS;
 
     gCSnd_tStart.tXAdr.cptCfg = &gCSnd_ctCfg_Start;
-    g_atObjTab[136].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[136].pvBloAdr = &gCSnd_tStart;
+    g_atObjTab[133].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[133].pvBloAdr = &gCSnd_tStart;
 
     gCSnd_tWriteLed.tXAdr.cptCfg = &gCSnd_ctCfg_WriteLed;
-    g_atObjTab[137].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[137].pvBloAdr = &gCSnd_tWriteLed;
+    g_atObjTab[134].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[134].pvBloAdr = &gCSnd_tWriteLed;
 
     gCSnd_tRadioCmd.tXAdr.cptCfg = &gCSnd_ctCfg_RadioCmd;
-    g_atObjTab[138].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[138].pvBloAdr = &gCSnd_tRadioCmd;
+    g_atObjTab[135].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[135].pvBloAdr = &gCSnd_tRadioCmd;
 
     gCSnd_tStartSensor.tXAdr.cptCfg = &gCSnd_ctCfg_StartSensor;
-    g_atObjTab[139].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[139].pvBloAdr = &gCSnd_tStartSensor;
+    g_atObjTab[136].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[136].pvBloAdr = &gCSnd_tStartSensor;
 
     gCSnd_tSendToEvision7.tXAdr.cptCfg = &gCSnd_ctCfg_SendToEvision7;
-    g_atObjTab[140].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[140].pvBloAdr = &gCSnd_tSendToEvision7;
+    g_atObjTab[137].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[137].pvBloAdr = &gCSnd_tSendToEvision7;
 
     gCSnd_tDataSendToC1.tXAdr.cptCfg = &gCSnd_ctCfg_DataSendToC1;
-    g_atObjTab[141].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[141].pvBloAdr = &gCSnd_tDataSendToC1;
+    g_atObjTab[138].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[138].pvBloAdr = &gCSnd_tDataSendToC1;
 
     gCSnd_tMsg2SendToEvision7.tXAdr.cptCfg = &gCSnd_ctCfg_Msg2SendToEvision7;
-    g_atObjTab[142].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[142].pvBloAdr = &gCSnd_tMsg2SendToEvision7;
+    g_atObjTab[139].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[139].pvBloAdr = &gCSnd_tMsg2SendToEvision7;
 
     gCSnd_tMsg3SendToEvision7.tXAdr.cptCfg = &gCSnd_ctCfg_Msg3SendToEvision7;
-    g_atObjTab[143].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[143].pvBloAdr = &gCSnd_tMsg3SendToEvision7;
+    g_atObjTab[140].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[140].pvBloAdr = &gCSnd_tMsg3SendToEvision7;
 
     gCSnd_tMessage_02.tXAdr.cptCfg = &gCSnd_ctCfg_Message_02;
-    g_atObjTab[144].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[144].pvBloAdr = &gCSnd_tMessage_02;
+    g_atObjTab[141].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[141].pvBloAdr = &gCSnd_tMessage_02;
 
     gCSnd_tData2SendToC1.tXAdr.cptCfg = &gCSnd_ctCfg_Data2SendToC1;
-    g_atObjTab[145].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[145].pvBloAdr = &gCSnd_tData2SendToC1;
+    g_atObjTab[142].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[142].pvBloAdr = &gCSnd_tData2SendToC1;
 
     gCSnd_tData3SendToC1.tXAdr.cptCfg = &gCSnd_ctCfg_Data3SendToC1;
-    g_atObjTab[146].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[146].pvBloAdr = &gCSnd_tData3SendToC1;
+    g_atObjTab[143].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[143].pvBloAdr = &gCSnd_tData3SendToC1;
 
     gCSnd_tMsg4C0SendToEvision7.tXAdr.cptCfg = &gCSnd_ctCfg_Msg4C0SendToEvision7;
-    g_atObjTab[147].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[147].pvBloAdr = &gCSnd_tMsg4C0SendToEvision7;
+    g_atObjTab[144].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[144].pvBloAdr = &gCSnd_tMsg4C0SendToEvision7;
 
     gCSnd_tFailuresC0SendToC1.tXAdr.cptCfg = &gCSnd_ctCfg_FailuresC0SendToC1;
-    g_atObjTab[148].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[148].pvBloAdr = &gCSnd_tFailuresC0SendToC1;
+    g_atObjTab[145].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[145].pvBloAdr = &gCSnd_tFailuresC0SendToC1;
 
     gCSnd_tMsg5C0SendToEvision7.tXAdr.cptCfg = &gCSnd_ctCfg_Msg5C0SendToEvision7;
-    g_atObjTab[149].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[149].pvBloAdr = &gCSnd_tMsg5C0SendToEvision7;
+    g_atObjTab[146].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[146].pvBloAdr = &gCSnd_tMsg5C0SendToEvision7;
 
     gCSnd_tMsg6C0SendToEvision7.tXAdr.cptCfg = &gCSnd_ctCfg_Msg6C0SendToEvision7;
-    g_atObjTab[150].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[150].pvBloAdr = &gCSnd_tMsg6C0SendToEvision7;
+    g_atObjTab[147].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[147].pvBloAdr = &gCSnd_tMsg6C0SendToEvision7;
 
     gCSnd_tMsg7C0SendToEvision7.tXAdr.cptCfg = &gCSnd_ctCfg_Msg7C0SendToEvision7;
-    g_atObjTab[151].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[151].pvBloAdr = &gCSnd_tMsg7C0SendToEvision7;
+    g_atObjTab[148].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[148].pvBloAdr = &gCSnd_tMsg7C0SendToEvision7;
 
     gCSnd_tMsg8C0SendToEvision7.tXAdr.cptCfg = &gCSnd_ctCfg_Msg8C0SendToEvision7;
-    g_atObjTab[152].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[152].pvBloAdr = &gCSnd_tMsg8C0SendToEvision7;
+    g_atObjTab[149].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[149].pvBloAdr = &gCSnd_tMsg8C0SendToEvision7;
 
     gCSnd_tMsg9C0SendToEvision7.tXAdr.cptCfg = &gCSnd_ctCfg_Msg9C0SendToEvision7;
-    g_atObjTab[153].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[153].pvBloAdr = &gCSnd_tMsg9C0SendToEvision7;
+    g_atObjTab[150].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[150].pvBloAdr = &gCSnd_tMsg9C0SendToEvision7;
 
     gCSnd_tMsg9C0SendToEvision7_1.tXAdr.cptCfg = &gCSnd_ctCfg_Msg9C0SendToEvision7_1;
-    g_atObjTab[154].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[154].pvBloAdr = &gCSnd_tMsg9C0SendToEvision7_1;
+    g_atObjTab[151].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[151].pvBloAdr = &gCSnd_tMsg9C0SendToEvision7_1;
 
     gCSnd_tMsg2C0SendToOpus.tXAdr.cptCfg = &gCSnd_ctCfg_Msg2C0SendToOpus;
-    g_atObjTab[155].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[155].pvBloAdr = &gCSnd_tMsg2C0SendToOpus;
+    g_atObjTab[152].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[152].pvBloAdr = &gCSnd_tMsg2C0SendToOpus;
 
     gCSnd_tMsg3C0SendToOpus.tXAdr.cptCfg = &gCSnd_ctCfg_Msg3C0SendToOpus;
-    g_atObjTab[156].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[156].pvBloAdr = &gCSnd_tMsg3C0SendToOpus;
+    g_atObjTab[153].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[153].pvBloAdr = &gCSnd_tMsg3C0SendToOpus;
 
     gCSnd_tMsg4C0SendToOpus.tXAdr.cptCfg = &gCSnd_ctCfg_Msg4C0SendToOpus;
-    g_atObjTab[157].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[157].pvBloAdr = &gCSnd_tMsg4C0SendToOpus;
+    g_atObjTab[154].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[154].pvBloAdr = &gCSnd_tMsg4C0SendToOpus;
 
     gCSnd_tMsg5C0SendToOpus.tXAdr.cptCfg = &gCSnd_ctCfg_Msg5C0SendToOpus;
-    g_atObjTab[158].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[158].pvBloAdr = &gCSnd_tMsg5C0SendToOpus;
+    g_atObjTab[155].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[155].pvBloAdr = &gCSnd_tMsg5C0SendToOpus;
 
     gCSnd_tMsg6C0SendToOpus.tXAdr.cptCfg = &gCSnd_ctCfg_Msg6C0SendToOpus;
-    g_atObjTab[159].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[159].pvBloAdr = &gCSnd_tMsg6C0SendToOpus;
+    g_atObjTab[156].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[156].pvBloAdr = &gCSnd_tMsg6C0SendToOpus;
 
     gCSnd_tMsg7C0SendToOpus.tXAdr.cptCfg = &gCSnd_ctCfg_Msg7C0SendToOpus;
-    g_atObjTab[160].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[160].pvBloAdr = &gCSnd_tMsg7C0SendToOpus;
+    g_atObjTab[157].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[157].pvBloAdr = &gCSnd_tMsg7C0SendToOpus;
 
     gCSnd_tMsg8C0SendToOpus.tXAdr.cptCfg = &gCSnd_ctCfg_Msg8C0SendToOpus;
-    g_atObjTab[161].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[161].pvBloAdr = &gCSnd_tMsg8C0SendToOpus;
+    g_atObjTab[158].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[158].pvBloAdr = &gCSnd_tMsg8C0SendToOpus;
 
     gCSnd_tMsg1C0SendToOpus.tXAdr.cptCfg = &gCSnd_ctCfg_Msg1C0SendToOpus;
-    g_atObjTab[162].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[162].pvBloAdr = &gCSnd_tMsg1C0SendToOpus;
+    g_atObjTab[159].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[159].pvBloAdr = &gCSnd_tMsg1C0SendToOpus;
 
     gCSnd_tData4C0SendToC1.tXAdr.cptCfg = &gCSnd_ctCfg_Data4C0SendToC1;
-    g_atObjTab[163].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[163].pvBloAdr = &gCSnd_tData4C0SendToC1;
+    g_atObjTab[160].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[160].pvBloAdr = &gCSnd_tData4C0SendToC1;
 
     gCSnd_tMsg11C0SendToEvision7.tXAdr.cptCfg = &gCSnd_ctCfg_Msg11C0SendToEvision7;
-    g_atObjTab[164].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[164].pvBloAdr = &gCSnd_tMsg11C0SendToEvision7;
+    g_atObjTab[161].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[161].pvBloAdr = &gCSnd_tMsg11C0SendToEvision7;
 
     gCSnd_tMsg9C0SendToOpus.tXAdr.cptCfg = &gCSnd_ctCfg_Msg9C0SendToOpus;
-    g_atObjTab[165].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[165].pvBloAdr = &gCSnd_tMsg9C0SendToOpus;
+    g_atObjTab[162].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[162].pvBloAdr = &gCSnd_tMsg9C0SendToOpus;
 
     gCSnd_tMsg10C0SendToOpus.tXAdr.cptCfg = &gCSnd_ctCfg_Msg10C0SendToOpus;
-    g_atObjTab[166].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[166].pvBloAdr = &gCSnd_tMsg10C0SendToOpus;
+    g_atObjTab[163].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[163].pvBloAdr = &gCSnd_tMsg10C0SendToOpus;
 
     gCSnd_tSyncFrame.tXAdr.cptCfg = &gCSnd_ctCfg_SyncFrame;
-    g_atObjTab[167].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[167].pvBloAdr = &gCSnd_tSyncFrame;
+    g_atObjTab[164].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[164].pvBloAdr = &gCSnd_tSyncFrame;
 
     gCSnd_tMsg12C0SendToEvision7.tXAdr.cptCfg = &gCSnd_ctCfg_Msg12C0SendToEvision7;
-    g_atObjTab[168].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[168].pvBloAdr = &gCSnd_tMsg12C0SendToEvision7;
+    g_atObjTab[165].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[165].pvBloAdr = &gCSnd_tMsg12C0SendToEvision7;
 
     gCSnd_tMsg13C0SendToEvision7.tXAdr.cptCfg = &gCSnd_ctCfg_Msg13C0SendToEvision7;
-    g_atObjTab[169].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[169].pvBloAdr = &gCSnd_tMsg13C0SendToEvision7;
+    g_atObjTab[166].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[166].pvBloAdr = &gCSnd_tMsg13C0SendToEvision7;
 
     gCSnd_tDatalogger.tXAdr.cptCfg = &gCSnd_ctCfg_Datalogger;
-    g_atObjTab[170].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[170].pvBloAdr = &gCSnd_tDatalogger;
+    g_atObjTab[167].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[167].pvBloAdr = &gCSnd_tDatalogger;
 
     gCSnd_tSdo_Request_Encodeur_Turret.tXAdr.cptCfg = &gCSnd_ctCfg_Sdo_Request_Encodeur_Turret;
-    g_atObjTab[171].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[171].pvBloAdr = &gCSnd_tSdo_Request_Encodeur_Turret;
+    g_atObjTab[168].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[168].pvBloAdr = &gCSnd_tSdo_Request_Encodeur_Turret;
 
     gCSnd_tSdo_Request_Encodeur_Turret2.tXAdr.cptCfg = &gCSnd_ctCfg_Sdo_Request_Encodeur_Turret2;
-    g_atObjTab[172].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[172].pvBloAdr = &gCSnd_tSdo_Request_Encodeur_Turret2;
+    g_atObjTab[169].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[169].pvBloAdr = &gCSnd_tSdo_Request_Encodeur_Turret2;
 
     gCSnd_tData5C0SendToC1.tXAdr.cptCfg = &gCSnd_ctCfg_Data5C0SendToC1;
-    g_atObjTab[173].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[173].pvBloAdr = &gCSnd_tData5C0SendToC1;
+    g_atObjTab[170].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[170].pvBloAdr = &gCSnd_tData5C0SendToC1;
 
     gCSnd_tMsg11C0SendToOpus.tXAdr.cptCfg = &gCSnd_ctCfg_Msg11C0SendToOpus;
-    g_atObjTab[174].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[174].pvBloAdr = &gCSnd_tMsg11C0SendToOpus;
+    g_atObjTab[171].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[171].pvBloAdr = &gCSnd_tMsg11C0SendToOpus;
 
     gCSnd_tMsg14C0SendToEvision7.tXAdr.cptCfg = &gCSnd_ctCfg_Msg14C0SendToEvision7;
-    g_atObjTab[175].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[175].pvBloAdr = &gCSnd_tMsg14C0SendToEvision7;
+    g_atObjTab[172].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[172].pvBloAdr = &gCSnd_tMsg14C0SendToEvision7;
 
     gCSnd_tMsg15C0SendToEvision7.tXAdr.cptCfg = &gCSnd_ctCfg_Msg15C0SendToEvision7;
-    g_atObjTab[176].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[176].pvBloAdr = &gCSnd_tMsg15C0SendToEvision7;
+    g_atObjTab[173].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[173].pvBloAdr = &gCSnd_tMsg15C0SendToEvision7;
 
     gCSnd_tHMG_1.tXAdr.cptCfg = &gCSnd_ctCfg_HMG_1;
-    g_atObjTab[177].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[177].pvBloAdr = &gCSnd_tHMG_1;
+    g_atObjTab[174].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[174].pvBloAdr = &gCSnd_tHMG_1;
 
     gCSnd_tHMG_2.tXAdr.cptCfg = &gCSnd_ctCfg_HMG_2;
-    g_atObjTab[178].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[178].pvBloAdr = &gCSnd_tHMG_2;
+    g_atObjTab[175].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[175].pvBloAdr = &gCSnd_tHMG_2;
 
     gCSnd_tHMG_3.tXAdr.cptCfg = &gCSnd_ctCfg_HMG_3;
-    g_atObjTab[179].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[179].pvBloAdr = &gCSnd_tHMG_3;
+    g_atObjTab[176].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[176].pvBloAdr = &gCSnd_tHMG_3;
 
     gCSnd_tDMC_TxSdo.tXAdr.cptCfg = &gCSnd_ctCfg_DMC_TxSdo;
-    g_atObjTab[180].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[180].pvBloAdr = &gCSnd_tDMC_TxSdo;
+    g_atObjTab[177].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[177].pvBloAdr = &gCSnd_tDMC_TxSdo;
 
     gCSnd_tNMT.tXAdr.cptCfg = &gCSnd_ctCfg_NMT;
-    g_atObjTab[181].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[181].pvBloAdr = &gCSnd_tNMT;
+    g_atObjTab[178].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[178].pvBloAdr = &gCSnd_tNMT;
 
     gCSnd_tDMC_TxPdo1_DC.tXAdr.cptCfg = &gCSnd_ctCfg_DMC_TxPdo1_DC;
-    g_atObjTab[182].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[182].pvBloAdr = &gCSnd_tDMC_TxPdo1_DC;
+    g_atObjTab[179].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[179].pvBloAdr = &gCSnd_tDMC_TxPdo1_DC;
 
     gCSnd_tDMC_TxPdo2_BCL.tXAdr.cptCfg = &gCSnd_ctCfg_DMC_TxPdo2_BCL;
-    g_atObjTab[183].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[183].pvBloAdr = &gCSnd_tDMC_TxPdo2_BCL;
-
-    gCSnd_tData6C0SendToC1.tXAdr.cptCfg = &gCSnd_ctCfg_Data6C0SendToC1;
-    g_atObjTab[184].u16Type = (TUint16)STD_BLO_CSND;
-    g_atObjTab[184].pvBloAdr = &gCSnd_tData6C0SendToC1;
+    g_atObjTab[180].u16Type = (TUint16)STD_BLO_CSND;
+    g_atObjTab[180].pvBloAdr = &gCSnd_tDMC_TxPdo2_BCL;
 
     gErr_tSpecificErrorC0.tXAdr.cptCfg = &gErr_ctCfg_SpecificErrorC0;
-    g_atObjTab[185].u16Type = (TUint16)STD_BLO_ERR;
-    g_atObjTab[185].pvBloAdr = &gErr_tSpecificErrorC0;
+    g_atObjTab[181].u16Type = (TUint16)STD_BLO_ERR;
+    g_atObjTab[181].pvBloAdr = &gErr_tSpecificErrorC0;
 
     gErr_tSpecificErrorC0_2.tXAdr.cptCfg = &gErr_ctCfg_SpecificErrorC0_2;
-    g_atObjTab[186].u16Type = (TUint16)STD_BLO_ERR;
-    g_atObjTab[186].pvBloAdr = &gErr_tSpecificErrorC0_2;
+    g_atObjTab[182].u16Type = (TUint16)STD_BLO_ERR;
+    g_atObjTab[182].pvBloAdr = &gErr_tSpecificErrorC0_2;
 
     gErr_tSpecificErrorC0_3.tXAdr.cptCfg = &gErr_ctCfg_SpecificErrorC0_3;
-    g_atObjTab[187].u16Type = (TUint16)STD_BLO_ERR;
-    g_atObjTab[187].pvBloAdr = &gErr_tSpecificErrorC0_3;
+    g_atObjTab[183].u16Type = (TUint16)STD_BLO_ERR;
+    g_atObjTab[183].pvBloAdr = &gErr_tSpecificErrorC0_3;
 
     gErr_tSpecificErrorC0_4.tXAdr.cptCfg = &gErr_ctCfg_SpecificErrorC0_4;
-    g_atObjTab[188].u16Type = (TUint16)STD_BLO_ERR;
-    g_atObjTab[188].pvBloAdr = &gErr_tSpecificErrorC0_4;
+    g_atObjTab[184].u16Type = (TUint16)STD_BLO_ERR;
+    g_atObjTab[184].pvBloAdr = &gErr_tSpecificErrorC0_4;
 
     gErr_tSpecificErrorC0_5.tXAdr.cptCfg = &gErr_ctCfg_SpecificErrorC0_5;
-    g_atObjTab[189].u16Type = (TUint16)STD_BLO_ERR;
-    g_atObjTab[189].pvBloAdr = &gErr_tSpecificErrorC0_5;
+    g_atObjTab[185].u16Type = (TUint16)STD_BLO_ERR;
+    g_atObjTab[185].pvBloAdr = &gErr_tSpecificErrorC0_5;
 
     gErr_tSpecificErrorC0_6.tXAdr.cptCfg = &gErr_ctCfg_SpecificErrorC0_6;
-    g_atObjTab[190].u16Type = (TUint16)STD_BLO_ERR;
-    g_atObjTab[190].pvBloAdr = &gErr_tSpecificErrorC0_6;
+    g_atObjTab[186].u16Type = (TUint16)STD_BLO_ERR;
+    g_atObjTab[186].pvBloAdr = &gErr_tSpecificErrorC0_6;
 
     gErr_tSpecificErrorC0_7.tXAdr.cptCfg = &gErr_ctCfg_SpecificErrorC0_7;
-    g_atObjTab[191].u16Type = (TUint16)STD_BLO_ERR;
-    g_atObjTab[191].pvBloAdr = &gErr_tSpecificErrorC0_7;
+    g_atObjTab[187].u16Type = (TUint16)STD_BLO_ERR;
+    g_atObjTab[187].pvBloAdr = &gErr_tSpecificErrorC0_7;
 
     gErr_tSpecificErrorC0_8.tXAdr.cptCfg = &gErr_ctCfg_SpecificErrorC0_8;
-    g_atObjTab[192].u16Type = (TUint16)STD_BLO_ERR;
-    g_atObjTab[192].pvBloAdr = &gErr_tSpecificErrorC0_8;
+    g_atObjTab[188].u16Type = (TUint16)STD_BLO_ERR;
+    g_atObjTab[188].pvBloAdr = &gErr_tSpecificErrorC0_8;
 
     gErr_tSpecificErrorC0_9.tXAdr.cptCfg = &gErr_ctCfg_SpecificErrorC0_9;
-    g_atObjTab[193].u16Type = (TUint16)STD_BLO_ERR;
-    g_atObjTab[193].pvBloAdr = &gErr_tSpecificErrorC0_9;
+    g_atObjTab[189].u16Type = (TUint16)STD_BLO_ERR;
+    g_atObjTab[189].pvBloAdr = &gErr_tSpecificErrorC0_9;
 
     gSil_tEcu0_Safety.tXAdr.cptCfg = &gSil_ctCfg_Ecu0_Safety;
-    g_atObjTab[194].u16Type = (TUint16)STD_BLO_SIL;
-    g_atObjTab[194].pvBloAdr = &gSil_tEcu0_Safety;
+    g_atObjTab[190].u16Type = (TUint16)STD_BLO_SIL;
+    g_atObjTab[190].pvBloAdr = &gSil_tEcu0_Safety;
 
     gSil_tEcu1_Safety.tXAdr.cptCfg = &gSil_ctCfg_Ecu1_Safety;
-    g_atObjTab[195].u16Type = (TUint16)STD_BLO_SIL;
-    g_atObjTab[195].pvBloAdr = &gSil_tEcu1_Safety;
+    g_atObjTab[191].u16Type = (TUint16)STD_BLO_SIL;
+    g_atObjTab[191].pvBloAdr = &gSil_tEcu1_Safety;
 
     gSil_tEcuSil.tXAdr.cptCfg = &gSil_ctCfg_EcuSil;
-    g_atObjTab[196].u16Type = (TUint16)STD_BLO_SIL;
-    g_atObjTab[196].pvBloAdr = &gSil_tEcuSil;
+    g_atObjTab[192].u16Type = (TUint16)STD_BLO_SIL;
+    g_atObjTab[192].pvBloAdr = &gSil_tEcuSil;
 
     gSil_tSensorSupply.tXAdr.cptCfg = &gSil_ctCfg_SensorSupply;
-    g_atObjTab[197].u16Type = (TUint16)STD_BLO_SIL;
-    g_atObjTab[197].pvBloAdr = &gSil_tSensorSupply;
+    g_atObjTab[193].u16Type = (TUint16)STD_BLO_SIL;
+    g_atObjTab[193].pvBloAdr = &gSil_tSensorSupply;
 
     gSil_tErrList.tXAdr.cptCfg = &gSil_ctCfg_ErrList;
-    g_atObjTab[198].u16Type = (TUint16)STD_BLO_SIL;
-    g_atObjTab[198].pvBloAdr = &gSil_tErrList;
+    g_atObjTab[194].u16Type = (TUint16)STD_BLO_SIL;
+    g_atObjTab[194].pvBloAdr = &gSil_tErrList;
 
-    g_atObjTab[199].u16Type  = (TUint16)STD_STU_CREC;
-    g_atObjTab[199].pvBloAdr = (TVoid*)&g_ctCanSigRecRootTab;
+    g_atObjTab[195].u16Type  = (TUint16)STD_STU_CREC;
+    g_atObjTab[195].pvBloAdr = (TVoid*)&g_ctCanSigRecRootTab;
 
-    g_atObjTab[200].u16Type  = (TUint16)STD_STU_DB;
-    g_atObjTab[200].pvBloAdr = (TVoid*)&gDb_ctRoot;
+    g_atObjTab[196].u16Type  = (TUint16)STD_STU_DB;
+    g_atObjTab[196].pvBloAdr = (TVoid*)&gDb_ctRoot;
 
-    g_atObjTab[201].u16Type  = (TUint16)STD_STU_VER;
-    g_atObjTab[201].pvBloAdr = (TVoid*)&gVer_tInf;
+    g_atObjTab[197].u16Type  = (TUint16)STD_STU_VER;
+    g_atObjTab[197].pvBloAdr = (TVoid*)&gVer_tInf;
 
-    g_atObjTab[202].u16Type  = (TUint16)STD_STU_PIN;
-    g_atObjTab[202].pvBloAdr = (TVoid*)&gPinInfo_ctAppPin;
+    g_atObjTab[198].u16Type  = (TUint16)STD_STU_PIN;
+    g_atObjTab[198].pvBloAdr = (TVoid*)&gPinInfo_ctAppPin;
 
-    g_atObjTab[203].u16Type  = (TUint16)STD_STU_ECU;
-    g_atObjTab[203].pvBloAdr = (TVoid*)&gEcu_tSys;
+    g_atObjTab[199].u16Type  = (TUint16)STD_STU_ECU;
+    g_atObjTab[199].pvBloAdr = (TVoid*)&gEcu_tSys;
 
-    g_atObjTab[204].u16Type  = (TUint16)STD_STU_HCP_OUT;
-    g_atObjTab[204].pvBloAdr = (TVoid*)&gCore_tOut;
+    g_atObjTab[200].u16Type  = (TUint16)STD_STU_HCP_OUT;
+    g_atObjTab[200].pvBloAdr = (TVoid*)&gCore_tOut;
 
-    g_atObjTab[205].u16Type = (TUint16)STD_STU_HCP_INP;
-    g_atObjTab[205].pvBloAdr = (TVoid*)&gCore_tInp;
+    g_atObjTab[201].u16Type = (TUint16)STD_STU_HCP_INP;
+    g_atObjTab[201].pvBloAdr = (TVoid*)&gCore_tInp;
 
     vAcbAutoCodeAppend(vAcbAutoCode);
 }
@@ -1068,7 +1048,6 @@ TVoid vAcbAutoCodeStartUp(TVoid)
     eBloCRcvChangeCanIdInc(&gCRcv_tFAiluresC1SendToC0, 0x18FF0012 );
     eBloCRcvChangeCanIdInc(&gCRcv_tData4C1SendToC0, 0x18FF0018 );
     eBloCRcvChangeCanIdInc(&gCRcv_tData5C1SendToC0, 0x18FF001C );
-    eBloCRcvChangeCanIdInc(&gCRcv_tSRDO5_48XS, 0x10A );
 }
 
 TVoid vAcbAutoCode(TVoid)

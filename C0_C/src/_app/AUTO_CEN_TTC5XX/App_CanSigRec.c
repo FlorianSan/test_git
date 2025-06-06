@@ -1,5 +1,5 @@
 //**************************************************************************************************
-//! @crc        39377073
+//! @crc        1093307975
 //! @file       App_CanSigRec.c
 //! @brief      Generate by: HYDAC Controller Project - Code Builder Tool Chain
 //! @ecu        TTC580
@@ -9,7 +9,7 @@
 //! @Match      07-04-01-04
 //! @PDT        2.11.72.172
 //! @PdtProjVer 0.0.0
-//! @created    2025-06-04 11:35:59   HYDAC/HCP-CC
+//! @created    2025-04-18 16:40:50   HYDAC/HCP-CC
 //**************************************************************************************************
 
 #include <App_CanSigRec.h>
@@ -1263,43 +1263,43 @@ TCanSigRecSRDO2_48XS gCsr_tSRDO2_48XS =
 
 const TCanSigRecVal_SRDO3_48XS gCsr_ctRecDat_SRDO3_48XS =
 {
-    //!< pin263
+    //!< DeltaArmJystckCenteredTelesc
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 0, 1, 0, 0, 1, 1 }, 
      { FALSE, TRUE, FALSE, FALSE },
-    //!< pin256
+    //!< ArrowJoystickCenteredTurret
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 1, 1, 0, 0, 1, 1 }, 
      { FALSE, TRUE, FALSE, FALSE },
-    //!< pin262
+    //!< CenteredAdvanceJoystick
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 2, 1, 0, 0, 1, 1 }, 
      { FALSE, TRUE, FALSE, FALSE },
-    //!< pin255
+    //!< DeadManPedal
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 3, 1, 0, 0, 1, 1 }, 
      { FALSE, TRUE, FALSE, FALSE },
-    //!< pin261
+    //!< PressenceInNacelleSensor1
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 4, 1, 0, 0, 1, 1 }, 
      { FALSE, TRUE, FALSE, FALSE },
-    //!< pin254
+    //!< PressenceInNacelleSensor2
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 5, 1, 0, 0, 1, 1 }, 
      { FALSE, TRUE, FALSE, FALSE },
-    //!< pin260
+    //!< Gachette
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 6, 1, 0, 0, 1, 1 }, 
      { FALSE, TRUE, FALSE, FALSE },
-    //!< pin253
+    //!< Klaxon
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 7, 1, 0, 0, 1, 1 }, 
      { FALSE, TRUE, FALSE, FALSE },
-    //!< pin275
+    //!< StopMotorButton
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 8, 1, 0, 0, 1, 1 }, 
      { FALSE, TRUE, FALSE, FALSE },
-    //!< pin268
+    //!< AuthorizationWorkKey
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 9, 1, 0, 0, 1, 1 }, 
      { FALSE, TRUE, FALSE, FALSE },
-    //!< pin274
+    //!< EtallonnageJoystickButton
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 10, 1, 0, 0, 1, 1 }, 
      { FALSE, TRUE, FALSE, FALSE },
-    //!< pin267
+    //!< ClosePortillon
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 11, 1, 0, 0, 1, 1 }, 
      { FALSE, TRUE, FALSE, FALSE },
-    //!< pin101
+    //!< BatterieVoltage48Xs
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TUINT16, TUINT16, 16, 16, 0, 0, 1, 1 }, 
      { U16_MIN, U16_MAX, 0, 0 }
 };
@@ -1323,87 +1323,87 @@ static ESigSta mCsr_aeRecErr_tSRDO3_48XS[13] =
 
 static TCanSigRecOldValSRDO3_48XS mCsr_tOldDat_tSRDO3_48XS =
 {
-    FALSE,                                                  //!< bopin263 [[-]] boDeltaArmJystckCenteredTelesc
-    FALSE,                                                  //!< bopin256 [[-]] boArrowJoystickCenteredTurret
-    FALSE,                                                  //!< bopin262 [[-]] boCenteredAdvanceJoystick
-    FALSE,                                                  //!< bopin255 [[-]] boDeadManPedal
-    FALSE,                                                  //!< bopin261 [[-]] boPressenceInNacelleSensor1 || boHighSectorPlateSensor
-    FALSE,                                                  //!< bopin254 [[-]] boPressenceInNacelleSensor2 || boFoldedLadderSensor  
-    FALSE,                                                  //!< bopin260 [[-]] boGachette
-    FALSE,                                                  //!< bopin253 [[-]] boKlaxon
-    FALSE,                                                  //!< bopin275 [[-]] boStopMotorButton
-    FALSE,                                                  //!< bopin268 [[-]] boAuthorizationWorkKey
-    FALSE,                                                  //!< bopin274 [[-]] boEtallonnageJoystickButton
-    FALSE,                                                  //!< bopin267 [[-]] boClosePortillon
-    0                                                       //!< u16pin101 [[-]] u16BatterieVoltage48Xs
+    FALSE,                                                  //!< boDeltaArmJystckCenteredTelesc [[-]] new signal
+    FALSE,                                                  //!< boArrowJoystickCenteredTurret [[-]] new signal
+    FALSE,                                                  //!< boCenteredAdvanceJoystick [[-]] new signal
+    FALSE,                                                  //!< boDeadManPedal [[-]] new signal
+    FALSE,                                                  //!< boPressenceInNacelleSensor1 [[-]] new signal
+    FALSE,                                                  //!< boPressenceInNacelleSensor2 [[-]] new signal
+    FALSE,                                                  //!< boGachette [[-]] new signal
+    FALSE,                                                  //!< boKlaxon [[-]] new signal
+    FALSE,                                                  //!< boStopMotorButton [[-]] new signal
+    FALSE,                                                  //!< boAuthorizationWorkKey [[-]] new signal
+    FALSE,                                                  //!< boEtallonnageJoystickButton [[-]] new signal
+    FALSE,                                                  //!< boClosePortillon [[-]] new signal
+    0                                                       //!< u16BatterieVoltage48Xs [[-]] new signal
 };
 
 extern TCanSigRecSRDO3_48XS gCsr_tSRDO3_48XS;
 static const TRecDat mCsr_actRecDat_tSRDO3_48XS[13] =
 {
     {
-        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_bopin263, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_bopin263,
-        (TVoid*)&gCsr_tSRDO3_48XS.bopin263, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.bopin263, &mCsr_aeRecErr_tSRDO3_48XS[0],
+        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_boDeltaArmJystckCenteredTelesc, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_boDeltaArmJystckCenteredTelesc,
+        (TVoid*)&gCsr_tSRDO3_48XS.boDeltaArmJystckCenteredTelesc, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.boDeltaArmJystckCenteredTelesc, &mCsr_aeRecErr_tSRDO3_48XS[0],
         NULL, NULL
     },
     {
-        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_bopin256, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_bopin256,
-        (TVoid*)&gCsr_tSRDO3_48XS.bopin256, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.bopin256, &mCsr_aeRecErr_tSRDO3_48XS[1],
+        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_boArrowJoystickCenteredTurret, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_boArrowJoystickCenteredTurret,
+        (TVoid*)&gCsr_tSRDO3_48XS.boArrowJoystickCenteredTurret, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.boArrowJoystickCenteredTurret, &mCsr_aeRecErr_tSRDO3_48XS[1],
         NULL, NULL
     },
     {
-        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_bopin262, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_bopin262,
-        (TVoid*)&gCsr_tSRDO3_48XS.bopin262, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.bopin262, &mCsr_aeRecErr_tSRDO3_48XS[2],
+        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_boCenteredAdvanceJoystick, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_boCenteredAdvanceJoystick,
+        (TVoid*)&gCsr_tSRDO3_48XS.boCenteredAdvanceJoystick, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.boCenteredAdvanceJoystick, &mCsr_aeRecErr_tSRDO3_48XS[2],
         NULL, NULL
     },
     {
-        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_bopin255, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_bopin255,
-        (TVoid*)&gCsr_tSRDO3_48XS.bopin255, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.bopin255, &mCsr_aeRecErr_tSRDO3_48XS[3],
+        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_boDeadManPedal, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_boDeadManPedal,
+        (TVoid*)&gCsr_tSRDO3_48XS.boDeadManPedal, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.boDeadManPedal, &mCsr_aeRecErr_tSRDO3_48XS[3],
         NULL, NULL
     },
     {
-        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_bopin261, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_bopin261,
-        (TVoid*)&gCsr_tSRDO3_48XS.bopin261, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.bopin261, &mCsr_aeRecErr_tSRDO3_48XS[4],
+        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_boPressenceInNacelleSensor1, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_boPressenceInNacelleSensor1,
+        (TVoid*)&gCsr_tSRDO3_48XS.boPressenceInNacelleSensor1, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.boPressenceInNacelleSensor1, &mCsr_aeRecErr_tSRDO3_48XS[4],
         NULL, NULL
     },
     {
-        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_bopin254, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_bopin254,
-        (TVoid*)&gCsr_tSRDO3_48XS.bopin254, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.bopin254, &mCsr_aeRecErr_tSRDO3_48XS[5],
+        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_boPressenceInNacelleSensor2, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_boPressenceInNacelleSensor2,
+        (TVoid*)&gCsr_tSRDO3_48XS.boPressenceInNacelleSensor2, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.boPressenceInNacelleSensor2, &mCsr_aeRecErr_tSRDO3_48XS[5],
         NULL, NULL
     },
     {
-        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_bopin260, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_bopin260,
-        (TVoid*)&gCsr_tSRDO3_48XS.bopin260, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.bopin260, &mCsr_aeRecErr_tSRDO3_48XS[6],
+        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_boGachette, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_boGachette,
+        (TVoid*)&gCsr_tSRDO3_48XS.boGachette, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.boGachette, &mCsr_aeRecErr_tSRDO3_48XS[6],
         NULL, NULL
     },
     {
-        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_bopin253, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_bopin253,
-        (TVoid*)&gCsr_tSRDO3_48XS.bopin253, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.bopin253, &mCsr_aeRecErr_tSRDO3_48XS[7],
+        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_boKlaxon, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_boKlaxon,
+        (TVoid*)&gCsr_tSRDO3_48XS.boKlaxon, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.boKlaxon, &mCsr_aeRecErr_tSRDO3_48XS[7],
         NULL, NULL
     },
     {
-        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_bopin275, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_bopin275,
-        (TVoid*)&gCsr_tSRDO3_48XS.bopin275, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.bopin275, &mCsr_aeRecErr_tSRDO3_48XS[8],
+        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_boStopMotorButton, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_boStopMotorButton,
+        (TVoid*)&gCsr_tSRDO3_48XS.boStopMotorButton, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.boStopMotorButton, &mCsr_aeRecErr_tSRDO3_48XS[8],
         NULL, NULL
     },
     {
-        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_bopin268, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_bopin268,
-        (TVoid*)&gCsr_tSRDO3_48XS.bopin268, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.bopin268, &mCsr_aeRecErr_tSRDO3_48XS[9],
+        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_boAuthorizationWorkKey, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_boAuthorizationWorkKey,
+        (TVoid*)&gCsr_tSRDO3_48XS.boAuthorizationWorkKey, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.boAuthorizationWorkKey, &mCsr_aeRecErr_tSRDO3_48XS[9],
         NULL, NULL
     },
     {
-        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_bopin274, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_bopin274,
-        (TVoid*)&gCsr_tSRDO3_48XS.bopin274, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.bopin274, &mCsr_aeRecErr_tSRDO3_48XS[10],
+        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_boEtallonnageJoystickButton, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_boEtallonnageJoystickButton,
+        (TVoid*)&gCsr_tSRDO3_48XS.boEtallonnageJoystickButton, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.boEtallonnageJoystickButton, &mCsr_aeRecErr_tSRDO3_48XS[10],
         NULL, NULL
     },
     {
-        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_bopin267, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_bopin267,
-        (TVoid*)&gCsr_tSRDO3_48XS.bopin267, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.bopin267, &mCsr_aeRecErr_tSRDO3_48XS[11],
+        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_boClosePortillon, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_boClosePortillon,
+        (TVoid*)&gCsr_tSRDO3_48XS.boClosePortillon, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.boClosePortillon, &mCsr_aeRecErr_tSRDO3_48XS[11],
         NULL, NULL
     },
     {
-        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_u16pin101, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_u16pin101,
-        (TVoid*)&gCsr_tSRDO3_48XS.u16pin101, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.u16pin101, &mCsr_aeRecErr_tSRDO3_48XS[12],
+        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO3_48XS.tCsrInfo_u16BatterieVoltage48Xs, (TVoid*)&gCsr_ctRecDat_SRDO3_48XS.tCsrRng_u16BatterieVoltage48Xs,
+        (TVoid*)&gCsr_tSRDO3_48XS.u16BatterieVoltage48Xs, (TVoid*)&mCsr_tOldDat_tSRDO3_48XS.u16BatterieVoltage48Xs, &mCsr_aeRecErr_tSRDO3_48XS[12],
         NULL, NULL
     }
 };
@@ -1424,90 +1424,33 @@ static const TCanSigRecRoot mCsr_ctRoot_SRDO3_48XS =
 TCanSigRecSRDO3_48XS gCsr_tSRDO3_48XS =
 {
     &mCsr_ctRoot_SRDO3_48XS,                                //!< *cptRoot [POI] Root connection
-    FALSE,                                                  //!< bopin263 [[-]] boDeltaArmJystckCenteredTelesc
-    FALSE,                                                  //!< bopin256 [[-]] boArrowJoystickCenteredTurret
-    FALSE,                                                  //!< bopin262 [[-]] boCenteredAdvanceJoystick
-    FALSE,                                                  //!< bopin255 [[-]] boDeadManPedal
-    FALSE,                                                  //!< bopin261 [[-]] boPressenceInNacelleSensor1 || boHighSectorPlateSensor
-    FALSE,                                                  //!< bopin254 [[-]] boPressenceInNacelleSensor2 || boFoldedLadderSensor  
-    FALSE,                                                  //!< bopin260 [[-]] boGachette
-    FALSE,                                                  //!< bopin253 [[-]] boKlaxon
-    FALSE,                                                  //!< bopin275 [[-]] boStopMotorButton
-    FALSE,                                                  //!< bopin268 [[-]] boAuthorizationWorkKey
-    FALSE,                                                  //!< bopin274 [[-]] boEtallonnageJoystickButton
-    FALSE,                                                  //!< bopin267 [[-]] boClosePortillon
-    (((0 * 1)/1)+0)                                         //!< u16pin101 [[-]] u16BatterieVoltage48Xs
-};
-
-const TCanSigRecVal_SRDO5_48XS gCsr_ctRecDat_SRDO5_48XS =
-{
-    //!< OverloadChannel1
-    { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TUINT16, TUINT16, 0, 16, 0, 0, 1, 1 }, 
-     { U16_MIN, U16_MAX, 0, 0 },
-    //!< OverloadChannel2
-    { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TUINT16, TUINT16, 16, 16, 0, 0, 1, 1 }, 
-     { U16_MIN, U16_MAX, 0, 0 }
-};
-
-static ESigSta mCsr_aeRecErr_tSRDO5_48XS[2] =
-{
-    SIG_OKAY,
-    SIG_OKAY
-};
-
-static TCanSigRecOldValSRDO5_48XS mCsr_tOldDat_tSRDO5_48XS =
-{
-    0,                                                      //!< u16OverloadChannel1 [[-]] new signal
-    0                                                       //!< u16OverloadChannel2 [[-]] new signal
-};
-
-extern TCanSigRecSRDO5_48XS gCsr_tSRDO5_48XS;
-static const TRecDat mCsr_actRecDat_tSRDO5_48XS[2] =
-{
-    {
-        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO5_48XS.tCsrInfo_u16OverloadChannel1, (TVoid*)&gCsr_ctRecDat_SRDO5_48XS.tCsrRng_u16OverloadChannel1,
-        (TVoid*)&gCsr_tSRDO5_48XS.u16OverloadChannel1, (TVoid*)&mCsr_tOldDat_tSRDO5_48XS.u16OverloadChannel1, &mCsr_aeRecErr_tSRDO5_48XS[0],
-        NULL, NULL
-    },
-    {
-        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO5_48XS.tCsrInfo_u16OverloadChannel2, (TVoid*)&gCsr_ctRecDat_SRDO5_48XS.tCsrRng_u16OverloadChannel2,
-        (TVoid*)&gCsr_tSRDO5_48XS.u16OverloadChannel2, (TVoid*)&mCsr_tOldDat_tSRDO5_48XS.u16OverloadChannel2, &mCsr_aeRecErr_tSRDO5_48XS[1],
-        NULL, NULL
-    }
-};
-
-static const TCanSigRecRoot mCsr_ctRoot_SRDO5_48XS =
-{
-    "SRDO5_48XS",                                           //!< achName - [STR] Name SRDO5_48XS
-    4,                                                      //!< u8Dlc - [NUM] DLC of Can Message
-    0xff,                                                   //!< u8CanByteDflt - [NUM] CAN Message default
-    DATA_INTEL,                                             //!< eCanFormat - [NUM] CAN Format
-    0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
-    2,                                                      //!< u8RecCnt - [NUM] Count of Recorde
-    &mCsr_actRecDat_tSRDO5_48XS[0],                         //!< ptRec - [NUM] Pointer to Record Values
-    13,                                                     //!< u16RecNo - [NUM] Record Number
-    CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
-};
-
-TCanSigRecSRDO5_48XS gCsr_tSRDO5_48XS =
-{
-    &mCsr_ctRoot_SRDO5_48XS,                                //!< *cptRoot [POI] Root connection
-    (((0 * 1)/1)+0),                                        //!< u16OverloadChannel1 [[-]] new signal
-    (((0 * 1)/1)+0)                                         //!< u16OverloadChannel2 [[-]] new signal
+    FALSE,                                                  //!< boDeltaArmJystckCenteredTelesc [[-]] new signal
+    FALSE,                                                  //!< boArrowJoystickCenteredTurret [[-]] new signal
+    FALSE,                                                  //!< boCenteredAdvanceJoystick [[-]] new signal
+    FALSE,                                                  //!< boDeadManPedal [[-]] new signal
+    FALSE,                                                  //!< boPressenceInNacelleSensor1 [[-]] new signal
+    FALSE,                                                  //!< boPressenceInNacelleSensor2 [[-]] new signal
+    FALSE,                                                  //!< boGachette [[-]] new signal
+    FALSE,                                                  //!< boKlaxon [[-]] new signal
+    FALSE,                                                  //!< boStopMotorButton [[-]] new signal
+    FALSE,                                                  //!< boAuthorizationWorkKey [[-]] new signal
+    FALSE,                                                  //!< boEtallonnageJoystickButton [[-]] new signal
+    FALSE,                                                  //!< boClosePortillon [[-]] new signal
+    (((0 * 1)/1)+0)                                         //!< u16BatterieVoltage48Xs [[-]] new signal
 };
 
 const TCanSigRecVal_SRDO1_48XS gCsr_ctRecDat_SRDO1_48XS =
 {
-    //!< pin141
+    //!< Overload1
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TUINT16, TUINT16, 0, 16, 0, 0, 1, 1 }, 
      { U16_MIN, U16_MAX, 0, 0 },
-    //!< pin129
+    //!< Overload2
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TUINT16, TUINT16, 16, 16, 0, 0, 1, 1 }, 
      { U16_MIN, U16_MAX, 0, 0 },
-    //!< pin152
+    //!< NacelleBasketRightSideSensor1
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TUINT16, TUINT16, 32, 16, 0, 0, 1, 1 }, 
      { U16_MIN, U16_MAX, 0, 0 },
-    //!< pin140
+    //!< NacelleBasketRightSideSensor2
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TUINT16, TUINT16, 48, 16, 0, 0, 1, 1 }, 
      { U16_MIN, U16_MAX, 0, 0 }
 };
@@ -1522,33 +1465,33 @@ static ESigSta mCsr_aeRecErr_tSRDO1_48XS[4] =
 
 static TCanSigRecOldValSRDO1_48XS mCsr_tOldDat_tSRDO1_48XS =
 {
-    0,                                                      //!< u16pin141 [[-]] u16Overload1
-    0,                                                      //!< u16pin129 [[-]] u16Overload2
-    0,                                                      //!< u16pin152 [[-]] u16NacelleBasketRightSideSensor1Val
-    0                                                       //!< u16pin140 [[-]] u16NacelleBasketRightSideSensor2Val
+    0,                                                      //!< u16Overload1 [[-]] new signal
+    0,                                                      //!< u16Overload2 [[-]] new signal
+    0,                                                      //!< u16NacelleBasketRightSideSensor1 [[-]] new signal
+    0                                                       //!< u16NacelleBasketRightSideSensor2 [[-]] new signal
 };
 
 extern TCanSigRecSRDO1_48XS gCsr_tSRDO1_48XS;
 static const TRecDat mCsr_actRecDat_tSRDO1_48XS[4] =
 {
     {
-        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO1_48XS.tCsrInfo_u16pin141, (TVoid*)&gCsr_ctRecDat_SRDO1_48XS.tCsrRng_u16pin141,
-        (TVoid*)&gCsr_tSRDO1_48XS.u16pin141, (TVoid*)&mCsr_tOldDat_tSRDO1_48XS.u16pin141, &mCsr_aeRecErr_tSRDO1_48XS[0],
+        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO1_48XS.tCsrInfo_u16Overload1, (TVoid*)&gCsr_ctRecDat_SRDO1_48XS.tCsrRng_u16Overload1,
+        (TVoid*)&gCsr_tSRDO1_48XS.u16Overload1, (TVoid*)&mCsr_tOldDat_tSRDO1_48XS.u16Overload1, &mCsr_aeRecErr_tSRDO1_48XS[0],
         NULL, NULL
     },
     {
-        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO1_48XS.tCsrInfo_u16pin129, (TVoid*)&gCsr_ctRecDat_SRDO1_48XS.tCsrRng_u16pin129,
-        (TVoid*)&gCsr_tSRDO1_48XS.u16pin129, (TVoid*)&mCsr_tOldDat_tSRDO1_48XS.u16pin129, &mCsr_aeRecErr_tSRDO1_48XS[1],
+        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO1_48XS.tCsrInfo_u16Overload2, (TVoid*)&gCsr_ctRecDat_SRDO1_48XS.tCsrRng_u16Overload2,
+        (TVoid*)&gCsr_tSRDO1_48XS.u16Overload2, (TVoid*)&mCsr_tOldDat_tSRDO1_48XS.u16Overload2, &mCsr_aeRecErr_tSRDO1_48XS[1],
         NULL, NULL
     },
     {
-        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO1_48XS.tCsrInfo_u16pin152, (TVoid*)&gCsr_ctRecDat_SRDO1_48XS.tCsrRng_u16pin152,
-        (TVoid*)&gCsr_tSRDO1_48XS.u16pin152, (TVoid*)&mCsr_tOldDat_tSRDO1_48XS.u16pin152, &mCsr_aeRecErr_tSRDO1_48XS[2],
+        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO1_48XS.tCsrInfo_u16NacelleBasketRightSideSensor1, (TVoid*)&gCsr_ctRecDat_SRDO1_48XS.tCsrRng_u16NacelleBasketRightSideSensor1,
+        (TVoid*)&gCsr_tSRDO1_48XS.u16NacelleBasketRightSideSensor1, (TVoid*)&mCsr_tOldDat_tSRDO1_48XS.u16NacelleBasketRightSideSensor1, &mCsr_aeRecErr_tSRDO1_48XS[2],
         NULL, NULL
     },
     {
-        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO1_48XS.tCsrInfo_u16pin140, (TVoid*)&gCsr_ctRecDat_SRDO1_48XS.tCsrRng_u16pin140,
-        (TVoid*)&gCsr_tSRDO1_48XS.u16pin140, (TVoid*)&mCsr_tOldDat_tSRDO1_48XS.u16pin140, &mCsr_aeRecErr_tSRDO1_48XS[3],
+        (TCanSigRecInf*)&gCsr_ctRecDat_SRDO1_48XS.tCsrInfo_u16NacelleBasketRightSideSensor2, (TVoid*)&gCsr_ctRecDat_SRDO1_48XS.tCsrRng_u16NacelleBasketRightSideSensor2,
+        (TVoid*)&gCsr_tSRDO1_48XS.u16NacelleBasketRightSideSensor2, (TVoid*)&mCsr_tOldDat_tSRDO1_48XS.u16NacelleBasketRightSideSensor2, &mCsr_aeRecErr_tSRDO1_48XS[3],
         NULL, NULL
     }
 };
@@ -1562,17 +1505,17 @@ static const TCanSigRecRoot mCsr_ctRoot_SRDO1_48XS =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     4,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tSRDO1_48XS[0],                         //!< ptRec - [NUM] Pointer to Record Values
-    14,                                                     //!< u16RecNo - [NUM] Record Number
+    13,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
 TCanSigRecSRDO1_48XS gCsr_tSRDO1_48XS =
 {
     &mCsr_ctRoot_SRDO1_48XS,                                //!< *cptRoot [POI] Root connection
-    (((0 * 1)/1)+0),                                        //!< u16pin141 [[-]] u16Overload1
-    (((0 * 1)/1)+0),                                        //!< u16pin129 [[-]] u16Overload2
-    (((0 * 1)/1)+0),                                        //!< u16pin152 [[-]] u16NacelleBasketRightSideSensor1Val
-    (((0 * 1)/1)+0)                                         //!< u16pin140 [[-]] u16NacelleBasketRightSideSensor2Val
+    (((0 * 1)/1)+0),                                        //!< u16Overload1 [[-]] new signal
+    (((0 * 1)/1)+0),                                        //!< u16Overload2 [[-]] new signal
+    (((0 * 1)/1)+0),                                        //!< u16NacelleBasketRightSideSensor1 [[-]] new signal
+    (((0 * 1)/1)+0)                                         //!< u16NacelleBasketRightSideSensor2 [[-]] new signal
 };
 
 const TCanSigRecVal_FlashBatteryRpdo1_0 gCsr_ctRecDat_FlashBatteryRpdo1_0 =
@@ -1681,7 +1624,7 @@ static const TCanSigRecRoot mCsr_ctRoot_FlashBatteryRpdo1_0 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     8,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tFlashBatteryRpdo1_0[0],                //!< ptRec - [NUM] Pointer to Record Values
-    15,                                                     //!< u16RecNo - [NUM] Record Number
+    14,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -1804,7 +1747,7 @@ static const TCanSigRecRoot mCsr_ctRoot_FlashBatteryRpdo1_2 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     8,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tFlashBatteryRpdo1_2[0],                //!< ptRec - [NUM] Pointer to Record Values
-    16,                                                     //!< u16RecNo - [NUM] Record Number
+    15,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -1904,21 +1847,6 @@ const TCanSigRecVal_Msg1RcvFromOpus gCsr_ctRecDat_Msg1RcvFromOpus =
     //!< KeyNoReloadWithGenerator
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 33, 1, 0, 0, 1, 1 }, 
      { FALSE, TRUE, FALSE, FALSE },
-    //!< gKeyFlashLightON
-    { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 34, 1, 0, 0, 1, 1 }, 
-     { FALSE, TRUE, FALSE, FALSE },
-    //!< gButtonCalibOverloadMax
-    { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 35, 1, 0, 0, 1, 1 }, 
-     { FALSE, TRUE, FALSE, FALSE },
-    //!< gButtonCalibOverloadMin
-    { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 36, 1, 0, 0, 1, 1 }, 
-     { FALSE, TRUE, FALSE, FALSE },
-    //!< gButtonCalibOverloadMaxMG
-    { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 37, 1, 0, 0, 1, 1 }, 
-     { FALSE, TRUE, FALSE, FALSE },
-    //!< gVisuEngineFaults
-    { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 38, 1, 0, 0, 1, 1 }, 
-     { FALSE, TRUE, FALSE, FALSE },
     //!< gActivePageOpus
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TUINT8, TUINT8, 48, 8, 0, 0, 1, 1 }, 
      { U8_MIN, U8_MAX, 0, 0 },
@@ -1927,13 +1855,8 @@ const TCanSigRecVal_Msg1RcvFromOpus gCsr_ctRecDat_Msg1RcvFromOpus =
      { U8_MIN, U8_MAX, 0, 0 }
 };
 
-static ESigSta mCsr_aeRecErr_tMsg1RcvFromOpus[34] =
+static ESigSta mCsr_aeRecErr_tMsg1RcvFromOpus[29] =
 {
-    SIG_OKAY,
-    SIG_OKAY,
-    SIG_OKAY,
-    SIG_OKAY,
-    SIG_OKAY,
     SIG_OKAY,
     SIG_OKAY,
     SIG_OKAY,
@@ -1994,17 +1917,12 @@ static TCanSigRecOldValMsg1RcvFromOpus mCsr_tOldDat_tMsg1RcvFromOpus =
     FALSE,                                                  //!< bogKeySlopeTrReset [[-]] Key Slope Transversal reset
     FALSE,                                                  //!< boKeyYesReloadWithGenerator [[-]] new signal
     FALSE,                                                  //!< boKeyNoReloadWithGenerator [[-]] new signal
-    FALSE,                                                  //!< bogKeyFlashLightON [[-]] new signal
-    FALSE,                                                  //!< bogButtonCalibOverloadMax [[-]] Key Calib Overload Max
-    FALSE,                                                  //!< bogButtonCalibOverloadMin [[-]] Key Calib Overload Min
-    FALSE,                                                  //!< bogButtonCalibOverloadMaxMG [[-]] new signal
-    FALSE,                                                  //!< bogVisuEngineFaults [[-]] Visu Engine Faults J1939
     0,                                                      //!< u8gActivePageOpus [[-]] Page active Ecran Opus
     0                                                       //!< u8gElementChoice [[-]] Element choice 1=Telescope; 2=Arrow arm; 3=Delta arm; 4=Turret; 
 };
 
 extern TCanSigRecMsg1RcvFromOpus gCsr_tMsg1RcvFromOpus;
-static const TRecDat mCsr_actRecDat_tMsg1RcvFromOpus[34] =
+static const TRecDat mCsr_actRecDat_tMsg1RcvFromOpus[29] =
 {
     {
         (TCanSigRecInf*)&gCsr_ctRecDat_Msg1RcvFromOpus.tCsrInfo_u8gLifeByte, (TVoid*)&gCsr_ctRecDat_Msg1RcvFromOpus.tCsrRng_u8gLifeByte,
@@ -2142,38 +2060,13 @@ static const TRecDat mCsr_actRecDat_tMsg1RcvFromOpus[34] =
         NULL, NULL
     },
     {
-        (TCanSigRecInf*)&gCsr_ctRecDat_Msg1RcvFromOpus.tCsrInfo_bogKeyFlashLightON, (TVoid*)&gCsr_ctRecDat_Msg1RcvFromOpus.tCsrRng_bogKeyFlashLightON,
-        (TVoid*)&gCsr_tMsg1RcvFromOpus.bogKeyFlashLightON, (TVoid*)&mCsr_tOldDat_tMsg1RcvFromOpus.bogKeyFlashLightON, &mCsr_aeRecErr_tMsg1RcvFromOpus[27],
-        NULL, NULL
-    },
-    {
-        (TCanSigRecInf*)&gCsr_ctRecDat_Msg1RcvFromOpus.tCsrInfo_bogButtonCalibOverloadMax, (TVoid*)&gCsr_ctRecDat_Msg1RcvFromOpus.tCsrRng_bogButtonCalibOverloadMax,
-        (TVoid*)&gCsr_tMsg1RcvFromOpus.bogButtonCalibOverloadMax, (TVoid*)&mCsr_tOldDat_tMsg1RcvFromOpus.bogButtonCalibOverloadMax, &mCsr_aeRecErr_tMsg1RcvFromOpus[28],
-        NULL, NULL
-    },
-    {
-        (TCanSigRecInf*)&gCsr_ctRecDat_Msg1RcvFromOpus.tCsrInfo_bogButtonCalibOverloadMin, (TVoid*)&gCsr_ctRecDat_Msg1RcvFromOpus.tCsrRng_bogButtonCalibOverloadMin,
-        (TVoid*)&gCsr_tMsg1RcvFromOpus.bogButtonCalibOverloadMin, (TVoid*)&mCsr_tOldDat_tMsg1RcvFromOpus.bogButtonCalibOverloadMin, &mCsr_aeRecErr_tMsg1RcvFromOpus[29],
-        NULL, NULL
-    },
-    {
-        (TCanSigRecInf*)&gCsr_ctRecDat_Msg1RcvFromOpus.tCsrInfo_bogButtonCalibOverloadMaxMG, (TVoid*)&gCsr_ctRecDat_Msg1RcvFromOpus.tCsrRng_bogButtonCalibOverloadMaxMG,
-        (TVoid*)&gCsr_tMsg1RcvFromOpus.bogButtonCalibOverloadMaxMG, (TVoid*)&mCsr_tOldDat_tMsg1RcvFromOpus.bogButtonCalibOverloadMaxMG, &mCsr_aeRecErr_tMsg1RcvFromOpus[30],
-        NULL, NULL
-    },
-    {
-        (TCanSigRecInf*)&gCsr_ctRecDat_Msg1RcvFromOpus.tCsrInfo_bogVisuEngineFaults, (TVoid*)&gCsr_ctRecDat_Msg1RcvFromOpus.tCsrRng_bogVisuEngineFaults,
-        (TVoid*)&gCsr_tMsg1RcvFromOpus.bogVisuEngineFaults, (TVoid*)&mCsr_tOldDat_tMsg1RcvFromOpus.bogVisuEngineFaults, &mCsr_aeRecErr_tMsg1RcvFromOpus[31],
-        NULL, NULL
-    },
-    {
         (TCanSigRecInf*)&gCsr_ctRecDat_Msg1RcvFromOpus.tCsrInfo_u8gActivePageOpus, (TVoid*)&gCsr_ctRecDat_Msg1RcvFromOpus.tCsrRng_u8gActivePageOpus,
-        (TVoid*)&gCsr_tMsg1RcvFromOpus.u8gActivePageOpus, (TVoid*)&mCsr_tOldDat_tMsg1RcvFromOpus.u8gActivePageOpus, &mCsr_aeRecErr_tMsg1RcvFromOpus[32],
+        (TVoid*)&gCsr_tMsg1RcvFromOpus.u8gActivePageOpus, (TVoid*)&mCsr_tOldDat_tMsg1RcvFromOpus.u8gActivePageOpus, &mCsr_aeRecErr_tMsg1RcvFromOpus[27],
         NULL, NULL
     },
     {
         (TCanSigRecInf*)&gCsr_ctRecDat_Msg1RcvFromOpus.tCsrInfo_u8gElementChoice, (TVoid*)&gCsr_ctRecDat_Msg1RcvFromOpus.tCsrRng_u8gElementChoice,
-        (TVoid*)&gCsr_tMsg1RcvFromOpus.u8gElementChoice, (TVoid*)&mCsr_tOldDat_tMsg1RcvFromOpus.u8gElementChoice, &mCsr_aeRecErr_tMsg1RcvFromOpus[33],
+        (TVoid*)&gCsr_tMsg1RcvFromOpus.u8gElementChoice, (TVoid*)&mCsr_tOldDat_tMsg1RcvFromOpus.u8gElementChoice, &mCsr_aeRecErr_tMsg1RcvFromOpus[28],
         NULL, NULL
     }
 };
@@ -2185,9 +2078,9 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg1RcvFromOpus =
     0x00,                                                   //!< u8CanByteDflt - [NUM] CAN Message default
     DATA_INTEL,                                             //!< eCanFormat - [NUM] CAN Format
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
-    34,                                                     //!< u8RecCnt - [NUM] Count of Recorde
+    29,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg1RcvFromOpus[0],                    //!< ptRec - [NUM] Pointer to Record Values
-    17,                                                     //!< u16RecNo - [NUM] Record Number
+    16,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -2221,11 +2114,6 @@ TCanSigRecMsg1RcvFromOpus gCsr_tMsg1RcvFromOpus =
     FALSE,                                                  //!< bogKeySlopeTrReset [[-]] Key Slope Transversal reset
     FALSE,                                                  //!< boKeyYesReloadWithGenerator [[-]] new signal
     FALSE,                                                  //!< boKeyNoReloadWithGenerator [[-]] new signal
-    FALSE,                                                  //!< bogKeyFlashLightON [[-]] new signal
-    FALSE,                                                  //!< bogButtonCalibOverloadMax [[-]] Key Calib Overload Max
-    FALSE,                                                  //!< bogButtonCalibOverloadMin [[-]] Key Calib Overload Min
-    FALSE,                                                  //!< bogButtonCalibOverloadMaxMG [[-]] new signal
-    FALSE,                                                  //!< bogVisuEngineFaults [[-]] Visu Engine Faults J1939
     (((0 * 1)/1)+0),                                        //!< u8gActivePageOpus [[-]] Page active Ecran Opus
     (((0 * 1)/1)+0)                                         //!< u8gElementChoice [[-]] Element choice 1=Telescope; 2=Arrow arm; 3=Delta arm; 4=Turret; 
 };
@@ -2296,7 +2184,7 @@ static const TCanSigRecRoot mCsr_ctRoot_PDO1_48XS =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     4,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tPDO1_48XS[0],                          //!< ptRec - [NUM] Pointer to Record Values
-    18,                                                     //!< u16RecNo - [NUM] Record Number
+    17,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -2415,7 +2303,7 @@ static const TCanSigRecRoot mCsr_ctRoot_DMC_RxPdo1_MS =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     8,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tDMC_RxPdo1_MS[0],                      //!< ptRec - [NUM] Pointer to Record Values
-    19,                                                     //!< u16RecNo - [NUM] Record Number
+    18,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -2508,7 +2396,7 @@ static const TCanSigRecRoot mCsr_ctRoot_DeversFrame1 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     5,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tDeversFrame1[0],                       //!< ptRec - [NUM] Pointer to Record Values
-    20,                                                     //!< u16RecNo - [NUM] Record Number
+    19,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -2598,7 +2486,7 @@ static const TCanSigRecRoot mCsr_ctRoot_DeversFrame2 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     5,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tDeversFrame2[0],                       //!< ptRec - [NUM] Pointer to Record Values
-    21,                                                     //!< u16RecNo - [NUM] Record Number
+    20,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -2648,7 +2536,7 @@ static const TCanSigRecRoot mCsr_ctRoot_MastMeasure =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     1,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMastMeasure[0],                        //!< ptRec - [NUM] Pointer to Record Values
-    22,                                                     //!< u16RecNo - [NUM] Record Number
+    21,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -2704,7 +2592,7 @@ static const TCanSigRecRoot mCsr_ctRoot_ReadAnalogInput =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     2,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tReadAnalogInput[0],                    //!< ptRec - [NUM] Pointer to Record Values
-    23,                                                     //!< u16RecNo - [NUM] Record Number
+    22,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -2828,15 +2716,6 @@ const TCanSigRecVal_Msg1C0SendToOpus gCsr_ctRecDat_Msg1C0SendToOpus =
     //!< gMastMeasureFault
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 36, 1, 0, 0, 1, 1 }, 
      { FALSE, TRUE, FALSE, FALSE },
-    //!< AxlePositionSensorFault
-    { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 37, 1, 0, 0, 1, 1 }, 
-     { FALSE, TRUE, FALSE, FALSE },
-    //!< AxlePositionInMGMode
-    { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 38, 1, 0, 0, 1, 1 }, 
-     { FALSE, TRUE, FALSE, FALSE },
-    //!< MachineMountedAxlesMG
-    { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 39, 1, 0, 0, 1, 1 }, 
-     { FALSE, TRUE, FALSE, FALSE },
     //!< gReductionPumpTrack
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TUINT8, TUINT8, 40, 8, 0, 0, 1, 1 }, 
      { U8_MIN, U8_MAX, 0, 0 },
@@ -2845,11 +2724,8 @@ const TCanSigRecVal_Msg1C0SendToOpus gCsr_ctRecDat_Msg1C0SendToOpus =
      { I16_MIN, I16_MAX, 0, 0 }
 };
 
-static ESigSta mCsr_aeRecErr_tMsg1C0SendToOpus[42] =
+static ESigSta mCsr_aeRecErr_tMsg1C0SendToOpus[39] =
 {
-    SIG_OKAY,
-    SIG_OKAY,
-    SIG_OKAY,
     SIG_OKAY,
     SIG_OKAY,
     SIG_OKAY,
@@ -2930,15 +2806,12 @@ static TCanSigRecOldValMsg1C0SendToOpus mCsr_tOldDat_tMsg1C0SendToOpus =
     FALSE,                                                  //!< bogNeonsON [[-]] Neons ON
     FALSE,                                                  //!< bogSlopeSensorFault [[-]] Slope sensor fault
     FALSE,                                                  //!< bogMastMeasureFault [[-]] Mast Measure fault
-    FALSE,                                                  //!< boAxlePositionSensorFault [[-]] new signal
-    FALSE,                                                  //!< boAxlePositionInMGMode [[-]] new signal
-    FALSE,                                                  //!< boMachineMountedAxlesMG [[-]] new signal
     0,                                                      //!< u8gReductionPumpTrack [[-]] Reduction Pump Track
     0                                                       //!< i16gPressureBrakeSensorValue [[-]] Pressure Brake Sensor Value
 };
 
 extern TCanSigRecMsg1C0SendToOpus gCsr_tMsg1C0SendToOpus;
-static const TRecDat mCsr_actRecDat_tMsg1C0SendToOpus[42] =
+static const TRecDat mCsr_actRecDat_tMsg1C0SendToOpus[39] =
 {
     {
         (TCanSigRecInf*)&gCsr_ctRecDat_Msg1C0SendToOpus.tCsrInfo_boBreakParkingOnOff, (TVoid*)&gCsr_ctRecDat_Msg1C0SendToOpus.tCsrRng_boBreakParkingOnOff,
@@ -3126,28 +2999,13 @@ static const TRecDat mCsr_actRecDat_tMsg1C0SendToOpus[42] =
         NULL, NULL
     },
     {
-        (TCanSigRecInf*)&gCsr_ctRecDat_Msg1C0SendToOpus.tCsrInfo_boAxlePositionSensorFault, (TVoid*)&gCsr_ctRecDat_Msg1C0SendToOpus.tCsrRng_boAxlePositionSensorFault,
-        (TVoid*)&gCsr_tMsg1C0SendToOpus.boAxlePositionSensorFault, (TVoid*)&mCsr_tOldDat_tMsg1C0SendToOpus.boAxlePositionSensorFault, &mCsr_aeRecErr_tMsg1C0SendToOpus[37],
-        NULL, NULL
-    },
-    {
-        (TCanSigRecInf*)&gCsr_ctRecDat_Msg1C0SendToOpus.tCsrInfo_boAxlePositionInMGMode, (TVoid*)&gCsr_ctRecDat_Msg1C0SendToOpus.tCsrRng_boAxlePositionInMGMode,
-        (TVoid*)&gCsr_tMsg1C0SendToOpus.boAxlePositionInMGMode, (TVoid*)&mCsr_tOldDat_tMsg1C0SendToOpus.boAxlePositionInMGMode, &mCsr_aeRecErr_tMsg1C0SendToOpus[38],
-        NULL, NULL
-    },
-    {
-        (TCanSigRecInf*)&gCsr_ctRecDat_Msg1C0SendToOpus.tCsrInfo_boMachineMountedAxlesMG, (TVoid*)&gCsr_ctRecDat_Msg1C0SendToOpus.tCsrRng_boMachineMountedAxlesMG,
-        (TVoid*)&gCsr_tMsg1C0SendToOpus.boMachineMountedAxlesMG, (TVoid*)&mCsr_tOldDat_tMsg1C0SendToOpus.boMachineMountedAxlesMG, &mCsr_aeRecErr_tMsg1C0SendToOpus[39],
-        NULL, NULL
-    },
-    {
         (TCanSigRecInf*)&gCsr_ctRecDat_Msg1C0SendToOpus.tCsrInfo_u8gReductionPumpTrack, (TVoid*)&gCsr_ctRecDat_Msg1C0SendToOpus.tCsrRng_u8gReductionPumpTrack,
-        (TVoid*)&gCsr_tMsg1C0SendToOpus.u8gReductionPumpTrack, (TVoid*)&mCsr_tOldDat_tMsg1C0SendToOpus.u8gReductionPumpTrack, &mCsr_aeRecErr_tMsg1C0SendToOpus[40],
+        (TVoid*)&gCsr_tMsg1C0SendToOpus.u8gReductionPumpTrack, (TVoid*)&mCsr_tOldDat_tMsg1C0SendToOpus.u8gReductionPumpTrack, &mCsr_aeRecErr_tMsg1C0SendToOpus[37],
         NULL, NULL
     },
     {
         (TCanSigRecInf*)&gCsr_ctRecDat_Msg1C0SendToOpus.tCsrInfo_i16gPressureBrakeSensorValue, (TVoid*)&gCsr_ctRecDat_Msg1C0SendToOpus.tCsrRng_i16gPressureBrakeSensorValue,
-        (TVoid*)&gCsr_tMsg1C0SendToOpus.i16gPressureBrakeSensorValue, (TVoid*)&mCsr_tOldDat_tMsg1C0SendToOpus.i16gPressureBrakeSensorValue, &mCsr_aeRecErr_tMsg1C0SendToOpus[41],
+        (TVoid*)&gCsr_tMsg1C0SendToOpus.i16gPressureBrakeSensorValue, (TVoid*)&mCsr_tOldDat_tMsg1C0SendToOpus.i16gPressureBrakeSensorValue, &mCsr_aeRecErr_tMsg1C0SendToOpus[38],
         NULL, NULL
     }
 };
@@ -3159,9 +3017,9 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg1C0SendToOpus =
     0xff,                                                   //!< u8CanByteDflt - [NUM] CAN Message default
     DATA_INTEL,                                             //!< eCanFormat - [NUM] CAN Format
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
-    42,                                                     //!< u8RecCnt - [NUM] Count of Recorde
+    39,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg1C0SendToOpus[0],                   //!< ptRec - [NUM] Pointer to Record Values
-    24,                                                     //!< u16RecNo - [NUM] Record Number
+    23,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -3205,9 +3063,6 @@ TCanSigRecMsg1C0SendToOpus gCsr_tMsg1C0SendToOpus =
     FALSE,                                                  //!< bogNeonsON [[-]] Neons ON
     FALSE,                                                  //!< bogSlopeSensorFault [[-]] Slope sensor fault
     FALSE,                                                  //!< bogMastMeasureFault [[-]] Mast Measure fault
-    FALSE,                                                  //!< boAxlePositionSensorFault [[-]] new signal
-    FALSE,                                                  //!< boAxlePositionInMGMode [[-]] new signal
-    FALSE,                                                  //!< boMachineMountedAxlesMG [[-]] new signal
     (((0 * 1)/1)+0),                                        //!< u8gReductionPumpTrack [[-]] Reduction Pump Track
     (((0 * 1)/1)+0)                                         //!< i16gPressureBrakeSensorValue [[-]] Pressure Brake Sensor Value
 };
@@ -3298,7 +3153,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg3C0SendToOpus =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     6,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg3C0SendToOpus[0],                   //!< ptRec - [NUM] Pointer to Record Values
-    25,                                                     //!< u16RecNo - [NUM] Record Number
+    24,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -3789,7 +3644,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg5C0SendToOpus =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     45,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg5C0SendToOpus[0],                   //!< ptRec - [NUM] Pointer to Record Values
-    26,                                                     //!< u16RecNo - [NUM] Record Number
+    25,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -4469,7 +4324,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg7C0SendToOpus =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     60,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg7C0SendToOpus[0],                   //!< ptRec - [NUM] Pointer to Record Values
-    27,                                                     //!< u16RecNo - [NUM] Record Number
+    26,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -4644,7 +4499,7 @@ static const TCanSigRecRoot mCsr_ctRoot_DMC_TxPdo1_DC =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     8,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tDMC_TxPdo1_DC[0],                      //!< ptRec - [NUM] Pointer to Record Values
-    28,                                                     //!< u16RecNo - [NUM] Record Number
+    27,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -4767,7 +4622,7 @@ static const TCanSigRecRoot mCsr_ctRoot_FlashBatteryRpdo2_0 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     8,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tFlashBatteryRpdo2_0[0],                //!< ptRec - [NUM] Pointer to Record Values
-    29,                                                     //!< u16RecNo - [NUM] Record Number
+    28,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -4850,7 +4705,7 @@ static const TCanSigRecRoot mCsr_ctRoot_PDO2_48XS =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     4,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tPDO2_48XS[0],                          //!< ptRec - [NUM] Pointer to Record Values
-    30,                                                     //!< u16RecNo - [NUM] Record Number
+    29,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -4969,7 +4824,7 @@ static const TCanSigRecRoot mCsr_ctRoot_DMC_RxPdo2_DS =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     8,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tDMC_RxPdo2_DS[0],                      //!< ptRec - [NUM] Pointer to Record Values
-    31,                                                     //!< u16RecNo - [NUM] Record Number
+    30,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -5022,7 +4877,7 @@ static const TCanSigRecRoot mCsr_ctRoot_EncodeurTurret1 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     1,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tEncodeurTurret1[0],                    //!< ptRec - [NUM] Pointer to Record Values
-    32,                                                     //!< u16RecNo - [NUM] Record Number
+    31,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -5068,7 +4923,7 @@ static const TCanSigRecRoot mCsr_ctRoot_EncodeurTurret2 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     1,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tEncodeurTurret2[0],                    //!< ptRec - [NUM] Pointer to Record Values
-    33,                                                     //!< u16RecNo - [NUM] Record Number
+    32,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -5264,7 +5119,7 @@ static const TCanSigRecRoot mCsr_ctRoot_ReadOnOfffInput =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     16,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tReadOnOfffInput[0],                    //!< ptRec - [NUM] Pointer to Record Values
-    34,                                                     //!< u16RecNo - [NUM] Record Number
+    33,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -5375,7 +5230,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg2C0SendToOpus =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     6,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg2C0SendToOpus[0],                   //!< ptRec - [NUM] Pointer to Record Values
-    35,                                                     //!< u16RecNo - [NUM] Record Number
+    34,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -6056,7 +5911,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg4C0SendToOpus =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     64,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg4C0SendToOpus[0],                   //!< ptRec - [NUM] Pointer to Record Values
-    36,                                                     //!< u16RecNo - [NUM] Record Number
+    35,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -6785,7 +6640,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg6C0SendToOpus =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     63,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg6C0SendToOpus[0],                   //!< ptRec - [NUM] Pointer to Record Values
-    37,                                                     //!< u16RecNo - [NUM] Record Number
+    36,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -7173,7 +7028,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg8C0SendToOpus =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     29,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg8C0SendToOpus[0],                   //!< ptRec - [NUM] Pointer to Record Values
-    38,                                                     //!< u16RecNo - [NUM] Record Number
+    37,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -7277,7 +7132,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg9C0SendToOpus =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     4,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg9C0SendToOpus[0],                   //!< ptRec - [NUM] Pointer to Record Values
-    39,                                                     //!< u16RecNo - [NUM] Record Number
+    38,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -7356,7 +7211,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg10C0SendToOpus =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     4,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg10C0SendToOpus[0],                  //!< ptRec - [NUM] Pointer to Record Values
-    40,                                                     //!< u16RecNo - [NUM] Record Number
+    39,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -7465,7 +7320,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg11C0SendToOpus =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     7,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg11C0SendToOpus[0],                  //!< ptRec - [NUM] Pointer to Record Values
-    41,                                                     //!< u16RecNo - [NUM] Record Number
+    40,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -7587,7 +7442,7 @@ static const TCanSigRecRoot mCsr_ctRoot_DMC_TxPdo2_BCL =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     8,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tDMC_TxPdo2_BCL[0],                     //!< ptRec - [NUM] Pointer to Record Values
-    42,                                                     //!< u16RecNo - [NUM] Record Number
+    41,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -7650,7 +7505,7 @@ static const TCanSigRecRoot mCsr_ctRoot_WriteLed =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     2,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tWriteLed[0],                           //!< ptRec - [NUM] Pointer to Record Values
-    43,                                                     //!< u16RecNo - [NUM] Record Number
+    42,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -7767,7 +7622,7 @@ static const TCanSigRecRoot mCsr_ctRoot_FlashBatteryRpdo3_0 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     8,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tFlashBatteryRpdo3_0[0],                //!< ptRec - [NUM] Pointer to Record Values
-    44,                                                     //!< u16RecNo - [NUM] Record Number
+    43,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -7890,7 +7745,7 @@ static const TCanSigRecRoot mCsr_ctRoot_FlashBatteryRpdo3_3 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     8,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tFlashBatteryRpdo3_3[0],                //!< ptRec - [NUM] Pointer to Record Values
-    45,                                                     //!< u16RecNo - [NUM] Record Number
+    44,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -7973,7 +7828,7 @@ static const TCanSigRecRoot mCsr_ctRoot_PDO3_48XS =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     4,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tPDO3_48XS[0],                          //!< ptRec - [NUM] Pointer to Record Values
-    46,                                                     //!< u16RecNo - [NUM] Record Number
+    45,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -8092,7 +7947,7 @@ static const TCanSigRecRoot mCsr_ctRoot_DMC_RxPdo3_CS =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     8,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tDMC_RxPdo3_CS[0],                      //!< ptRec - [NUM] Pointer to Record Values
-    47,                                                     //!< u16RecNo - [NUM] Record Number
+    46,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -8175,7 +8030,7 @@ static const TCanSigRecRoot mCsr_ctRoot_PDO4_48XS =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     4,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tPDO4_48XS[0],                          //!< ptRec - [NUM] Pointer to Record Values
-    48,                                                     //!< u16RecNo - [NUM] Record Number
+    47,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -8254,7 +8109,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Sdo_Answer_Encodeur_Turret1 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     4,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tSdo_Answer_Encodeur_Turret1[0],        //!< ptRec - [NUM] Pointer to Record Values
-    49,                                                     //!< u16RecNo - [NUM] Record Number
+    48,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -8333,7 +8188,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Sdo_Answer_Encodeur_Turret2 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     4,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tSdo_Answer_Encodeur_Turret2[0],        //!< ptRec - [NUM] Pointer to Record Values
-    50,                                                     //!< u16RecNo - [NUM] Record Number
+    49,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -8452,7 +8307,7 @@ static const TCanSigRecRoot mCsr_ctRoot_DMC_RxSdo =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     8,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tDMC_RxSdo[0],                          //!< ptRec - [NUM] Pointer to Record Values
-    51,                                                     //!< u16RecNo - [NUM] Record Number
+    50,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -8535,7 +8390,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Sdo_Request_Encodeur_Turret1 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     4,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tSdo_Request_Encodeur_Turret1[0],       //!< ptRec - [NUM] Pointer to Record Values
-    52,                                                     //!< u16RecNo - [NUM] Record Number
+    51,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -8614,7 +8469,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Sdo_Request_Encodeur_Turret2 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     4,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tSdo_Request_Encodeur_Turret2[0],       //!< ptRec - [NUM] Pointer to Record Values
-    53,                                                     //!< u16RecNo - [NUM] Record Number
+    52,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -8733,7 +8588,7 @@ static const TCanSigRecRoot mCsr_ctRoot_DMC_TxSdo =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     8,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tDMC_TxSdo[0],                          //!< ptRec - [NUM] Pointer to Record Values
-    54,                                                     //!< u16RecNo - [NUM] Record Number
+    53,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -8856,7 +8711,7 @@ static const TCanSigRecRoot mCsr_ctRoot_PDO5_48XS =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     8,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tPDO5_48XS[0],                          //!< ptRec - [NUM] Pointer to Record Values
-    55,                                                     //!< u16RecNo - [NUM] Record Number
+    54,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -8929,7 +8784,7 @@ static const TCanSigRecRoot mCsr_ctRoot_PDO6_48XS =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     3,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tPDO6_48XS[0],                          //!< ptRec - [NUM] Pointer to Record Values
-    56,                                                     //!< u16RecNo - [NUM] Record Number
+    55,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -8977,7 +8832,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Hearbeat_48XS =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     1,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tHearbeat_48XS[0],                      //!< ptRec - [NUM] Pointer to Record Values
-    57,                                                     //!< u16RecNo - [NUM] Record Number
+    56,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -9023,7 +8878,7 @@ static const TCanSigRecRoot mCsr_ctRoot_DMC_Heartbeat_HB =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     1,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tDMC_Heartbeat_HB[0],                   //!< ptRec - [NUM] Pointer to Record Values
-    58,                                                     //!< u16RecNo - [NUM] Record Number
+    57,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -9069,7 +8924,7 @@ static const TCanSigRecRoot mCsr_ctRoot_HeartBeatDeversFrame =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     1,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tHeartBeatDeversFrame[0],               //!< ptRec - [NUM] Pointer to Record Values
-    59,                                                     //!< u16RecNo - [NUM] Record Number
+    58,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -9115,7 +8970,7 @@ static const TCanSigRecRoot mCsr_ctRoot_HeartBeatEncodeurTurret1 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     1,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tHeartBeatEncodeurTurret1[0],           //!< ptRec - [NUM] Pointer to Record Values
-    60,                                                     //!< u16RecNo - [NUM] Record Number
+    59,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -9161,7 +9016,7 @@ static const TCanSigRecRoot mCsr_ctRoot_HeartBeatEncodeurTurret2 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     1,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tHeartBeatEncodeurTurret2[0],           //!< ptRec - [NUM] Pointer to Record Values
-    61,                                                     //!< u16RecNo - [NUM] Record Number
+    60,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -9207,7 +9062,7 @@ static const TCanSigRecRoot mCsr_ctRoot_HeartBeat =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     1,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tHeartBeat[0],                          //!< ptRec - [NUM] Pointer to Record Values
-    62,                                                     //!< u16RecNo - [NUM] Record Number
+    61,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -9733,7 +9588,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg1C0SendToEvision7 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     49,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg1C0SendToEvision7[0],               //!< ptRec - [NUM] Pointer to Record Values
-    63,                                                     //!< u16RecNo - [NUM] Record Number
+    62,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -9867,7 +9722,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg2C0SendToEvision7 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     5,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg2C0SendToEvision7[0],               //!< ptRec - [NUM] Pointer to Record Values
-    64,                                                     //!< u16RecNo - [NUM] Record Number
+    63,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -9947,7 +9802,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg3C0SendToEvision7 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     4,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg3C0SendToEvision7[0],               //!< ptRec - [NUM] Pointer to Record Values
-    65,                                                     //!< u16RecNo - [NUM] Record Number
+    64,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -10026,7 +9881,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg4C0SendToEvision7 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     4,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg4C0SendToEvision7[0],               //!< ptRec - [NUM] Pointer to Record Values
-    66,                                                     //!< u16RecNo - [NUM] Record Number
+    65,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -10705,7 +10560,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg5C0SendToEvision7 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     64,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg5C0SendToEvision7[0],               //!< ptRec - [NUM] Pointer to Record Values
-    67,                                                     //!< u16RecNo - [NUM] Record Number
+    66,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -11234,7 +11089,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg6C0SendToEvision7 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     43,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg6C0SendToEvision7[0],               //!< ptRec - [NUM] Pointer to Record Values
-    68,                                                     //!< u16RecNo - [NUM] Record Number
+    67,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -11942,7 +11797,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg7C0SendToEvision7 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     63,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg7C0SendToEvision7[0],               //!< ptRec - [NUM] Pointer to Record Values
-    69,                                                     //!< u16RecNo - [NUM] Record Number
+    68,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -12640,7 +12495,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg8C0SendToEvision7 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     60,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg8C0SendToEvision7[0],               //!< ptRec - [NUM] Pointer to Record Values
-    70,                                                     //!< u16RecNo - [NUM] Record Number
+    69,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -13065,7 +12920,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg9C0SendToEvision7 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     33,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg9C0SendToEvision7[0],               //!< ptRec - [NUM] Pointer to Record Values
-    71,                                                     //!< u16RecNo - [NUM] Record Number
+    70,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -13193,7 +13048,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg10C0SendToEvision7 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     6,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg10C0SendToEvision7[0],              //!< ptRec - [NUM] Pointer to Record Values
-    72,                                                     //!< u16RecNo - [NUM] Record Number
+    71,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -13274,7 +13129,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg11C0SendToEvision7 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     4,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg11C0SendToEvision7[0],              //!< ptRec - [NUM] Pointer to Record Values
-    73,                                                     //!< u16RecNo - [NUM] Record Number
+    72,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -13333,7 +13188,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg12C0SendToEvision7 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     2,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg12C0SendToEvision7[0],              //!< ptRec - [NUM] Pointer to Record Values
-    74,                                                     //!< u16RecNo - [NUM] Record Number
+    73,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -13510,7 +13365,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg13C0SendToEvision7 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     14,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg13C0SendToEvision7[0],              //!< ptRec - [NUM] Pointer to Record Values
-    75,                                                     //!< u16RecNo - [NUM] Record Number
+    74,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -13544,32 +13399,16 @@ const TCanSigRecVal_Msg14C0SendToEvision7 gCsr_ctRecDat_Msg14C0SendToEvision7 =
     //!< Batt_Soc
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TUINT8, TUINT8, 32, 8, 0, 0, 1, 1 }, 
      { U8_MIN, U8_MAX, 0, 0 },
-    //!< AccuBrakeSensorPressureValue
-    { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TUINT16, TUINT16, 40, 16, 0, 0, 1, 1 }, 
-     { U16_MIN, U16_MAX, 0, 0 },
     //!< AddParkBrakeActive
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 56, 1, 0, 0, 1, 1 }, 
      { FALSE, TRUE, FALSE, FALSE },
     //!< PreventLimitSpeedExceeding
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 57, 1, 0, 0, 1, 1 }, 
-     { FALSE, TRUE, FALSE, FALSE },
-    //!< AxlePositionInMGMode
-    { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 58, 1, 0, 0, 1, 1 }, 
-     { FALSE, TRUE, FALSE, FALSE },
-    //!< MachineMountedAxlesMG
-    { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 59, 1, 0, 0, 1, 1 }, 
-     { FALSE, TRUE, FALSE, FALSE },
-    //!< AxlePositionSensorFault
-    { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 60, 1, 0, 0, 1, 1 }, 
      { FALSE, TRUE, FALSE, FALSE }
 };
 
-static ESigSta mCsr_aeRecErr_tMsg14C0SendToEvision7[9] =
+static ESigSta mCsr_aeRecErr_tMsg14C0SendToEvision7[5] =
 {
-    SIG_OKAY,
-    SIG_OKAY,
-    SIG_OKAY,
-    SIG_OKAY,
     SIG_OKAY,
     SIG_OKAY,
     SIG_OKAY,
@@ -13582,16 +13421,12 @@ static TCanSigRecOldValMsg14C0SendToEvision7 mCsr_tOldDat_tMsg14C0SendToEvision7
     0,                                                      //!< i16Ibatt_ist [[-]] new signal
     0,                                                      //!< u16Vbatt_ist [[-]] new signal
     0,                                                      //!< u8Batt_Soc [[-]] new signal
-    0,                                                      //!< u16AccuBrakeSensorPressureValue [[-]] new signal
     FALSE,                                                  //!< boAddParkBrakeActive [[-]] new signal
-    FALSE,                                                  //!< boPreventLimitSpeedExceeding [[-]] new signal
-    FALSE,                                                  //!< boAxlePositionInMGMode [[-]] new signal
-    FALSE,                                                  //!< boMachineMountedAxlesMG [[-]] new signal
-    FALSE                                                   //!< boAxlePositionSensorFault [[-]] new signal
+    FALSE                                                   //!< boPreventLimitSpeedExceeding [[-]] new signal
 };
 
 extern TCanSigRecMsg14C0SendToEvision7 gCsr_tMsg14C0SendToEvision7;
-static const TRecDat mCsr_actRecDat_tMsg14C0SendToEvision7[9] =
+static const TRecDat mCsr_actRecDat_tMsg14C0SendToEvision7[5] =
 {
     {
         (TCanSigRecInf*)&gCsr_ctRecDat_Msg14C0SendToEvision7.tCsrInfo_i16Ibatt_ist, (TVoid*)&gCsr_ctRecDat_Msg14C0SendToEvision7.tCsrRng_i16Ibatt_ist,
@@ -13609,33 +13444,13 @@ static const TRecDat mCsr_actRecDat_tMsg14C0SendToEvision7[9] =
         NULL, NULL
     },
     {
-        (TCanSigRecInf*)&gCsr_ctRecDat_Msg14C0SendToEvision7.tCsrInfo_u16AccuBrakeSensorPressureValue, (TVoid*)&gCsr_ctRecDat_Msg14C0SendToEvision7.tCsrRng_u16AccuBrakeSensorPressureValue,
-        (TVoid*)&gCsr_tMsg14C0SendToEvision7.u16AccuBrakeSensorPressureValue, (TVoid*)&mCsr_tOldDat_tMsg14C0SendToEvision7.u16AccuBrakeSensorPressureValue, &mCsr_aeRecErr_tMsg14C0SendToEvision7[3],
-        NULL, NULL
-    },
-    {
         (TCanSigRecInf*)&gCsr_ctRecDat_Msg14C0SendToEvision7.tCsrInfo_boAddParkBrakeActive, (TVoid*)&gCsr_ctRecDat_Msg14C0SendToEvision7.tCsrRng_boAddParkBrakeActive,
-        (TVoid*)&gCsr_tMsg14C0SendToEvision7.boAddParkBrakeActive, (TVoid*)&mCsr_tOldDat_tMsg14C0SendToEvision7.boAddParkBrakeActive, &mCsr_aeRecErr_tMsg14C0SendToEvision7[4],
+        (TVoid*)&gCsr_tMsg14C0SendToEvision7.boAddParkBrakeActive, (TVoid*)&mCsr_tOldDat_tMsg14C0SendToEvision7.boAddParkBrakeActive, &mCsr_aeRecErr_tMsg14C0SendToEvision7[3],
         NULL, NULL
     },
     {
         (TCanSigRecInf*)&gCsr_ctRecDat_Msg14C0SendToEvision7.tCsrInfo_boPreventLimitSpeedExceeding, (TVoid*)&gCsr_ctRecDat_Msg14C0SendToEvision7.tCsrRng_boPreventLimitSpeedExceeding,
-        (TVoid*)&gCsr_tMsg14C0SendToEvision7.boPreventLimitSpeedExceeding, (TVoid*)&mCsr_tOldDat_tMsg14C0SendToEvision7.boPreventLimitSpeedExceeding, &mCsr_aeRecErr_tMsg14C0SendToEvision7[5],
-        NULL, NULL
-    },
-    {
-        (TCanSigRecInf*)&gCsr_ctRecDat_Msg14C0SendToEvision7.tCsrInfo_boAxlePositionInMGMode, (TVoid*)&gCsr_ctRecDat_Msg14C0SendToEvision7.tCsrRng_boAxlePositionInMGMode,
-        (TVoid*)&gCsr_tMsg14C0SendToEvision7.boAxlePositionInMGMode, (TVoid*)&mCsr_tOldDat_tMsg14C0SendToEvision7.boAxlePositionInMGMode, &mCsr_aeRecErr_tMsg14C0SendToEvision7[6],
-        NULL, NULL
-    },
-    {
-        (TCanSigRecInf*)&gCsr_ctRecDat_Msg14C0SendToEvision7.tCsrInfo_boMachineMountedAxlesMG, (TVoid*)&gCsr_ctRecDat_Msg14C0SendToEvision7.tCsrRng_boMachineMountedAxlesMG,
-        (TVoid*)&gCsr_tMsg14C0SendToEvision7.boMachineMountedAxlesMG, (TVoid*)&mCsr_tOldDat_tMsg14C0SendToEvision7.boMachineMountedAxlesMG, &mCsr_aeRecErr_tMsg14C0SendToEvision7[7],
-        NULL, NULL
-    },
-    {
-        (TCanSigRecInf*)&gCsr_ctRecDat_Msg14C0SendToEvision7.tCsrInfo_boAxlePositionSensorFault, (TVoid*)&gCsr_ctRecDat_Msg14C0SendToEvision7.tCsrRng_boAxlePositionSensorFault,
-        (TVoid*)&gCsr_tMsg14C0SendToEvision7.boAxlePositionSensorFault, (TVoid*)&mCsr_tOldDat_tMsg14C0SendToEvision7.boAxlePositionSensorFault, &mCsr_aeRecErr_tMsg14C0SendToEvision7[8],
+        (TVoid*)&gCsr_tMsg14C0SendToEvision7.boPreventLimitSpeedExceeding, (TVoid*)&mCsr_tOldDat_tMsg14C0SendToEvision7.boPreventLimitSpeedExceeding, &mCsr_aeRecErr_tMsg14C0SendToEvision7[4],
         NULL, NULL
     }
 };
@@ -13647,9 +13462,9 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg14C0SendToEvision7 =
     0xff,                                                   //!< u8CanByteDflt - [NUM] CAN Message default
     DATA_INTEL,                                             //!< eCanFormat - [NUM] CAN Format
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
-    9,                                                      //!< u8RecCnt - [NUM] Count of Recorde
+    5,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg14C0SendToEvision7[0],              //!< ptRec - [NUM] Pointer to Record Values
-    76,                                                     //!< u16RecNo - [NUM] Record Number
+    75,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -13659,12 +13474,8 @@ TCanSigRecMsg14C0SendToEvision7 gCsr_tMsg14C0SendToEvision7 =
     (((0 * 1)/1)+0),                                        //!< i16Ibatt_ist [[-]] new signal
     (((0 * 1)/1)+0),                                        //!< u16Vbatt_ist [[-]] new signal
     (((0 * 1)/1)+0),                                        //!< u8Batt_Soc [[-]] new signal
-    (((0 * 1)/1)+0),                                        //!< u16AccuBrakeSensorPressureValue [[-]] new signal
     FALSE,                                                  //!< boAddParkBrakeActive [[-]] new signal
-    FALSE,                                                  //!< boPreventLimitSpeedExceeding [[-]] new signal
-    FALSE,                                                  //!< boAxlePositionInMGMode [[-]] new signal
-    FALSE,                                                  //!< boMachineMountedAxlesMG [[-]] new signal
-    FALSE                                                   //!< boAxlePositionSensorFault [[-]] new signal
+    FALSE                                                   //!< boPreventLimitSpeedExceeding [[-]] new signal
 };
 
 const TCanSigRecVal_Msg15C0SendToEvision7 gCsr_ctRecDat_Msg15C0SendToEvision7 =
@@ -13773,7 +13584,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg15C0SendToEvision7 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     8,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg15C0SendToEvision7[0],              //!< ptRec - [NUM] Pointer to Record Values
-    77,                                                     //!< u16RecNo - [NUM] Record Number
+    76,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -13846,7 +13657,7 @@ static const TCanSigRecRoot mCsr_ctRoot_MsgDebugC0SendToEvision7 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     3,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsgDebugC0SendToEvision7[0],           //!< ptRec - [NUM] Pointer to Record Values
-    78,                                                     //!< u16RecNo - [NUM] Record Number
+    77,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -13920,7 +13731,7 @@ const TCanSigRecVal_Msg1RcvFromEvision7 gCsr_ctRecDat_Msg1RcvFromEvision7 =
     //!< gBreakInBrakePageActive
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 19, 1, 0, 0, 1, 1 }, 
      { FALSE, TRUE, FALSE, FALSE },
-    //!< gRollingCode
+    //!< gSerialNumber
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 20, 1, 0, 0, 1, 1 }, 
      { FALSE, TRUE, FALSE, FALSE },
     //!< gBPBasketValidate
@@ -13964,19 +13775,11 @@ const TCanSigRecVal_Msg1RcvFromEvision7 gCsr_ctRecDat_Msg1RcvFromEvision7 =
      { FALSE, TRUE, FALSE, FALSE },
     //!< gKeyRazController
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 34, 1, 0, 0, 1, 1 }, 
-     { FALSE, TRUE, FALSE, FALSE },
-    //!< gKeyColdStartWarming
-    { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 35, 1, 0, 0, 1, 1 }, 
-     { FALSE, TRUE, FALSE, FALSE },
-    //!< gKeySilenceMode
-    { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 36, 1, 0, 0, 1, 1 }, 
      { FALSE, TRUE, FALSE, FALSE }
 };
 
-static ESigSta mCsr_aeRecErr_tMsg1RcvFromEvision7[37] =
+static ESigSta mCsr_aeRecErr_tMsg1RcvFromEvision7[35] =
 {
-    SIG_OKAY,
-    SIG_OKAY,
     SIG_OKAY,
     SIG_OKAY,
     SIG_OKAY,
@@ -14036,7 +13839,7 @@ static TCanSigRecOldValMsg1RcvFromEvision7 mCsr_tOldDat_tMsg1RcvFromEvision7 =
     FALSE,                                                  //!< bogBothServiceRunInBrakeSelect [[-]] Request status of both service run in test brake
     FALSE,                                                  //!< bogTestBrakePageActive [[-]] Flag when user is on test brake page
     FALSE,                                                  //!< bogBreakInBrakePageActive [[-]] Flag when user is on break in brake page
-    FALSE,                                                  //!< bogRollingCode [[-]] Machine Serial Number
+    FALSE,                                                  //!< bogSerialNumber [[-]] Machine Serial Number
     FALSE,                                                  //!< bogBPBasketValidate [[-]] Basket Panel Validate
     FALSE,                                                  //!< bogKeyFilterOverload [[-]] Overload Filter Key
     FALSE,                                                  //!< bogKeyNextMode [[-]] Select next mode
@@ -14050,13 +13853,11 @@ static TCanSigRecOldValMsg1RcvFromEvision7 mCsr_tOldDat_tMsg1RcvFromEvision7 =
     FALSE,                                                  //!< bogKeyWhiteLights15746 [[-]] Key whiite lights 15746
     FALSE,                                                  //!< bogFixe2ndParkBrakeSelect [[-]] Fixe 2nd Park Brake Select
     FALSE,                                                  //!< bogOsci2ndParkBrakeSelect [[-]] Osci 2nd Park Brake Select
-    FALSE,                                                  //!< bogKeyRazController [[-]] new signal
-    FALSE,                                                  //!< bogKeyColdStartWarming [[-]] new signal
-    FALSE                                                   //!< bogKeySilenceMode [[-]] new signal
+    FALSE                                                   //!< bogKeyRazController [[-]] new signal
 };
 
 extern TCanSigRecMsg1RcvFromEvision7 gCsr_tMsg1RcvFromEvision7;
-static const TRecDat mCsr_actRecDat_tMsg1RcvFromEvision7[37] =
+static const TRecDat mCsr_actRecDat_tMsg1RcvFromEvision7[35] =
 {
     {
         (TCanSigRecInf*)&gCsr_ctRecDat_Msg1RcvFromEvision7.tCsrInfo_bogLoginStatus, (TVoid*)&gCsr_ctRecDat_Msg1RcvFromEvision7.tCsrRng_bogLoginStatus,
@@ -14159,8 +13960,8 @@ static const TRecDat mCsr_actRecDat_tMsg1RcvFromEvision7[37] =
         NULL, NULL
     },
     {
-        (TCanSigRecInf*)&gCsr_ctRecDat_Msg1RcvFromEvision7.tCsrInfo_bogRollingCode, (TVoid*)&gCsr_ctRecDat_Msg1RcvFromEvision7.tCsrRng_bogRollingCode,
-        (TVoid*)&gCsr_tMsg1RcvFromEvision7.bogRollingCode, (TVoid*)&mCsr_tOldDat_tMsg1RcvFromEvision7.bogRollingCode, &mCsr_aeRecErr_tMsg1RcvFromEvision7[20],
+        (TCanSigRecInf*)&gCsr_ctRecDat_Msg1RcvFromEvision7.tCsrInfo_bogSerialNumber, (TVoid*)&gCsr_ctRecDat_Msg1RcvFromEvision7.tCsrRng_bogSerialNumber,
+        (TVoid*)&gCsr_tMsg1RcvFromEvision7.bogSerialNumber, (TVoid*)&mCsr_tOldDat_tMsg1RcvFromEvision7.bogSerialNumber, &mCsr_aeRecErr_tMsg1RcvFromEvision7[20],
         NULL, NULL
     },
     {
@@ -14232,16 +14033,6 @@ static const TRecDat mCsr_actRecDat_tMsg1RcvFromEvision7[37] =
         (TCanSigRecInf*)&gCsr_ctRecDat_Msg1RcvFromEvision7.tCsrInfo_bogKeyRazController, (TVoid*)&gCsr_ctRecDat_Msg1RcvFromEvision7.tCsrRng_bogKeyRazController,
         (TVoid*)&gCsr_tMsg1RcvFromEvision7.bogKeyRazController, (TVoid*)&mCsr_tOldDat_tMsg1RcvFromEvision7.bogKeyRazController, &mCsr_aeRecErr_tMsg1RcvFromEvision7[34],
         NULL, NULL
-    },
-    {
-        (TCanSigRecInf*)&gCsr_ctRecDat_Msg1RcvFromEvision7.tCsrInfo_bogKeyColdStartWarming, (TVoid*)&gCsr_ctRecDat_Msg1RcvFromEvision7.tCsrRng_bogKeyColdStartWarming,
-        (TVoid*)&gCsr_tMsg1RcvFromEvision7.bogKeyColdStartWarming, (TVoid*)&mCsr_tOldDat_tMsg1RcvFromEvision7.bogKeyColdStartWarming, &mCsr_aeRecErr_tMsg1RcvFromEvision7[35],
-        NULL, NULL
-    },
-    {
-        (TCanSigRecInf*)&gCsr_ctRecDat_Msg1RcvFromEvision7.tCsrInfo_bogKeySilenceMode, (TVoid*)&gCsr_ctRecDat_Msg1RcvFromEvision7.tCsrRng_bogKeySilenceMode,
-        (TVoid*)&gCsr_tMsg1RcvFromEvision7.bogKeySilenceMode, (TVoid*)&mCsr_tOldDat_tMsg1RcvFromEvision7.bogKeySilenceMode, &mCsr_aeRecErr_tMsg1RcvFromEvision7[36],
-        NULL, NULL
     }
 };
 
@@ -14252,9 +14043,9 @@ static const TCanSigRecRoot mCsr_ctRoot_Msg1RcvFromEvision7 =
     0xff,                                                   //!< u8CanByteDflt - [NUM] CAN Message default
     DATA_INTEL,                                             //!< eCanFormat - [NUM] CAN Format
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
-    37,                                                     //!< u8RecCnt - [NUM] Count of Recorde
+    35,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tMsg1RcvFromEvision7[0],                //!< ptRec - [NUM] Pointer to Record Values
-    79,                                                     //!< u16RecNo - [NUM] Record Number
+    78,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -14281,7 +14072,7 @@ TCanSigRecMsg1RcvFromEvision7 gCsr_tMsg1RcvFromEvision7 =
     FALSE,                                                  //!< bogBothServiceRunInBrakeSelect [[-]] Request status of both service run in test brake
     FALSE,                                                  //!< bogTestBrakePageActive [[-]] Flag when user is on test brake page
     FALSE,                                                  //!< bogBreakInBrakePageActive [[-]] Flag when user is on break in brake page
-    FALSE,                                                  //!< bogRollingCode [[-]] Machine Serial Number
+    FALSE,                                                  //!< bogSerialNumber [[-]] Machine Serial Number
     FALSE,                                                  //!< bogBPBasketValidate [[-]] Basket Panel Validate
     FALSE,                                                  //!< bogKeyFilterOverload [[-]] Overload Filter Key
     FALSE,                                                  //!< bogKeyNextMode [[-]] Select next mode
@@ -14295,88 +14086,7 @@ TCanSigRecMsg1RcvFromEvision7 gCsr_tMsg1RcvFromEvision7 =
     FALSE,                                                  //!< bogKeyWhiteLights15746 [[-]] Key whiite lights 15746
     FALSE,                                                  //!< bogFixe2ndParkBrakeSelect [[-]] Fixe 2nd Park Brake Select
     FALSE,                                                  //!< bogOsci2ndParkBrakeSelect [[-]] Osci 2nd Park Brake Select
-    FALSE,                                                  //!< bogKeyRazController [[-]] new signal
-    FALSE,                                                  //!< bogKeyColdStartWarming [[-]] new signal
-    FALSE                                                   //!< bogKeySilenceMode [[-]] new signal
-};
-
-const TCanSigRecVal_Data6C0SendToC1 gCsr_ctRecDat_Data6C0SendToC1 =
-{
-    //!< RecoveryReductionRatio
-    { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TUINT8, TUINT8, 0, 8, 0, 0, 1, 1 }, 
-     { U8_MIN, U8_MAX, 0, 0 },
-    //!< AxlePositionInMGMode
-    { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 8, 1, 0, 0, 1, 1 }, 
-     { FALSE, TRUE, FALSE, FALSE },
-    //!< AxlePositionSensorFault
-    { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 9, 1, 0, 0, 1, 1 }, 
-     { FALSE, TRUE, FALSE, FALSE },
-    //!< HighSlopeForArrowUp
-    { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 10, 1, 0, 0, 1, 1 }, 
-     { FALSE, TRUE, FALSE, FALSE }
-};
-
-static ESigSta mCsr_aeRecErr_tData6C0SendToC1[4] =
-{
-    SIG_OKAY,
-    SIG_OKAY,
-    SIG_OKAY,
-    SIG_OKAY
-};
-
-static TCanSigRecOldValData6C0SendToC1 mCsr_tOldDat_tData6C0SendToC1 =
-{
-    0,                                                      //!< u8RecoveryReductionRatio [[-]] new signal
-    FALSE,                                                  //!< boAxlePositionInMGMode [[-]] new signal
-    FALSE,                                                  //!< boAxlePositionSensorFault [[-]] new signal
-    FALSE                                                   //!< boHighSlopeForArrowUp [[-]] new signal
-};
-
-extern TCanSigRecData6C0SendToC1 gCsr_tData6C0SendToC1;
-static const TRecDat mCsr_actRecDat_tData6C0SendToC1[4] =
-{
-    {
-        (TCanSigRecInf*)&gCsr_ctRecDat_Data6C0SendToC1.tCsrInfo_u8RecoveryReductionRatio, (TVoid*)&gCsr_ctRecDat_Data6C0SendToC1.tCsrRng_u8RecoveryReductionRatio,
-        (TVoid*)&gCsr_tData6C0SendToC1.u8RecoveryReductionRatio, (TVoid*)&mCsr_tOldDat_tData6C0SendToC1.u8RecoveryReductionRatio, &mCsr_aeRecErr_tData6C0SendToC1[0],
-        NULL, NULL
-    },
-    {
-        (TCanSigRecInf*)&gCsr_ctRecDat_Data6C0SendToC1.tCsrInfo_boAxlePositionInMGMode, (TVoid*)&gCsr_ctRecDat_Data6C0SendToC1.tCsrRng_boAxlePositionInMGMode,
-        (TVoid*)&gCsr_tData6C0SendToC1.boAxlePositionInMGMode, (TVoid*)&mCsr_tOldDat_tData6C0SendToC1.boAxlePositionInMGMode, &mCsr_aeRecErr_tData6C0SendToC1[1],
-        NULL, NULL
-    },
-    {
-        (TCanSigRecInf*)&gCsr_ctRecDat_Data6C0SendToC1.tCsrInfo_boAxlePositionSensorFault, (TVoid*)&gCsr_ctRecDat_Data6C0SendToC1.tCsrRng_boAxlePositionSensorFault,
-        (TVoid*)&gCsr_tData6C0SendToC1.boAxlePositionSensorFault, (TVoid*)&mCsr_tOldDat_tData6C0SendToC1.boAxlePositionSensorFault, &mCsr_aeRecErr_tData6C0SendToC1[2],
-        NULL, NULL
-    },
-    {
-        (TCanSigRecInf*)&gCsr_ctRecDat_Data6C0SendToC1.tCsrInfo_boHighSlopeForArrowUp, (TVoid*)&gCsr_ctRecDat_Data6C0SendToC1.tCsrRng_boHighSlopeForArrowUp,
-        (TVoid*)&gCsr_tData6C0SendToC1.boHighSlopeForArrowUp, (TVoid*)&mCsr_tOldDat_tData6C0SendToC1.boHighSlopeForArrowUp, &mCsr_aeRecErr_tData6C0SendToC1[3],
-        NULL, NULL
-    }
-};
-
-static const TCanSigRecRoot mCsr_ctRoot_Data6C0SendToC1 =
-{
-    "Data6C0SendToC1",                                      //!< achName - [STR] Name Data6C0SendToC1
-    8,                                                      //!< u8Dlc - [NUM] DLC of Can Message
-    0xff,                                                   //!< u8CanByteDflt - [NUM] CAN Message default
-    DATA_INTEL,                                             //!< eCanFormat - [NUM] CAN Format
-    0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
-    4,                                                      //!< u8RecCnt - [NUM] Count of Recorde
-    &mCsr_actRecDat_tData6C0SendToC1[0],                    //!< ptRec - [NUM] Pointer to Record Values
-    80,                                                     //!< u16RecNo - [NUM] Record Number
-    CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
-};
-
-TCanSigRecData6C0SendToC1 gCsr_tData6C0SendToC1 =
-{
-    &mCsr_ctRoot_Data6C0SendToC1,                           //!< *cptRoot [POI] Root connection
-    (((0 * 1)/1)+0),                                        //!< u8RecoveryReductionRatio [[-]] new signal
-    FALSE,                                                  //!< boAxlePositionInMGMode [[-]] new signal
-    FALSE,                                                  //!< boAxlePositionSensorFault [[-]] new signal
-    FALSE                                                   //!< boHighSlopeForArrowUp [[-]] new signal
+    FALSE                                                   //!< bogKeyRazController [[-]] new signal
 };
 
 const TCanSigRecVal_SendToC1RadioCmd gCsr_ctRecDat_SendToC1RadioCmd =
@@ -14515,7 +14225,7 @@ static const TCanSigRecRoot mCsr_ctRoot_SendToC1RadioCmd =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     11,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tSendToC1RadioCmd[0],                   //!< ptRec - [NUM] Pointer to Record Values
-    81,                                                     //!< u16RecNo - [NUM] Record Number
+    79,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -14711,7 +14421,7 @@ static const TCanSigRecRoot mCsr_ctRoot_DataRcvFromC1 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     15,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tDataRcvFromC1[0],                      //!< ptRec - [NUM] Pointer to Record Values
-    82,                                                     //!< u16RecNo - [NUM] Record Number
+    80,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -14971,7 +14681,7 @@ static const TCanSigRecRoot mCsr_ctRoot_DataSendToC1 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     21,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tDataSendToC1[0],                       //!< ptRec - [NUM] Pointer to Record Values
-    83,                                                     //!< u16RecNo - [NUM] Record Number
+    81,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -15177,7 +14887,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Data2SendToC1 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     15,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tData2SendToC1[0],                      //!< ptRec - [NUM] Pointer to Record Values
-    84,                                                     //!< u16RecNo - [NUM] Record Number
+    82,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -15347,7 +15057,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Data2RdvFromC1 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     12,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tData2RdvFromC1[0],                     //!< ptRec - [NUM] Pointer to Record Values
-    85,                                                     //!< u16RecNo - [NUM] Record Number
+    83,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -15424,7 +15134,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Data3SendToC1 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     3,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tData3SendToC1[0],                      //!< ptRec - [NUM] Pointer to Record Values
-    86,                                                     //!< u16RecNo - [NUM] Record Number
+    84,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -15552,7 +15262,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Data3RcvFromC1 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     9,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tData3RcvFromC1[0],                     //!< ptRec - [NUM] Pointer to Record Values
-    87,                                                     //!< u16RecNo - [NUM] Record Number
+    85,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -15646,7 +15356,7 @@ static const TCanSigRecRoot mCsr_ctRoot_FailuresC1SendToC0 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     5,                                                      //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tFailuresC1SendToC0[0],                 //!< ptRec - [NUM] Pointer to Record Values
-    88,                                                     //!< u16RecNo - [NUM] Record Number
+    86,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -15786,7 +15496,7 @@ static const TCanSigRecRoot mCsr_ctRoot_FailuresC0SendToC1 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     10,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tFailuresC0SendToC1[0],                 //!< ptRec - [NUM] Pointer to Record Values
-    89,                                                     //!< u16RecNo - [NUM] Record Number
+    87,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -15961,7 +15671,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Data4C0SendToC1 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     13,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tData4C0SendToC1[0],                    //!< ptRec - [NUM] Pointer to Record Values
-    90,                                                     //!< u16RecNo - [NUM] Record Number
+    88,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -16015,7 +15725,7 @@ const TCanSigRecVal_Data4C1SendToC0 gCsr_ctRecDat_Data4C1SendToC0 =
     //!< BypassPressureSensorValue
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TINT16, TINT16, 16, 16, 0, 0, 1, 1 }, 
      { I16_MIN, I16_MAX, 0, 0 },
-    //!< AccuBrakeSensorPressureValue
+    //!< Signal_9
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TINT16, TINT16, 32, 16, 0, 0, 1, 1 }, 
      { I16_MIN, I16_MAX, 0, 0 },
     //!< Signal_10
@@ -16051,7 +15761,7 @@ static TCanSigRecOldValData4C1SendToC0 mCsr_tOldDat_tData4C1SendToC0 =
     FALSE,                                                  //!< boSignal_6 [[-]] new signal
     0,                                                      //!< u8Signal_7 [[-]] new signal
     0,                                                      //!< i16BypassPressureSensorValue [[-]] new signal
-    0,                                                      //!< i16AccuBrakeSensorPressureValue [[-]] new signal
+    0,                                                      //!< i16Signal_9 [[-]] new signal
     0                                                       //!< i16Signal_10 [[-]] new signal
 };
 
@@ -16109,8 +15819,8 @@ static const TRecDat mCsr_actRecDat_tData4C1SendToC0[12] =
         NULL, NULL
     },
     {
-        (TCanSigRecInf*)&gCsr_ctRecDat_Data4C1SendToC0.tCsrInfo_i16AccuBrakeSensorPressureValue, (TVoid*)&gCsr_ctRecDat_Data4C1SendToC0.tCsrRng_i16AccuBrakeSensorPressureValue,
-        (TVoid*)&gCsr_tData4C1SendToC0.i16AccuBrakeSensorPressureValue, (TVoid*)&mCsr_tOldDat_tData4C1SendToC0.i16AccuBrakeSensorPressureValue, &mCsr_aeRecErr_tData4C1SendToC0[10],
+        (TCanSigRecInf*)&gCsr_ctRecDat_Data4C1SendToC0.tCsrInfo_i16Signal_9, (TVoid*)&gCsr_ctRecDat_Data4C1SendToC0.tCsrRng_i16Signal_9,
+        (TVoid*)&gCsr_tData4C1SendToC0.i16Signal_9, (TVoid*)&mCsr_tOldDat_tData4C1SendToC0.i16Signal_9, &mCsr_aeRecErr_tData4C1SendToC0[10],
         NULL, NULL
     },
     {
@@ -16129,7 +15839,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Data4C1SendToC0 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     12,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tData4C1SendToC0[0],                    //!< ptRec - [NUM] Pointer to Record Values
-    91,                                                     //!< u16RecNo - [NUM] Record Number
+    89,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -16146,7 +15856,7 @@ TCanSigRecData4C1SendToC0 gCsr_tData4C1SendToC0 =
     FALSE,                                                  //!< boSignal_6 [[-]] new signal
     (((0 * 1)/1)+0),                                        //!< u8Signal_7 [[-]] new signal
     (((0 * 1)/1)+0),                                        //!< i16BypassPressureSensorValue [[-]] new signal
-    (((0 * 1)/1)+0),                                        //!< i16AccuBrakeSensorPressureValue [[-]] new signal
+    (((0 * 1)/1)+0),                                        //!< i16Signal_9 [[-]] new signal
     (((0 * 1)/1)+0)                                         //!< i16Signal_10 [[-]] new signal
 };
 
@@ -16172,9 +15882,6 @@ const TCanSigRecVal_Data5C0SendToC1 gCsr_ctRecDat_Data5C0SendToC1 =
      { FALSE, TRUE, FALSE, FALSE },
     //!< MeasuringMastSensorFolded
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 6, 1, 0, 0, 1, 1 }, 
-     { FALSE, TRUE, FALSE, FALSE },
-    //!< EvLoadBrakeAccuCmd
-    { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TBOOLEAN, TBOOLEAN, 7, 1, 0, 0, 1, 1 }, 
      { FALSE, TRUE, FALSE, FALSE },
     //!< RpmPvgTransRail
     { { { DB_LINK_NA, 0, 0 }, SBSIG_MANUALLY }, ERSIG_DFLT, TINT16, TINT16, 8, 16, 0, 0, 1, 1 }, 
@@ -16214,9 +15921,8 @@ const TCanSigRecVal_Data5C0SendToC1 gCsr_ctRecDat_Data5C0SendToC1 =
      { FALSE, TRUE, FALSE, FALSE }
 };
 
-static ESigSta mCsr_aeRecErr_tData5C0SendToC1[20] =
+static ESigSta mCsr_aeRecErr_tData5C0SendToC1[19] =
 {
-    SIG_OKAY,
     SIG_OKAY,
     SIG_OKAY,
     SIG_OKAY,
@@ -16247,7 +15953,6 @@ static TCanSigRecOldValData5C0SendToC1 mCsr_tOldDat_tData5C0SendToC1 =
     FALSE,                                                  //!< boUpMastSensorNC [[-]] new signal
     FALSE,                                                  //!< boValveInDownPositionSensor [[-]] new signal
     FALSE,                                                  //!< boMeasuringMastSensorFolded [[-]] new signal
-    FALSE,                                                  //!< boEvLoadBrakeAccuCmd [[-]] new signal
     0,                                                      //!< i16RpmPvgTransRail [[-]] new signal
     0,                                                      //!< u8Batt_Soc [[-]] new signal
     0,                                                      //!< i16Ibatt_ist [[-]] new signal
@@ -16263,7 +15968,7 @@ static TCanSigRecOldValData5C0SendToC1 mCsr_tOldDat_tData5C0SendToC1 =
 };
 
 extern TCanSigRecData5C0SendToC1 gCsr_tData5C0SendToC1;
-static const TRecDat mCsr_actRecDat_tData5C0SendToC1[20] =
+static const TRecDat mCsr_actRecDat_tData5C0SendToC1[19] =
 {
     {
         (TCanSigRecInf*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrInfo_boAutorisationHighSpeedKeyState, (TVoid*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrRng_boAutorisationHighSpeedKeyState,
@@ -16301,68 +16006,63 @@ static const TRecDat mCsr_actRecDat_tData5C0SendToC1[20] =
         NULL, NULL
     },
     {
-        (TCanSigRecInf*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrInfo_boEvLoadBrakeAccuCmd, (TVoid*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrRng_boEvLoadBrakeAccuCmd,
-        (TVoid*)&gCsr_tData5C0SendToC1.boEvLoadBrakeAccuCmd, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.boEvLoadBrakeAccuCmd, &mCsr_aeRecErr_tData5C0SendToC1[7],
-        NULL, NULL
-    },
-    {
         (TCanSigRecInf*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrInfo_i16RpmPvgTransRail, (TVoid*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrRng_i16RpmPvgTransRail,
-        (TVoid*)&gCsr_tData5C0SendToC1.i16RpmPvgTransRail, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.i16RpmPvgTransRail, &mCsr_aeRecErr_tData5C0SendToC1[8],
+        (TVoid*)&gCsr_tData5C0SendToC1.i16RpmPvgTransRail, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.i16RpmPvgTransRail, &mCsr_aeRecErr_tData5C0SendToC1[7],
         NULL, NULL
     },
     {
         (TCanSigRecInf*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrInfo_u8Batt_Soc, (TVoid*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrRng_u8Batt_Soc,
-        (TVoid*)&gCsr_tData5C0SendToC1.u8Batt_Soc, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.u8Batt_Soc, &mCsr_aeRecErr_tData5C0SendToC1[9],
+        (TVoid*)&gCsr_tData5C0SendToC1.u8Batt_Soc, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.u8Batt_Soc, &mCsr_aeRecErr_tData5C0SendToC1[8],
         NULL, NULL
     },
     {
         (TCanSigRecInf*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrInfo_i16Ibatt_ist, (TVoid*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrRng_i16Ibatt_ist,
-        (TVoid*)&gCsr_tData5C0SendToC1.i16Ibatt_ist, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.i16Ibatt_ist, &mCsr_aeRecErr_tData5C0SendToC1[10],
+        (TVoid*)&gCsr_tData5C0SendToC1.i16Ibatt_ist, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.i16Ibatt_ist, &mCsr_aeRecErr_tData5C0SendToC1[9],
         NULL, NULL
     },
     {
         (TCanSigRecInf*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrInfo_u8SelectedControlPost, (TVoid*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrRng_u8SelectedControlPost,
-        (TVoid*)&gCsr_tData5C0SendToC1.u8SelectedControlPost, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.u8SelectedControlPost, &mCsr_aeRecErr_tData5C0SendToC1[11],
+        (TVoid*)&gCsr_tData5C0SendToC1.u8SelectedControlPost, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.u8SelectedControlPost, &mCsr_aeRecErr_tData5C0SendToC1[10],
         NULL, NULL
     },
     {
         (TCanSigRecInf*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrInfo_boAddPerformanceFunc, (TVoid*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrRng_boAddPerformanceFunc,
-        (TVoid*)&gCsr_tData5C0SendToC1.boAddPerformanceFunc, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.boAddPerformanceFunc, &mCsr_aeRecErr_tData5C0SendToC1[12],
+        (TVoid*)&gCsr_tData5C0SendToC1.boAddPerformanceFunc, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.boAddPerformanceFunc, &mCsr_aeRecErr_tData5C0SendToC1[11],
         NULL, NULL
     },
     {
         (TCanSigRecInf*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrInfo_boSlopeCaseLess2Deg, (TVoid*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrRng_boSlopeCaseLess2Deg,
-        (TVoid*)&gCsr_tData5C0SendToC1.boSlopeCaseLess2Deg, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.boSlopeCaseLess2Deg, &mCsr_aeRecErr_tData5C0SendToC1[13],
+        (TVoid*)&gCsr_tData5C0SendToC1.boSlopeCaseLess2Deg, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.boSlopeCaseLess2Deg, &mCsr_aeRecErr_tData5C0SendToC1[12],
         NULL, NULL
     },
     {
         (TCanSigRecInf*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrInfo_boSlopeCaseLess4Deg, (TVoid*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrRng_boSlopeCaseLess4Deg,
-        (TVoid*)&gCsr_tData5C0SendToC1.boSlopeCaseLess4Deg, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.boSlopeCaseLess4Deg, &mCsr_aeRecErr_tData5C0SendToC1[14],
+        (TVoid*)&gCsr_tData5C0SendToC1.boSlopeCaseLess4Deg, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.boSlopeCaseLess4Deg, &mCsr_aeRecErr_tData5C0SendToC1[13],
         NULL, NULL
     },
     {
         (TCanSigRecInf*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrInfo_boSlopeCaseLess6Deg, (TVoid*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrRng_boSlopeCaseLess6Deg,
-        (TVoid*)&gCsr_tData5C0SendToC1.boSlopeCaseLess6Deg, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.boSlopeCaseLess6Deg, &mCsr_aeRecErr_tData5C0SendToC1[15],
+        (TVoid*)&gCsr_tData5C0SendToC1.boSlopeCaseLess6Deg, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.boSlopeCaseLess6Deg, &mCsr_aeRecErr_tData5C0SendToC1[14],
         NULL, NULL
     },
     {
         (TCanSigRecInf*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrInfo_boSlopeCaseHigher6Deg, (TVoid*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrRng_boSlopeCaseHigher6Deg,
-        (TVoid*)&gCsr_tData5C0SendToC1.boSlopeCaseHigher6Deg, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.boSlopeCaseHigher6Deg, &mCsr_aeRecErr_tData5C0SendToC1[16],
+        (TVoid*)&gCsr_tData5C0SendToC1.boSlopeCaseHigher6Deg, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.boSlopeCaseHigher6Deg, &mCsr_aeRecErr_tData5C0SendToC1[15],
         NULL, NULL
     },
     {
         (TCanSigRecInf*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrInfo_boTurretInSpeedZone2Deg, (TVoid*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrRng_boTurretInSpeedZone2Deg,
-        (TVoid*)&gCsr_tData5C0SendToC1.boTurretInSpeedZone2Deg, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.boTurretInSpeedZone2Deg, &mCsr_aeRecErr_tData5C0SendToC1[17],
+        (TVoid*)&gCsr_tData5C0SendToC1.boTurretInSpeedZone2Deg, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.boTurretInSpeedZone2Deg, &mCsr_aeRecErr_tData5C0SendToC1[16],
         NULL, NULL
     },
     {
         (TCanSigRecInf*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrInfo_boTurretInSpeedZone4Deg, (TVoid*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrRng_boTurretInSpeedZone4Deg,
-        (TVoid*)&gCsr_tData5C0SendToC1.boTurretInSpeedZone4Deg, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.boTurretInSpeedZone4Deg, &mCsr_aeRecErr_tData5C0SendToC1[18],
+        (TVoid*)&gCsr_tData5C0SendToC1.boTurretInSpeedZone4Deg, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.boTurretInSpeedZone4Deg, &mCsr_aeRecErr_tData5C0SendToC1[17],
         NULL, NULL
     },
     {
         (TCanSigRecInf*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrInfo_boTurretInSpeedZone2DegForBasket, (TVoid*)&gCsr_ctRecDat_Data5C0SendToC1.tCsrRng_boTurretInSpeedZone2DegForBasket,
-        (TVoid*)&gCsr_tData5C0SendToC1.boTurretInSpeedZone2DegForBasket, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.boTurretInSpeedZone2DegForBasket, &mCsr_aeRecErr_tData5C0SendToC1[19],
+        (TVoid*)&gCsr_tData5C0SendToC1.boTurretInSpeedZone2DegForBasket, (TVoid*)&mCsr_tOldDat_tData5C0SendToC1.boTurretInSpeedZone2DegForBasket, &mCsr_aeRecErr_tData5C0SendToC1[18],
         NULL, NULL
     }
 };
@@ -16374,9 +16074,9 @@ static const TCanSigRecRoot mCsr_ctRoot_Data5C0SendToC1 =
     0xff,                                                   //!< u8CanByteDflt - [NUM] CAN Message default
     DATA_INTEL,                                             //!< eCanFormat - [NUM] CAN Format
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
-    20,                                                     //!< u8RecCnt - [NUM] Count of Recorde
+    19,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tData5C0SendToC1[0],                    //!< ptRec - [NUM] Pointer to Record Values
-    92,                                                     //!< u16RecNo - [NUM] Record Number
+    90,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -16390,7 +16090,6 @@ TCanSigRecData5C0SendToC1 gCsr_tData5C0SendToC1 =
     FALSE,                                                  //!< boUpMastSensorNC [[-]] new signal
     FALSE,                                                  //!< boValveInDownPositionSensor [[-]] new signal
     FALSE,                                                  //!< boMeasuringMastSensorFolded [[-]] new signal
-    FALSE,                                                  //!< boEvLoadBrakeAccuCmd [[-]] new signal
     (((0 * 1)/1)+0),                                        //!< i16RpmPvgTransRail [[-]] new signal
     (((0 * 1)/1)+0),                                        //!< u8Batt_Soc [[-]] new signal
     (((0 * 1)/1)+0),                                        //!< i16Ibatt_ist [[-]] new signal
@@ -16621,7 +16320,7 @@ static const TCanSigRecRoot mCsr_ctRoot_Data5C1SendToC0 =
     0xFF,                                                   //!< u8MasterReceiveId - [NUM] Receive Id
     19,                                                     //!< u8RecCnt - [NUM] Count of Recorde
     &mCsr_actRecDat_tData5C1SendToC0[0],                    //!< ptRec - [NUM] Pointer to Record Values
-    93,                                                     //!< u16RecNo - [NUM] Record Number
+    91,                                                     //!< u16RecNo - [NUM] Record Number
     CSR_STAMP                                               //!< u16Stamp - [NUM] Safety stamp
 };
 
@@ -16649,7 +16348,7 @@ TCanSigRecData5C1SendToC0 gCsr_tData5C1SendToC0 =
     (((0 * 1)/1)+0)                                         //!< i16MotorspeedCmdJ1939 [[-]] new signal
 };
 
-static TVoid* m_avpCanSigRecTable[94]=
+static TVoid* m_avpCanSigRecTable[92]=
 {
     (TVoid*)&gCsr_tStart,                                   //!< eCR_Start
     (TVoid*)&gCsr_tStartSensor,                             //!< eCR_StartSensor
@@ -16664,7 +16363,6 @@ static TVoid* m_avpCanSigRecTable[94]=
     (TVoid*)&gCsr_tEmergencyEncodeurTurret2,                //!< eCR_EmergencyEncodeurTurret2
     (TVoid*)&gCsr_tSRDO2_48XS,                              //!< eCR_SRDO2_48XS
     (TVoid*)&gCsr_tSRDO3_48XS,                              //!< eCR_SRDO3_48XS
-    (TVoid*)&gCsr_tSRDO5_48XS,                              //!< eCR_SRDO5_48XS
     (TVoid*)&gCsr_tSRDO1_48XS,                              //!< eCR_SRDO1_48XS
     (TVoid*)&gCsr_tFlashBatteryRpdo1_0,                     //!< eCR_FlashBatteryRpdo1_0
     (TVoid*)&gCsr_tFlashBatteryRpdo1_2,                     //!< eCR_FlashBatteryRpdo1_2
@@ -16731,7 +16429,6 @@ static TVoid* m_avpCanSigRecTable[94]=
     (TVoid*)&gCsr_tMsg15C0SendToEvision7,                   //!< eCR_Msg15C0SendToEvision7
     (TVoid*)&gCsr_tMsgDebugC0SendToEvision7,                //!< eCR_MsgDebugC0SendToEvision7
     (TVoid*)&gCsr_tMsg1RcvFromEvision7,                     //!< eCR_Msg1RcvFromEvision7
-    (TVoid*)&gCsr_tData6C0SendToC1,                         //!< eCR_Data6C0SendToC1
     (TVoid*)&gCsr_tSendToC1RadioCmd,                        //!< eCR_SendToC1RadioCmd
     (TVoid*)&gCsr_tDataRcvFromC1,                           //!< eCR_DataRcvFromC1
     (TVoid*)&gCsr_tDataSendToC1,                            //!< eCR_DataSendToC1
@@ -16749,7 +16446,7 @@ static TVoid* m_avpCanSigRecTable[94]=
 
 const TCanSigRecRootTab g_ctCanSigRecRootTab=
 {
-    94,                                                     //!< u16CanSigRecCnt - Count of Can Records
+    92,                                                     //!< u16CanSigRecCnt - Count of Can Records
     m_avpCanSigRecTable,                                    //!< vpFirstCanSigRec - First Can Record
     0,                                                      //!< u16CanSigRecMuxCnt - Mux: Count of Can Records
     NULL,                                                   //!< vpFirstCanSigMuxRec - Mux: First Can Record

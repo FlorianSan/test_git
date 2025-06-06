@@ -1,5 +1,5 @@
 //**************************************************************************************************
-//! @crc        362321304
+//! @crc        2022125299
 //! @file       App_ErrDefine.h
 //! @brief      Generate by: HYDAC Controller Project - Code Builder Tool Chain
 //! @ecu        TTC580
@@ -9,7 +9,7 @@
 //! @Match      07-04-01-04
 //! @PDT        2.11.72.172
 //! @PdtProjVer 0.0.0
-//! @created    2025-06-04 11:35:59   HYDAC/HCP-CC
+//! @created    2025-04-18 16:40:50   HYDAC/HCP-CC
 //**************************************************************************************************
 
 #ifndef __APP_ERRDEFINE_H__
@@ -39,8 +39,7 @@ enum
     SC_2ND_PARK_BRAKE_ACTIVE         =    15,    //!< Set condition 2nd parking brake active
     SC_ACTIVE_FAULT_48XS             =    16,    //!< Set condition fault end Timeout from 48XS
     SC_DMC_ACTIVE_TIMEOUT_RX_SDO     =    17,    //!< Set condition to active timeout of DMC SDO RX
-    SC_DMC_ACTIVE_TIMEOUT_RX_PDO     =    18,    //!< Set condition to active timeout of DMC PDO RX
-    SC_ACTIVE_MOUNTED_MG_AXLE        =    19    //!< Set condition for the sensors MG fault
+    SC_DMC_ACTIVE_TIMEOUT_RX_PDO     =    18    //!< Set condition to active timeout of DMC PDO RX
 };
 
 enum
