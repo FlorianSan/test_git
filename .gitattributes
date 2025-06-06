@@ -2,23 +2,13 @@
 
 # Fichiers générés — on bloque aussi les diffs
 # utiliser ** pour appliquer récursivement
-C0_C/src/_app/AUTO_CEN_TTC5XX/** linguist-generated=true 
-C0_C/src/_app/AUTO_CEN_TTC5XX/** -diff -merge
-C1_C/src/_app/AUTO_CEN_TTC5XX/** linguist-generated=true diff=generated
-C1_C/src/_app/AUTO_CEN_TTC5XX/** -diff -merge
-C0_C/_debug/**                   linguist-generated=true diff=generated
-C0_C/_debug/**                   -diff -merge
-C1_C/_debug/**                   linguist-generated=true diff=generated
-C1_C/_debug/**                   -diff -merge
-C0_C/.settings/**                linguist-generated=true diff=generated
-C0_C/.settings/**                -diff -merge
-C1_C/.settings/**                linguist-generated=true diff=generated
-C1_C/.settings/**                -diff -merge
-C0_C/_doc/**                     linguist-generated=true diff=generated
-C0_C/_doc/**                     -diff -merge
-C1_C/_doc/**                     linguist-generated=true diff=generated
-C1_C/_doc/**                     -diff -merge
-C0_C/env/**                      linguist-generated=true diff=generated
-C0_C/env/**                      -diff -merge
-C1_C/env/**                      linguist-generated=true diff=generated
-C1_C/env/**                      -diff -merge
+C0_C/src/_app/AUTO_CEN_TTC5XX/** linguist-generated=true -diff -merge
+C1_C/src/_app/AUTO_CEN_TTC5XX/** linguist-generated=true  -diff -merge
+C0_C/_debug/** linguist-generated=true  -diff -merge
+C1_C/_debug/** linguist-generated=true  -diff -merge
+C0_C/.settings/** linguist-generated=true  -diff -merge
+C1_C/.settings/** linguist-generated=true  -diff -merge
+C0_C/_doc/** linguist-generated=true  -diff -merge
+C1_C/_doc/** linguist-generated=true  -diff -merge
+C0_C/env/** linguist-generated=true  -diff -merge
+C1_C/env/** linguist-generated=true  -diff -merge
