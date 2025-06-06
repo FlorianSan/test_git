@@ -1,5 +1,5 @@
 //**************************************************************************************************
-//! @crc        16722294
+//! @crc        801720349
 //! @file       Cfg_Ver.c
 //! @brief      Generate by: HYDAC Controller Project - Code Builder Tool Chain
 //! @ecu        TTC580
@@ -11,7 +11,7 @@
 //! @Match      07-04-01-04
 //! @PDT        2.11.72.172
 //! @PdtProjVer 0.0.0
-//! @created    2025-04-18 16:40:50   HYDAC/HCP-CC
+//! @created    2025-06-04 11:35:59   HYDAC/HCP-CC
 //**************************************************************************************************
 
 // INCLUDES ========================================================================================
@@ -35,8 +35,8 @@ TVerInf gVer_tInf =
     "",                                                     //achVehPartNo           - Vehicle Part Number / SAP Materialnummer Fahrzeuggrupp (SAP)       
     "Skyrailer",                                            //achVehSalesName        - Vehicle Sales Name / Verkaufsbezeichnung (z.B: Zero Emission 803)  
     "0",                                                    //achVehSerNo            - Vehicle Serial Number / Fahrgestellnummer                          
-    "18.04.2025",                                           //achVehProdDate         - Production Date / Produktionsdatum                                 
-    "16:40:32",                                             //achVehProdTime         - Production Time / Produktionszeit                                  
+    "04.06.2025",                                           //achVehProdDate         - Production Date / Produktionsdatum                                 
+    "11:35:24",                                             //achVehProdTime         - Production Time / Produktionszeit                                  
     "20 km/h",                                              //achVehMaxSpeed         - Vehicle Maximum Speed / Maximale Fahrgeschwindigkeit               
     "",                                                     //achVehProdCode         - Complete Production Code / Vollstaendiger Produktionskode
     "Nacelle",                                              //achVehProdType         - SAP Product Type Customer / SAP Produkttyp Kunde    
@@ -68,9 +68,9 @@ TVerInf gVer_tInf =
         0,                                                  //u8Index                - Software Version Index
         0,                                                  //u8DbParIdx             - Database Parameter Index
         0,                                                  //u8FlaParIdx            - Factory Flash Data Index
-        1245,                                               //u16DevStp              - Software Development Step    
-        "18.04.2025",                                       //achDate[10+1]          - Creation Date - eg: '01.01.2011'
-        "16:40:32"                                          //achTime[8+1]           - Creation Time - eg: '00:00:00'
+        1283,                                               //u16DevStp              - Software Development Step    
+        "04.06.2025",                                       //achDate[10+1]          - Creation Date - eg: '01.01.2011'
+        "11:35:24"                                          //achTime[8+1]           - Creation Time - eg: '00:00:00'
     },
     {   // Software Hcp-Bios Version Information
         0xFF,                                               //u8Major                - Major Software Version Number
@@ -137,8 +137,8 @@ TVerInf gVer_tInf =
     "1-2-7",                                                //achExeVer[8]           - Executable Tool Version      
     "1-1-0",                                                //achPatVer[8]           - Pattern Version  
     
-    387127245U,                                             //u32ErrHstFileCrc       - HST Error Definition File Checknumber
-    3142656940U,                                            //u32IomHstFileCrc       - HST Pin Definition File Checknumber
+    2302619537U,                                            //u32ErrHstFileCrc       - HST Error Definition File Checknumber
+    1232231484U,                                            //u32IomHstFileCrc       - HST Pin Definition File Checknumber
     
     // Auto Generate Code - FRAME_CRC_STOP
     0,                                                      //u32AutoCodePreCrc //!< Auto Code Crc

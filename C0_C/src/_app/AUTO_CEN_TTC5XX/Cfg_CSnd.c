@@ -1,5 +1,5 @@
 //**************************************************************************************************
-//! @crc        4261104949
+//! @crc        1359560532
 //! @file       Cfg_CSnd.c
 //! @brief      Generate by: HYDAC Controller Project - Code Builder Tool Chain
 //! @ecu        TTC580
@@ -11,7 +11,7 @@
 //! @Match      07-04-01-04
 //! @PDT        2.11.72.172
 //! @PdtProjVer 0.0.0
-//! @created    2025-04-18 16:40:50   HYDAC/HCP-CC
+//! @created    2025-06-04 11:35:59   HYDAC/HCP-CC
 //**************************************************************************************************
 
 // INCLUDES ========================================================================================
@@ -2351,6 +2351,55 @@ PUBLIC_VAR const TCSndCfg gCSnd_ctCfg_DMC_TxPdo2_BCL =
     { // TErrCfgFea
         { //ErrTag[0] - Message buffer overflow [DM_CSND_BOVERF]
             1598,                                           //u32ErrNum              - [num] Error Number
+            FMI_31_CONDITION_EXISTS,                        //u8ErrMode              - [enu] Failure Mode Indicator
+            FMIEX_NONE,                                     //u8ErrModeExt           - [def] Extended Failure Mode Indicator
+            0xAAAA,                                         //u16ErrAccLevel         - [def] Failure Access Level
+            ERR_TYPE_ERROR,                                 //u8ErrType              - [enu] Error Type
+            ERR_CAT0_NOT,                                   //u8ErrCat               - [enu] Error Category ( Lamp Type )
+            ERR_STORE_ALL,                                  //u8ErrStore             - [enu] Error Store Behavior
+            EG_NONE,                                        //u8ExcludeGroup         - [def] Error Exclude Group
+            SC_NONE,                                        //u8SetCond              - [def] Set Condition - allows to activate an error detection
+            500,                                            //u32TimeDetect          - [ms]  Error Detection ( Debounce ) Time
+            FALSE,                                          //boDetectDboAfterSc     - [boo] Start debounce timer after a valid set condition
+            RC_NONE,                                        //u8ReleaCond            - [def] Release Condition - allows an error to be released ( removed )
+            1000,                                           //u32TimeReset           - [ms]  Error Release ( Debounce ) Time
+            FALSE,                                          //boResetDboAfterRc      - [boo] Start debounce timer after a valid release condition 
+            RM_NONE,                                        //u8RestrictMode         - [def] Restricted Mode
+            0,                                              //u8InfoVarIdx           - [num] Array Index of Error Information Page
+            TRUE,                                           //boCustList             - [boo] Memorized in a Customer List
+            DIS_NONE                                        //u8DisplayOutput        - [def] Display Output ( Error Output Interface )
+        }
+    }
+};
+
+//Sofware Module Name: AppGlobal
+PUBLIC_VAR const TCSndCfg gCSnd_ctCfg_Data6C0SendToC1 =
+{
+    // Common
+    "Data6C0SendToC1",                                      //achName                - [STR] Display-Information-String
+    BLO_RELEASE,                                            //eBloProc               - [DEF] Block behavior  
+    // Fixed settings
+    (TUint8)CBUS0_HWBUF_SND0,                               //u8SwHwBufNo            - [DEF] CAN send buffer position connection link  
+    SNDTYP_CYCLIC,                                          //u8Type                 - [DEF] Send type
+    SNDSTART_ACTIVE,                                        //u8Start                - [DEF] Start transmission
+    0,                                                      //u8MsgBufSize           - [DEF] Message buffer size
+    FALSE,                                                  //boBufferCheck          - [DEF] Buffer overflow check 
+    20,                                                     //u16CycTim              - [DEF] Cycle time [ms]   
+    10,                                                     //u16MinCycTime          - [DEF] Minimum cycle time[ms]
+    90,                                                     //u16OffTim              - [DEF]1st offset time [ms]
+    TRUE,                                                   //boExtId                - [DEF] Can extended identifier (11/29 Bit)
+    0x18FF0000,                                             //u32Id                  - [DEF] Can identifier   
+    (TUint16)eCSR_Data6C0SendToC1,                          //u16CanSigRecLink       - [DEF] Can Signal Record Position Link 
+    //Fixed safety feature settings
+    FALSE,                                                  //boSafeInvMsg           - [DEF] Add bit inverse message
+    0,                                                      //u16SafeInvDelay        - [ms] Delay time inverse message
+    FALSE,                                                  //boSafeCnt              - [DEF] Check safety counter
+    //All Errors
+    1,                                                      //u8ErrCnt               - [DEF] Error Count  
+    // Error [0-0]  
+    { // TErrCfgFea
+        { //ErrTag[0] - Message buffer overflow [DM_CSND_BOVERF]
+            1599,                                           //u32ErrNum              - [num] Error Number
             FMI_31_CONDITION_EXISTS,                        //u8ErrMode              - [enu] Failure Mode Indicator
             FMIEX_NONE,                                     //u8ErrModeExt           - [def] Extended Failure Mode Indicator
             0xAAAA,                                         //u16ErrAccLevel         - [def] Failure Access Level

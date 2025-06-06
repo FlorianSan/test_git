@@ -1,5 +1,5 @@
 //**************************************************************************************************
-//! @crc        719351386
+//! @crc        2397966169
 //! @file       Cfg_SwiDblNcNo.c
 //! @brief      Generate by: HYDAC Controller Project - Code Builder Tool Chain
 //! @ecu        TTC580
@@ -11,7 +11,7 @@
 //! @Match      07-04-01-04
 //! @PDT        2.11.72.172
 //! @PdtProjVer 0.0.0
-//! @created    2025-04-18 16:40:50   HYDAC/HCP-CC
+//! @created    2025-06-04 11:35:59   HYDAC/HCP-CC
 //**************************************************************************************************
 
 // INCLUDES ========================================================================================
@@ -369,6 +369,370 @@ PUBLIC_VAR const TSwiDblNcNoCfg gSwiDblNcNo_ctCfg_DownFixeAxle =
             ERR_STORE_NOT,                                  //u8ErrStore             - [enu] Error Store Behavior
             EG_NONE,                                        //u8ExcludeGroup         - [def] Error Exclude Group
             SC_NONE,                                        //u8SetCond              - [def] Set Condition - allows to activate an error detection
+            500,                                            //u32TimeDetect          - [ms]  Error Detection ( Debounce ) Time
+            FALSE,                                          //boDetectDboAfterSc     - [boo] Start debounce timer after a valid set condition
+            RC_NONE,                                        //u8ReleaCond            - [def] Release Condition - allows an error to be released ( removed )
+            1000,                                           //u32TimeReset           - [ms]  Error Release ( Debounce ) Time
+            FALSE,                                          //boResetDboAfterRc      - [boo] Start debounce timer after a valid release condition 
+            RM_NONE,                                        //u8RestrictMode         - [def] Restricted Mode
+            0,                                              //u8InfoVarIdx           - [num] Array Index of Error Information Page
+            TRUE,                                           //boCustList             - [boo] Memorized in a Customer List
+            DIS_NONE                                        //u8DisplayOutput        - [def] Display Output ( Error Output Interface )
+        }
+    }
+};
+
+//Sofware Module Name: AppGlobal
+PUBLIC_VAR const TSwiDblNcNoCfg gSwiDblNcNo_ctCfg_AxleInMGMode =
+{
+    // Common
+    "AxleInMGMode",                                         //achName                - [STR] Display-Information-String
+    BLO_RELEASE,                                            //eBloProc               - [DEF] Block behavior
+    // Fixed settings
+    {
+        SWIDBL_NCNO                                         //u8SwiDblConfig         - [ENU] SWIDBL_NCNO
+    },
+    // Properties
+    {
+        INPBEH_ERR_TO_OUT,                                  //eInpBeh                - [ENU] Input behavior at fault input signal
+        PIN_254,                                            //ePin0                  - [DEF] Pin 0 (Cfg-Idx)
+        PIN_180,                                            //ePin1                  - [DEF] Pin 1 (Cfg-Idx)
+        ADC_DIN_D,                                          //eAdcType0              - [DEF] Pin 0 Type
+        ADC_DIN_D,                                          //eAdcType1              - [DEF] Pin 1 Type
+        DM_SWIDBL_NCNO_LOW_SIDE,                            //eSwiDblNcNoType0       - [DEF] Pin 0 Connection Type
+        DM_SWIDBL_NCNO_LOW_SIDE,                            //eSwiDblNcNoType1       - [DEF] Pin 1 Connection Type
+    },
+    // Parameter
+    {
+        BI2_ON,                                             //bi2Swi0Def             - []    Default input value Pin 0
+        BI2_OFF,                                            //bi2Swi1Def             - []    Default input value Pin 1
+        100,                                                //u32DebTimeSwitches     - [ms] Switch debounce time
+        500,                                                //u32DelayTimeError      - [ms] Error delay  
+        0,                                                  //u16VolLoMin0           - [mV]  Lower voltage threshold LS 0
+        2000,                                               //u16VolLoMax0           - [mV]  Upper voltage threshold LS 0
+        3000,                                               //u16VolHiMin0           - [mV]  Lower voltage threshold HS 0
+        15000,                                              //u16VolHiMax0           - [mV]  Upper voltage threshold HS 0
+        0,                                                  //u16VolLoMin1           - [mV]  Lower voltage threshold LS 1
+        7000,                                               //u16VolLoMax1           - [mV]  Upper voltage threshold LS 1
+        8000,                                               //u16VolHiMin1           - [mV]  Lower voltage threshold HS 1
+        15000                                               //u16VolHiMax1           - [mV]  Upper voltage threshold HS 1
+    },
+    // All Errors 
+    7,                                                      //u8ErrCnt               - [DEF] Error Count
+    // All Errors [0-6]
+    { // TErrCfgFea
+        { //ErrTag[0] - Logical Error between pin 0 and 1 [DM_SWI_DBL_NCNO_INCONSISTENT]
+            9352,                                           //u32ErrNum              - [num] Error Number
+            FMI_31_CONDITION_EXISTS,                        //u8ErrMode              - [enu] Failure Mode Indicator
+            FMIEX_NONE,                                     //u8ErrModeExt           - [def] Extended Failure Mode Indicator
+            0xAAAA,                                         //u16ErrAccLevel         - [def] Failure Access Level
+            ERR_TYPE_ERROR,                                 //u8ErrType              - [enu] Error Type
+            ERR_CAT5_MAL,                                   //u8ErrCat               - [enu] Error Category ( Lamp Type )
+            ERR_STORE_ALL,                                  //u8ErrStore             - [enu] Error Store Behavior
+            EG_NONE,                                        //u8ExcludeGroup         - [def] Error Exclude Group
+            SC_ACTIVE_MOUNTED_MG_AXLE,                      //u8SetCond              - [def] Set Condition - allows to activate an error detection
+            500,                                            //u32TimeDetect          - [ms]  Error Detection ( Debounce ) Time
+            FALSE,                                          //boDetectDboAfterSc     - [boo] Start debounce timer after a valid set condition
+            RC_NONE,                                        //u8ReleaCond            - [def] Release Condition - allows an error to be released ( removed )
+            1000,                                           //u32TimeReset           - [ms]  Error Release ( Debounce ) Time
+            FALSE,                                          //boResetDboAfterRc      - [boo] Start debounce timer after a valid release condition 
+            RM_NONE,                                        //u8RestrictMode         - [def] Restricted Mode
+            0,                                              //u8InfoVarIdx           - [num] Array Index of Error Information Page
+            TRUE,                                           //boCustList             - [boo] Memorized in a Customer List
+            DIS_NONE                                        //u8DisplayOutput        - [def] Display Output ( Error Output Interface )
+        },
+        { //ErrTag[1] - Vin0 < u16VolLoMin [DM_SWI_DBL_NCNO_PIN0_LO]
+            9353,                                           //u32ErrNum              - [num] Error Number
+            FMI_31_CONDITION_EXISTS,                        //u8ErrMode              - [enu] Failure Mode Indicator
+            FMIEX_NONE,                                     //u8ErrModeExt           - [def] Extended Failure Mode Indicator
+            0xAAAA,                                         //u16ErrAccLevel         - [def] Failure Access Level
+            ERR_TYPE_ERROR,                                 //u8ErrType              - [enu] Error Type
+            ERR_CAT5_MAL,                                   //u8ErrCat               - [enu] Error Category ( Lamp Type )
+            ERR_STORE_ALL,                                  //u8ErrStore             - [enu] Error Store Behavior
+            EG_NONE,                                        //u8ExcludeGroup         - [def] Error Exclude Group
+            SC_ACTIVE_MOUNTED_MG_AXLE,                      //u8SetCond              - [def] Set Condition - allows to activate an error detection
+            500,                                            //u32TimeDetect          - [ms]  Error Detection ( Debounce ) Time
+            FALSE,                                          //boDetectDboAfterSc     - [boo] Start debounce timer after a valid set condition
+            RC_NONE,                                        //u8ReleaCond            - [def] Release Condition - allows an error to be released ( removed )
+            1000,                                           //u32TimeReset           - [ms]  Error Release ( Debounce ) Time
+            FALSE,                                          //boResetDboAfterRc      - [boo] Start debounce timer after a valid release condition 
+            RM_NONE,                                        //u8RestrictMode         - [def] Restricted Mode
+            0,                                              //u8InfoVarIdx           - [num] Array Index of Error Information Page
+            TRUE,                                           //boCustList             - [boo] Memorized in a Customer List
+            DIS_NONE                                        //u8DisplayOutput        - [def] Display Output ( Error Output Interface )
+        },
+        { //ErrTag[2] - Vin0 > u16VolHiMax [DM_SWI_DBL_NCNO_PIN0_HI]
+            9354,                                           //u32ErrNum              - [num] Error Number
+            FMI_31_CONDITION_EXISTS,                        //u8ErrMode              - [enu] Failure Mode Indicator
+            FMIEX_NONE,                                     //u8ErrModeExt           - [def] Extended Failure Mode Indicator
+            0xAAAA,                                         //u16ErrAccLevel         - [def] Failure Access Level
+            ERR_TYPE_ERROR,                                 //u8ErrType              - [enu] Error Type
+            ERR_CAT5_MAL,                                   //u8ErrCat               - [enu] Error Category ( Lamp Type )
+            ERR_STORE_ALL,                                  //u8ErrStore             - [enu] Error Store Behavior
+            EG_NONE,                                        //u8ExcludeGroup         - [def] Error Exclude Group
+            SC_ACTIVE_MOUNTED_MG_AXLE,                      //u8SetCond              - [def] Set Condition - allows to activate an error detection
+            500,                                            //u32TimeDetect          - [ms]  Error Detection ( Debounce ) Time
+            FALSE,                                          //boDetectDboAfterSc     - [boo] Start debounce timer after a valid set condition
+            RC_NONE,                                        //u8ReleaCond            - [def] Release Condition - allows an error to be released ( removed )
+            1000,                                           //u32TimeReset           - [ms]  Error Release ( Debounce ) Time
+            FALSE,                                          //boResetDboAfterRc      - [boo] Start debounce timer after a valid release condition 
+            RM_NONE,                                        //u8RestrictMode         - [def] Restricted Mode
+            0,                                              //u8InfoVarIdx           - [num] Array Index of Error Information Page
+            TRUE,                                           //boCustList             - [boo] Memorized in a Customer List
+            DIS_NONE                                        //u8DisplayOutput        - [def] Display Output ( Error Output Interface )
+        },
+        { //ErrTag[3] - u16VolLoMax < Vin0 < u16VolHiMin [DM_SWI_DBL_NCNO_PIN0_RANGE]
+            9355,                                           //u32ErrNum              - [num] Error Number
+            FMI_31_CONDITION_EXISTS,                        //u8ErrMode              - [enu] Failure Mode Indicator
+            FMIEX_NONE,                                     //u8ErrModeExt           - [def] Extended Failure Mode Indicator
+            0xAAAA,                                         //u16ErrAccLevel         - [def] Failure Access Level
+            ERR_TYPE_ERROR,                                 //u8ErrType              - [enu] Error Type
+            ERR_CAT5_MAL,                                   //u8ErrCat               - [enu] Error Category ( Lamp Type )
+            ERR_STORE_ALL,                                  //u8ErrStore             - [enu] Error Store Behavior
+            EG_NONE,                                        //u8ExcludeGroup         - [def] Error Exclude Group
+            SC_ACTIVE_MOUNTED_MG_AXLE,                      //u8SetCond              - [def] Set Condition - allows to activate an error detection
+            500,                                            //u32TimeDetect          - [ms]  Error Detection ( Debounce ) Time
+            FALSE,                                          //boDetectDboAfterSc     - [boo] Start debounce timer after a valid set condition
+            RC_NONE,                                        //u8ReleaCond            - [def] Release Condition - allows an error to be released ( removed )
+            1000,                                           //u32TimeReset           - [ms]  Error Release ( Debounce ) Time
+            FALSE,                                          //boResetDboAfterRc      - [boo] Start debounce timer after a valid release condition 
+            RM_NONE,                                        //u8RestrictMode         - [def] Restricted Mode
+            0,                                              //u8InfoVarIdx           - [num] Array Index of Error Information Page
+            TRUE,                                           //boCustList             - [boo] Memorized in a Customer List
+            DIS_NONE                                        //u8DisplayOutput        - [def] Display Output ( Error Output Interface )
+        },
+        { //ErrTag[4] - Vin1 < u16VolLoMin [DM_SWI_DBL_NCNO_PIN1_LO]
+            9356,                                           //u32ErrNum              - [num] Error Number
+            FMI_31_CONDITION_EXISTS,                        //u8ErrMode              - [enu] Failure Mode Indicator
+            FMIEX_NONE,                                     //u8ErrModeExt           - [def] Extended Failure Mode Indicator
+            0xAAAA,                                         //u16ErrAccLevel         - [def] Failure Access Level
+            ERR_TYPE_ERROR,                                 //u8ErrType              - [enu] Error Type
+            ERR_CAT5_MAL,                                   //u8ErrCat               - [enu] Error Category ( Lamp Type )
+            ERR_STORE_ALL,                                  //u8ErrStore             - [enu] Error Store Behavior
+            EG_NONE,                                        //u8ExcludeGroup         - [def] Error Exclude Group
+            SC_ACTIVE_MOUNTED_MG_AXLE,                      //u8SetCond              - [def] Set Condition - allows to activate an error detection
+            500,                                            //u32TimeDetect          - [ms]  Error Detection ( Debounce ) Time
+            FALSE,                                          //boDetectDboAfterSc     - [boo] Start debounce timer after a valid set condition
+            RC_NONE,                                        //u8ReleaCond            - [def] Release Condition - allows an error to be released ( removed )
+            1000,                                           //u32TimeReset           - [ms]  Error Release ( Debounce ) Time
+            FALSE,                                          //boResetDboAfterRc      - [boo] Start debounce timer after a valid release condition 
+            RM_NONE,                                        //u8RestrictMode         - [def] Restricted Mode
+            0,                                              //u8InfoVarIdx           - [num] Array Index of Error Information Page
+            TRUE,                                           //boCustList             - [boo] Memorized in a Customer List
+            DIS_NONE                                        //u8DisplayOutput        - [def] Display Output ( Error Output Interface )
+        },
+        { //ErrTag[5] - Vin1 > u16VolHiMax [DM_SWI_DBL_NCNO_PIN1_HI]
+            9357,                                           //u32ErrNum              - [num] Error Number
+            FMI_31_CONDITION_EXISTS,                        //u8ErrMode              - [enu] Failure Mode Indicator
+            FMIEX_NONE,                                     //u8ErrModeExt           - [def] Extended Failure Mode Indicator
+            0xAAAA,                                         //u16ErrAccLevel         - [def] Failure Access Level
+            ERR_TYPE_ERROR,                                 //u8ErrType              - [enu] Error Type
+            ERR_CAT5_MAL,                                   //u8ErrCat               - [enu] Error Category ( Lamp Type )
+            ERR_STORE_ALL,                                  //u8ErrStore             - [enu] Error Store Behavior
+            EG_NONE,                                        //u8ExcludeGroup         - [def] Error Exclude Group
+            SC_ACTIVE_MOUNTED_MG_AXLE,                      //u8SetCond              - [def] Set Condition - allows to activate an error detection
+            500,                                            //u32TimeDetect          - [ms]  Error Detection ( Debounce ) Time
+            FALSE,                                          //boDetectDboAfterSc     - [boo] Start debounce timer after a valid set condition
+            RC_NONE,                                        //u8ReleaCond            - [def] Release Condition - allows an error to be released ( removed )
+            1000,                                           //u32TimeReset           - [ms]  Error Release ( Debounce ) Time
+            FALSE,                                          //boResetDboAfterRc      - [boo] Start debounce timer after a valid release condition 
+            RM_NONE,                                        //u8RestrictMode         - [def] Restricted Mode
+            0,                                              //u8InfoVarIdx           - [num] Array Index of Error Information Page
+            TRUE,                                           //boCustList             - [boo] Memorized in a Customer List
+            DIS_NONE                                        //u8DisplayOutput        - [def] Display Output ( Error Output Interface )
+        },
+        { //ErrTag[6] - u16VolLoMax < Vin1 < u16VolHiMin [DM_SWI_DBL_NCNO_PIN1_RANGE]
+            9358,                                           //u32ErrNum              - [num] Error Number
+            FMI_31_CONDITION_EXISTS,                        //u8ErrMode              - [enu] Failure Mode Indicator
+            FMIEX_NONE,                                     //u8ErrModeExt           - [def] Extended Failure Mode Indicator
+            0xAAAA,                                         //u16ErrAccLevel         - [def] Failure Access Level
+            ERR_TYPE_ERROR,                                 //u8ErrType              - [enu] Error Type
+            ERR_CAT5_MAL,                                   //u8ErrCat               - [enu] Error Category ( Lamp Type )
+            ERR_STORE_ALL,                                  //u8ErrStore             - [enu] Error Store Behavior
+            EG_NONE,                                        //u8ExcludeGroup         - [def] Error Exclude Group
+            SC_ACTIVE_MOUNTED_MG_AXLE,                      //u8SetCond              - [def] Set Condition - allows to activate an error detection
+            500,                                            //u32TimeDetect          - [ms]  Error Detection ( Debounce ) Time
+            FALSE,                                          //boDetectDboAfterSc     - [boo] Start debounce timer after a valid set condition
+            RC_NONE,                                        //u8ReleaCond            - [def] Release Condition - allows an error to be released ( removed )
+            1000,                                           //u32TimeReset           - [ms]  Error Release ( Debounce ) Time
+            FALSE,                                          //boResetDboAfterRc      - [boo] Start debounce timer after a valid release condition 
+            RM_NONE,                                        //u8RestrictMode         - [def] Restricted Mode
+            0,                                              //u8InfoVarIdx           - [num] Array Index of Error Information Page
+            TRUE,                                           //boCustList             - [boo] Memorized in a Customer List
+            DIS_NONE                                        //u8DisplayOutput        - [def] Display Output ( Error Output Interface )
+        }
+    }
+};
+
+//Sofware Module Name: AppGlobal
+PUBLIC_VAR const TSwiDblNcNoCfg gSwiDblNcNo_ctCfg_AxleInSDMode =
+{
+    // Common
+    "AxleInSDMode",                                         //achName                - [STR] Display-Information-String
+    BLO_RELEASE,                                            //eBloProc               - [DEF] Block behavior
+    // Fixed settings
+    {
+        SWIDBL_NCNO                                         //u8SwiDblConfig         - [ENU] SWIDBL_NCNO
+    },
+    // Properties
+    {
+        INPBEH_ERR_TO_OUT,                                  //eInpBeh                - [ENU] Input behavior at fault input signal
+        PIN_241,                                            //ePin0                  - [DEF] Pin 0 (Cfg-Idx)
+        PIN_183,                                            //ePin1                  - [DEF] Pin 1 (Cfg-Idx)
+        ADC_DIN_D,                                          //eAdcType0              - [DEF] Pin 0 Type
+        ADC_DIN_D,                                          //eAdcType1              - [DEF] Pin 1 Type
+        DM_SWIDBL_NCNO_LOW_SIDE,                            //eSwiDblNcNoType0       - [DEF] Pin 0 Connection Type
+        DM_SWIDBL_NCNO_LOW_SIDE,                            //eSwiDblNcNoType1       - [DEF] Pin 1 Connection Type
+    },
+    // Parameter
+    {
+        BI2_ON,                                             //bi2Swi0Def             - []    Default input value Pin 0
+        BI2_OFF,                                            //bi2Swi1Def             - []    Default input value Pin 1
+        100,                                                //u32DebTimeSwitches     - [ms] Switch debounce time
+        500,                                                //u32DelayTimeError      - [ms] Error delay  
+        0,                                                  //u16VolLoMin0           - [mV]  Lower voltage threshold LS 0
+        2000,                                               //u16VolLoMax0           - [mV]  Upper voltage threshold LS 0
+        3000,                                               //u16VolHiMin0           - [mV]  Lower voltage threshold HS 0
+        15000,                                              //u16VolHiMax0           - [mV]  Upper voltage threshold HS 0
+        0,                                                  //u16VolLoMin1           - [mV]  Lower voltage threshold LS 1
+        7000,                                               //u16VolLoMax1           - [mV]  Upper voltage threshold LS 1
+        8000,                                               //u16VolHiMin1           - [mV]  Lower voltage threshold HS 1
+        15000                                               //u16VolHiMax1           - [mV]  Upper voltage threshold HS 1
+    },
+    // All Errors 
+    7,                                                      //u8ErrCnt               - [DEF] Error Count
+    // All Errors [0-6]
+    { // TErrCfgFea
+        { //ErrTag[0] - Logical Error between pin 0 and 1 [DM_SWI_DBL_NCNO_INCONSISTENT]
+            9359,                                           //u32ErrNum              - [num] Error Number
+            FMI_31_CONDITION_EXISTS,                        //u8ErrMode              - [enu] Failure Mode Indicator
+            FMIEX_NONE,                                     //u8ErrModeExt           - [def] Extended Failure Mode Indicator
+            0xAAAA,                                         //u16ErrAccLevel         - [def] Failure Access Level
+            ERR_TYPE_ERROR,                                 //u8ErrType              - [enu] Error Type
+            ERR_CAT5_MAL,                                   //u8ErrCat               - [enu] Error Category ( Lamp Type )
+            ERR_STORE_ALL,                                  //u8ErrStore             - [enu] Error Store Behavior
+            EG_NONE,                                        //u8ExcludeGroup         - [def] Error Exclude Group
+            SC_ACTIVE_MOUNTED_MG_AXLE,                      //u8SetCond              - [def] Set Condition - allows to activate an error detection
+            500,                                            //u32TimeDetect          - [ms]  Error Detection ( Debounce ) Time
+            FALSE,                                          //boDetectDboAfterSc     - [boo] Start debounce timer after a valid set condition
+            RC_NONE,                                        //u8ReleaCond            - [def] Release Condition - allows an error to be released ( removed )
+            1000,                                           //u32TimeReset           - [ms]  Error Release ( Debounce ) Time
+            FALSE,                                          //boResetDboAfterRc      - [boo] Start debounce timer after a valid release condition 
+            RM_NONE,                                        //u8RestrictMode         - [def] Restricted Mode
+            0,                                              //u8InfoVarIdx           - [num] Array Index of Error Information Page
+            TRUE,                                           //boCustList             - [boo] Memorized in a Customer List
+            DIS_NONE                                        //u8DisplayOutput        - [def] Display Output ( Error Output Interface )
+        },
+        { //ErrTag[1] - Vin0 < u16VolLoMin [DM_SWI_DBL_NCNO_PIN0_LO]
+            9360,                                           //u32ErrNum              - [num] Error Number
+            FMI_31_CONDITION_EXISTS,                        //u8ErrMode              - [enu] Failure Mode Indicator
+            FMIEX_NONE,                                     //u8ErrModeExt           - [def] Extended Failure Mode Indicator
+            0xAAAA,                                         //u16ErrAccLevel         - [def] Failure Access Level
+            ERR_TYPE_ERROR,                                 //u8ErrType              - [enu] Error Type
+            ERR_CAT5_MAL,                                   //u8ErrCat               - [enu] Error Category ( Lamp Type )
+            ERR_STORE_ALL,                                  //u8ErrStore             - [enu] Error Store Behavior
+            EG_NONE,                                        //u8ExcludeGroup         - [def] Error Exclude Group
+            SC_ACTIVE_MOUNTED_MG_AXLE,                      //u8SetCond              - [def] Set Condition - allows to activate an error detection
+            500,                                            //u32TimeDetect          - [ms]  Error Detection ( Debounce ) Time
+            FALSE,                                          //boDetectDboAfterSc     - [boo] Start debounce timer after a valid set condition
+            RC_NONE,                                        //u8ReleaCond            - [def] Release Condition - allows an error to be released ( removed )
+            1000,                                           //u32TimeReset           - [ms]  Error Release ( Debounce ) Time
+            FALSE,                                          //boResetDboAfterRc      - [boo] Start debounce timer after a valid release condition 
+            RM_NONE,                                        //u8RestrictMode         - [def] Restricted Mode
+            0,                                              //u8InfoVarIdx           - [num] Array Index of Error Information Page
+            TRUE,                                           //boCustList             - [boo] Memorized in a Customer List
+            DIS_NONE                                        //u8DisplayOutput        - [def] Display Output ( Error Output Interface )
+        },
+        { //ErrTag[2] - Vin0 > u16VolHiMax [DM_SWI_DBL_NCNO_PIN0_HI]
+            9361,                                           //u32ErrNum              - [num] Error Number
+            FMI_31_CONDITION_EXISTS,                        //u8ErrMode              - [enu] Failure Mode Indicator
+            FMIEX_NONE,                                     //u8ErrModeExt           - [def] Extended Failure Mode Indicator
+            0xAAAA,                                         //u16ErrAccLevel         - [def] Failure Access Level
+            ERR_TYPE_ERROR,                                 //u8ErrType              - [enu] Error Type
+            ERR_CAT5_MAL,                                   //u8ErrCat               - [enu] Error Category ( Lamp Type )
+            ERR_STORE_ALL,                                  //u8ErrStore             - [enu] Error Store Behavior
+            EG_NONE,                                        //u8ExcludeGroup         - [def] Error Exclude Group
+            SC_ACTIVE_MOUNTED_MG_AXLE,                      //u8SetCond              - [def] Set Condition - allows to activate an error detection
+            500,                                            //u32TimeDetect          - [ms]  Error Detection ( Debounce ) Time
+            FALSE,                                          //boDetectDboAfterSc     - [boo] Start debounce timer after a valid set condition
+            RC_NONE,                                        //u8ReleaCond            - [def] Release Condition - allows an error to be released ( removed )
+            1000,                                           //u32TimeReset           - [ms]  Error Release ( Debounce ) Time
+            FALSE,                                          //boResetDboAfterRc      - [boo] Start debounce timer after a valid release condition 
+            RM_NONE,                                        //u8RestrictMode         - [def] Restricted Mode
+            0,                                              //u8InfoVarIdx           - [num] Array Index of Error Information Page
+            TRUE,                                           //boCustList             - [boo] Memorized in a Customer List
+            DIS_NONE                                        //u8DisplayOutput        - [def] Display Output ( Error Output Interface )
+        },
+        { //ErrTag[3] - u16VolLoMax < Vin0 < u16VolHiMin [DM_SWI_DBL_NCNO_PIN0_RANGE]
+            9362,                                           //u32ErrNum              - [num] Error Number
+            FMI_31_CONDITION_EXISTS,                        //u8ErrMode              - [enu] Failure Mode Indicator
+            FMIEX_NONE,                                     //u8ErrModeExt           - [def] Extended Failure Mode Indicator
+            0xAAAA,                                         //u16ErrAccLevel         - [def] Failure Access Level
+            ERR_TYPE_ERROR,                                 //u8ErrType              - [enu] Error Type
+            ERR_CAT5_MAL,                                   //u8ErrCat               - [enu] Error Category ( Lamp Type )
+            ERR_STORE_ALL,                                  //u8ErrStore             - [enu] Error Store Behavior
+            EG_NONE,                                        //u8ExcludeGroup         - [def] Error Exclude Group
+            SC_ACTIVE_MOUNTED_MG_AXLE,                      //u8SetCond              - [def] Set Condition - allows to activate an error detection
+            500,                                            //u32TimeDetect          - [ms]  Error Detection ( Debounce ) Time
+            FALSE,                                          //boDetectDboAfterSc     - [boo] Start debounce timer after a valid set condition
+            RC_NONE,                                        //u8ReleaCond            - [def] Release Condition - allows an error to be released ( removed )
+            1000,                                           //u32TimeReset           - [ms]  Error Release ( Debounce ) Time
+            FALSE,                                          //boResetDboAfterRc      - [boo] Start debounce timer after a valid release condition 
+            RM_NONE,                                        //u8RestrictMode         - [def] Restricted Mode
+            0,                                              //u8InfoVarIdx           - [num] Array Index of Error Information Page
+            TRUE,                                           //boCustList             - [boo] Memorized in a Customer List
+            DIS_NONE                                        //u8DisplayOutput        - [def] Display Output ( Error Output Interface )
+        },
+        { //ErrTag[4] - Vin1 < u16VolLoMin [DM_SWI_DBL_NCNO_PIN1_LO]
+            9363,                                           //u32ErrNum              - [num] Error Number
+            FMI_31_CONDITION_EXISTS,                        //u8ErrMode              - [enu] Failure Mode Indicator
+            FMIEX_NONE,                                     //u8ErrModeExt           - [def] Extended Failure Mode Indicator
+            0xAAAA,                                         //u16ErrAccLevel         - [def] Failure Access Level
+            ERR_TYPE_ERROR,                                 //u8ErrType              - [enu] Error Type
+            ERR_CAT5_MAL,                                   //u8ErrCat               - [enu] Error Category ( Lamp Type )
+            ERR_STORE_ALL,                                  //u8ErrStore             - [enu] Error Store Behavior
+            EG_NONE,                                        //u8ExcludeGroup         - [def] Error Exclude Group
+            SC_ACTIVE_MOUNTED_MG_AXLE,                      //u8SetCond              - [def] Set Condition - allows to activate an error detection
+            500,                                            //u32TimeDetect          - [ms]  Error Detection ( Debounce ) Time
+            FALSE,                                          //boDetectDboAfterSc     - [boo] Start debounce timer after a valid set condition
+            RC_NONE,                                        //u8ReleaCond            - [def] Release Condition - allows an error to be released ( removed )
+            1000,                                           //u32TimeReset           - [ms]  Error Release ( Debounce ) Time
+            FALSE,                                          //boResetDboAfterRc      - [boo] Start debounce timer after a valid release condition 
+            RM_NONE,                                        //u8RestrictMode         - [def] Restricted Mode
+            0,                                              //u8InfoVarIdx           - [num] Array Index of Error Information Page
+            TRUE,                                           //boCustList             - [boo] Memorized in a Customer List
+            DIS_NONE                                        //u8DisplayOutput        - [def] Display Output ( Error Output Interface )
+        },
+        { //ErrTag[5] - Vin1 > u16VolHiMax [DM_SWI_DBL_NCNO_PIN1_HI]
+            9364,                                           //u32ErrNum              - [num] Error Number
+            FMI_31_CONDITION_EXISTS,                        //u8ErrMode              - [enu] Failure Mode Indicator
+            FMIEX_NONE,                                     //u8ErrModeExt           - [def] Extended Failure Mode Indicator
+            0xAAAA,                                         //u16ErrAccLevel         - [def] Failure Access Level
+            ERR_TYPE_ERROR,                                 //u8ErrType              - [enu] Error Type
+            ERR_CAT5_MAL,                                   //u8ErrCat               - [enu] Error Category ( Lamp Type )
+            ERR_STORE_ALL,                                  //u8ErrStore             - [enu] Error Store Behavior
+            EG_NONE,                                        //u8ExcludeGroup         - [def] Error Exclude Group
+            SC_ACTIVE_MOUNTED_MG_AXLE,                      //u8SetCond              - [def] Set Condition - allows to activate an error detection
+            500,                                            //u32TimeDetect          - [ms]  Error Detection ( Debounce ) Time
+            FALSE,                                          //boDetectDboAfterSc     - [boo] Start debounce timer after a valid set condition
+            RC_NONE,                                        //u8ReleaCond            - [def] Release Condition - allows an error to be released ( removed )
+            1000,                                           //u32TimeReset           - [ms]  Error Release ( Debounce ) Time
+            FALSE,                                          //boResetDboAfterRc      - [boo] Start debounce timer after a valid release condition 
+            RM_NONE,                                        //u8RestrictMode         - [def] Restricted Mode
+            0,                                              //u8InfoVarIdx           - [num] Array Index of Error Information Page
+            TRUE,                                           //boCustList             - [boo] Memorized in a Customer List
+            DIS_NONE                                        //u8DisplayOutput        - [def] Display Output ( Error Output Interface )
+        },
+        { //ErrTag[6] - u16VolLoMax < Vin1 < u16VolHiMin [DM_SWI_DBL_NCNO_PIN1_RANGE]
+            9365,                                           //u32ErrNum              - [num] Error Number
+            FMI_31_CONDITION_EXISTS,                        //u8ErrMode              - [enu] Failure Mode Indicator
+            FMIEX_NONE,                                     //u8ErrModeExt           - [def] Extended Failure Mode Indicator
+            0xAAAA,                                         //u16ErrAccLevel         - [def] Failure Access Level
+            ERR_TYPE_ERROR,                                 //u8ErrType              - [enu] Error Type
+            ERR_CAT5_MAL,                                   //u8ErrCat               - [enu] Error Category ( Lamp Type )
+            ERR_STORE_ALL,                                  //u8ErrStore             - [enu] Error Store Behavior
+            EG_NONE,                                        //u8ExcludeGroup         - [def] Error Exclude Group
+            SC_ACTIVE_MOUNTED_MG_AXLE,                      //u8SetCond              - [def] Set Condition - allows to activate an error detection
             500,                                            //u32TimeDetect          - [ms]  Error Detection ( Debounce ) Time
             FALSE,                                          //boDetectDboAfterSc     - [boo] Start debounce timer after a valid set condition
             RC_NONE,                                        //u8ReleaCond            - [def] Release Condition - allows an error to be released ( removed )

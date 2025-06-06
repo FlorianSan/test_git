@@ -1,5 +1,5 @@
 //**************************************************************************************************
-//! @crc        646252054
+//! @crc        1696085695
 //! @file       App_Db.h
 //! @brief      Generate by: HYDAC Controller Project - Code Builder Tool Chain
 //! @ecu        TTC580
@@ -9,7 +9,7 @@
 //! @Match      07-04-01-04
 //! @PDT        2.11.72.172
 //! @PdtProjVer 0.0.0
-//! @created    2025-04-18 16:40:50   HYDAC/HCP-CC
+//! @created    2025-06-04 11:35:59   HYDAC/HCP-CC
 //**************************************************************************************************
 
 #ifndef __APP_DB_H__
@@ -98,6 +98,12 @@ typedef struct
     TUint16 u16UpMastSensorNCRawValue;                       //!< [[custom]] Mast sensor position UP Raw Value
     EDiState eValveInDownPositionSensorState;                //!< [[custom]] Hydraulic valve uin down position sensor state
     TUint16 u16ValveInDownPositionSensorValue;               //!< [[custom]] Hydraulic valve uin down position sensor raw value
+    EDiState eAxleInMGMode;                                  //!< [[custom]] Axle In MG Mode Sensor
+    TUint16 u16AxleInMGModeRawValuePin0;                     //!< [[custom]] Axle In MG Mode Sensor Pin 0 
+    TUint16 u16AxleInMGModeRawValuePin1;                     //!< [[custom]] Axle In MG Mode Sensor Pin 1
+    EDiState eAxleInSDMode;                                  //!< [[custom]] Axle In SD Mode Sensor
+    TUint16 u16AxleInSDModeRawValuePin0;                     //!< [[custom]] Axle In SD Mode Sensor Pin 0
+    TUint16 u16AxleInSDModeRawValuePin1;                     //!< [[custom]] Axle In SD Mode Sensor Pin 1
 }TDbRamEcuInputsC0;
 
 typedef struct
@@ -326,6 +332,11 @@ typedef struct
     TUint8 u8DeviceNum;                                      //!< [[custom]] Diag Device Num
     TUint8 u8ErrorCode;                                      //!< [[custom]] Diag Error Code
     TBoolean boEngineRunningStable;                          //!< [[custom]] Engine running stable
+    TBoolean boAxlePositionSensorFault;                      //!< [[custom]] Axle Position Sensor Fault
+    TBoolean boAxlePositionInMGMode;                         //!< [[custom]] Axle Position In MG Mode
+    TBoolean boEvLoadBrakeAccuCmd;                           //!< [[custom]] Ev load brake accumulator send to C1
+    TUint8 u8ErrListCntMax;                                  //!< [[custom]] Error list counter
+    TBoolean boGlobalAuthorizeTrans;                         //!< [[custom]] Global Authorize Translation on rail
 }TDbRamGeneralC0;
 
 typedef struct
@@ -343,6 +354,7 @@ typedef struct
     TBoolean boAddPerformanceFunc;                           //!< [[custom]] Strukton configuration for new performance machine
     TBoolean boBasketTurretLimitation;                       //!< [[custom]] Basket and turret limited by a mechanical stop
     TBoolean boPresenceSensorPlate;                          //!< [[custom]] Presence of sensor plate
+    TBoolean boMachineMountedAxlesMG;                        //!< [[custom]] Machine Mounted with Axles MG
 }TDbNvOptionsC0;
 
 typedef struct
@@ -474,6 +486,8 @@ typedef struct
     TInt16 i16OutCharPosElectricPumpPressure;                //!< [[Bar]] ElectricPumpPressureSensor - input current - output characterist
     TInt16 i16OutCharNeuElectricPumpPressure;                //!< [[Bar]] ElectricPumpPressureSensor - input current - output characterist
     TInt16 i16OutCharNegElectricPumpPressure;                //!< [[custom]] ElectricPumpPressureSensor - input current - output characterist
+    TUint16 u16ThresBrakeAccuPressureMin;                    //!< [[custom]] Threshold of Accumulator Brake pressure minimum
+    TUint16 u16ThresBrakeAccuPressureMax;                    //!< [[custom]] Threshold of Accumulator Brake pressure maximum
 }TDbNvParametersC0;
 
 typedef struct
@@ -707,7 +721,7 @@ typedef struct
     TBoolean bogBothServiceRunInBrakeSelect;                 //!< [[custom]] Request status of both service run in test brake
     TBoolean bogTestBrakePageActive;                         //!< [[custom]] Test brake page is active on screen
     TBoolean bogBreakInBrakePageActive;                      //!< [[custom]] break in brake page is active on screen
-    TBoolean bogSerialNumber;                                //!< [[custom]] Serial Number
+    TBoolean bogRollingCode;                                 //!< [[custom]] Active rolling code
     TBoolean bogBPBasketValidate;                            //!< [[custom]] BP Basket Validate
     TBoolean bogKeyFilterOverload;                           //!< [[custom]] Key Filter Overload
     TBoolean bogKeyNextMode;                                 //!< [[custom]] Key Next Mode
@@ -837,6 +851,15 @@ typedef struct
     TUint16 u16PreventLimitSpeedHighSpeed;                   //!< [[custom]] Parameters to Prevention for Limit Speed in High Speed
     TUint16 u16PreventLimitSpeedLowSpeed;                    //!< [[custom]] Parameters to Prevention for Limit Speed in Low Speed
     TUint16 u16PreventSpeedLowSpeedBrakeTest;                //!< [[custom]] Parameters to Prevention for Speed in Low Speed Brake Test
+    TUint16 u16Performance2DegSlopeThresMG;                  //!< [[custom]] Slope thres of 2 deg for MG Machines
+    TUint16 u16Performance4DegSlopeThresMG;                  //!< [[custom]] Slope thres of 4 deg for MG Machines
+    TUint16 u16Performance6DegSlopeThresMG;                  //!< [[custom]] Slope thres of 6 deg for MG Machines
+    TInt16 i16TurretPerformLowSpeed2DegMG;                   //!< [[custom]] Turret Sector for Slope angle below 2 Degree MG
+    TInt16 i16TurretPerformLowSpeedBasket2MG;                //!< [[custom]] Turret Sector for Slope angle below 2 Degree with rotation baske
+    TInt16 i16TurretPerformLowSpeed4DegMG;                   //!< [[custom]] Turret Sector for Slope angle below 4 Degree MG
+    TInt16 i16TurretPerformLowSpeedBasket4MG;                //!< [[custom]] Turret Sector for Slope angle below 4 Degree with rotation baske
+    TInt16 i16TurretPerformLowSpeed6DegMG;                   //!< [[custom]] Turret Sector for Slope angle below 6 Degree MG
+    TInt16 i16TurretPerformLowSpeedBasket6MG;                //!< [[custom]] Turret Sector for Slope angle below 6 Degree with rotation baske
 }TDbNvParamSpeedMaxRail;
 
 typedef struct
@@ -890,6 +913,15 @@ typedef struct
     TBoolean boPreventLimitLowSpeedBrakeTest;                //!< [[custom]] Prevention for Limit Low Speed Brake Test
     TBoolean boPreventLimitSpeedExceeding;                   //!< [[custom]] Prevention exceeding of limit speed
     TBoolean boAuthoriseGlobalLowSpeed;                      //!< [[custom]] Authorize global low speed in add performance function
+    TUint16 u16SelectSlopeCase2Deg;                          //!< [[custom]] Selected Case of Slope angle below 2 deg
+    TUint16 u16SelectSlopeCase4Deg;                          //!< [[custom]] Selected Case of Slope angle below 4 deg
+    TUint16 u16SelectSlopeCase6Deg;                          //!< [[custom]] Selected Case of Slope angle below 6 deg
+    TInt16 i16SelectTurretSectorCase2Deg;                    //!< [[custom]] Selected sector for Turret in Low Speed zone below 2 deg
+    TInt16 i16SelectTurretSectorCase4Deg;                    //!< [[custom]] Selected sector for Turret in Low Speed zone below 4 deg
+    TInt16 i16SelectTurretSectorCase6Deg;                    //!< [[custom]] Selected sector for Turret in Low Speed zone below 6 deg
+    TInt16 i16SelectedTurretCase2DegForBasket;               //!< [[custom]] Selected sector for Turret in Low Speed zone below 2 deg with ba
+    TInt16 i16SelectedTurretCase4DegForBasket;               //!< [[custom]] Selected sector for Turret in Low Speed zone below 4 deg with ba
+    TInt16 i16SelectedTurretCase6DegForBasket;               //!< [[custom]] Selected sector for Turret in Low Speed zone below 6 deg with ba
 }TDbRamSpeedMaxRail;
 
 typedef struct
@@ -993,6 +1025,8 @@ typedef struct
     TInt16 i16ALOTurretFrontZoneStopHyst;                    //!< [[custom]] ALO mode - Hysteresis applied to the front zone stop threshold o
     TInt16 i16ALOArrowLowerZoneStopThres;                    //!< [[custom]] ALO mode - Threshold use to stop the arrow arm before reaching t
     TInt16 i16ALOArrowLowerZoneStopHyst;                     //!< [[custom]] ALO mode - Hysteresis applied to the lower zone stop threshold o
+    TInt16 i16ThresHighSlopeForArrowUp;                      //!< [[custom]] Threshold High Slope For Arrow Up
+    TInt16 i16HystHighSlopeForArrowUp;                       //!< [[custom]] Hysteresis High Slope For Arrow Up
 }TDbNvParamRailWorkSafetyC0;
 
 typedef struct
@@ -1031,6 +1065,7 @@ typedef struct
     TInt16 i16TestTurretAngularPosition;                     //!< [[°/10]] Test variable for simulation - turret angular position
     TInt16 i16TestArrowArmAngularPosition;                   //!< [[°/10]] Test variable for simulation - arrow arm angular position
     ERailWorkMode eAbutmentWorkMode;                         //!< [enum] Abutment work mode selected by the sensors
+    TBoolean boHighSlopeForArrowUp;                          //!< [[custom]] High Slope For Arrow Up
 }TDbRamRailWorkSafetyC0;
 
 typedef struct
@@ -1230,6 +1265,7 @@ typedef struct
     TBoolean boPostInterdictionMastSNCF;                     //!< [[custom]] All Post interdict fot mast function SNCF
     TBoolean boInterdictOfNacelTurretPost;                   //!< [[custom]] Interdiction of nacelle and turret post
     TBoolean boMastPanthoFoldedSNCF;                         //!< [[custom]] SNCF contact mast in folded position
+    TInt16 i16AccuBrakeSensorPressureValue;                  //!< [[custom]] Accumulator Brake Sensor Pressure Value
 }TDbRamData4C0RcvFromC1;
 
 typedef struct
@@ -1575,6 +1611,24 @@ typedef struct
     TDbVarInf  tInf_ValveInDownPositionSensorValue;
     TUint16 au16Rng_ValveInDownPositionSensorValue[2];
     TUint16 u16Def_ValveInDownPositionSensorValue;
+    TDbVarInf  tInf_AxleInMGMode;
+    EDiState aeRng_AxleInMGMode[2];
+    EDiState eDef_AxleInMGMode;
+    TDbVarInf  tInf_AxleInMGModeRawValuePin0;
+    TUint16 au16Rng_AxleInMGModeRawValuePin0[2];
+    TUint16 u16Def_AxleInMGModeRawValuePin0;
+    TDbVarInf  tInf_AxleInMGModeRawValuePin1;
+    TUint16 au16Rng_AxleInMGModeRawValuePin1[2];
+    TUint16 u16Def_AxleInMGModeRawValuePin1;
+    TDbVarInf  tInf_AxleInSDMode;
+    EDiState aeRng_AxleInSDMode[2];
+    EDiState eDef_AxleInSDMode;
+    TDbVarInf  tInf_AxleInSDModeRawValuePin0;
+    TUint16 au16Rng_AxleInSDModeRawValuePin0[2];
+    TUint16 u16Def_AxleInSDModeRawValuePin0;
+    TDbVarInf  tInf_AxleInSDModeRawValuePin1;
+    TUint16 au16Rng_AxleInSDModeRawValuePin1[2];
+    TUint16 u16Def_AxleInSDModeRawValuePin1;
 }TDbSetRamEcuInputsC0;
 
 typedef struct
@@ -2237,6 +2291,21 @@ typedef struct
     TDbVarInf  tInf_EngineRunningStable;
     TBoolean aboRng_EngineRunningStable[2];
     TBoolean boDef_EngineRunningStable;
+    TDbVarInf  tInf_AxlePositionSensorFault;
+    TBoolean aboRng_AxlePositionSensorFault[2];
+    TBoolean boDef_AxlePositionSensorFault;
+    TDbVarInf  tInf_AxlePositionInMGMode;
+    TBoolean aboRng_AxlePositionInMGMode[2];
+    TBoolean boDef_AxlePositionInMGMode;
+    TDbVarInf  tInf_EvLoadBrakeAccuCmd;
+    TBoolean aboRng_EvLoadBrakeAccuCmd[2];
+    TBoolean boDef_EvLoadBrakeAccuCmd;
+    TDbVarInf  tInf_ErrListCntMax;
+    TUint8 au8Rng_ErrListCntMax[2];
+    TUint8 u8Def_ErrListCntMax;
+    TDbVarInf  tInf_GlobalAuthorizeTrans;
+    TBoolean aboRng_GlobalAuthorizeTrans[2];
+    TBoolean boDef_GlobalAuthorizeTrans;
 }TDbSetRamGeneralC0;
 
 typedef struct
@@ -2277,6 +2346,9 @@ typedef struct
     TDbVarInf  tInf_PresenceSensorPlate;
     TBoolean aboRng_PresenceSensorPlate[2];
     TBoolean boDef_PresenceSensorPlate;
+    TDbVarInf  tInf_MachineMountedAxlesMG;
+    TBoolean aboRng_MachineMountedAxlesMG[2];
+    TBoolean boDef_MachineMountedAxlesMG;
 }TDbSetNvOptionsC0;
 
 typedef struct
@@ -2648,6 +2720,12 @@ typedef struct
     TDbVarInf  tInf_OutCharNegElectricPumpPressure;
     TInt16 ai16Rng_OutCharNegElectricPumpPressure[2];
     TInt16 i16Def_OutCharNegElectricPumpPressure;
+    TDbVarInf  tInf_ThresBrakeAccuPressureMin;
+    TUint16 au16Rng_ThresBrakeAccuPressureMin[2];
+    TUint16 u16Def_ThresBrakeAccuPressureMin;
+    TDbVarInf  tInf_ThresBrakeAccuPressureMax;
+    TUint16 au16Rng_ThresBrakeAccuPressureMax[2];
+    TUint16 u16Def_ThresBrakeAccuPressureMax;
 }TDbSetNvParametersC0;
 
 typedef struct
@@ -3281,9 +3359,9 @@ typedef struct
     TDbVarInf  tInf_gBreakInBrakePageActive;
     TBoolean aboRng_gBreakInBrakePageActive[2];
     TBoolean boDef_gBreakInBrakePageActive;
-    TDbVarInf  tInf_gSerialNumber;
-    TBoolean aboRng_gSerialNumber[2];
-    TBoolean boDef_gSerialNumber;
+    TDbVarInf  tInf_gRollingCode;
+    TBoolean aboRng_gRollingCode[2];
+    TBoolean boDef_gRollingCode;
     TDbVarInf  tInf_gBPBasketValidate;
     TBoolean aboRng_gBPBasketValidate[2];
     TBoolean boDef_gBPBasketValidate;
@@ -3638,6 +3716,33 @@ typedef struct
     TDbVarInf  tInf_PreventSpeedLowSpeedBrakeTest;
     TUint16 au16Rng_PreventSpeedLowSpeedBrakeTest[2];
     TUint16 u16Def_PreventSpeedLowSpeedBrakeTest;
+    TDbVarInf  tInf_Performance2DegSlopeThresMG;
+    TUint16 au16Rng_Performance2DegSlopeThresMG[2];
+    TUint16 u16Def_Performance2DegSlopeThresMG;
+    TDbVarInf  tInf_Performance4DegSlopeThresMG;
+    TUint16 au16Rng_Performance4DegSlopeThresMG[2];
+    TUint16 u16Def_Performance4DegSlopeThresMG;
+    TDbVarInf  tInf_Performance6DegSlopeThresMG;
+    TUint16 au16Rng_Performance6DegSlopeThresMG[2];
+    TUint16 u16Def_Performance6DegSlopeThresMG;
+    TDbVarInf  tInf_TurretPerformLowSpeed2DegMG;
+    TInt16 ai16Rng_TurretPerformLowSpeed2DegMG[2];
+    TInt16 i16Def_TurretPerformLowSpeed2DegMG;
+    TDbVarInf  tInf_TurretPerformLowSpeedBasket2MG;
+    TInt16 ai16Rng_TurretPerformLowSpeedBasket2MG[2];
+    TInt16 i16Def_TurretPerformLowSpeedBasket2MG;
+    TDbVarInf  tInf_TurretPerformLowSpeed4DegMG;
+    TInt16 ai16Rng_TurretPerformLowSpeed4DegMG[2];
+    TInt16 i16Def_TurretPerformLowSpeed4DegMG;
+    TDbVarInf  tInf_TurretPerformLowSpeedBasket4MG;
+    TInt16 ai16Rng_TurretPerformLowSpeedBasket4MG[2];
+    TInt16 i16Def_TurretPerformLowSpeedBasket4MG;
+    TDbVarInf  tInf_TurretPerformLowSpeed6DegMG;
+    TInt16 ai16Rng_TurretPerformLowSpeed6DegMG[2];
+    TInt16 i16Def_TurretPerformLowSpeed6DegMG;
+    TDbVarInf  tInf_TurretPerformLowSpeedBasket6MG;
+    TInt16 ai16Rng_TurretPerformLowSpeedBasket6MG[2];
+    TInt16 i16Def_TurretPerformLowSpeedBasket6MG;
 }TDbSetNvParamSpeedMaxRail;
 
 typedef struct
@@ -3786,6 +3891,33 @@ typedef struct
     TDbVarInf  tInf_AuthoriseGlobalLowSpeed;
     TBoolean aboRng_AuthoriseGlobalLowSpeed[2];
     TBoolean boDef_AuthoriseGlobalLowSpeed;
+    TDbVarInf  tInf_SelectSlopeCase2Deg;
+    TUint16 au16Rng_SelectSlopeCase2Deg[2];
+    TUint16 u16Def_SelectSlopeCase2Deg;
+    TDbVarInf  tInf_SelectSlopeCase4Deg;
+    TUint16 au16Rng_SelectSlopeCase4Deg[2];
+    TUint16 u16Def_SelectSlopeCase4Deg;
+    TDbVarInf  tInf_SelectSlopeCase6Deg;
+    TUint16 au16Rng_SelectSlopeCase6Deg[2];
+    TUint16 u16Def_SelectSlopeCase6Deg;
+    TDbVarInf  tInf_SelectTurretSectorCase2Deg;
+    TInt16 ai16Rng_SelectTurretSectorCase2Deg[2];
+    TInt16 i16Def_SelectTurretSectorCase2Deg;
+    TDbVarInf  tInf_SelectTurretSectorCase4Deg;
+    TInt16 ai16Rng_SelectTurretSectorCase4Deg[2];
+    TInt16 i16Def_SelectTurretSectorCase4Deg;
+    TDbVarInf  tInf_SelectTurretSectorCase6Deg;
+    TInt16 ai16Rng_SelectTurretSectorCase6Deg[2];
+    TInt16 i16Def_SelectTurretSectorCase6Deg;
+    TDbVarInf  tInf_SelectedTurretCase2DegForBasket;
+    TInt16 ai16Rng_SelectedTurretCase2DegForBasket[2];
+    TInt16 i16Def_SelectedTurretCase2DegForBasket;
+    TDbVarInf  tInf_SelectedTurretCase4DegForBasket;
+    TInt16 ai16Rng_SelectedTurretCase4DegForBasket[2];
+    TInt16 i16Def_SelectedTurretCase4DegForBasket;
+    TDbVarInf  tInf_SelectedTurretCase6DegForBasket;
+    TInt16 ai16Rng_SelectedTurretCase6DegForBasket[2];
+    TInt16 i16Def_SelectedTurretCase6DegForBasket;
 }TDbSetRamSpeedMaxRail;
 
 typedef struct
@@ -4062,6 +4194,12 @@ typedef struct
     TDbVarInf  tInf_ALOArrowLowerZoneStopHyst;
     TInt16 ai16Rng_ALOArrowLowerZoneStopHyst[2];
     TInt16 i16Def_ALOArrowLowerZoneStopHyst;
+    TDbVarInf  tInf_ThresHighSlopeForArrowUp;
+    TInt16 ai16Rng_ThresHighSlopeForArrowUp[2];
+    TInt16 i16Def_ThresHighSlopeForArrowUp;
+    TDbVarInf  tInf_HystHighSlopeForArrowUp;
+    TInt16 ai16Rng_HystHighSlopeForArrowUp[2];
+    TInt16 i16Def_HystHighSlopeForArrowUp;
 }TDbSetNvParamRailWorkSafetyC0;
 
 typedef struct
@@ -4165,6 +4303,9 @@ typedef struct
     TDbVarInf  tInf_AbutmentWorkMode;
     ERailWorkMode aeRng_AbutmentWorkMode[2];
     ERailWorkMode eDef_AbutmentWorkMode;
+    TDbVarInf  tInf_HighSlopeForArrowUp;
+    TBoolean aboRng_HighSlopeForArrowUp[2];
+    TBoolean boDef_HighSlopeForArrowUp;
 }TDbSetRamRailWorkSafetyC0;
 
 typedef struct
@@ -4630,6 +4771,9 @@ typedef struct
     TDbVarInf  tInf_MastPanthoFoldedSNCF;
     TBoolean aboRng_MastPanthoFoldedSNCF[2];
     TBoolean boDef_MastPanthoFoldedSNCF;
+    TDbVarInf  tInf_AccuBrakeSensorPressureValue;
+    TInt16 ai16Rng_AccuBrakeSensorPressureValue[2];
+    TInt16 i16Def_AccuBrakeSensorPressureValue;
 }TDbSetRamData4C0RcvFromC1;
 
 typedef struct

@@ -1,5 +1,5 @@
 //**************************************************************************************************
-//! @crc        990554469
+//! @crc        2764120758
 //! @file       Cfg_Err.c
 //! @brief      Generate by: HYDAC Controller Project - Code Builder Tool Chain
 //! @ecu        TTC580
@@ -11,7 +11,7 @@
 //! @Match      07-04-01-04
 //! @PDT        2.11.72.172
 //! @PdtProjVer 0.0.0
-//! @created    2025-04-18 16:40:50   HYDAC/HCP-CC
+//! @created    2025-06-04 11:35:59   HYDAC/HCP-CC
 //**************************************************************************************************
 
 // INCLUDES ========================================================================================
@@ -1452,7 +1452,7 @@ PUBLIC_VAR const TErrCfg gErr_ctCfg_SpecificErrorC0_9 =
             TRUE,                                           //boCustList             - [boo] Memorized in a Customer List
             DIS_NONE                                        //u8DisplayOutput        - [def] Display Output ( Error Output Interface )
         },
-        { //ErrTag[2] - Error bit 2 [DM_ERR_02]
+        { //ErrTag[2] - Error bit 2 [DM_MG_SENSOR_FAULT]
             9193,                                           //u32ErrNum              - [num] Error Number
             FMI_31_CONDITION_EXISTS,                        //u8ErrMode              - [enu] Failure Mode Indicator
             FMIEX_NONE,                                     //u8ErrModeExt           - [def] Extended Failure Mode Indicator

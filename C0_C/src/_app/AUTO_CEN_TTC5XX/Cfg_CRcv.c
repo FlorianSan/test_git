@@ -1,5 +1,5 @@
 //**************************************************************************************************
-//! @crc        4164810119
+//! @crc        3524780434
 //! @file       Cfg_CRcv.c
 //! @brief      Generate by: HYDAC Controller Project - Code Builder Tool Chain
 //! @ecu        TTC580
@@ -11,7 +11,7 @@
 //! @Match      07-04-01-04
 //! @PDT        2.11.72.172
 //! @PdtProjVer 0.0.0
-//! @created    2025-04-18 16:40:50   HYDAC/HCP-CC
+//! @created    2025-06-04 11:35:59   HYDAC/HCP-CC
 //**************************************************************************************************
 
 // INCLUDES ========================================================================================
@@ -5587,6 +5587,133 @@ PUBLIC_VAR const TCRcvCfg gCRcv_ctCfg_DMC_RxPdo3_CS =
         },
         { //ErrTag[4] - Timeslot [DM_CRCV_TIMESLOT]
             1596,                                           //u32ErrNum              - [num] Error Number
+            FMI_31_CONDITION_EXISTS,                        //u8ErrMode              - [enu] Failure Mode Indicator
+            FMIEX_NONE,                                     //u8ErrModeExt           - [def] Extended Failure Mode Indicator
+            0xAAAA,                                         //u16ErrAccLevel         - [def] Failure Access Level
+            ERR_TYPE_ERROR,                                 //u8ErrType              - [enu] Error Type
+            ERR_CAT0_NOT,                                   //u8ErrCat               - [enu] Error Category ( Lamp Type )
+            ERR_STORE_ALL,                                  //u8ErrStore             - [enu] Error Store Behavior
+            EG_NONE,                                        //u8ExcludeGroup         - [def] Error Exclude Group
+            SC_NONE,                                        //u8SetCond              - [def] Set Condition - allows to activate an error detection
+            500,                                            //u32TimeDetect          - [ms]  Error Detection ( Debounce ) Time
+            FALSE,                                          //boDetectDboAfterSc     - [boo] Start debounce timer after a valid set condition
+            RC_NONE,                                        //u8ReleaCond            - [def] Release Condition - allows an error to be released ( removed )
+            1000,                                           //u32TimeReset           - [ms]  Error Release ( Debounce ) Time
+            FALSE,                                          //boResetDboAfterRc      - [boo] Start debounce timer after a valid release condition 
+            RM_NONE,                                        //u8RestrictMode         - [def] Restricted Mode
+            0,                                              //u8InfoVarIdx           - [num] Array Index of Error Information Page
+            TRUE,                                           //boCustList             - [boo] Memorized in a Customer List
+            DIS_NONE                                        //u8DisplayOutput        - [def] Display Output ( Error Output Interface )
+        }
+    }
+};
+
+//Sofware Module Name: AppGlobal
+PUBLIC_VAR const TCRcvCfg gCRcv_ctCfg_SRDO5_48XS =
+{
+    // Common
+    "SRDO5_48XS",                                           //achName                - [STR] Display-Information-String
+    BLO_RELEASE,                                            //eBloProc               - [DEF] Block behavior
+    // Fixed settings
+    (TUint8)CBUS1_HWBUF_RCV0,                               //u8SwHwBufNo            - [DEF] CAN receive buffer position connection link
+    0,                                                      //u16FirstCeckTim        - [DEF] First checktime [ms]
+    1000,                                                   //u16CycTimOut           - [DEF] Cyclic message timeout [ms]
+    0,                                                      //u8MsgBufSize           - [DEF] Message buffer size
+    FALSE,                                                  //boBufferCheck          - [DEF] Buffer overflow check     
+    FALSE,                                                  //boExtId                - [DEF] Can extended identifier (11/29 Bit)
+    0x109,                                                  //u32Id                  - [DEF] Can identifier
+    RCV_MASK_NA,                                            //u32IdMask              - [DEF] Can identifier mask
+    (TUint16)eCSR_SRDO5_48XS,                               //u16CanSigRecLink       - [DEF] Can Signal Record Position Link 
+    //Fixed safety feature settings
+    TRUE,                                                   //boSafeInvMsg           - [DEF] Add bit inverse message
+    60,                                                     //u16SafeInvRcvSlot      - [ms] Check maximum time slot inverse message
+    FALSE,                                                  //boSafeCnt              - [DEF] Check safety counter
+    //All Errors
+    5,                                                      //u8ErrCnt               - [DEF] Error Count  
+    // Error [0-4]  
+    { // TErrCfgFea
+        { //ErrTag[0] - Time out of cyclic message [DM_CRCV_TIMEOUT]
+            1611,                                           //u32ErrNum              - [num] Error Number
+            FMI_31_CONDITION_EXISTS,                        //u8ErrMode              - [enu] Failure Mode Indicator
+            FMIEX_NONE,                                     //u8ErrModeExt           - [def] Extended Failure Mode Indicator
+            0xAAAA,                                         //u16ErrAccLevel         - [def] Failure Access Level
+            ERR_TYPE_ERROR,                                 //u8ErrType              - [enu] Error Type
+            ERR_CAT0_NOT,                                   //u8ErrCat               - [enu] Error Category ( Lamp Type )
+            ERR_STORE_ALL,                                  //u8ErrStore             - [enu] Error Store Behavior
+            EG_NONE,                                        //u8ExcludeGroup         - [def] Error Exclude Group
+            SC_NONE,                                        //u8SetCond              - [def] Set Condition - allows to activate an error detection
+            500,                                            //u32TimeDetect          - [ms]  Error Detection ( Debounce ) Time
+            FALSE,                                          //boDetectDboAfterSc     - [boo] Start debounce timer after a valid set condition
+            RC_NONE,                                        //u8ReleaCond            - [def] Release Condition - allows an error to be released ( removed )
+            1000,                                           //u32TimeReset           - [ms]  Error Release ( Debounce ) Time
+            FALSE,                                          //boResetDboAfterRc      - [boo] Start debounce timer after a valid release condition 
+            RM_NONE,                                        //u8RestrictMode         - [def] Restricted Mode
+            0,                                              //u8InfoVarIdx           - [num] Array Index of Error Information Page
+            TRUE,                                           //boCustList             - [boo] Memorized in a Customer List
+            DIS_NONE                                        //u8DisplayOutput        - [def] Display Output ( Error Output Interface )
+        },
+        { //ErrTag[1] - Message buffer overflow [DM_CRCV_BOVERF]
+            1612,                                           //u32ErrNum              - [num] Error Number
+            FMI_31_CONDITION_EXISTS,                        //u8ErrMode              - [enu] Failure Mode Indicator
+            FMIEX_NONE,                                     //u8ErrModeExt           - [def] Extended Failure Mode Indicator
+            0xAAAA,                                         //u16ErrAccLevel         - [def] Failure Access Level
+            ERR_TYPE_ERROR,                                 //u8ErrType              - [enu] Error Type
+            ERR_CAT0_NOT,                                   //u8ErrCat               - [enu] Error Category ( Lamp Type )
+            ERR_STORE_ALL,                                  //u8ErrStore             - [enu] Error Store Behavior
+            EG_NONE,                                        //u8ExcludeGroup         - [def] Error Exclude Group
+            SC_NONE,                                        //u8SetCond              - [def] Set Condition - allows to activate an error detection
+            500,                                            //u32TimeDetect          - [ms]  Error Detection ( Debounce ) Time
+            FALSE,                                          //boDetectDboAfterSc     - [boo] Start debounce timer after a valid set condition
+            RC_NONE,                                        //u8ReleaCond            - [def] Release Condition - allows an error to be released ( removed )
+            1000,                                           //u32TimeReset           - [ms]  Error Release ( Debounce ) Time
+            FALSE,                                          //boResetDboAfterRc      - [boo] Start debounce timer after a valid release condition 
+            RM_NONE,                                        //u8RestrictMode         - [def] Restricted Mode
+            0,                                              //u8InfoVarIdx           - [num] Array Index of Error Information Page
+            TRUE,                                           //boCustList             - [boo] Memorized in a Customer List
+            DIS_NONE                                        //u8DisplayOutput        - [def] Display Output ( Error Output Interface )
+        },
+        { //ErrTag[2] - Invalid message [DM_CRCV_INVMSG]
+            1613,                                           //u32ErrNum              - [num] Error Number
+            FMI_31_CONDITION_EXISTS,                        //u8ErrMode              - [enu] Failure Mode Indicator
+            FMIEX_NONE,                                     //u8ErrModeExt           - [def] Extended Failure Mode Indicator
+            0xAAAA,                                         //u16ErrAccLevel         - [def] Failure Access Level
+            ERR_TYPE_ERROR,                                 //u8ErrType              - [enu] Error Type
+            ERR_CAT0_NOT,                                   //u8ErrCat               - [enu] Error Category ( Lamp Type )
+            ERR_STORE_ALL,                                  //u8ErrStore             - [enu] Error Store Behavior
+            EG_NONE,                                        //u8ExcludeGroup         - [def] Error Exclude Group
+            SC_NONE,                                        //u8SetCond              - [def] Set Condition - allows to activate an error detection
+            500,                                            //u32TimeDetect          - [ms]  Error Detection ( Debounce ) Time
+            FALSE,                                          //boDetectDboAfterSc     - [boo] Start debounce timer after a valid set condition
+            RC_NONE,                                        //u8ReleaCond            - [def] Release Condition - allows an error to be released ( removed )
+            1000,                                           //u32TimeReset           - [ms]  Error Release ( Debounce ) Time
+            FALSE,                                          //boResetDboAfterRc      - [boo] Start debounce timer after a valid release condition 
+            RM_NONE,                                        //u8RestrictMode         - [def] Restricted Mode
+            0,                                              //u8InfoVarIdx           - [num] Array Index of Error Information Page
+            TRUE,                                           //boCustList             - [boo] Memorized in a Customer List
+            DIS_NONE                                        //u8DisplayOutput        - [def] Display Output ( Error Output Interface )
+        },
+        { //ErrTag[3] - Count fault [DM_CRCV_CNTFAULT]
+            1614,                                           //u32ErrNum              - [num] Error Number
+            FMI_31_CONDITION_EXISTS,                        //u8ErrMode              - [enu] Failure Mode Indicator
+            FMIEX_NONE,                                     //u8ErrModeExt           - [def] Extended Failure Mode Indicator
+            0xAAAA,                                         //u16ErrAccLevel         - [def] Failure Access Level
+            ERR_TYPE_ERROR,                                 //u8ErrType              - [enu] Error Type
+            ERR_CAT0_NOT,                                   //u8ErrCat               - [enu] Error Category ( Lamp Type )
+            ERR_STORE_ALL,                                  //u8ErrStore             - [enu] Error Store Behavior
+            EG_NONE,                                        //u8ExcludeGroup         - [def] Error Exclude Group
+            SC_NONE,                                        //u8SetCond              - [def] Set Condition - allows to activate an error detection
+            500,                                            //u32TimeDetect          - [ms]  Error Detection ( Debounce ) Time
+            FALSE,                                          //boDetectDboAfterSc     - [boo] Start debounce timer after a valid set condition
+            RC_NONE,                                        //u8ReleaCond            - [def] Release Condition - allows an error to be released ( removed )
+            1000,                                           //u32TimeReset           - [ms]  Error Release ( Debounce ) Time
+            FALSE,                                          //boResetDboAfterRc      - [boo] Start debounce timer after a valid release condition 
+            RM_NONE,                                        //u8RestrictMode         - [def] Restricted Mode
+            0,                                              //u8InfoVarIdx           - [num] Array Index of Error Information Page
+            TRUE,                                           //boCustList             - [boo] Memorized in a Customer List
+            DIS_NONE                                        //u8DisplayOutput        - [def] Display Output ( Error Output Interface )
+        },
+        { //ErrTag[4] - Timeslot [DM_CRCV_TIMESLOT]
+            1615,                                           //u32ErrNum              - [num] Error Number
             FMI_31_CONDITION_EXISTS,                        //u8ErrMode              - [enu] Failure Mode Indicator
             FMIEX_NONE,                                     //u8ErrModeExt           - [def] Extended Failure Mode Indicator
             0xAAAA,                                         //u16ErrAccLevel         - [def] Failure Access Level

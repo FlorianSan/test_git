@@ -1,5 +1,5 @@
 //**************************************************************************************************
-//! @crc        2901657620
+//! @crc        1944950858
 //! @file       App_CanSigRec.h
 //! @brief      Generate by: HYDAC Controller Project - Code Builder Tool Chain
 //! @ecu        TTC580
@@ -9,7 +9,7 @@
 //! @Match      07-04-01-04
 //! @PDT        2.11.72.172
 //! @PdtProjVer 0.0.0
-//! @created    2025-04-18 16:40:50   HYDAC/HCP-CC
+//! @created    2025-06-04 11:35:59   HYDAC/HCP-CC
 //**************************************************************************************************
 
 #ifndef __APP_CAN_SIG_REC_H__
@@ -33,6 +33,7 @@ typedef enum
     eCSR_EmergencyEncodeurTurret2,                          //!< eCSR_EmergencyEncodeurTurret2
     eCSR_SRDO2_48XS,                                        //!< eCSR_SRDO2_48XS
     eCSR_SRDO3_48XS,                                        //!< eCSR_SRDO3_48XS
+    eCSR_SRDO5_48XS,                                        //!< eCSR_SRDO5_48XS
     eCSR_SRDO1_48XS,                                        //!< eCSR_SRDO1_48XS
     eCSR_FlashBatteryRpdo1_0,                               //!< eCSR_FlashBatteryRpdo1_0
     eCSR_FlashBatteryRpdo1_2,                               //!< eCSR_FlashBatteryRpdo1_2
@@ -99,6 +100,7 @@ typedef enum
     eCSR_Msg15C0SendToEvision7,                             //!< eCSR_Msg15C0SendToEvision7
     eCSR_MsgDebugC0SendToEvision7,                          //!< eCSR_MsgDebugC0SendToEvision7
     eCSR_Msg1RcvFromEvision7,                               //!< eCSR_Msg1RcvFromEvision7
+    eCSR_Data6C0SendToC1,                                   //!< eCSR_Data6C0SendToC1
     eCSR_SendToC1RadioCmd,                                  //!< eCSR_SendToC1RadioCmd
     eCSR_DataRcvFromC1,                                     //!< eCSR_DataRcvFromC1
     eCSR_DataSendToC1,                                      //!< eCSR_DataSendToC1
@@ -597,99 +599,122 @@ typedef struct
 typedef struct
 {
     const TCanSigRecRoot *cptRoot;                          //!< [POI] Root connection
-    TBoolean boDeltaArmJystckCenteredTelesc;                //!< [[-]] new signal 
-    TBoolean boArrowJoystickCenteredTurret;                 //!< [[-]] new signal 
-    TBoolean boCenteredAdvanceJoystick;                     //!< [[-]] new signal 
-    TBoolean boDeadManPedal;                                //!< [[-]] new signal 
-    TBoolean boPressenceInNacelleSensor1;                   //!< [[-]] new signal 
-    TBoolean boPressenceInNacelleSensor2;                   //!< [[-]] new signal 
-    TBoolean boGachette;                                    //!< [[-]] new signal 
-    TBoolean boKlaxon;                                      //!< [[-]] new signal 
-    TBoolean boStopMotorButton;                             //!< [[-]] new signal 
-    TBoolean boAuthorizationWorkKey;                        //!< [[-]] new signal 
-    TBoolean boEtallonnageJoystickButton;                   //!< [[-]] new signal 
-    TBoolean boClosePortillon;                              //!< [[-]] new signal 
-    TUint16 u16BatterieVoltage48Xs;                         //!< [[-]] new signal 
+    TBoolean bopin263;                                      //!< [[-]] boDeltaArmJystckCenteredTelesc 
+    TBoolean bopin256;                                      //!< [[-]] boArrowJoystickCenteredTurret 
+    TBoolean bopin262;                                      //!< [[-]] boCenteredAdvanceJoystick 
+    TBoolean bopin255;                                      //!< [[-]] boDeadManPedal 
+    TBoolean bopin261;                                      //!< [[-]] boPressenceInNacelleSensor1 || boHighSectorPlateSensor 
+    TBoolean bopin254;                                      //!< [[-]] boPressenceInNacelleSensor2 || boFoldedLadderSensor   
+    TBoolean bopin260;                                      //!< [[-]] boGachette 
+    TBoolean bopin253;                                      //!< [[-]] boKlaxon 
+    TBoolean bopin275;                                      //!< [[-]] boStopMotorButton 
+    TBoolean bopin268;                                      //!< [[-]] boAuthorizationWorkKey 
+    TBoolean bopin274;                                      //!< [[-]] boEtallonnageJoystickButton 
+    TBoolean bopin267;                                      //!< [[-]] boClosePortillon 
+    TUint16 u16pin101;                                      //!< [[-]] u16BatterieVoltage48Xs 
 } TCanSigRecSRDO3_48XS;
 
 extern TCanSigRecSRDO3_48XS gCsr_tSRDO3_48XS;
 
 typedef struct
 {
-    TBoolean boDeltaArmJystckCenteredTelesc;                //!< [[-]] new signal 
-    TBoolean boArrowJoystickCenteredTurret;                 //!< [[-]] new signal 
-    TBoolean boCenteredAdvanceJoystick;                     //!< [[-]] new signal 
-    TBoolean boDeadManPedal;                                //!< [[-]] new signal 
-    TBoolean boPressenceInNacelleSensor1;                   //!< [[-]] new signal 
-    TBoolean boPressenceInNacelleSensor2;                   //!< [[-]] new signal 
-    TBoolean boGachette;                                    //!< [[-]] new signal 
-    TBoolean boKlaxon;                                      //!< [[-]] new signal 
-    TBoolean boStopMotorButton;                             //!< [[-]] new signal 
-    TBoolean boAuthorizationWorkKey;                        //!< [[-]] new signal 
-    TBoolean boEtallonnageJoystickButton;                   //!< [[-]] new signal 
-    TBoolean boClosePortillon;                              //!< [[-]] new signal 
-    TUint16 u16BatterieVoltage48Xs;                         //!< [[-]] new signal 
+    TBoolean bopin263;                                      //!< [[-]] boDeltaArmJystckCenteredTelesc 
+    TBoolean bopin256;                                      //!< [[-]] boArrowJoystickCenteredTurret 
+    TBoolean bopin262;                                      //!< [[-]] boCenteredAdvanceJoystick 
+    TBoolean bopin255;                                      //!< [[-]] boDeadManPedal 
+    TBoolean bopin261;                                      //!< [[-]] boPressenceInNacelleSensor1 || boHighSectorPlateSensor 
+    TBoolean bopin254;                                      //!< [[-]] boPressenceInNacelleSensor2 || boFoldedLadderSensor   
+    TBoolean bopin260;                                      //!< [[-]] boGachette 
+    TBoolean bopin253;                                      //!< [[-]] boKlaxon 
+    TBoolean bopin275;                                      //!< [[-]] boStopMotorButton 
+    TBoolean bopin268;                                      //!< [[-]] boAuthorizationWorkKey 
+    TBoolean bopin274;                                      //!< [[-]] boEtallonnageJoystickButton 
+    TBoolean bopin267;                                      //!< [[-]] boClosePortillon 
+    TUint16 u16pin101;                                      //!< [[-]] u16BatterieVoltage48Xs 
 } TCanSigRecOldValSRDO3_48XS;
 
 typedef struct
 {
-    TCanSigRecInf     tCsrInfo_boDeltaArmJystckCenteredTelesc;
-    TCanSigRecRng_bo  tCsrRng_boDeltaArmJystckCenteredTelesc;
-    TCanSigRecInf     tCsrInfo_boArrowJoystickCenteredTurret;
-    TCanSigRecRng_bo  tCsrRng_boArrowJoystickCenteredTurret;
-    TCanSigRecInf     tCsrInfo_boCenteredAdvanceJoystick;
-    TCanSigRecRng_bo  tCsrRng_boCenteredAdvanceJoystick;
-    TCanSigRecInf     tCsrInfo_boDeadManPedal;
-    TCanSigRecRng_bo  tCsrRng_boDeadManPedal;
-    TCanSigRecInf     tCsrInfo_boPressenceInNacelleSensor1;
-    TCanSigRecRng_bo  tCsrRng_boPressenceInNacelleSensor1;
-    TCanSigRecInf     tCsrInfo_boPressenceInNacelleSensor2;
-    TCanSigRecRng_bo  tCsrRng_boPressenceInNacelleSensor2;
-    TCanSigRecInf     tCsrInfo_boGachette;
-    TCanSigRecRng_bo  tCsrRng_boGachette;
-    TCanSigRecInf     tCsrInfo_boKlaxon;
-    TCanSigRecRng_bo  tCsrRng_boKlaxon;
-    TCanSigRecInf     tCsrInfo_boStopMotorButton;
-    TCanSigRecRng_bo  tCsrRng_boStopMotorButton;
-    TCanSigRecInf     tCsrInfo_boAuthorizationWorkKey;
-    TCanSigRecRng_bo  tCsrRng_boAuthorizationWorkKey;
-    TCanSigRecInf     tCsrInfo_boEtallonnageJoystickButton;
-    TCanSigRecRng_bo  tCsrRng_boEtallonnageJoystickButton;
-    TCanSigRecInf     tCsrInfo_boClosePortillon;
-    TCanSigRecRng_bo  tCsrRng_boClosePortillon;
-    TCanSigRecInf     tCsrInfo_u16BatterieVoltage48Xs;
-    TCanSigRecRng_u16 tCsrRng_u16BatterieVoltage48Xs;
+    TCanSigRecInf     tCsrInfo_bopin263;
+    TCanSigRecRng_bo  tCsrRng_bopin263;
+    TCanSigRecInf     tCsrInfo_bopin256;
+    TCanSigRecRng_bo  tCsrRng_bopin256;
+    TCanSigRecInf     tCsrInfo_bopin262;
+    TCanSigRecRng_bo  tCsrRng_bopin262;
+    TCanSigRecInf     tCsrInfo_bopin255;
+    TCanSigRecRng_bo  tCsrRng_bopin255;
+    TCanSigRecInf     tCsrInfo_bopin261;
+    TCanSigRecRng_bo  tCsrRng_bopin261;
+    TCanSigRecInf     tCsrInfo_bopin254;
+    TCanSigRecRng_bo  tCsrRng_bopin254;
+    TCanSigRecInf     tCsrInfo_bopin260;
+    TCanSigRecRng_bo  tCsrRng_bopin260;
+    TCanSigRecInf     tCsrInfo_bopin253;
+    TCanSigRecRng_bo  tCsrRng_bopin253;
+    TCanSigRecInf     tCsrInfo_bopin275;
+    TCanSigRecRng_bo  tCsrRng_bopin275;
+    TCanSigRecInf     tCsrInfo_bopin268;
+    TCanSigRecRng_bo  tCsrRng_bopin268;
+    TCanSigRecInf     tCsrInfo_bopin274;
+    TCanSigRecRng_bo  tCsrRng_bopin274;
+    TCanSigRecInf     tCsrInfo_bopin267;
+    TCanSigRecRng_bo  tCsrRng_bopin267;
+    TCanSigRecInf     tCsrInfo_u16pin101;
+    TCanSigRecRng_u16 tCsrRng_u16pin101;
 } TCanSigRecVal_SRDO3_48XS;
 
 typedef struct
 {
     const TCanSigRecRoot *cptRoot;                          //!< [POI] Root connection
-    TUint16 u16Overload1;                                   //!< [[-]] new signal 
-    TUint16 u16Overload2;                                   //!< [[-]] new signal 
-    TUint16 u16NacelleBasketRightSideSensor1;               //!< [[-]] new signal 
-    TUint16 u16NacelleBasketRightSideSensor2;               //!< [[-]] new signal 
+    TUint16 u16OverloadChannel1;                            //!< [[-]] new signal 
+    TUint16 u16OverloadChannel2;                            //!< [[-]] new signal 
+} TCanSigRecSRDO5_48XS;
+
+extern TCanSigRecSRDO5_48XS gCsr_tSRDO5_48XS;
+
+typedef struct
+{
+    TUint16 u16OverloadChannel1;                            //!< [[-]] new signal 
+    TUint16 u16OverloadChannel2;                            //!< [[-]] new signal 
+} TCanSigRecOldValSRDO5_48XS;
+
+typedef struct
+{
+    TCanSigRecInf     tCsrInfo_u16OverloadChannel1;
+    TCanSigRecRng_u16 tCsrRng_u16OverloadChannel1;
+    TCanSigRecInf     tCsrInfo_u16OverloadChannel2;
+    TCanSigRecRng_u16 tCsrRng_u16OverloadChannel2;
+} TCanSigRecVal_SRDO5_48XS;
+
+typedef struct
+{
+    const TCanSigRecRoot *cptRoot;                          //!< [POI] Root connection
+    TUint16 u16pin141;                                      //!< [[-]] u16Overload1 
+    TUint16 u16pin129;                                      //!< [[-]] u16Overload2 
+    TUint16 u16pin152;                                      //!< [[-]] u16NacelleBasketRightSideSensor1Val 
+    TUint16 u16pin140;                                      //!< [[-]] u16NacelleBasketRightSideSensor2Val 
 } TCanSigRecSRDO1_48XS;
 
 extern TCanSigRecSRDO1_48XS gCsr_tSRDO1_48XS;
 
 typedef struct
 {
-    TUint16 u16Overload1;                                   //!< [[-]] new signal 
-    TUint16 u16Overload2;                                   //!< [[-]] new signal 
-    TUint16 u16NacelleBasketRightSideSensor1;               //!< [[-]] new signal 
-    TUint16 u16NacelleBasketRightSideSensor2;               //!< [[-]] new signal 
+    TUint16 u16pin141;                                      //!< [[-]] u16Overload1 
+    TUint16 u16pin129;                                      //!< [[-]] u16Overload2 
+    TUint16 u16pin152;                                      //!< [[-]] u16NacelleBasketRightSideSensor1Val 
+    TUint16 u16pin140;                                      //!< [[-]] u16NacelleBasketRightSideSensor2Val 
 } TCanSigRecOldValSRDO1_48XS;
 
 typedef struct
 {
-    TCanSigRecInf     tCsrInfo_u16Overload1;
-    TCanSigRecRng_u16 tCsrRng_u16Overload1;
-    TCanSigRecInf     tCsrInfo_u16Overload2;
-    TCanSigRecRng_u16 tCsrRng_u16Overload2;
-    TCanSigRecInf     tCsrInfo_u16NacelleBasketRightSideSensor1;
-    TCanSigRecRng_u16 tCsrRng_u16NacelleBasketRightSideSensor1;
-    TCanSigRecInf     tCsrInfo_u16NacelleBasketRightSideSensor2;
-    TCanSigRecRng_u16 tCsrRng_u16NacelleBasketRightSideSensor2;
+    TCanSigRecInf     tCsrInfo_u16pin141;
+    TCanSigRecRng_u16 tCsrRng_u16pin141;
+    TCanSigRecInf     tCsrInfo_u16pin129;
+    TCanSigRecRng_u16 tCsrRng_u16pin129;
+    TCanSigRecInf     tCsrInfo_u16pin152;
+    TCanSigRecRng_u16 tCsrRng_u16pin152;
+    TCanSigRecInf     tCsrInfo_u16pin140;
+    TCanSigRecRng_u16 tCsrRng_u16pin140;
 } TCanSigRecVal_SRDO1_48XS;
 
 typedef struct
@@ -816,6 +841,11 @@ typedef struct
     TBoolean bogKeySlopeTrReset;                            //!< [[-]] Key Slope Transversal reset 
     TBoolean boKeyYesReloadWithGenerator;                   //!< [[-]] new signal 
     TBoolean boKeyNoReloadWithGenerator;                    //!< [[-]] new signal 
+    TBoolean bogKeyFlashLightON;                            //!< [[-]] new signal 
+    TBoolean bogButtonCalibOverloadMax;                     //!< [[-]] Key Calib Overload Max 
+    TBoolean bogButtonCalibOverloadMin;                     //!< [[-]] Key Calib Overload Min 
+    TBoolean bogButtonCalibOverloadMaxMG;                   //!< [[-]] new signal 
+    TBoolean bogVisuEngineFaults;                           //!< [[-]] Visu Engine Faults J1939 
     TUint8 u8gActivePageOpus;                               //!< [[-]] Page active Ecran Opus 
     TUint8 u8gElementChoice;                                //!< [[-]] Element choice 1=Telescope; 2=Arrow arm; 3=Delta arm; 4=Turret;  
 } TCanSigRecMsg1RcvFromOpus;
@@ -851,6 +881,11 @@ typedef struct
     TBoolean bogKeySlopeTrReset;                            //!< [[-]] Key Slope Transversal reset 
     TBoolean boKeyYesReloadWithGenerator;                   //!< [[-]] new signal 
     TBoolean boKeyNoReloadWithGenerator;                    //!< [[-]] new signal 
+    TBoolean bogKeyFlashLightON;                            //!< [[-]] new signal 
+    TBoolean bogButtonCalibOverloadMax;                     //!< [[-]] Key Calib Overload Max 
+    TBoolean bogButtonCalibOverloadMin;                     //!< [[-]] Key Calib Overload Min 
+    TBoolean bogButtonCalibOverloadMaxMG;                   //!< [[-]] new signal 
+    TBoolean bogVisuEngineFaults;                           //!< [[-]] Visu Engine Faults J1939 
     TUint8 u8gActivePageOpus;                               //!< [[-]] Page active Ecran Opus 
     TUint8 u8gElementChoice;                                //!< [[-]] Element choice 1=Telescope; 2=Arrow arm; 3=Delta arm; 4=Turret;  
 } TCanSigRecOldValMsg1RcvFromOpus;
@@ -911,6 +946,16 @@ typedef struct
     TCanSigRecRng_bo  tCsrRng_boKeyYesReloadWithGenerator;
     TCanSigRecInf     tCsrInfo_boKeyNoReloadWithGenerator;
     TCanSigRecRng_bo  tCsrRng_boKeyNoReloadWithGenerator;
+    TCanSigRecInf     tCsrInfo_bogKeyFlashLightON;
+    TCanSigRecRng_bo  tCsrRng_bogKeyFlashLightON;
+    TCanSigRecInf     tCsrInfo_bogButtonCalibOverloadMax;
+    TCanSigRecRng_bo  tCsrRng_bogButtonCalibOverloadMax;
+    TCanSigRecInf     tCsrInfo_bogButtonCalibOverloadMin;
+    TCanSigRecRng_bo  tCsrRng_bogButtonCalibOverloadMin;
+    TCanSigRecInf     tCsrInfo_bogButtonCalibOverloadMaxMG;
+    TCanSigRecRng_bo  tCsrRng_bogButtonCalibOverloadMaxMG;
+    TCanSigRecInf     tCsrInfo_bogVisuEngineFaults;
+    TCanSigRecRng_bo  tCsrRng_bogVisuEngineFaults;
     TCanSigRecInf     tCsrInfo_u8gActivePageOpus;
     TCanSigRecRng_u8  tCsrRng_u8gActivePageOpus;
     TCanSigRecInf     tCsrInfo_u8gElementChoice;
@@ -1147,6 +1192,9 @@ typedef struct
     TBoolean bogNeonsON;                                    //!< [[-]] Neons ON 
     TBoolean bogSlopeSensorFault;                           //!< [[-]] Slope sensor fault 
     TBoolean bogMastMeasureFault;                           //!< [[-]] Mast Measure fault 
+    TBoolean boAxlePositionSensorFault;                     //!< [[-]] new signal 
+    TBoolean boAxlePositionInMGMode;                        //!< [[-]] new signal 
+    TBoolean boMachineMountedAxlesMG;                       //!< [[-]] new signal 
     TUint8 u8gReductionPumpTrack;                           //!< [[-]] Reduction Pump Track 
     TInt16 i16gPressureBrakeSensorValue;                    //!< [[-]] Pressure Brake Sensor Value 
 } TCanSigRecMsg1C0SendToOpus;
@@ -1192,6 +1240,9 @@ typedef struct
     TBoolean bogNeonsON;                                    //!< [[-]] Neons ON 
     TBoolean bogSlopeSensorFault;                           //!< [[-]] Slope sensor fault 
     TBoolean bogMastMeasureFault;                           //!< [[-]] Mast Measure fault 
+    TBoolean boAxlePositionSensorFault;                     //!< [[-]] new signal 
+    TBoolean boAxlePositionInMGMode;                        //!< [[-]] new signal 
+    TBoolean boMachineMountedAxlesMG;                       //!< [[-]] new signal 
     TUint8 u8gReductionPumpTrack;                           //!< [[-]] Reduction Pump Track 
     TInt16 i16gPressureBrakeSensorValue;                    //!< [[-]] Pressure Brake Sensor Value 
 } TCanSigRecOldValMsg1C0SendToOpus;
@@ -1272,6 +1323,12 @@ typedef struct
     TCanSigRecRng_bo  tCsrRng_bogSlopeSensorFault;
     TCanSigRecInf     tCsrInfo_bogMastMeasureFault;
     TCanSigRecRng_bo  tCsrRng_bogMastMeasureFault;
+    TCanSigRecInf     tCsrInfo_boAxlePositionSensorFault;
+    TCanSigRecRng_bo  tCsrRng_boAxlePositionSensorFault;
+    TCanSigRecInf     tCsrInfo_boAxlePositionInMGMode;
+    TCanSigRecRng_bo  tCsrRng_boAxlePositionInMGMode;
+    TCanSigRecInf     tCsrInfo_boMachineMountedAxlesMG;
+    TCanSigRecRng_bo  tCsrRng_boMachineMountedAxlesMG;
     TCanSigRecInf     tCsrInfo_u8gReductionPumpTrack;
     TCanSigRecRng_u8  tCsrRng_u8gReductionPumpTrack;
     TCanSigRecInf     tCsrInfo_i16gPressureBrakeSensorValue;
@@ -5153,8 +5210,12 @@ typedef struct
     TInt16 i16Ibatt_ist;                                    //!< [[-]] new signal 
     TUint16 u16Vbatt_ist;                                   //!< [[-]] new signal 
     TUint8 u8Batt_Soc;                                      //!< [[-]] new signal 
+    TUint16 u16AccuBrakeSensorPressureValue;                //!< [[-]] new signal 
     TBoolean boAddParkBrakeActive;                          //!< [[-]] new signal 
     TBoolean boPreventLimitSpeedExceeding;                  //!< [[-]] new signal 
+    TBoolean boAxlePositionInMGMode;                        //!< [[-]] new signal 
+    TBoolean boMachineMountedAxlesMG;                       //!< [[-]] new signal 
+    TBoolean boAxlePositionSensorFault;                     //!< [[-]] new signal 
 } TCanSigRecMsg14C0SendToEvision7;
 
 extern TCanSigRecMsg14C0SendToEvision7 gCsr_tMsg14C0SendToEvision7;
@@ -5164,8 +5225,12 @@ typedef struct
     TInt16 i16Ibatt_ist;                                    //!< [[-]] new signal 
     TUint16 u16Vbatt_ist;                                   //!< [[-]] new signal 
     TUint8 u8Batt_Soc;                                      //!< [[-]] new signal 
+    TUint16 u16AccuBrakeSensorPressureValue;                //!< [[-]] new signal 
     TBoolean boAddParkBrakeActive;                          //!< [[-]] new signal 
     TBoolean boPreventLimitSpeedExceeding;                  //!< [[-]] new signal 
+    TBoolean boAxlePositionInMGMode;                        //!< [[-]] new signal 
+    TBoolean boMachineMountedAxlesMG;                       //!< [[-]] new signal 
+    TBoolean boAxlePositionSensorFault;                     //!< [[-]] new signal 
 } TCanSigRecOldValMsg14C0SendToEvision7;
 
 typedef struct
@@ -5176,10 +5241,18 @@ typedef struct
     TCanSigRecRng_u16 tCsrRng_u16Vbatt_ist;
     TCanSigRecInf     tCsrInfo_u8Batt_Soc;
     TCanSigRecRng_u8  tCsrRng_u8Batt_Soc;
+    TCanSigRecInf     tCsrInfo_u16AccuBrakeSensorPressureValue;
+    TCanSigRecRng_u16 tCsrRng_u16AccuBrakeSensorPressureValue;
     TCanSigRecInf     tCsrInfo_boAddParkBrakeActive;
     TCanSigRecRng_bo  tCsrRng_boAddParkBrakeActive;
     TCanSigRecInf     tCsrInfo_boPreventLimitSpeedExceeding;
     TCanSigRecRng_bo  tCsrRng_boPreventLimitSpeedExceeding;
+    TCanSigRecInf     tCsrInfo_boAxlePositionInMGMode;
+    TCanSigRecRng_bo  tCsrRng_boAxlePositionInMGMode;
+    TCanSigRecInf     tCsrInfo_boMachineMountedAxlesMG;
+    TCanSigRecRng_bo  tCsrRng_boMachineMountedAxlesMG;
+    TCanSigRecInf     tCsrInfo_boAxlePositionSensorFault;
+    TCanSigRecRng_bo  tCsrRng_boAxlePositionSensorFault;
 } TCanSigRecVal_Msg14C0SendToEvision7;
 
 typedef struct
@@ -5279,7 +5352,7 @@ typedef struct
     TBoolean bogBothServiceRunInBrakeSelect;                //!< [[-]] Request status of both service run in test brake 
     TBoolean bogTestBrakePageActive;                        //!< [[-]] Flag when user is on test brake page 
     TBoolean bogBreakInBrakePageActive;                     //!< [[-]] Flag when user is on break in brake page 
-    TBoolean bogSerialNumber;                               //!< [[-]] Machine Serial Number 
+    TBoolean bogRollingCode;                                //!< [[-]] Machine Serial Number 
     TBoolean bogBPBasketValidate;                           //!< [[-]] Basket Panel Validate 
     TBoolean bogKeyFilterOverload;                          //!< [[-]] Overload Filter Key 
     TBoolean bogKeyNextMode;                                //!< [[-]] Select next mode 
@@ -5294,6 +5367,8 @@ typedef struct
     TBoolean bogFixe2ndParkBrakeSelect;                     //!< [[-]] Fixe 2nd Park Brake Select 
     TBoolean bogOsci2ndParkBrakeSelect;                     //!< [[-]] Osci 2nd Park Brake Select 
     TBoolean bogKeyRazController;                           //!< [[-]] new signal 
+    TBoolean bogKeyColdStartWarming;                        //!< [[-]] new signal 
+    TBoolean bogKeySilenceMode;                             //!< [[-]] new signal 
 } TCanSigRecMsg1RcvFromEvision7;
 
 extern TCanSigRecMsg1RcvFromEvision7 gCsr_tMsg1RcvFromEvision7;
@@ -5320,7 +5395,7 @@ typedef struct
     TBoolean bogBothServiceRunInBrakeSelect;                //!< [[-]] Request status of both service run in test brake 
     TBoolean bogTestBrakePageActive;                        //!< [[-]] Flag when user is on test brake page 
     TBoolean bogBreakInBrakePageActive;                     //!< [[-]] Flag when user is on break in brake page 
-    TBoolean bogSerialNumber;                               //!< [[-]] Machine Serial Number 
+    TBoolean bogRollingCode;                                //!< [[-]] Machine Serial Number 
     TBoolean bogBPBasketValidate;                           //!< [[-]] Basket Panel Validate 
     TBoolean bogKeyFilterOverload;                          //!< [[-]] Overload Filter Key 
     TBoolean bogKeyNextMode;                                //!< [[-]] Select next mode 
@@ -5335,6 +5410,8 @@ typedef struct
     TBoolean bogFixe2ndParkBrakeSelect;                     //!< [[-]] Fixe 2nd Park Brake Select 
     TBoolean bogOsci2ndParkBrakeSelect;                     //!< [[-]] Osci 2nd Park Brake Select 
     TBoolean bogKeyRazController;                           //!< [[-]] new signal 
+    TBoolean bogKeyColdStartWarming;                        //!< [[-]] new signal 
+    TBoolean bogKeySilenceMode;                             //!< [[-]] new signal 
 } TCanSigRecOldValMsg1RcvFromEvision7;
 
 typedef struct
@@ -5379,8 +5456,8 @@ typedef struct
     TCanSigRecRng_bo  tCsrRng_bogTestBrakePageActive;
     TCanSigRecInf     tCsrInfo_bogBreakInBrakePageActive;
     TCanSigRecRng_bo  tCsrRng_bogBreakInBrakePageActive;
-    TCanSigRecInf     tCsrInfo_bogSerialNumber;
-    TCanSigRecRng_bo  tCsrRng_bogSerialNumber;
+    TCanSigRecInf     tCsrInfo_bogRollingCode;
+    TCanSigRecRng_bo  tCsrRng_bogRollingCode;
     TCanSigRecInf     tCsrInfo_bogBPBasketValidate;
     TCanSigRecRng_bo  tCsrRng_bogBPBasketValidate;
     TCanSigRecInf     tCsrInfo_bogKeyFilterOverload;
@@ -5409,7 +5486,42 @@ typedef struct
     TCanSigRecRng_bo  tCsrRng_bogOsci2ndParkBrakeSelect;
     TCanSigRecInf     tCsrInfo_bogKeyRazController;
     TCanSigRecRng_bo  tCsrRng_bogKeyRazController;
+    TCanSigRecInf     tCsrInfo_bogKeyColdStartWarming;
+    TCanSigRecRng_bo  tCsrRng_bogKeyColdStartWarming;
+    TCanSigRecInf     tCsrInfo_bogKeySilenceMode;
+    TCanSigRecRng_bo  tCsrRng_bogKeySilenceMode;
 } TCanSigRecVal_Msg1RcvFromEvision7;
+
+typedef struct
+{
+    const TCanSigRecRoot *cptRoot;                          //!< [POI] Root connection
+    TUint8 u8RecoveryReductionRatio;                        //!< [[-]] new signal 
+    TBoolean boAxlePositionInMGMode;                        //!< [[-]] new signal 
+    TBoolean boAxlePositionSensorFault;                     //!< [[-]] new signal 
+    TBoolean boHighSlopeForArrowUp;                         //!< [[-]] new signal 
+} TCanSigRecData6C0SendToC1;
+
+extern TCanSigRecData6C0SendToC1 gCsr_tData6C0SendToC1;
+
+typedef struct
+{
+    TUint8 u8RecoveryReductionRatio;                        //!< [[-]] new signal 
+    TBoolean boAxlePositionInMGMode;                        //!< [[-]] new signal 
+    TBoolean boAxlePositionSensorFault;                     //!< [[-]] new signal 
+    TBoolean boHighSlopeForArrowUp;                         //!< [[-]] new signal 
+} TCanSigRecOldValData6C0SendToC1;
+
+typedef struct
+{
+    TCanSigRecInf     tCsrInfo_u8RecoveryReductionRatio;
+    TCanSigRecRng_u8  tCsrRng_u8RecoveryReductionRatio;
+    TCanSigRecInf     tCsrInfo_boAxlePositionInMGMode;
+    TCanSigRecRng_bo  tCsrRng_boAxlePositionInMGMode;
+    TCanSigRecInf     tCsrInfo_boAxlePositionSensorFault;
+    TCanSigRecRng_bo  tCsrRng_boAxlePositionSensorFault;
+    TCanSigRecInf     tCsrInfo_boHighSlopeForArrowUp;
+    TCanSigRecRng_bo  tCsrRng_boHighSlopeForArrowUp;
+} TCanSigRecVal_Data6C0SendToC1;
 
 typedef struct
 {
@@ -6030,7 +6142,7 @@ typedef struct
     TBoolean boSignal_6;                                    //!< [[-]] new signal 
     TUint8 u8Signal_7;                                      //!< [[-]] new signal 
     TInt16 i16BypassPressureSensorValue;                    //!< [[-]] new signal 
-    TInt16 i16Signal_9;                                     //!< [[-]] new signal 
+    TInt16 i16AccuBrakeSensorPressureValue;                 //!< [[-]] new signal 
     TInt16 i16Signal_10;                                    //!< [[-]] new signal 
 } TCanSigRecData4C1SendToC0;
 
@@ -6048,7 +6160,7 @@ typedef struct
     TBoolean boSignal_6;                                    //!< [[-]] new signal 
     TUint8 u8Signal_7;                                      //!< [[-]] new signal 
     TInt16 i16BypassPressureSensorValue;                    //!< [[-]] new signal 
-    TInt16 i16Signal_9;                                     //!< [[-]] new signal 
+    TInt16 i16AccuBrakeSensorPressureValue;                 //!< [[-]] new signal 
     TInt16 i16Signal_10;                                    //!< [[-]] new signal 
 } TCanSigRecOldValData4C1SendToC0;
 
@@ -6074,8 +6186,8 @@ typedef struct
     TCanSigRecRng_u8  tCsrRng_u8Signal_7;
     TCanSigRecInf     tCsrInfo_i16BypassPressureSensorValue;
     TCanSigRecRng_i16 tCsrRng_i16BypassPressureSensorValue;
-    TCanSigRecInf     tCsrInfo_i16Signal_9;
-    TCanSigRecRng_i16 tCsrRng_i16Signal_9;
+    TCanSigRecInf     tCsrInfo_i16AccuBrakeSensorPressureValue;
+    TCanSigRecRng_i16 tCsrRng_i16AccuBrakeSensorPressureValue;
     TCanSigRecInf     tCsrInfo_i16Signal_10;
     TCanSigRecRng_i16 tCsrRng_i16Signal_10;
 } TCanSigRecVal_Data4C1SendToC0;
@@ -6090,6 +6202,7 @@ typedef struct
     TBoolean boUpMastSensorNC;                              //!< [[-]] new signal 
     TBoolean boValveInDownPositionSensor;                   //!< [[-]] new signal 
     TBoolean boMeasuringMastSensorFolded;                   //!< [[-]] new signal 
+    TBoolean boEvLoadBrakeAccuCmd;                          //!< [[-]] new signal 
     TInt16 i16RpmPvgTransRail;                              //!< [[-]] new signal 
     TUint8 u8Batt_Soc;                                      //!< [[-]] new signal 
     TInt16 i16Ibatt_ist;                                    //!< [[-]] new signal 
@@ -6115,6 +6228,7 @@ typedef struct
     TBoolean boUpMastSensorNC;                              //!< [[-]] new signal 
     TBoolean boValveInDownPositionSensor;                   //!< [[-]] new signal 
     TBoolean boMeasuringMastSensorFolded;                   //!< [[-]] new signal 
+    TBoolean boEvLoadBrakeAccuCmd;                          //!< [[-]] new signal 
     TInt16 i16RpmPvgTransRail;                              //!< [[-]] new signal 
     TUint8 u8Batt_Soc;                                      //!< [[-]] new signal 
     TInt16 i16Ibatt_ist;                                    //!< [[-]] new signal 
@@ -6145,6 +6259,8 @@ typedef struct
     TCanSigRecRng_bo  tCsrRng_boValveInDownPositionSensor;
     TCanSigRecInf     tCsrInfo_boMeasuringMastSensorFolded;
     TCanSigRecRng_bo  tCsrRng_boMeasuringMastSensorFolded;
+    TCanSigRecInf     tCsrInfo_boEvLoadBrakeAccuCmd;
+    TCanSigRecRng_bo  tCsrRng_boEvLoadBrakeAccuCmd;
     TCanSigRecInf     tCsrInfo_i16RpmPvgTransRail;
     TCanSigRecRng_i16 tCsrRng_i16RpmPvgTransRail;
     TCanSigRecInf     tCsrInfo_u8Batt_Soc;

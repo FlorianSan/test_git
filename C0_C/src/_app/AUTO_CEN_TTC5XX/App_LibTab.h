@@ -1,5 +1,5 @@
 //**************************************************************************************************
-//! @crc        761852129
+//! @crc        3061277382
 //! @file       App_LibTab.h
 //! @brief      Generate by: HYDAC Controller Project - Code Builder Tool Chain
 //! @ecu        TTC580
@@ -9,7 +9,7 @@
 //! @Match      07-04-01-04
 //! @PDT        2.11.72.172
 //! @PdtProjVer 0.0.0
-//! @created    2025-04-18 16:40:50   HYDAC/HCP-CC
+//! @created    2025-06-04 11:35:59   HYDAC/HCP-CC
 //**************************************************************************************************
 
 #ifndef __APP_LIBTAB_H__
@@ -280,6 +280,8 @@ extern        TBloCSnd gCSnd_tDMC_TxPdo1_DC;
 extern const TCSndCfg gCSnd_ctCfg_DMC_TxPdo1_DC;
 extern        TBloCSnd gCSnd_tDMC_TxPdo2_BCL;
 extern const TCSndCfg gCSnd_ctCfg_DMC_TxPdo2_BCL;
+extern        TBloCSnd gCSnd_tData6C0SendToC1;
+extern const TCSndCfg gCSnd_ctCfg_Data6C0SendToC1;
 extern        TBloCRcv gCRcv_tHeartBeat;
 extern const TCRcvCfg gCRcv_ctCfg_HeartBeat;
 extern        TBloCRcv gCRcv_tReadAnalogInput;
@@ -368,6 +370,8 @@ extern        TBloCRcv gCRcv_tDMC_RxPdo2_DS;
 extern const TCRcvCfg gCRcv_ctCfg_DMC_RxPdo2_DS;
 extern        TBloCRcv gCRcv_tDMC_RxPdo3_CS;
 extern const TCRcvCfg gCRcv_ctCfg_DMC_RxPdo3_CS;
+extern        TBloCRcv gCRcv_tSRDO5_48XS;
+extern const TCRcvCfg gCRcv_ctCfg_SRDO5_48XS;
 extern        TBloPro gPro_tEvForwardPump;
 extern const TProCfg gPro_ctCfg_EvForwardPump;
 extern        TBloPro gPro_tEvBackwardPump;
@@ -404,6 +408,10 @@ extern        TBloSwiDblNcNo gSwiDblNcNo_tDownOscillantAxle;
 extern const TSwiDblNcNoCfg gSwiDblNcNo_ctCfg_DownOscillantAxle;
 extern        TBloSwiDblNcNo gSwiDblNcNo_tDownFixeAxle;
 extern const TSwiDblNcNoCfg gSwiDblNcNo_ctCfg_DownFixeAxle;
+extern        TBloSwiDblNcNo gSwiDblNcNo_tAxleInMGMode;
+extern const TSwiDblNcNoCfg gSwiDblNcNo_ctCfg_AxleInMGMode;
+extern        TBloSwiDblNcNo gSwiDblNcNo_tAxleInSDMode;
+extern const TSwiDblNcNoCfg gSwiDblNcNo_ctCfg_AxleInSDMode;
 extern        TBloSil gSil_tEcu0_Safety;
 extern const TSilCfg gSil_ctCfg_Ecu0_Safety;
 extern        TBloSil gSil_tEcu1_Safety;
